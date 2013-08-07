@@ -37,4 +37,12 @@ public class ViewController {
 		return "view/main";
 	}
 	
+	@RequestMapping(value = "viewpage.do", method = RequestMethod.GET)
+	public String viewpage(Model model) {
+		logger.info("into viewpage.do");
+		
+		model.addAttribute("movie", "source/ani_song07.mp4");
+		
+		return "view/viewpage";
+	}
 }

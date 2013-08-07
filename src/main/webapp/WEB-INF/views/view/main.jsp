@@ -104,7 +104,7 @@
 		        <li class="span3">
 		            <div class="thumbnail-style thumbnail-kenburn">
 		            	<div class="thumbnail-img">
-		                    <div class="overflow-hidden"><img src="assets/img/thumbnail/1.jpg" alt="" /></div>
+		                    <div class="overflow-hidden"><a href="viewpage.do"><img src="assets/img/thumbnail/1.jpg" alt="" /></a></div>
 		                    <a class="btn-more hover-effect" href="#">read more +</a>					
 		                </div>
 		            </div>
@@ -112,7 +112,7 @@
 		        <li class="span3">
 		            <div class="thumbnail-style thumbnail-kenburn">
 		            	<div class="thumbnail-img">
-		                    <div class="overflow-hidden"><img src="assets/img/thumbnail/2.jpg" alt="" /></div>
+		                    <div class="overflow-hidden"><a href="viewpage.do"><img src="assets/img/thumbnail/2.jpg" alt="" /></a></div>
 		                    <a class="btn-more hover-effect" href="#">read more +</a>					
 		                </div>
 		            </div>
@@ -120,7 +120,7 @@
 		        <li class="span3">
 		            <div class="thumbnail-style thumbnail-kenburn">
 		            	<div class="thumbnail-img">
-		                    <div class="overflow-hidden"><img src="assets/img/thumbnail/3.jpg" alt="" /></div>
+		                    <div class="overflow-hidden"><a href="viewpage.do"><img src="assets/img/thumbnail/3.jpg" alt="" /></a></div>
 		                    <a class="btn-more hover-effect" href="#">read more +</a>					
 		                </div>
 		            </div>
@@ -128,7 +128,7 @@
 		        <li class="span3">
 		            <div class="thumbnail-style thumbnail-kenburn">
 		            	<div class="thumbnail-img">
-		                    <div class="overflow-hidden"><img src="assets/img/thumbnail/4.jpg" alt="" /></div>
+		                    <div class="overflow-hidden"><a href="viewpage.do"><img src="assets/img/thumbnail/4.jpg" alt="" /></a></div>
 		                    <a class="btn-more hover-effect" href="#">read more +</a>					
 		                </div>
 		            </div>
@@ -138,7 +138,7 @@
 		        <li class="span3">
 		            <div class="thumbnail-style thumbnail-kenburn">
 		            	<div class="thumbnail-img">
-		                    <div class="overflow-hidden"><img src="assets/img/thumbnail/5.jpg" alt="" /></div>
+		                    <div class="overflow-hidden"><a href="viewpage.do"><img src="assets/img/thumbnail/5.jpg" alt="" /></a></div>
 		                    <a class="btn-more hover-effect" href="#">read more +</a>					
 		                </div>
 		            </div>
@@ -146,7 +146,7 @@
 		        <li class="span3">
 		            <div class="thumbnail-style thumbnail-kenburn">
 		            	<div class="thumbnail-img">
-		                    <div class="overflow-hidden"><img src="assets/img/thumbnail/6.jpg" alt="" /></div>
+		                    <div class="overflow-hidden"><a href="viewpage.do"><img src="assets/img/thumbnail/6.jpg" alt="" /></a></div>
 		                    <a class="btn-more hover-effect" href="#">read more +</a>					
 		                </div>
 		            </div>
@@ -154,7 +154,7 @@
 		        <li class="span3">
 		            <div class="thumbnail-style thumbnail-kenburn">
 		            	<div class="thumbnail-img">
-		                    <div class="overflow-hidden"><img src="assets/img/thumbnail/7.jpg" alt="" /></div>
+		                    <div class="overflow-hidden"><a href="viewpage.do"><img src="assets/img/thumbnail/7.jpg" alt="" /></a></div>
 		                    <a class="btn-more hover-effect" href="#">read more +</a>					
 		                </div>
 		            </div>
@@ -162,7 +162,7 @@
 		        <li class="span3">
 		            <div class="thumbnail-style thumbnail-kenburn">
 		            	<div class="thumbnail-img">
-		                    <div class="overflow-hidden"><img src="assets/img/thumbnail/8.jpg" alt="" /></div>
+		                    <div class="overflow-hidden"><a href="viewpage.do"><img src="assets/img/thumbnail/8.jpg" alt="" /></a></div>
 		                    <a class="btn-more hover-effect" href="#">read more +</a>					
 		                </div>
 		            </div>
@@ -176,7 +176,7 @@
 		        <li class="span3">
 		            <div class="thumbnail-style thumbnail-kenburn">
 		            	<div class="thumbnail-img">
-		                    <div class="overflow-hidden"><img src="assets/img/thumbnail/10.jpg" alt="" /></div>
+		                    <div class="overflow-hidden"><a href="viewpage.do"><img src="assets/img/thumbnail/10.jpg" alt="" /></a></div>
 		                    <a class="btn-more hover-effect" href="#">read more +</a>					
 		                </div>
 		            </div>
@@ -184,7 +184,7 @@
 		        <li class="span3">
 		            <div class="thumbnail-style thumbnail-kenburn">
 		            	<div class="thumbnail-img">
-		                    <div class="overflow-hidden"><img src="assets/img/thumbnail/9.jpg" alt="" /></div>
+		                    <div class="overflow-hidden"><a href="viewpage.do"><img src="assets/img/thumbnail/9.jpg" alt="" /></a></div>
 		                    <a class="btn-more hover-effect" href="#">read more +</a>					
 		                </div>
 		            </div>
@@ -192,7 +192,7 @@
 		        <li class="span3">
 		            <div class="thumbnail-style thumbnail-kenburn">
 		            	<div class="thumbnail-img">
-		                    <div class="overflow-hidden"><img src="assets/img/thumbnail/8.jpg" alt="" /></div>
+		                    <div class="overflow-hidden"><a href="viewpage.do"><img src="assets/img/thumbnail/8.jpg" alt="" /></a></div>
 		                    <a class="btn-more hover-effect" href="#">read more +</a>					
 		                </div>
 		            </div>
@@ -200,7 +200,7 @@
 		        <li class="span3">
 		            <div class="thumbnail-style thumbnail-kenburn">
 		            	<div class="thumbnail-img">
-		                    <div class="overflow-hidden"><img src="assets/img/thumbnail/7.jpg" alt="" /></div>
+		                    <div class="overflow-hidden"><a href="viewpage.do"><img src="assets/img/thumbnail/7.jpg" alt="" /></a></div>
 		                    <a class="btn-more hover-effect" href="#">read more +</a>					
 		                </div>
 		            </div>
@@ -210,7 +210,7 @@
 		        <li class="span3">
 		            <div class="thumbnail-style thumbnail-kenburn">
 		            	<div class="thumbnail-img">
-		                    <div class="overflow-hidden"><img src="assets/img/thumbnail/6.jpg" alt="" /></div>
+		                    <div class="overflow-hidden"><a href="viewpage.do"><img src="assets/img/thumbnail/6.jpg" alt="" /></a></div>
 		                    <a class="btn-more hover-effect" href="#">read more +</a>					
 		                </div>
 		            </div>
@@ -218,7 +218,7 @@
 		        <li class="span3">
 		            <div class="thumbnail-style thumbnail-kenburn">
 		            	<div class="thumbnail-img">
-		                    <div class="overflow-hidden"><img src="assets/img/thumbnail/5.jpg" alt="" /></div>
+		                    <div class="overflow-hidden"><a href="viewpage.do"><img src="assets/img/thumbnail/5.jpg" alt="" /></a></div>
 		                    <a class="btn-more hover-effect" href="#">read more +</a>					
 		                </div>
 		            </div>
@@ -226,7 +226,7 @@
 		        <li class="span3">
 		            <div class="thumbnail-style thumbnail-kenburn">
 		            	<div class="thumbnail-img">
-		                    <div class="overflow-hidden"><img src="assets/img/thumbnail/4.jpg" alt="" /></div>
+		                    <div class="overflow-hidden"><a href="viewpage.do"><img src="assets/img/thumbnail/4.jpg" alt="" /></a></div>
 		                    <a class="btn-more hover-effect" href="#">read more +</a>					
 		                </div>
 		            </div>
@@ -234,7 +234,7 @@
 		        <li class="span3">
 		            <div class="thumbnail-style thumbnail-kenburn">
 		            	<div class="thumbnail-img">
-		                    <div class="overflow-hidden"><img src="assets/img/thumbnail/3.jpg" alt="" /></div>
+		                    <div class="overflow-hidden"><a href="viewpage.do"><img src="assets/img/thumbnail/3.jpg" alt="" /></a></div>
 		                    <a class="btn-more hover-effect" href="#">read more +</a>					
 		                </div>
 		            </div>

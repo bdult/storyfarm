@@ -25,16 +25,7 @@ public class MemberController {
 	public String loginpage(Model model) {
 		logger.info("into loginpage.do");
 		
-		//db sample
-		List<HashMap<String, String>> data = viewService.memberList();
-		
-		for(int i=0;i<data.size();i++) {
-			System.out.println(data.get(i));
-		}
-		
-		model.addAttribute("param1", "A-HA-" );
-		
-		return "view/main";
+		return "member/loginpage";
 	}
 	
 }

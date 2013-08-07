@@ -48,7 +48,7 @@
                     <dl class="dl-horizontal">
                         <dt><a href="#"><img src="assets/img/sliders/elastislide/6.jpg" alt="" /></a></dt>
                         <dd>
-                            <p><a href="#">스토리팜 1,000,000억 매출달성 파티를 엽니다 참석자들에게 아파트 하나씩 드립니다.</a></p> 
+                            <p><a href="#">스토리팜 1,000,000억 매출달성 파티를 엽니다 참석자들 모두에게 감남에 아파트 한채씩을 드립니다.</a></p> 
                         </dd>
                     </dl>
                     <dl class="dl-horizontal">
@@ -60,7 +60,7 @@
                     <dl class="dl-horizontal">
                     <dt><a href="#"><img src="assets/img/sliders/elastislide/11.jpg" alt="" /></a></dt>
                         <dd>
-                            <p><a href="#">자바스페셜리스트 최지순 과장 10명째 득남을 축하합니다.</a></p> 
+                            <p><a href="#">자바스페셜리스트 최지순 과장 10번째 득남을 축하합니다.</a></p> 
                         </dd>
                     </dl>
                 </div>
