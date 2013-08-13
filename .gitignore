@@ -1,19 +1,16 @@
-#################
-## Eclipse
-#################
-
-*.pydevproject
-.project
-.metadata
-bin/
-tmp/
-target/
 *.class
-*.tmp
-*.bak
-*.swp
-*~.nib
-local.properties
+
+# Package Files #
+*.jar
+*.war
+*.ear
+
+*.DS_Store
+bin
+target
 .classpath
-.settings/
-.loadpath
+.project
+.settings
+src/main/webapp/META-INF
+
+*.class
