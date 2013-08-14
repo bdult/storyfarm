@@ -3,8 +3,6 @@
     
 <div class="row">
 	<div class="col-lg-12">
-		로그인 페이지
-		
-		<a href="/sidebar.do">sidebar</a>
+		컨텐츠
 	</div>
 </div>

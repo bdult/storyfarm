@@ -25,16 +25,13 @@ public class ViewController {
 	public String main(Model model) {
 		logger.info("into main.do");
 		
-		//db sample
-		List<HashMap<String, String>> data = viewService.memberList();
-		
-		for(int i=0;i<data.size();i++) {
-			System.out.println(data.get(i));
-		}
-		
-		model.addAttribute("param1", "A-HA-" );
-		
 		return "view/main";
+	}
+	
+	@RequestMapping(value = "sidebar.do", method = RequestMethod.GET)
+	public String sidebar(Model model) {
+		
+		return "side-default-view/side";
 	}
 	
 	@RequestMapping(value = "viewpage.do", method = RequestMethod.GET)

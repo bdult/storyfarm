@@ -4,14 +4,23 @@
        "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
 
 <tiles-definitions>
-    
-    <!-- wildcard -->
-    <definition name="*" extends=".layout-default">
+
+    <definition name="*" extends=".default">
         <put-attribute name="content" value="/WEB-INF/views/{1}.jsp" />
     </definition>
-    
-     <definition name="*/*" extends=".layout-default">
+
+    <definition name="*/*" extends=".default">
         <put-attribute name="content" value="/WEB-INF/views/{1}/{2}.jsp" />
     </definition>
-    
+
+    <definition name="pure-*/*" extends=".pure">
+        <put-attribute name="content" value="/WEB-INF/views/{1}/{2}.jsp" />
+    </definition>
+
+    <!-- { sidebar }-{ folder }/{ content } -->
+    <definition name="*-*/*" extends=".sidebar">
+        <put-attribute name="sidebar" value="/WEB-INF/views/includes/{1}.jsp" />
+        <put-attribute name="content" value="/WEB-INF/views/{2}/{3}.jsp" />
+    </definition>
+
 </tiles-definitions>
