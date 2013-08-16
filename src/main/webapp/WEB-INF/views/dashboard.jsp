@@ -465,7 +465,7 @@ section img {
 </section>
 
 <section id="noti">
-	<div class="row" style="height: 200px;">
+	<div class="row">
 		<div class="col-lg-4">
 			<img style="width: 100%; height: 200px;" alt="이벤트 배너영역" />
 		</div>

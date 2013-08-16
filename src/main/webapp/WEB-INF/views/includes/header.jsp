@@ -18,7 +18,7 @@
 	 	
 	 	<div class="row">
 	 		<div class="col-lg-10">
-	 			<a href="#" class="btn btn-info">Story Farm</a>
+	 			<a href="#" class="btn btn-info btn-lg">Story Farm</a>
 	 			<a href="#" class="btn btn-default">국어</a>
 	 			<a href="#" class="btn btn-default">영어</a>
 	 			<a href="#" class="btn btn-default">수학</a>
