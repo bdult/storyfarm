@@ -9,7 +9,7 @@
 	 			<a href="#" class="btn btn-default">로그인</a>
 	 			<a href="#" class="btn btn-default">회원가입</a>
 	 			<a href="#" class="btn btn-default">자녀방</a>
-	 			<a href="#" class="btn btn-default">부모방</a>
+	 			<a href="${ contextPath }/parents/study/daily.do" class="btn btn-default">부모방</a>
 	 			</div>
 	 		</div>
 	 	</div>
@@ -18,7 +18,7 @@
 	 	
 	 	<div class="row">
 	 		<div class="col-lg-10">
-	 			<a href="#" class="btn btn-info btn-lg">Story Farm</a>
+	 			<a href="${ contextPath }/" class="btn btn-info btn-lg">Story Farm</a>
 	 			<a href="#" class="btn btn-default">국어</a>
 	 			<a href="#" class="btn btn-default">영어</a>
 	 			<a href="#" class="btn btn-default">수학</a>
@@ -31,7 +31,7 @@
 	 			<a href="#" class="btn btn-warning">이벤트</a>
 	 		</div>
  			<div class="pull-right col-lg-2">
-		    <div class="input-group">
+		    <div class="input-group" style="margin-top: 5px;">
 		      <input type="text" class="form-control">
 		      <span class="input-group-btn">
 		        <button class="btn btn-default" type="button"><i class="icon-search"></i></button>
