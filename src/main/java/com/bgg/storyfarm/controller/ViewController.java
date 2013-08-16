@@ -31,7 +31,7 @@ public class ViewController {
 	@RequestMapping(value = "sidebar.do", method = RequestMethod.GET)
 	public String sidebar(Model model) {
 		
-		return "side-default-view/side";
+		return "side-view/side";
 	}
 	
 	@RequestMapping(value = "viewpage.do", method = RequestMethod.GET)

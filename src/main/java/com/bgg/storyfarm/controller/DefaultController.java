@@ -14,18 +14,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.bgg.storyfarm.service.ViewService;
 
 @Controller
-public class MemberController {
+public class DefaultController {
 	
-	private Logger logger = LoggerFactory.getLogger(MemberController.class);
+	private Logger logger = LoggerFactory.getLogger(DefaultController.class);
 	
 	@Autowired
 	private ViewService viewService;
 	
-	@RequestMapping(value = "login.do", method = RequestMethod.GET)
-	public String loginpage(Model model) {
-		logger.info("into loginpage.do");
+	@RequestMapping(value = "dashboard.do", method = RequestMethod.GET)
+	public String main(Model model) {
+		logger.info("into dashboard.do");
 		
-		return "member/login";
+		return "dashboard";
 	}
-	
 }

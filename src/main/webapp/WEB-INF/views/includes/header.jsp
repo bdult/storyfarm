@@ -2,15 +2,43 @@
     pageEncoding="UTF-8"%>
 
 <header>
- 	<div class="row">
- 		<div class="col-lg-12">
- 			<div class="pull-right">로그인 회원가입 자녀방 부모방</div>
- 		</div>
- 	</div>
- 	<div class="row">
- 		<div class="col-lg-12">
- 			로고 국어 영어 수학 과학 창의 동요 동화 생활 스토리팜소개 이벤트
- 		</div>
- 	</div>
- 	<hr />
+	<div class="container">
+	 	<div class="row">
+	 		<div class="col-lg-12">
+	 			<div class="pull-right">
+	 			<a href="#" class="btn btn-default">로그인</a>
+	 			<a href="#" class="btn btn-default">회원가입</a>
+	 			<a href="#" class="btn btn-default">자녀방</a>
+	 			<a href="#" class="btn btn-default">부모방</a>
+	 			</div>
+	 		</div>
+	 	</div>
+	 	
+	 	<br />
+	 	
+	 	<div class="row">
+	 		<div class="col-lg-10">
+	 			<a href="#" class="btn btn-info">Story Farm</a>
+	 			<a href="#" class="btn btn-default">국어</a>
+	 			<a href="#" class="btn btn-default">영어</a>
+	 			<a href="#" class="btn btn-default">수학</a>
+	 			<a href="#" class="btn btn-default">과학</a>
+	 			<a href="#" class="btn btn-default">창의</a>
+	 			<a href="#" class="btn btn-default">동요</a>
+	 			<a href="#" class="btn btn-default">동화</a>
+	 			<a href="#" class="btn btn-default">생활</a>
+	 			<a href="#" class="btn btn-warning">스토리팜소개</a>
+	 			<a href="#" class="btn btn-warning">이벤트</a>
+	 		</div>
+ 			<div class="pull-right col-lg-2">
+		    <div class="input-group">
+		      <input type="text" class="form-control">
+		      <span class="input-group-btn">
+		        <button class="btn btn-default" type="button"><i class="icon-search"></i></button>
+		      </span>
+		    </div>
+		  </div>
+	 	</div>
+	 	<hr />
+	</div>
 </header>
