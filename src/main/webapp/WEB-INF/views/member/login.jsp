@@ -2,24 +2,54 @@
 
 <div class="row">
 	<div class="col-lg-offset-2 col-lg-8 col-lg-offset-2">
-		<form class="log-page">
-			<h3>로그인</h3>
-			<div class="input-prepend">
-				<span class="add-on"><i class="icon-user"></i></span> <input class="input-xlarge" type="text" placeholder="아이디">
+		<div class="row">
+			<div class="col-lg-12 text-center">
+				<h3>로그인</h3>
+				<small>Enjoy whenever out contents</small>
 			</div>
-			<div class="input-prepend">
-				<span class="add-on"><i class="icon-lock"></i></span> <input class="input-xlarge" type="text" placeholder="비밀번호">
+		</div>
+		<div class="row">
+			<div class="col-lg-12 well">
+				스토리팜 서비스를 찾아주셔서 감사합니다.
+				<br />
+				스토리팜 서비스는 언제 어디서든 편하게 즐길 수 있는
+				<br />
+				국내 최고의 아동 콘텐츠를 최적의 환경으로 제공하고 있습니다.
+				<br />
 			</div>
-			<div class="controls form-inline">
-				<label class="checkbox"><input type="checkbox" /> 정보 기억</label>
-				<button class="btn-u pull-right" type="submit">로그인</button>
+		</div>
+		<div class="row">
+			<div class="col-lg-12 well">
+				<div class="row">
+					<div class="col-lg-offset-3 col-lg-6 col-lg-offset-3">
+						<form role="form">
+						  <div class="form-group">
+						    <input type="email" class="form-control" id="id" placeholder="아이디">
+						  </div>
+						  <div class="form-group">
+						    <input type="password" class="form-control" id="pwd" placeholder="비밀번호">
+						  </div>
+						  <div class="form-group">
+					      <input type="checkbox"> 로그인 유지하기
+					      <a href="#" class="btn btn-info pull-right">로그인</a>
+						  </div>
+						  <div class="form-group">
+					      <a href="#">아이디/비밀번호 찾기</a>
+						  </div>
+						</form>
+					</div>
+				</div>
 			</div>
-			<hr />
-			<h4>암호를 잊으셨나요?</h4>
-			<p>
-				<a class="color-green" href="#">이곳</a>을 클릭하여 암호를 초기화하세요
-			</p>
-		</form>
+		</div>
+		<div class="row">
+			<div class="col-lg-12 well text-center">
+				<h3>무료회원가입</h3>
+				<div>Join member</div>
+				<div>스토리팜서비스 멤버가입 시 다양한 혜택과 서비스를 제공 받으실 수 있습니다.</div>
+				<a href="#" class="btn btn-info">회원가입</a>
+			</div>
+		</div>
+		
 	</div>
 </div>
 <!--/row-fluid-->
