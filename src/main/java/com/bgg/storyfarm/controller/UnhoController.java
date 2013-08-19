@@ -48,5 +48,25 @@ public class UnhoController {
 		
 		return "view/ten";
 	}
+
+	@RequestMapping(value = "eleven.do")
+	public String eleven(Model model) {
+		logger.info("eleven.do");
+		
+		return "view/eleven";
+	}
+
+	@RequestMapping(value = "twelve.do")
+	public String twelve(Model model) {
+		logger.info("twelve.do");
+		
+		return "view/twelve";
+	}
 	
+	@RequestMapping(value = "thirtyeight.do")
+	public String thirtyeight(Model model) {
+		logger.info("thirtyeight.do");
+		
+		return "view/thirtyeight";
+	}
 }
