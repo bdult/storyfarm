@@ -49,18 +49,18 @@ public class UnhoController {
 		return "view/ten";
 	}
 
-	@RequestMapping(value = "eleven.do")
-	public String eleven(Model model) {
-		logger.info("eleven.do");
+	@RequestMapping(value = "twentynine.do")
+	public String twentynine(Model model) {
+		logger.info("twentynine.do");
 		
-		return "view/eleven";
+		return "view/twentynine";
 	}
 
-	@RequestMapping(value = "twelve.do")
-	public String twelve(Model model) {
-		logger.info("twelve.do");
+	@RequestMapping(value = "thirtysix.do")
+	public String thirtysix(Model model) {
+		logger.info("thirtysix.do");
 		
-		return "view/twelve";
+		return "view/thirtysix";
 	}
 	
 	@RequestMapping(value = "thirtyeight.do")
