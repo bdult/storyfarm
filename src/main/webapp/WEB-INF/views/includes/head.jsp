@@ -1,19 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-    
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
+
 <title>STORY FARM</title>
+
+<c:set var="contextPath" value="${pageContext.request.contextPath}" scope="request"/>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- CSS/ -->
+<link rel="stylesheet" type="text/css" href="${ contextPath }/css/imgareaselect-default.css" />
 <!-- /CSS -->
 
 <!-- JS/ -->
 <script src="//code.jquery.com/jquery.js"></script>
+<script src="${ contextPath }/js/jquery.imgareaselect.pack.js"></script>
 <!-- /JS -->
-
-
-
-
 
 
 
