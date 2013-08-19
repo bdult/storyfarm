@@ -6,10 +6,6 @@
 	<div class="col-lg-12 text-center">
 		차도현방<br>
 	</div>
-	<div class="col-lg-12 text-center">
-		<a class="btn btn-default">칭찬해주세요</a> 
-		<a class="btn btn-default">마이북</a>
-	</div>
 </div>
 <br>
 <div class="row">
