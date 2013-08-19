@@ -23,8 +23,6 @@ public class MemberController {
 	
 	@RequestMapping(value = "login.do", method = RequestMethod.GET)
 	public String loginpage(Model model) {
-		logger.info("into loginpage.do");
-		
 		return "member/login";
 	}
 	
