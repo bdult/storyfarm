@@ -17,4 +17,14 @@ public class DefaultController {
 	public String main(Model model) {
 		return "dashboard";
 	}
+	
+	@RequestMapping(value = "jcrop.do", method = RequestMethod.GET)
+	public String jcrop(Model model) {
+		return "pure-jcrop";
+	}
+	
+	@RequestMapping(value = "jcropAction.do", method = RequestMethod.GET)
+	public String jcropAction(Model model) {
+		return "pure-jcrop";
+	}
 }

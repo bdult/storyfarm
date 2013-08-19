@@ -55,11 +55,11 @@ section#noti .well-half {
 	<div class="row">
 		<div class="col-lg-12">
 			<div class="btn-group pull-left">
-			  <button type="button" class="btn btn-default">신작</button>
+			  <button type="button" class="btn btn-default btn-primary">신작</button>
 			  <button type="button" class="btn btn-default">베스트</button>
 			</div>
 			<div class="btn-group pull-right">
-			  <button type="button" class="btn btn-default"><i class="icon-th-large"></i></button>
+			  <button type="button" class="btn btn-default btn-primary"><i class="icon-th-large"></i></button>
 			  <button type="button" class="btn btn-default"><i class="icon-th-list"></i></button>
 			</div>
 		</div>
@@ -95,7 +95,7 @@ section#noti .well-half {
 <section id="recommend">
 	<div class="row">
 		<div class="col-lg-12">
-			<button type="button" class="btn btn-default btn-lg">1-2세<br /> 추천</button>
+			<button type="button" class="btn btn-default btn-lg btn-primary">1-2세<br /> 추천</button>
 			<button type="button" class="btn btn-default btn-lg">3-4세<br /> 추천</button>
 			<button type="button" class="btn btn-default btn-lg">5-6세<br /> 추천</button>
 		</div>

@@ -8,15 +8,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- CSS/ -->
+<link rel="stylesheet" type="text/css" href="${ contextPath }/css/imgareaselect-default.css" />
 <!-- /CSS -->
 
 <!-- JS/ -->
 <script src="//code.jquery.com/jquery.js"></script>
+<script src="${ contextPath }/js/jquery.imgareaselect.pack.js"></script>
 <!-- /JS -->
-
-
-
-
 
 
 

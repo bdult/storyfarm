@@ -16,9 +16,9 @@
 	  <h4>학습설정</h4>
 	  <hr />
 	  <ul>
-	  	<li><a href="#">학습자녀변경</a></li>
-	  	<li><a href="#">학습단계설정</a></li>
-	  	<li><a href="#">시간설정</a></li>
+	  	<li><a href="${ contextPath }/parents/study/children.do">학습자녀변경</a></li>
+	  	<li><a href="${ contextPath }/parents/study/level.do">학습단계설정</a></li>
+	  	<li><a href="${ contextPath }/parents/study/stats.do">학습성취도</a></li>
 	  </ul>
 	</div>
 	<div class="col-lg-12">
