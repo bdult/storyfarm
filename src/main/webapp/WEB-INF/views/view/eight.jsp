@@ -31,7 +31,7 @@
 			<div class="form-group">
 				<label class="col-lg-2 control-label">이름 :</label>
 				<div class="col-lg-3">
-					<input class="form-control" value="김아무개">
+					<input class="form-control" disabled="disabled" value="김아무개">
 				</div>
 			</div>
 			<div class="form-group">
@@ -52,13 +52,13 @@
 			<div class="form-group">
 				<label class="col-lg-2 control-label">휴대번호 : </label>	
 				<div class="col-lg-2">
-					<input class="form-control" value="010">
+					<input class="form-control" disabled="disabled" value="010">
 				</div>
 				<div class="col-lg-2">
-					<input class="form-control" value="1111 ">
+					<input class="form-control" disabled="disabled" value="1111 ">
 				</div>
 				<div class="col-lg-2">
-					<input class="form-control" value="1111">
+					<input class="form-control" disabled="disabled" value="1111">
 				</div>
 			</div>
 			<div class="form-group">
