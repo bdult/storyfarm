@@ -69,4 +69,32 @@ public class UnhoController {
 		
 		return "view/thirtyeight";
 	}
+	
+	@RequestMapping(value = "cscenter/fortytwo.do")
+	public String fortytwo(Model model) {
+		logger.info("fortytwo.do");
+		
+		return "side-cscenter/fortytwo";
+	}
+	
+	@RequestMapping(value = "cscenter/fortythree.do")
+	public String fortythree(Model model) {
+		logger.info("fortythree.do");
+		
+		return "side-cscenter/fortythree";
+	}
+	
+	@RequestMapping(value = "cscenter/fortyfour.do")
+	public String fortyfour(Model model) {
+		logger.info("fortyfour.do");
+		
+		return "side-cscenter/fortyfour";
+	}
+	
+	@RequestMapping(value = "cscenter/fortyfive.do")
+	public String fortyfive(Model model) {
+		logger.info("fortyfive.do");
+		
+		return "side-cscenter/fortyfive";
+	}
 }
