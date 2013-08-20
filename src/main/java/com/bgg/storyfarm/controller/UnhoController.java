@@ -97,4 +97,25 @@ public class UnhoController {
 		
 		return "side-cscenter/fortyfive";
 	}
+	
+	@RequestMapping(value = "cscenter/fortysix.do")
+	public String fortysix(Model model) {
+		logger.info("fortysix.do");
+		
+		return "side-cscenter/fortysix";
+	}
+	
+	@RequestMapping(value = "cscenter/fortynine.do")
+	public String fortynine(Model model) {
+		logger.info("fortynine.do");
+		
+		return "side-cscenter/fortynine";
+	}
+	
+	@RequestMapping(value = "cscenter/fifteen.do")
+	public String fifteen(Model model) {
+		logger.info("fifteen.do");
+		
+		return "side-cscenter/fifteen";
+	}
 }
