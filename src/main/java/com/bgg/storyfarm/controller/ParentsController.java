@@ -67,5 +67,15 @@ public class ParentsController {
 	public String service(Model model) {
 		return "side-parents/service";
 	}
+	
+	@RequestMapping(value = "pointCoupon.do", method = RequestMethod.GET)
+	public String pointCoupon(Model model) {
+		return "side-parents/pointCoupon";
+	}
+	
+	@RequestMapping(value = "qa.do", method = RequestMethod.GET)
+	public String qa(Model model) {
+		return "side-parents/qa";
+	}
 
 }

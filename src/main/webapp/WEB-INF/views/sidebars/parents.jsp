@@ -35,8 +35,8 @@
 	  <ul>
 	  	<li><a href="${ contextPath }/parents/info.do">내정보변경</a></li>
 	  	<li><a href="${ contextPath }/parents/service.do">서비스 이용현황</a></li>
-	  	<li><a href="#">포인트&쿠폰</a></li>
-	  	<li><a href="#">문의내역</a></li>
+	  	<li><a href="${ contextPath }/parents/pointCoupon.do">포인트&쿠폰</a></li>
+	  	<li><a href="${ contextPath }/parents/qa.do">문의내역</a></li>
 	  </ul>
 	</div>
 	<div class="col-lg-12">
