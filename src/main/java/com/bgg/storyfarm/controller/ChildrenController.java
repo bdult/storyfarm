@@ -14,9 +14,9 @@ public class ChildrenController {
 	
 	private Logger logger = LoggerFactory.getLogger(ChildrenController.class);
 	
-	@RequestMapping(value = "main.do", method = RequestMethod.GET)
-	public String main(Model model) {
+	@RequestMapping(value = "room.do", method = RequestMethod.GET)
+	public String room(Model model) {
 		
-		return "dashboard";
+		return "children/room";
 	}
 }

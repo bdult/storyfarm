@@ -7,8 +7,8 @@
 	 		<div class="col-lg-12">
 	 			<div class="pull-right">
 	 			<a href="#" class="btn btn-default">로그인</a>
-	 			<a href="#" class="btn btn-default">회원가입</a>
-	 			<a href="#" class="btn btn-default">자녀방</a>
+	 			<a href="${ contextPath }/joinStep1.do" class="btn btn-default">회원가입</a>
+	 			<a href="${ contextPath }/children/room.do" class="btn btn-default">자녀방</a>
 	 			<a href="${ contextPath }/parents/study/daily.do" class="btn btn-default">부모방</a>
 	 			</div>
 	 		</div>
