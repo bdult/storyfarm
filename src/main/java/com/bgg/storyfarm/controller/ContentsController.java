@@ -13,8 +13,13 @@ public class ContentsController {
 	
 	private Logger logger = LoggerFactory.getLogger(ContentsController.class);
 	
-	@RequestMapping(value = "main.do", method = RequestMethod.GET)
-	public String main(Model model) {
-		return "dashboard";
+	@RequestMapping(value = "brand.do", method = RequestMethod.GET)
+	public String brand(Model model) {
+		return "contents/brand";
+	}
+	
+	@RequestMapping(value = "play.do", method = RequestMethod.GET)
+	public String play(Model model) {
+		return "contents/play";
 	}
 }

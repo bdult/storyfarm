@@ -14,7 +14,7 @@
 						<a href="#" class="btn btn-default">회사소개</a>
 						<a href="#" class="btn btn-default">이용약관</a>
 						<a href="#" class="btn btn-default">개인정보취급방침</a>
-						<a href="#" class="btn btn-default">고객센터</a>
+						<a href="${ contextPath }/cs/notice.do" class="btn btn-default">고객센터</a>
 					</div>
 				</div>
 				

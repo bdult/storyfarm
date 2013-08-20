@@ -46,7 +46,7 @@
 				<h3>무료회원가입</h3>
 				<div>Join member</div>
 				<div>스토리팜서비스 멤버가입 시 다양한 혜택과 서비스를 제공 받으실 수 있습니다.</div>
-				<a href="#" class="btn btn-info">회원가입</a>
+				<a href="${ contextPath }/joinStep1.do" class="btn btn-info">회원가입</a>
 			</div>
 		</div>
 		

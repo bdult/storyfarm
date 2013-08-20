@@ -68,9 +68,19 @@ public class ParentsController {
 		return "side-parents/service";
 	}
 	
-	@RequestMapping(value = "paymentservice.do", method = RequestMethod.GET)
-	public String paymentservice(Model model) {
-		return "side-parents/paymentservice";
+	@RequestMapping(value = "payment.do", method = RequestMethod.GET)
+	public String payment(Model model) {
+		return "side-parents/payment";
 	}
-
+	
+	@RequestMapping(value = "pointCoupon.do", method = RequestMethod.GET)
+	public String pointCoupon(Model model) {
+		return "side-parents/pointCoupon";
+	}
+	
+	@RequestMapping(value = "qa.do", method = RequestMethod.GET)
+	public String qa(Model model) {
+		return "side-parents/qa";
+	}
+	
 }
