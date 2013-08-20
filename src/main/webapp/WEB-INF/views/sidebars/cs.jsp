@@ -15,7 +15,7 @@
 	  <hr />
 	</div>
 	<div class="col-lg-12">
-	  <h4>문의하기</h4>
+	  <h4><a href="${ contextPath }/cs/question.do">문의하기</a></h4>
 	  <hr />
 	</div>
 	<div class="col-lg-12">
@@ -27,11 +27,11 @@
 	  <hr />
 	</div>
 	<div class="col-lg-12">
-	  <h4>쿠폰입력</h4>
+	  <h4><a href="${ contextPath }/cs/coupon.do">쿠폰입력</a></h4>
 	  <hr />
 	</div>
 	<div class="col-lg-12">
-	  <h4>유료서비스결제</h4>
+	  <h4><a href="${ contextPath }/cs/payment.do">유료서비스결제</a></h4>
 	  <hr />
 	</div>
 </div>

@@ -54,7 +54,7 @@
 	  <hr />
 	</div>
 	<div class="col-lg-12">
-	  <h4>유료서비스결제</h4>
+	  <h4><a href="${ contextPath }/parents/payment.do">유료서비스결제</a></h4>
 	  <hr />
 	</div>
 </div>

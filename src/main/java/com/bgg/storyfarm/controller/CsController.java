@@ -37,4 +37,22 @@ public class CsController {
 		
 		return "side-cs/find";
 	}
+	
+	@RequestMapping(value = "question.do", method = RequestMethod.GET)
+	public String question(Model model) {
+		
+		return "side-cs/question";
+	}
+	
+	@RequestMapping(value = "coupon.do", method = RequestMethod.GET)
+	public String coupon(Model model) {
+		
+		return "side-cs/coupon";
+	}
+	
+	@RequestMapping(value = "payment.do", method = RequestMethod.GET)
+	public String payment(Model model) {
+		
+		return "side-cs/payment";
+	}
 }
