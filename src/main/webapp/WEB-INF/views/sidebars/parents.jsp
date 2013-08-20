@@ -40,17 +40,7 @@
 	  </ul>
 	</div>
 	<div class="col-lg-12">
-	  <h4>마이페이지</h4>
-	  <hr />
-	  <ul>
-	  	<li><a href="#">내정보변경</a></li>
-	  	<li><a href="#">수강내역</a></li>
-	  	<li><a href="#">포인트&쿠폰</a></li>
-	  	<li><a href="#">문의내역</a></li>
-	  </ul>
-	</div>
-	<div class="col-lg-12">
-	  <h4>회원탈퇴</h4>
+	  <h4><a href="${ contextPath }/leave.do">회원탈퇴</a></h4>
 	  <hr />
 	</div>
 	<div class="col-lg-12">
