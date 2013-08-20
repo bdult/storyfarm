@@ -5,6 +5,7 @@
 <section id="brand">
 	<div class="row">
 		<div class="col-lg-12 text-center">아기월드 클래식</div>
+		<hr>
 	</div>
 		<div class="col-lg-12 text-center">
 			<a class="btn btn-default">LITTLE BABY PICTURE BOOK</a>
