@@ -31,10 +31,10 @@
 						  </div>
 						  <div class="form-group">
 					      <input type="checkbox"> 로그인 유지하기
-					      <a href="#" class="btn btn-info pull-right">로그인</a>
+					      <a href="${ contextPath }/loginStep2.do" class="btn btn-info pull-right">로그인</a>
 						  </div>
 						  <div class="form-group">
-					      <a href="#">아이디/비밀번호 찾기</a>
+					      <a href="${ contextPath }/cs/find.do">아이디/비밀번호 찾기</a>
 						  </div>
 						</form>
 					</div>
