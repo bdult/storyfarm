@@ -67,5 +67,9 @@ public class ParentsController {
 	public String service(Model model) {
 		return "side-parents/service";
 	}
-
+	
+	@RequestMapping(value = "paymentservice.do", method = RequestMethod.GET)
+	public String paymentservice(Model model) {
+		return "side-parents/paymentservice";
+	}
 }
