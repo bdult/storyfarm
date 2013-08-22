@@ -50,6 +50,17 @@ private ViewService viewService;
 		}
 	}
 
+
+	@RequestMapping(value = "logout.do", method = RequestMethod.GET)
+	public String logout(Model model, HttpServletRequest request, HttpSession session) {
+		logger.info("logout.do");
+
+		if(session != null){
+			session.invalidate();
+		}
+        
+        return "dashboard";
+	}
 //	@RequestMapping(value = "loginStep2.do", method = RequestMethod.GET)
 //	public ModelAndView loginStep2(@RequestParam Map<String,Object> paramMap, HttpServletRequest request, HttpSession session) {
 //
