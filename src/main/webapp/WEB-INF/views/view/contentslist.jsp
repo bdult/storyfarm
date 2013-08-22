@@ -52,7 +52,7 @@
 				<c:forEach begin="1" end="2">
 					<div class="row">
 						<div class="col-lg-12">
-							<a href="${ contextPath }/contents/play.do" class="thumbnail">
+							<a href="${ contextPath }/play.do" class="thumbnail">
 								<img style="width: 100%; height: 130px;"
 									alt="콘텐츠 영역 ${ status.count }">
 									설명<br>
@@ -87,7 +87,7 @@
 				<c:forEach begin="1" end="2">
 					<div class="row">
 						<div class="col-lg-12">
-							<a href="${ contextPath }/contents/play.do" class="thumbnail">
+							<a href="${ contextPath }/play.do" class="thumbnail">
 								<img style="width: 100%; height: 130px;" alt="콘텐츠 영역 ${ status.count }">
 							</a>
 							<button type="button" class="btn btn-default pull-right">인쇄</button>

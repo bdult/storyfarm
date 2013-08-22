@@ -76,7 +76,7 @@ section#noti .well-half {
 			    	<c:forEach begin="1" end="2">
 					  	<div class="row">
 					  		<div class="col-lg-12">
-							    <a href="${ contextPath }/contents/brand.do" class="thumbnail">
+							    <a href="${ contextPath }/brand.do" class="thumbnail">
 							      <img style="width: 100%; height: 130px;" alt="브랜드 배너 영역 ${ status.count }">
 							    </a>
 					  		</div>
@@ -92,7 +92,7 @@ section#noti .well-half {
 			    	<c:forEach begin="1" end="2">
 					  	<div class="row">
 					  		<div class="col-lg-12">
-							    <a href="${ contextPath }/contents/brand.do" class="thumbnail">
+							    <a href="${ contextPath }/brand.do" class="thumbnail">
 							      <img style="width: 100%; height: 130px;" alt="브랜드 배너 영역 ${ status.count }">
 							    </a>
 					  		</div>
