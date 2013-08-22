@@ -19,37 +19,98 @@ section#noti .well-half {
 }
 </style>
 
+<!-- SlidesJS Required: These styles are required if you'd like a responsive slideshow -->
+<style>
+  #slides {
+    display: none
+  }
+
+  .container-slides {
+    margin: 0 auto
+  }
+
+  /* For tablets & smart phones */
+  @media (max-width: 767px) {
+    body {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+    .container-slides {
+      width: auto
+    }
+  }
+
+  /* For smartphones */
+  @media (max-width: 480px) {
+    .container-slides {
+      width: auto
+    }
+  }
+
+  /* For smaller displays like laptops */
+  @media (min-width: 768px) and (max-width: 979px) {
+    .container-slides {
+      width: 724px
+    }
+  }
+
+  /* For larger displays */
+  @media (min-width: 1200px) {
+    .container-slides {
+      width: 1170px
+    }
+  }
+</style>
+<!-- SlidesJS Required: -->
+
 <section id="brand">
-	<div class="row">
-	  <div class="col-lg-1">
-	  	<i class="icon-chevron-left icon-3x"></i>
-	  </div>
-	  
-	  <c:forEach begin="1" end="5" varStatus="status">
-	    <div class="col-lg-2">
-	    
-	    	<c:forEach begin="1" end="2">
-			  	<div class="row">
-			  		<div class="col-lg-12">
-					    <a href="${ contextPath }/contents/brand.do" class="thumbnail">
-					      <img style="width: 100%; height: 130px;" alt="브랜드 배너 영역 ${ status.count }">
-					    </a>
-			  		</div>
-			  	</div>
-			  	<br />
-	    	</c:forEach>
-	    	
+		<div class="row">
+		  <div class="col-lg-1">
+		  	<a href="#" class="slidesjs-previous slidesjs-navigation"><i class="icon-chevron-left icon-3x"></i></a>
 		  </div>
-   	</c:forEach>
-   	
-	  <div class="col-lg-1">
-	  	<i class="icon-chevron-right icon-3x"></i>
-	  </div>
+<div class="container-slides">
+	<div id="slides">
+		<div class="slide">
+			  <c:forEach begin="1" end="5" varStatus="status">
+			    <div class="col-lg-2">
+			    	<c:forEach begin="1" end="2">
+					  	<div class="row">
+					  		<div class="col-lg-12">
+							    <a href="${ contextPath }/brand.do" class="thumbnail">
+							      <img style="width: 100%; height: 130px;" alt="브랜드 배너 영역 ${ status.count }">
+							    </a>
+					  		</div>
+					  	</div>
+					  	<br />
+			    	</c:forEach>
+				  </div>
+		   	</c:forEach>
+		</div>
+		<div class="slide">
+			  <c:forEach begin="1" end="5" varStatus="status">
+			    <div class="col-lg-2">
+			    	<c:forEach begin="1" end="2">
+					  	<div class="row">
+					  		<div class="col-lg-12">
+							    <a href="${ contextPath }/brand.do" class="thumbnail">
+							      <img style="width: 100%; height: 130px;" alt="브랜드 배너 영역 ${ status.count }">
+							    </a>
+					  		</div>
+					  	</div>
+					  	<br />
+			    	</c:forEach>
+				  </div>
+		   	</c:forEach>
+		</div>
 	</div>
-	
-	<hr />
-	
+</div>
+		  <div class="col-lg-1">
+		  	<a href="#" class="slidesjs-next slidesjs-navigation"><i class="icon-chevron-right icon-3x"></i></a>
+		  </div>
+		</div>
+<hr />
 </section>
+	
 
 <section id="contents">
 	<div class="row">
@@ -182,4 +243,27 @@ section#noti .well-half {
 	</div>
 </section>
 
-
+<script>
+	$("#slides").slidesjs({
+		width: 500,
+		height: 300,
+		pagination: {
+		      active: true,
+		        // [boolean] Create pagination items.
+		        // You cannot use your own pagination. Sorry.
+		      effect: "slide"
+		        // [string] Can be either "slide" or "fade".
+		    },
+    navigation: {
+        active: false,
+          // [boolean] Generates next and previous buttons.
+          // You can set to false and use your own buttons.
+          // User defined buttons must have the following:
+          // previous button: class="slidesjs-previous slidesjs-navigation"
+          // next button: class="slidesjs-next slidesjs-navigation"
+        effect: "slide"
+          // [string] Can be either "slide" or "fade".
+      }
+		    
+	});
+</script>

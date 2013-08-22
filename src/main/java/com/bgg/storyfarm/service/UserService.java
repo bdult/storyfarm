@@ -7,19 +7,19 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.bgg.storyfarm.dao.ViewDao;
+import com.bgg.storyfarm.dao.UserDao;
 
 @Service
-public class ViewService {
+public class UserService {
 
 	@Autowired
-	private ViewDao viewDao;
+	private UserDao userDao;
 
-	public List<HashMap<String, String>> memberList() {
-		return viewDao.memberList();
+	public List<HashMap<String, String>> userList() {
+		return userDao.userList();
 	}
 
 	public Map<String, String> getUserData(Map<String, Object> paramMap) {
-		return viewDao.getUserData(paramMap);
+		return userDao.getUserData(paramMap);
 	}
 }

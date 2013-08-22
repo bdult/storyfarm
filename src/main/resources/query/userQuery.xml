@@ -2,9 +2,9 @@
 <!DOCTYPE mapper
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="viewQuery">
+<mapper namespace="userQuery">
 
-	<select id="memberList" resultType="hashmap">
+	<select id="userList" resultType="hashmap">
 		SELECT *
 		FROM BG_MEMBER
 		WHERE 1=1

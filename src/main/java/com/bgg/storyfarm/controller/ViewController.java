@@ -9,15 +9,30 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-public class DefaultController {
+public class ViewController {
 	
-	private Logger logger = LoggerFactory.getLogger(DefaultController.class);
+	private Logger logger = LoggerFactory.getLogger(ViewController.class);
 	
 	@RequestMapping(value = "dashboard.do", method = RequestMethod.GET)
 	public String main(Model model) {
-		return "dashboard";
+		return "view/dashboard";
 	}
 	
+	@RequestMapping(value = "brand.do", method = RequestMethod.GET)
+	public String brand(Model model) {
+		return "view/brand";
+	}
+	@RequestMapping(value = "contentslist.do", method = RequestMethod.GET)
+	public String contentslist(Model model) {
+		return "view/contentslist";
+	}
+	
+	@RequestMapping(value = "play.do", method = RequestMethod.GET)
+	public String play(Model model) {
+		return "view/play";
+	}
+	
+	// UNDER CODE IS TEST_CODE
 	@RequestMapping(value = "cropTest.do", method = RequestMethod.GET)
 	public String cropTest(Model model) {
 		return "pure-cropTest";
