@@ -17,39 +17,43 @@
 	 			<a href="${ contextPath }/joinStep1.do" class="btn btn-default">회원가입</a>
 	 			<a href="${ contextPath }/children/room.do" class="btn btn-default">자녀방</a>
 	 			<a href="${ contextPath }/parents/study/daily.do" class="btn btn-default">부모방</a>
+	 			<span id="headerBoxBtn" data-toggle="tooltip" data-placement="right" class="btn btn-success"><i class="icon-chevron-down"></i></span>
+	 			
 	 			</div>
 	 		</div>
 	 	</div>
 	 	
-	 	<c:choose>
-	 		<c:when test="${ login_session != null }">
-	 			<div class="col-lg-12 text-center">
-	 				<a class="btn btn-default">학습레벨: ${ "?단계" }</a>
-	 				<a class="btn btn-default">칭찬스티커: ${ "?개" }</a>
-	 				<a class="btn btn-default">학습완료: ${ "?과목" }</a>
-	 				<a class="btn btn-default">유료결제하기</a>
-	 				이용시간: ${ "1시간 30분" }
-	 				학습연령: ${ "2세" }
-	 			</div>
-	 		</c:when>
-	 		<c:otherwise>
-	 			<div class="col-lg-12 text-center">
-	 				<div class="row well">
-					<form role="form" method="post" action="${ contextPath }/loginStep2.do">
-	 					<div class="col-lg-3 col-lg-offset-2">
-						<input type="text" class="form-control" name="id" placeholder="아이디"> 
-	 					</div>
-	 					<div class="col-lg-3">
-						<input type="text" class="form-control" name="pw" placeholder="비밀번호">
-	 					</div>
-	 					<div class="col-lg-1">
-						<button class="btn btn-info pull-right">로그인</button>
-	 					</div>
-					</form>
-	 				</div>
-				</div>
-	 		</c:otherwise>
-	 	</c:choose>
+	 	<div id="headerBox" class="row" style="display: none;">
+		 	<c:choose>
+		 		<c:when test="${ login_session != null }">
+		 			<div class="col-lg-12">
+		 				<a class="btn btn-default">학습레벨: ${ "?단계" }</a>
+		 				<a class="btn btn-default">칭찬스티커: ${ "?개" }</a>
+		 				<a class="btn btn-default">학습완료: ${ "?과목" }</a>
+		 				<a class="btn btn-default">유료결제하기</a>
+		 				이용시간: ${ "1시간 30분" }
+		 				학습연령: ${ "2세" }
+		 			</div>
+		 		</c:when>
+		 		<c:otherwise>
+		 			<div class="col-lg-12">
+		 				<div class="row well">
+						<form role="form" method="post" action="${ contextPath }/loginStep2.do">
+		 					<div class="col-lg-3 col-lg-offset-2">
+							<input type="text" class="form-control" name="id" placeholder="아이디"> 
+		 					</div>
+		 					<div class="col-lg-3">
+							<input type="text" class="form-control" name="pw" placeholder="비밀번호">
+		 					</div>
+		 					<div class="col-lg-1">
+							<button class="btn btn-info pull-right">로그인</button>
+		 					</div>
+						</form>
+		 				</div>
+					</div>
+		 		</c:otherwise>
+		 	</c:choose>
+	 	</div>
 	 	
 	 	<br />
 	 	
@@ -76,6 +80,51 @@
 		    </div>
 		  </div>
 	 	</div>
+	
+		<!-- breadcrumb/ -->
+		<div class="row">
+			<div class="col-lg-12">
+				<ol class="breadcrumb">
+					<c:forEach items="${ breadcrumbs }" var="obj" varStatus="status">
+						<c:choose>
+							<c:when test="${ status.last }">
+							  <li class="active">${ obj.name }</li>
+							</c:when>
+							<c:otherwise>
+							  <li><a href="${ contextPath }${ obj.url }">${ obj.name }</a></li>
+							</c:otherwise>
+						</c:choose>
+					</c:forEach>
+				</ol>
+			</div>
+		</div>
+		<!-- /breadcrumb -->
+		
 	 	<hr />
+	 	
 	</div>
 </header>
+
+<script>
+$(function(){
+	
+	//헤더박스 열기/닫기
+	$("#headerBoxBtn").click(function(){
+		var $this = $(this);
+		var $icon = $this.find("i");
+		var $target = $("#headerBox");
+		if( $icon.hasClass("icon-chevron-down") ) {
+			$icon
+				.removeClass("icon-chevron-down")
+				.addClass("icon-chevron-up");
+			$target.show(777);
+		} else {
+			$icon
+				.removeClass("icon-chevron-up")
+				.addClass("icon-chevron-down");
+			$target.hide(777);
+		}
+		
+	});
+});
+</script>
