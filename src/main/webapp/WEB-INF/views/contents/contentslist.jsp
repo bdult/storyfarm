@@ -4,23 +4,22 @@
 
 <section id="brand">
 	<div class="row">
-		<div class="col-lg-12 text-center">아기월드 클래식</div>
+		<div class="col-lg-12 text-center">국어</div>
 		<hr>
 	</div>
 		<div class="col-lg-12 text-center">
-			<a class="btn btn-default">LITTLE BABY PICTURE BOOK</a>
-			<a class="btn btn-default">ZOO ZOO PICTURE BOOK</a>
-			<a class="btn btn-default">World Classics</a>
-			<a class="btn btn-default">AGAWORLD Classics</a>
-			<a class="btn btn-default">영어교실 KIDS</a>
-			<a class="btn btn-default">STORY CUBE</a>
-			<a class="btn btn-default">LITTLE WHY?</a>
+			<a class="btn btn-default">국어</a>
+			<a class="btn btn-default">영어</a>
+			<a class="btn btn-default">수학</a>
+			<a class="btn btn-default">과학</a>
+			<a class="btn btn-default">창의</a>
+			<a class="btn btn-default">동요</a>
+			<a class="btn btn-default">생활</a>
 		</div>
 		<div class="col-lg-12">
 			<a href="#" class="thumbnail"> <img data-src="holder.js/100%x180"
 				src="../img/171_180.png" alt="...">
 			</a>
-			<p>월드 클레식 아가월드는 아이들에게 상상력을 길러주며 꿈과 동화의 나라 속 에서 희망의 꿈을 키워줍니다.</p>
 		</div>
 </section>
 

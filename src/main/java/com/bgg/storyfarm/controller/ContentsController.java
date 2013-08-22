@@ -17,6 +17,10 @@ public class ContentsController {
 	public String brand(Model model) {
 		return "contents/brand";
 	}
+	@RequestMapping(value = "contentslist.do", method = RequestMethod.GET)
+	public String contentslist(Model model) {
+		return "contents/contentslist";
+	}
 	
 	@RequestMapping(value = "play.do", method = RequestMethod.GET)
 	public String play(Model model) {

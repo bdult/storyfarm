@@ -10,19 +10,23 @@
 		<div class="row">
 			<div class="col-lg-4">
 				<div class="well">
+					${ login_session.MEMBER_ID } 님<br>
+					<a class="btn btn-default">정보수정</a><br>
+					<a class="btn btn-default">학습설정</a>
+				</div>
+			</div>
+			<div class="col-lg-4">
+				<div class="well">
 					김아무개님<br>
 					<a class="btn btn-default">정보수정</a><br>
 					<a class="btn btn-default">학습설정</a>
 				</div>
 			</div>
-			<div class="col-lg-4 well">
-				김아무개님<br>
-				<a class="btn btn-default">정보수정</a><br>
-				<a class="btn btn-default">학습설정</a>
-			</div>
-			<div class="col-lg-4 well">
-				김아무개님<br>
-				<a class="btn btn-default">자녀등록</a>
+			<div class="col-lg-4">
+					<div class="well">
+					김아무개님<br>
+					<a class="btn btn-default">자녀등록</a>
+				</div>
 			</div>
 		</div>
 		<div class="row">
