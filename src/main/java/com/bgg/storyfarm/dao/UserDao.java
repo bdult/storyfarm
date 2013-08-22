@@ -22,4 +22,16 @@ public class UserDao extends SqlSessionDaoSupport {
 	public Map<String, String> getUserData(Map<String, Object> UserData){
 		return (Map<String, String>)getSqlSession().selectOne("userQuery.getUserData", UserData);
 	}
+	
+	public int insertUser(Map<String, Object> userListMap){
+		return getSqlSession().insert("userQuery.insertUser",userListMap);
+	}
+
+	public int updateUser(Map<String, String> userListMap){
+		return getSqlSession().update("userQuery.updateUser", userListMap);
+	}
+
+	public int deleteUser(Map<String, String> userListMap){
+		return getSqlSession().delete("userQuery.deleteUser", userListMap);
+	}
 }

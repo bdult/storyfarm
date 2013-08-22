@@ -28,7 +28,7 @@
 						    <input type="text" class="form-control" name="id" placeholder="아이디">
 						  </div>
 						  <div class="form-group">
-						    <input type="text" class="form-control" name="pw" placeholder="비밀번호">
+						    <input type="text" class="form-control" name="pwd" placeholder="비밀번호">
 						  </div>
 						  <div class="form-group">
 					      <input type="checkbox"> 로그인 유지하기
