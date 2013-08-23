@@ -17,6 +17,8 @@
 	 			<a href="${ contextPath }/joinStep1.do" class="btn btn-default">회원가입</a>
 	 			<a href="${ contextPath }/children/room.do" class="btn btn-default">자녀방</a>
 	 			<a href="${ contextPath }/parents/study/daily.do" class="btn btn-default">부모방</a>
+	 			<span id="headerBoxBtn" data-toggle="tooltip" data-placement="right" class="btn btn-success"><i class="icon-chevron-down"></i></span>
+	 			
 	 			</div>
 	 		</div>
 	 	</div>
@@ -78,6 +80,51 @@
 		    </div>
 		  </div>
 	 	</div>
+	
+		<!-- breadcrumb/ -->
+		<div class="row">
+			<div class="col-lg-12">
+				<ol class="breadcrumb">
+					<c:forEach items="${ breadcrumbs }" var="obj" varStatus="status">
+						<c:choose>
+							<c:when test="${ status.last }">
+							  <li class="active">${ obj.name }</li>
+							</c:when>
+							<c:otherwise>
+							  <li><a href="${ contextPath }${ obj.url }">${ obj.name }</a></li>
+							</c:otherwise>
+						</c:choose>
+					</c:forEach>
+				</ol>
+			</div>
+		</div>
+		<!-- /breadcrumb -->
+		
 	 	<hr />
+	 	
 	</div>
 </header>
+
+<script>
+$(function(){
+	
+	//헤더박스 열기/닫기
+	$("#headerBoxBtn").click(function(){
+		var $this = $(this);
+		var $icon = $this.find("i");
+		var $target = $("#headerBox");
+		if( $icon.hasClass("icon-chevron-down") ) {
+			$icon
+				.removeClass("icon-chevron-down")
+				.addClass("icon-chevron-up");
+			$target.show(777);
+		} else {
+			$icon
+				.removeClass("icon-chevron-up")
+				.addClass("icon-chevron-down");
+			$target.hide(777);
+		}
+		
+	});
+});
+</script>

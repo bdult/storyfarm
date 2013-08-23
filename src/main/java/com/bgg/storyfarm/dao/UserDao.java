@@ -15,12 +15,12 @@ public class UserDao extends SqlSessionDaoSupport {
 	
 	private Logger _logger = LoggerFactory.getLogger(getClass());
 	
-	public List<HashMap<String, String>> userList() {
-		return (List<HashMap<String, String>>)getSqlSession().selectList( "userQuery.userList");
+	public List<HashMap<String, String>> list() {
+		return (List<HashMap<String, String>>)getSqlSession().selectList( "userQuery.list");
 	}
 
-	public Map<String, String> getUserData(Map<String, Object> UserData){
-		return (Map<String, String>)getSqlSession().selectOne("userQuery.getUserData", UserData);
+	public Map<String, String> detail(Map<String, Object> UserData){
+		return (Map<String, String>)getSqlSession().selectOne("userQuery.detail", UserData);
 	}
 	
 	public int insertUser(Map<String, Object> userListMap){

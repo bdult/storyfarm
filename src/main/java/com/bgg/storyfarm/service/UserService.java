@@ -15,12 +15,12 @@ public class UserService {
 	@Autowired
 	private UserDao userDao;
 
-	public List<HashMap<String, String>> userList() {
-		return userDao.userList();
+	public List<HashMap<String, String>> list() {
+		return userDao.list();
 	}
 
-	public Map<String, String> getUserData(Map<String, Object> paramMap) {
-		return userDao.getUserData(paramMap);
+	public Map<String, String> detail(Map<String, Object> paramMap) {
+		return userDao.detail(paramMap);
 	}
 	
 }
