@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.bgg.storyfarm.common.BreadcrumbUtil;
+import com.bgg.storyfarm.common.StoryfarmConstants;
 import com.bgg.storyfarm.service.UserService;
 
 @Controller
@@ -26,27 +28,16 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 
+	@Autowired
+	private BreadcrumbUtil breadcrumbUtil;
+
 	private Logger logger = LoggerFactory.getLogger(UserController.class);
 
 	@RequestMapping(value = "loginStep1.do", method = RequestMethod.GET)
 	public ModelAndView loginStep1(Model model, HttpServletRequest request, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("user/loginStep1");
-		
-		// dummy breadcrumbs
-		List<Map<String, String>> breadcrumbs = new ArrayList<Map<String, String>>();
-		
-		Map<String, String> map1 = new HashMap<String, String>();
-		map1.put("name", "홈");
-		map1.put("url", "/");
-		Map<String, String> map2 = new HashMap<String, String>();
-		map2.put("name", "로그인");
-		map2.put("url", "/");
-		
-		breadcrumbs.add(map1);
-		breadcrumbs.add(map2);
-		
-		mav.addObject("breadcrumbs", breadcrumbs);
+		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_LOGIN));
 		return mav;
 	}
 
@@ -106,13 +97,19 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "joinStep1.do", method = RequestMethod.GET)
-	public String joinStep1(Model model) {
-		return "user/joinStep1";
+	public ModelAndView joinStep1(Model model) {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("user/joinStep1");
+		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_REGISTER));
+		return mav;
 	}
 
 	@RequestMapping(value = "joinStep2.do", method = RequestMethod.GET)
-	public String joinStep2(Model model) {
-		return "user/joinStep2";
+	public ModelAndView joinStep2(Model model) {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("user/joinStep2");
+		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_REGISTER));
+		return mav;
 	}
 
 }
