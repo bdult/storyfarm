@@ -62,7 +62,7 @@ public class UserServiceTest {
 		//given
 	    Map<String, Object> userList = new HashMap<String, Object>();
 	    userList.put("id", "test");
-	    userList.put("pw", "123");
+	    userList.put("pwd", "123");
 	    userList.put("role", "1");
 	    
 		//when
@@ -71,7 +71,7 @@ public class UserServiceTest {
 	    //than
 	    assertThat(sessionMap, is(notNullValue()));
 		assertThat((String)sessionMap.get("MEMBER_ID"), is("test"));
-		assertThat((String)sessionMap.get("MEMBER_PW"), is("1223"));
+		assertThat((String)sessionMap.get("MEMBER_PW"), is("123"));
 	    
 	}
 	
@@ -84,6 +84,7 @@ public class UserServiceTest {
 		userDTO.put("id", "test12");
 		userDTO.put("name", "test1");
 		userDTO.put("pwd", 123);
+		userDTO.put("role", 123);
 		
 		//when
 		int result = userDao.insertUser(userDTO);
@@ -102,7 +103,7 @@ public class UserServiceTest {
 		//given
 		String id = "test12";
 
-		Map<String, String> userDTO = new TreeMap();
+		Map<String, Object> userDTO = new HashMap<String, Object>();
 		userDTO.put("id", id);
 		userDTO.put("name", "굿굿");
 		userDTO.put("pwd", "1234");
@@ -124,7 +125,7 @@ public class UserServiceTest {
 		//given
 		String id = "test12";
 		
-		Map<String, String> userDTO = new TreeMap();
+		Map<String, Object> userDTO = new HashMap<String, Object>();
 		userDTO.put("id", id);
 		
 		//when

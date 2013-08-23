@@ -36,6 +36,8 @@
 	 				</div>
 	 			</div>
 	 		</c:when>
+	 		<c:when test="${ msg == 'login_fail' }">
+	 		</c:when>
 	 		<c:otherwise>
 	 			<div class="col-lg-12 text-center">
 	 				<div class="row well">

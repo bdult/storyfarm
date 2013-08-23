@@ -34,22 +34,4 @@
 		)
 	
 	</insert>
-	
-	<!-- UPDATE USER -->
-	<update id="updateUser" parameterType="hashmap">
-		UPDATE BG_MEMBER
-		<set>
-		MEMBER_ID = #{ id },
-		MEMBER_NM = #{ name },
-		MEMBER_PW = #{ pwd },
-		MEMBER_ROLE = #{ role }
-		</set>
-		WHERE MEMBER_ID = #{ id }
-	</update>
-	
-	<!-- DELETE USER -->
-	<delete id="deleteUser" parameterType="hashmap">
-    	DELETE from BG_MEMBER
-    	WHERE MEMBER_ID = #{ id }
-	</delete>
 </mapper>
