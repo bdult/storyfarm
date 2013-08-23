@@ -66,7 +66,7 @@ public class UserServiceTest {
 	    userList.put("role", "1");
 	    
 		//when
-	    HashMap<String, String> sessionMap = (HashMap<String, String>)userService.getUserData(userList);
+	    HashMap<String, String> sessionMap = (HashMap<String, String>)userService.detail(userList);
 	    
 	    //than
 	    assertThat(sessionMap, is(notNullValue()));
