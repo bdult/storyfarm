@@ -1,4 +1,4 @@
-package com.bgg.storyfarm.utils;
+package com.bgg.storyfarm.common;
 
 import java.net.URLEncoder;
 import java.util.Enumeration;

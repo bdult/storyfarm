@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.bgg.storyfarm.common.BreadcrumbUtil;
+import com.bgg.storyfarm.common.StoryfarmConstants;
 import com.bgg.storyfarm.service.ContentsService;
 
 @Controller
@@ -18,11 +20,17 @@ public class ViewController {
 	private Logger logger = LoggerFactory.getLogger(ViewController.class);
 	
 	@Autowired
+	private BreadcrumbUtil breadcrumbUtil;
+	
+	@Autowired
 	private ContentsService contentsService; 
 	
 	@RequestMapping(value = "dashboard.do", method = RequestMethod.GET)
-	public String main(Model model) {
-		return "view/dashboard";
+	public ModelAndView main(Model model) {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("view/dashboard");
+		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME));
+		return mav;
 	}
 	
 	@RequestMapping(value = "brand.do", method = RequestMethod.GET)
