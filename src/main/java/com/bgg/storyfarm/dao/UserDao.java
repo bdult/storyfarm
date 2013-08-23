@@ -38,4 +38,7 @@ public class UserDao extends SqlSessionDaoSupport {
 		return getSqlSession().insert("userQuery.insertUser",userListMap);
 	}
 
+	public int updateUser(Map<String, Object> userListMap) {
+		return getSqlSession().update("userQuery.updateUser", userListMap);
+	}
 }
