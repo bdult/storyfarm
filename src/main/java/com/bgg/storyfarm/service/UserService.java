@@ -22,4 +22,5 @@ public class UserService {
 	public Map<String, String> getUserData(Map<String, Object> paramMap) {
 		return userDao.getUserData(paramMap);
 	}
+	
 }

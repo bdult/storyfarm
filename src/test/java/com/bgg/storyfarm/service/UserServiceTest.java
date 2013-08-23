@@ -97,6 +97,7 @@ public class UserServiceTest {
 
 	@Test
 	public void testUpdateUser() {
+		logger.info("회원수정 테스트 입니다.");
 
 		//given
 		String id = "test12";
@@ -118,6 +119,7 @@ public class UserServiceTest {
 
 	@Test
 	public void testDeleteUser(){
+		logger.info("회원삭제 테스트 입니다.");
 		
 		//given
 		String id = "test12";
