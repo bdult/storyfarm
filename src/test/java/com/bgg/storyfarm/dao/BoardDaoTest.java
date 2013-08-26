@@ -1,4 +1,4 @@
-package com.bgg.storyfarm.service;
+package com.bgg.storyfarm.dao;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.not;
@@ -23,7 +23,7 @@ import com.bgg.storyfarm.dao.BoardDao;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations={"classpath:servlet-contextForTest.xml"})
-public class BoardServiceTest {
+public class BoardDaoTest {
 
 	Logger logger = LoggerFactory.getLogger(getClass());
 

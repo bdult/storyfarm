@@ -1,6 +1,8 @@
 package com.bgg.storyfarm.controller;
 
 
+import java.util.HashMap;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,7 +44,10 @@ public class ViewController {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("view/contentslist");
 		
-		mav.addObject("contentList", contentsService.list());
+		//dummy
+		HashMap<String, Object> paramMap = new HashMap<String, Object>();
+		
+		mav.addObject("contentList", contentsService.list(paramMap));
 		return mav;
 	}
 	
