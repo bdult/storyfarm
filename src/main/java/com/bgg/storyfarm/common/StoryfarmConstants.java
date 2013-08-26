@@ -18,5 +18,13 @@ public class StoryfarmConstants {
 	
 	public final static int BREADCRUMB_PARENTS_ROOM = 400;
 	
+	
+	// BOARD
+	public final static String BOARD_ID = "board_id";
+	public final static String BOARD_CONTENTS_ID = "contents_id";
+	public final static String BOARD_MEMBER_ID = "member_id";
+	public final static String BOARD_DEL_YN = "del_yn";
+	public final static String BOARD_TITLE = "title";
+	public final static String BOARD_CONTENTS = "contents";
 
 }

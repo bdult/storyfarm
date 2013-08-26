@@ -46,10 +46,9 @@ public class UserController {
 
 		HashMap<String, String> sessionMap = (HashMap<String, String>) userService.detail(paramMap);
 		session.setAttribute("login_session", sessionMap);
-		logger.info("" + session.getAttribute("login_session"));
+		
 		if (session.getAttribute("login_session") == null) {
 			session.invalidate();
-
 			model.addAttribute("msg", "login_fail");
 			return "user/loginStep1";
 		} else {

@@ -15,6 +15,35 @@
 		MEMBER_ROLE, MEMBER_ID, MEMBER_PW
 		FROM BG_MEMBER
 		WHERE 
-		MEMBER_ID = #{ id } and MEMBER_PW = #{ pw }
+		MEMBER_ID = #{ id } and MEMBER_PW = #{ pwd }
 	</select>
+	
+	<!-- insert -->
+	<insert id="insertUser"  parameterType="hashmap">
+		INSERT INTO BG_MEMBER (
+		MEMBER_ID,
+		MEMBER_NM,
+		MEMBER_PW,
+		MEMBER_ROLE
+		)
+		VALUES (
+        #{ id },
+        #{ name },
+        #{ pwd },
+        #{ role }
+		)
+	
+	</insert>
+
+	<!-- UPDATE USER -->
+	<update id="updateUser" parameterType="hashmap">
+		UPDATE BG_MEMBER
+		<set>
+			MEMBER_ID = #{ id },
+			MEMBER_NM = #{ name },
+			MEMBER_PW = #{ pwd },
+			MEMBER_ROLE = #{ role }
+		</set>
+		WHERE MEMBER_ID = #{ id }
+	</update>
 </mapper>

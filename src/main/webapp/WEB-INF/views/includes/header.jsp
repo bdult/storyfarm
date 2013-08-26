@@ -11,7 +11,7 @@
 	 					<a href="${ contextPath }/loginStep1.do" class="btn btn-default">로그인</a>
 	 				</c:when>
 	 				<c:otherwise>
-	 					<a href="${ contextPath }/logout.do" class="btn btn-default">로그아웃</a>
+	 					<a href="${ contextPath }/logout.do" class="btn btn-default">${ login_session.MEMBER_ID }님 로그아웃</a>
 	 				</c:otherwise>
 	 			</c:choose>
 	 			<a href="${ contextPath }/joinStep1.do" class="btn btn-default">회원가입</a>
@@ -23,37 +23,39 @@
 	 		</div>
 	 	</div>
 	 	
-	 	<div id="headerBox" class="row" style="display: none;">
-		 	<c:choose>
-		 		<c:when test="${ login_session != null }">
-		 			<div class="col-lg-12">
-		 				<a class="btn btn-default">학습레벨: ${ "?단계" }</a>
-		 				<a class="btn btn-default">칭찬스티커: ${ "?개" }</a>
-		 				<a class="btn btn-default">학습완료: ${ "?과목" }</a>
-		 				<a class="btn btn-default">유료결제하기</a>
-		 				이용시간: ${ "1시간 30분" }
-		 				학습연령: ${ "2세" }
-		 			</div>
-		 		</c:when>
-		 		<c:otherwise>
-		 			<div class="col-lg-12">
-		 				<div class="row well">
-						<form role="form" method="post" action="${ contextPath }/loginStep2.do">
-		 					<div class="col-lg-3 col-lg-offset-2">
-							<input type="text" class="form-control" name="id" placeholder="아이디"> 
-		 					</div>
-		 					<div class="col-lg-3">
-							<input type="text" class="form-control" name="pw" placeholder="비밀번호">
-		 					</div>
-		 					<div class="col-lg-1">
-							<button class="btn btn-info pull-right">로그인</button>
-		 					</div>
-						</form>
-		 				</div>
-					</div>
-		 		</c:otherwise>
-		 	</c:choose>
-	 	</div>
+	 	<c:choose>
+	 		<c:when test="${ login_session != null }">
+	 			<div class="col-lg-12 text-center">
+	 				<div class="row well">
+	 				<a class="btn btn-default">학습레벨: ${ "?단계" }</a>
+	 				<a class="btn btn-default">칭찬스티커: ${ "?개" }</a>
+	 				<a class="btn btn-default">학습완료: ${ "?과목" }</a>
+	 				<a class="btn btn-default">유료결제하기</a>
+	 				이용시간: ${ "?분" }
+	 				학습연령: ${ "?세" }
+	 				</div>
+	 			</div>
+	 		</c:when>
+	 		<c:when test="${ msg == 'login_fail' }">
+	 		</c:when>
+	 		<c:otherwise>
+	 			<div class="col-lg-12 text-center">
+	 				<div class="row well">
+					<form role="form" method="post" action="${ contextPath }/loginStep2.do">
+	 					<div class="col-lg-3 col-lg-offset-2">
+						<input type="text" class="form-control" name="id" placeholder="아이디"> 
+	 					</div>
+	 					<div class="col-lg-3">
+						<input type="text" class="form-control" name="pwd" placeholder="비밀번호">
+	 					</div>
+	 					<div class="col-lg-1">
+						<button class="btn btn-info pull-right">로그인</button>
+	 					</div>
+					</form>
+	 				</div>
+				</div>
+	 		</c:otherwise>
+	 	</c:choose>
 	 	
 	 	<br />
 	 	
