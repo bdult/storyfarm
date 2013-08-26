@@ -117,25 +117,12 @@ public class UserServiceTest {
 		assertThat(result, is(not(0)));
 		logger.info("{}", userDTO);
 	}
-
-	@Test
-	public void testDeleteUser(){
-		logger.info("회원삭제 테스트 입니다.");
-		
-		//given
-		String id = "test12";
-		
-		Map<String, Object> userDTO = new HashMap<String, Object>();
-		userDTO.put("id", id);
-		
-		//when
-		int result = userDao.deleteUser(userDTO);
-		
-		//than
-		assertNotNull(userDTO);
-		assertThat(result, is(not(0)));
-		logger.info("{}", userDTO);
-	}
 	
+	
+	@Test
+	public void testInsertBoard() {
+		logger.info("게시판 생성 테스트 입니다.");
+		
+	}
 }
 	
