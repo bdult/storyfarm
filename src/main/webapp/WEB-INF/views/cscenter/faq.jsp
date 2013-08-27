@@ -4,7 +4,7 @@
 <h4>FAQ 게시판</h4>
 
 <div class="row">
-	<div class="col-lg-12">
+	<div class="col-md-12">
 		<a class="btn btn-default">회원/가입안내</a>
 		<a class="btn btn-default">결제안내</a>
 		<a class="btn btn-default">서비스안내</a>

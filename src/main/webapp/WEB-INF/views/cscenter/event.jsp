@@ -5,7 +5,7 @@
 <br />
 
 <div class="row">
-	<div class="col-lg-12">
+	<div class="col-md-12">
 		<table class="table table-striped table-hover">
 			<tr>
 				<th>No</th>

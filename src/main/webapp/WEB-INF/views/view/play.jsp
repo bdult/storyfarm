@@ -3,19 +3,19 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
     
 <div class="row">
-	<div class="col-lg-12">
+	<div class="col-md-12">
 		The Ugly Ducking 월드클래식 ♥ ${ 15 }
 	</div>
 </div>
 <hr>
 <div class="row">
-	<div class="col-lg-12">
+	<div class="col-md-12">
 		<img style="width: 100%; height: 300px;" alt="동영상">
 	</div>
 </div>
 <br>
 <div class="row">
-	<div class="col-lg-12">
+	<div class="col-md-12">
 		<button class="btn btn-primary pull-left">개요</button>
 		<button class="btn btn-default pull-left">리뷰</button>
 		<button class="btn btn-default pull-left">관련콘텐츠</button>
@@ -25,16 +25,16 @@
 
 <div class="well">
 	<div class="row">
-	<div class="col-lg-1">
+	<div class="col-md-1">
 		<a class="btn btn-default pull-right">&lt;</a>
 	</div>
-	<div class="col-lg-5">
+	<div class="col-md-5">
 		<img style="width:100%; height:220px" data-src="holder.js/100%x180" src="../img/171_180.png" alt="...">
 	</div>
-	<div class="col-lg-1">
+	<div class="col-md-1">
 		<a class="btn btn-default">&gt;</a>
 	</div>
-	<div class="col-lg-5">
+	<div class="col-md-5">
 	유아영어에서 다루는 모든 영역을 하나의<br> 
 	애플리케이션에 담았습니다<br>
 	<br>
@@ -52,7 +52,7 @@
 
 <div class="well">
 	<div class="row">
-		<div class="col-lg-3">
+		<div class="col-md-3">
 			콘텐츠 평가하기
 			<hr>
 			★★★☆☆
@@ -62,9 +62,9 @@
 				<button type="button" class="btn btn-default">취소</button>
 			</div>
 		</div>
-		<div class="col-lg-9">
+		<div class="col-md-9">
 			<div class="row">
-				<div class="col-lg-3 pull-right">
+				<div class="col-md-3 pull-right">
 					<select class="form-control">
 						<option>전체보기</option>
 						<option>2</option>
@@ -77,11 +77,11 @@
 			<hr>
 			<c:forEach begin="1" end="3">
 				<div class="row">
-					<div class="col-lg-3">
+					<div class="col-md-3">
 						<img style="width: 100%; height: 50px"
 							data-src="holder.js/100%x180" src="../img/171_180.png" alt="...">
 					</div>
-					<div class="col-lg-9">
+					<div class="col-md-9">
 						${ "userid" } ${ "2012년 1월 1일" } 
 						<br> Lorem ipsum dolor sit
 						amet, consectetur adipisicing elit, sed do eiusmod tempor
@@ -112,16 +112,16 @@
 
 <div class="well">
 	<div class="row">
-		<div class="col-lg-12">
+		<div class="col-md-12">
 			<c:forEach begin="1" end="4">
 				<c:forEach begin="1" end="4">
-					<div class="col-lg-3">
+					<div class="col-md-3">
 						<div class="row">
-							<div class="col-lg-5">
+							<div class="col-md-5">
 								<img style="width: 100%; height: 70px"
 								data-src="holder.js/100%x180" src="../img/171_180.png" alt="...">
 							</div>
-							<div class="col-lg-7">
+							<div class="col-md-7">
 								title<br>
 								★★★☆☆<br>
 								<a class="btn btn-default">상세보기</a>
@@ -136,7 +136,7 @@
 </div>
 
 <div class="row">
-	<div class="col-lg-12">
+	<div class="col-md-12">
 		<img style="width: 100%; height: 200px;" alt="동영상 재생 지원기기">
 	</div>
 </div>

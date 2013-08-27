@@ -188,6 +188,15 @@ public class BreadcrumbUtil {
 			case StoryfarmConstants.BREADCRUMB_SITEMAP:
 				this.setBreadcrumbMap("사이트맵", "/sitemap.do");
 				break;
+			case StoryfarmConstants.BREADCRUMB_CSCENTER_EVENT:
+				this.setBreadcrumbMap("이벤트", "/cscenter/event.do");
+				break;
+			case StoryfarmConstants.BREADCRUMB_CSCENTER_FAQ:
+				this.setBreadcrumbMap("자주하는질문", "/cscenter/faq.do");
+				break;
+			case StoryfarmConstants.BREADCRUMB_CSCENTER_ASK:
+				this.setBreadcrumbMap("문의하기", "/cscenter/ask.do");
+				break;
 			default:
 				break;
 			}

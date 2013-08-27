@@ -3,8 +3,3 @@
 
 <h4>이용약관</h4>
 
-<div class="row">
-  <div class="col-lg-12">
-  	
-  </div>
-</div>

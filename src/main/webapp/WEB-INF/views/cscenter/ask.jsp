@@ -5,7 +5,7 @@
 <br />
 
 <div class="row">
-	<div class="col-lg-12">
+	<div class="col-md-12">
 		<ul>
 			<li>문의메일보내기</li>
 			<li>1:1문의 쓰기</li>

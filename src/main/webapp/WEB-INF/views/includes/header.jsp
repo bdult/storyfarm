@@ -105,9 +105,6 @@
 			</div>
 		</div>
 		<!-- /breadcrumb -->
-		
-	 	<hr />
-	 	
 	</div>
 </header>
 

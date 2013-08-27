@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 
 <div class="row">
-	<div class="col-lg-12">
+	<div class="col-md-12">
 		<a href="${ contextPath }/cscenter/notice.do">공지사항</a>
 	  <hr />
 		<a href="${ contextPath }/cscenter/event.do">이벤트</a>
