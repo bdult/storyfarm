@@ -5,13 +5,13 @@
 <mapper namespace="userQuery">
 
 	<select id="list" resultType="hashmap">
-		SELECT *
+		SELECT * /* userQuery.list */
 		FROM BG_MEMBER
 		WHERE 1=1
 	</select>
 	
 	<select id="detail" resultType="hashmap" parameterType="hashmap">
-		SELECT
+		SELECT /* userQuery.detail */
 		MEMBER_ROLE, MEMBER_ID, MEMBER_PW
 		FROM BG_MEMBER
 		WHERE 

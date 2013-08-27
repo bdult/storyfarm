@@ -16,7 +16,7 @@
 	 			</c:choose>
 	 			<a href="${ contextPath }/joinStep1.do" class="btn btn-default">회원가입</a>
 	 			<a href="${ contextPath }/children/room.do" class="btn btn-default">자녀방</a>
-	 			<a href="${ contextPath }/parents/study/daily.do" class="btn btn-default">부모방</a>
+	 			<a href="${ contextPath }/parents/room.do" class="btn btn-default">부모방</a>
 	 			<span id="headerBoxBtn" data-toggle="tooltip" data-placement="right" class="btn btn-success"><i class="icon-chevron-down"></i></span>
 	 			
 	 			</div>

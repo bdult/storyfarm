@@ -33,39 +33,22 @@ public class CscenterController {
 		return mav;
 	}
 	
-	@RequestMapping(value = "noticeWriting.do", method = RequestMethod.GET)
-	public String noticeWriting(Model model) {
-		
-		return "side-cscenter/noticeWriting";
-	}
-	
 	@RequestMapping(value = "faq.do", method = RequestMethod.GET)
 	public String faq(Model model) {
 		
 		return "side-cscenter/faq";
 	}
 	
-	@RequestMapping(value = "find.do", method = RequestMethod.GET)
-	public String find(Model model) {
+	@RequestMapping(value = "event.do", method = RequestMethod.GET)
+	public String event(Model model) {
 		
-		return "side-cscenter/find";
+		return "side-cscenter/event";
 	}
 	
-	@RequestMapping(value = "question.do", method = RequestMethod.GET)
-	public String question(Model model) {
+	@RequestMapping(value = "ask.do", method = RequestMethod.GET)
+	public String ask(Model model) {
 		
-		return "side-cscenter/question";
+		return "side-cscenter/ask";
 	}
 	
-	@RequestMapping(value = "coupon.do", method = RequestMethod.GET)
-	public String coupon(Model model) {
-		
-		return "side-cscenter/coupon";
-	}
-	
-	@RequestMapping(value = "payment.do", method = RequestMethod.GET)
-	public String payment(Model model) {
-		
-		return "side-cscenter/payment";
-	}
 }

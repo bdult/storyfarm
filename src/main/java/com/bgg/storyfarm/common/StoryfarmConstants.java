@@ -15,8 +15,17 @@ public class StoryfarmConstants {
 	public final static int BREADCRUMB_CSCENTER_NOTI = 202;
 	
 	public final static int BREADCRUMB_CHILDREN_ROOM = 300;
+	public final static int BREADCRUMB_CHILDREN_PLAYER = 301;
 	
 	public final static int BREADCRUMB_PARENTS_ROOM = 400;
+	public final static int BREADCRUMB_PARENTS_STUDY = 401;
+	public final static int BREADCRUMB_PARENTS_CHILDREN = 402;
+	public final static int BREADCRUMB_PARENTS_TIME = 403;
+	public final static int BREADCRUMB_PARENTS_ITEMS = 404;
+	public final static int BREADCRUMB_PARENTS_SERIES = 405;
+	public final static int BREADCRUMB_PARENTS_PERIOD = 406;
+	public final static int BREADCRUMB_PARENTS_WEEKLY = 407;
+	public final static int BREADCRUMB_PARENTS_MONTHLY = 408;
 	
 	
 	//BOARD
@@ -32,5 +41,5 @@ public class StoryfarmConstants {
 	public final static String BRAND_ID = "brand_id";
 	public final static String CONTENTS_ID = "contents_id";
 	public final static String CONTENTS_SERIES_ID = "contents_series_id";
-
+	
 }

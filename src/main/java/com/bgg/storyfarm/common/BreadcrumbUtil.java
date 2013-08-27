@@ -47,8 +47,35 @@ public class BreadcrumbUtil {
 			case StoryfarmConstants.BREADCRUMB_CHILDREN_ROOM:
 				this.setBreadcrumbMap("자녀방", "/children/room.do");
 				break;
+			case StoryfarmConstants.BREADCRUMB_CHILDREN_PLAYER:
+				this.setBreadcrumbMap("콘텐츠 플레이어", "/children/player.do");
+				break;
 			case StoryfarmConstants.BREADCRUMB_PARENTS_ROOM:
-				this.setBreadcrumbMap("부모방", "/parents/study/daily.do");
+				this.setBreadcrumbMap("부모방", "/parents/room.do");
+				break;
+			case StoryfarmConstants.BREADCRUMB_PARENTS_STUDY:
+				this.setBreadcrumbMap("학습통계", "/parents/study.do");
+				break;
+			case StoryfarmConstants.BREADCRUMB_PARENTS_CHILDREN:
+				this.setBreadcrumbMap("학습자관리", "/parents/children.do");
+				break;
+			case StoryfarmConstants.BREADCRUMB_PARENTS_TIME:
+				this.setBreadcrumbMap("사용시간설정", "/parents/time.do");
+				break;
+			case StoryfarmConstants.BREADCRUMB_PARENTS_ITEMS:
+				this.setBreadcrumbMap("과목별학습현황", "/parents/items.do");
+				break;
+			case StoryfarmConstants.BREADCRUMB_PARENTS_SERIES:
+				this.setBreadcrumbMap("전집별학습현황", "/parents/series.do");
+				break;
+			case StoryfarmConstants.BREADCRUMB_PARENTS_PERIOD:
+				this.setBreadcrumbMap("기간별학습현황", "/parents/period.do");
+				break;
+			case StoryfarmConstants.BREADCRUMB_PARENTS_WEEKLY:
+				this.setBreadcrumbMap("주별학습현황", "/parents/weekly.do");
+				break;
+			case StoryfarmConstants.BREADCRUMB_PARENTS_MONTHLY:
+				this.setBreadcrumbMap("월별학습현황", "/parents/monthly.do");
 				break;
 			default:
 				break;

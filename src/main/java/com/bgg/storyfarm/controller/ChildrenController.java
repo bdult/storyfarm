@@ -31,4 +31,15 @@ public class ChildrenController {
 				StoryfarmConstants.BREADCRUMB_CHILDREN_ROOM));
 		return mav;
 	}
+	
+	@RequestMapping(value = "player.do", method = RequestMethod.GET)
+	public ModelAndView player(Model model) {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("children/player");
+		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(
+				StoryfarmConstants.BREADCRUMB_HOME, 
+				StoryfarmConstants.BREADCRUMB_CHILDREN_ROOM,
+				StoryfarmConstants.BREADCRUMB_CHILDREN_PLAYER));
+		return mav;
+	}
 }
