@@ -47,6 +47,7 @@ public class ViewController {
 		//dummy
 		HashMap<String, Object> paramMap = new HashMap<String, Object>();
 		
+		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_KOREANLANGUAGE));
 		mav.addObject("contentList", contentsService.list(paramMap));
 		return mav;
 	}

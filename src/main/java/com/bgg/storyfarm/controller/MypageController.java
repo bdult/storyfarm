@@ -21,7 +21,7 @@ public class MypageController {
 	public ModelAndView info(Model model) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("side-mypage/info");
-		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_REGISTER));
+		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_MYPAGE_INFO));
 		return mav;
 	}
 	
@@ -29,7 +29,7 @@ public class MypageController {
 	public ModelAndView payment(Model model) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("side-mypage/payment");
-		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_REGISTER));
+		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_MYPAGE_INFO, StoryfarmConstants.BREADCRUMB_MYPAGE_PAYMENT ));
 		return mav;
 	}
 	
@@ -37,7 +37,7 @@ public class MypageController {
 	public ModelAndView paymentSelect(Model model) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("side-mypage/paymentSelect");
-		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_REGISTER));
+		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_MYPAGE_INFO, StoryfarmConstants.BREADCRUMB_MYPAGE_PAYMENT, StoryfarmConstants.BREADCRUMB_MYPAGE_PAYMENT_SELECT ));
 		return mav;
 	}
 	
@@ -45,7 +45,7 @@ public class MypageController {
 	public ModelAndView paymentResult(Model model) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("side-mypage/paymentResult");
-		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_REGISTER));
+		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_MYPAGE_INFO, StoryfarmConstants.BREADCRUMB_MYPAGE_PAYMENT, StoryfarmConstants.BREADCRUMB_MYPAGE_PAYMENT_SELECT, StoryfarmConstants.BREADCRUMB_MYPAGE_PAYMENT_RESULT ));
 		return mav;
 	}
 	
@@ -53,7 +53,7 @@ public class MypageController {
 	public ModelAndView purchasingInfo(Model model) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("side-mypage/purchasingInfo");
-		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_REGISTER));
+		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_MYPAGE_INFO, StoryfarmConstants.BREADCRUMB_MYPAGE_PURCHASINGINFO));
 		return mav;
 	}
 	
@@ -61,7 +61,7 @@ public class MypageController {
 	public ModelAndView purchasingInfoPast(Model model) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("side-mypage/purchasingInfoPast");
-		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_REGISTER));
+		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_MYPAGE_INFO, StoryfarmConstants.BREADCRUMB_MYPAGE_PURCHASINGINFO_PAST));
 		return mav;
 	}
 	
@@ -69,7 +69,7 @@ public class MypageController {
 	public ModelAndView receiptIssuing(Model model) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("side-mypage/receiptIssuing");
-		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_REGISTER));
+		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_MYPAGE_INFO, StoryfarmConstants.BREADCRUMB_MYPAGE_RECEIPTISSUING ));
 		return mav;
 	}
 	
@@ -77,7 +77,7 @@ public class MypageController {
 	public ModelAndView coupon(Model model) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("side-mypage/coupon");
-		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_REGISTER));
+		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_MYPAGE_INFO, StoryfarmConstants.BREADCRUMB_MYPAGE_COUPON));
 		return mav;
 	}
 	
@@ -85,7 +85,7 @@ public class MypageController {
 	public ModelAndView addCoupon(Model model) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("side-mypage/addCoupon");
-		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_REGISTER));
+		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_MYPAGE_INFO, StoryfarmConstants.BREADCRUMB_MYPAGE_COUPON, StoryfarmConstants.BREADCRUMB_MYPAGE_ADD_COUPON));
 		return mav;
 	}
 	
@@ -93,7 +93,7 @@ public class MypageController {
 	public ModelAndView pauseRequest(Model model) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("side-mypage/pauseRequest");
-		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_REGISTER));
+		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_MYPAGE_INFO, StoryfarmConstants.BREADCRUMB_MYPAGE_PAUSEREQUEST));
 		return mav;
 	}
 	
@@ -101,7 +101,7 @@ public class MypageController {
 	public ModelAndView pauseRequestResult(Model model) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("side-mypage/pauseRequestResult");
-		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_REGISTER));
+		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_MYPAGE_INFO, StoryfarmConstants.BREADCRUMB_MYPAGE_PAUSEREQUEST, StoryfarmConstants.BREADCRUMB_MYPAGE_PAUSEREQUEST_RESULT));
 		return mav;
 	}
 	
@@ -109,7 +109,7 @@ public class MypageController {
 	public ModelAndView pauseCancel(Model model) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("side-mypage/pauseCancel");
-		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_REGISTER));
+		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_MYPAGE_INFO, StoryfarmConstants.BREADCRUMB_MYPAGE_PAUSECANCEL));
 		return mav;
 	}
 	
@@ -117,7 +117,7 @@ public class MypageController {
 	public ModelAndView pauseCancelResult(Model model) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("side-mypage/pauseCancelResult");
-		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_REGISTER));
+		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_MYPAGE_INFO, StoryfarmConstants.BREADCRUMB_MYPAGE_PAUSECANCEL, StoryfarmConstants.BREADCRUMB_MYPAGE_PAUSECANCEL_RESULT));
 		return mav;
 	}
 	
@@ -125,7 +125,7 @@ public class MypageController {
 	public ModelAndView question(Model model) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("side-mypage/question");
-		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_REGISTER));
+		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_MYPAGE_INFO, StoryfarmConstants.BREADCRUMB_MYPAGE_QUESTION));
 		return mav;
 	}
 	
@@ -133,7 +133,7 @@ public class MypageController {
 	public ModelAndView questionDetail(Model model) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("side-mypage/questionDetail");
-		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_REGISTER));
+		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_MYPAGE_INFO, StoryfarmConstants.BREADCRUMB_MYPAGE_QUESTION, StoryfarmConstants.BREADCRUMB_MYPAGE_QUESTION_DETAIL));
 		return mav;
 	}
 	
@@ -141,7 +141,7 @@ public class MypageController {
 	public ModelAndView questionInsert(Model model) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("side-mypage/questionInsert");
-		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_REGISTER));
+		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_MYPAGE_INFO, StoryfarmConstants.BREADCRUMB_MYPAGE_QUESTION, StoryfarmConstants.BREADCRUMB_MYPAGE_QUESTION_INSERT));
 		return mav;
 	}
 	
@@ -149,7 +149,7 @@ public class MypageController {
 	public ModelAndView questionUpdate(Model model) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("side-mypage/questionUpdate");
-		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_REGISTER));
+		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_MYPAGE_INFO, StoryfarmConstants.BREADCRUMB_MYPAGE_QUESTION, StoryfarmConstants.BREADCRUMB_MYPAGE_QUESTION_UPDATE));
 		return mav;
 	}
 	
@@ -157,7 +157,7 @@ public class MypageController {
 	public ModelAndView userInfo(Model model) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("side-mypage/userInfo");
-		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_REGISTER));
+		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_MYPAGE_INFO, StoryfarmConstants.BREADCRUMB_MYPAGE_USERINFO));
 		return mav;
 	}
 	
@@ -165,7 +165,7 @@ public class MypageController {
 	public ModelAndView userInfoUpdate(Model model) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("side-mypage/userInfoUpdate");
-		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_REGISTER));
+		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_MYPAGE_INFO, StoryfarmConstants.BREADCRUMB_MYPAGE_USERINFO, StoryfarmConstants.BREADCRUMB_MYPAGE_USERINFO_UPDATE));
 		return mav;
 	}
 	
@@ -173,7 +173,7 @@ public class MypageController {
 	public ModelAndView leave(Model model) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("side-mypage/leave");
-		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_REGISTER));
+		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_MYPAGE_INFO, StoryfarmConstants.BREADCRUMB_MYPAGE_LEAVE));
 		return mav;
 	}
 	
@@ -181,7 +181,7 @@ public class MypageController {
 	public ModelAndView leaveResult(Model model) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("side-mypage/leaveResult");
-		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_REGISTER));
+		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_MYPAGE_INFO, StoryfarmConstants.BREADCRUMB_MYPAGE_LEAVE, StoryfarmConstants.BREADCRUMB_MYPAGE_LEAVE_RESULT ));
 		return mav;
 	}
 }

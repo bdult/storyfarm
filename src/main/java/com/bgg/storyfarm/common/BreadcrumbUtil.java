@@ -53,6 +53,12 @@ public class BreadcrumbUtil {
 			case StoryfarmConstants.BREADCRUMB_REGISTER:
 				this.setBreadcrumbMap("회원가입", "/register.do");
 				break;
+			case StoryfarmConstants.BREADCRUMB_JOINSTEP2:
+				this.setBreadcrumbMap("회원가입", "/joinstep2.do");
+				break;
+			case StoryfarmConstants.BREADCRUMB_JOINSTEP3:
+				this.setBreadcrumbMap("회원가입", "/joinstep3.do");
+				break;
 			case StoryfarmConstants.BREADCRUMB_STORYFARM_INTRO:
 				this.setBreadcrumbMap("스토리팜 소개", "/introduce/storyfarmIntro.do");
 				break;
@@ -64,6 +70,72 @@ public class BreadcrumbUtil {
 				break;
 			case StoryfarmConstants.BREADCRUMB_PAYMENT_INFO:
 				this.setBreadcrumbMap("유료서비스 안내", "/introduce/storyfarmIntro.do");
+				break;
+			case StoryfarmConstants.BREADCRUMB_KOREANLANGUAGE:
+				this.setBreadcrumbMap("국어", "/contentslist.do");
+				break;
+			case StoryfarmConstants.BREADCRUMB_MYPAGE_INFO:
+				this.setBreadcrumbMap("마이페이지", "/mypage/info.do");
+				break;
+			case StoryfarmConstants.BREADCRUMB_MYPAGE_PAYMENT:
+				this.setBreadcrumbMap("유료서비스", "/mypage/payment.do");
+				break;
+			case StoryfarmConstants.BREADCRUMB_MYPAGE_PAYMENT_SELECT:
+				this.setBreadcrumbMap("결제방법선택", "/mypage/paymentSelect.do");
+				break;
+			case StoryfarmConstants.BREADCRUMB_MYPAGE_PAYMENT_RESULT:
+				this.setBreadcrumbMap("결제완료", "/mypage/paymentResult.do");
+				break;
+			case StoryfarmConstants.BREADCRUMB_MYPAGE_PURCHASINGINFO:
+				this.setBreadcrumbMap("현재 이용내역", "/mypage/purchasingInfo.do");
+				break;
+			case StoryfarmConstants.BREADCRUMB_MYPAGE_RECEIPTISSUING:
+				this.setBreadcrumbMap("영수증 발급", "/mypage/receiptIssuing.do");
+				break;
+			case StoryfarmConstants.BREADCRUMB_MYPAGE_PURCHASINGINFO_PAST:
+				this.setBreadcrumbMap("과거 이용내역", "/mypage/purchasingInfoPast.do");
+				break;
+			case StoryfarmConstants.BREADCRUMB_MYPAGE_COUPON:
+				this.setBreadcrumbMap("쿠폰내역", "/mypage/coupon.do");
+				break;
+			case StoryfarmConstants.BREADCRUMB_MYPAGE_ADD_COUPON:
+				this.setBreadcrumbMap("쿠폰등록", "/mypage/addcoupon.do");
+				break;
+			case StoryfarmConstants.BREADCRUMB_MYPAGE_PAUSEREQUEST:
+				this.setBreadcrumbMap("일시중지 신청", "/mypage/pauseRequest.do");
+				break;
+			case StoryfarmConstants.BREADCRUMB_MYPAGE_PAUSEREQUEST_RESULT:
+				this.setBreadcrumbMap("일시중지 신청 완료", "/mypage/pauseRequestResult.do");
+				break;
+			case StoryfarmConstants.BREADCRUMB_MYPAGE_PAUSECANCEL:
+				this.setBreadcrumbMap("일시중지 해지", "/mypage/pauseCancel.do");
+				break;
+			case StoryfarmConstants.BREADCRUMB_MYPAGE_PAUSECANCEL_RESULT:
+				this.setBreadcrumbMap("일시중지 해지 완료", "/mypage/pauseCancelResult.do");
+				break;
+			case StoryfarmConstants.BREADCRUMB_MYPAGE_QUESTION:
+				this.setBreadcrumbMap("1:1 문의", "/mypage/question.do");
+				break;
+			case StoryfarmConstants.BREADCRUMB_MYPAGE_QUESTION_DETAIL:
+				this.setBreadcrumbMap("1:1 문의 상세", "/mypage/questionDetail.do");
+				break;
+			case StoryfarmConstants.BREADCRUMB_MYPAGE_QUESTION_INSERT:
+				this.setBreadcrumbMap("1:1 문의 쓰기", "/mypage/questionInsert.do");
+				break;
+			case StoryfarmConstants.BREADCRUMB_MYPAGE_QUESTION_UPDATE:
+				this.setBreadcrumbMap("1:1 문의 수정", "/mypage/questionUpdate");
+				break;
+			case StoryfarmConstants.BREADCRUMB_MYPAGE_USERINFO:
+				this.setBreadcrumbMap("회원정보 확인", "/mypage/userInfo");
+				break;
+			case StoryfarmConstants.BREADCRUMB_MYPAGE_USERINFO_UPDATE:
+				this.setBreadcrumbMap("회원정보 수정", "/mypage/userInfoUpdate");
+				break;
+			case StoryfarmConstants.BREADCRUMB_MYPAGE_LEAVE:
+				this.setBreadcrumbMap("회원탈퇴", "/mypage/leave.do");
+				break;
+			case StoryfarmConstants.BREADCRUMB_MYPAGE_LEAVE_RESULT:
+				this.setBreadcrumbMap("회원탈퇴 완료", "/mypage/leaveResult.do");
 				break;
 			case StoryfarmConstants.BREADCRUMB_CSCENTER_NOTI:
 				this.setBreadcrumbMap("공지사항", "/cscenter/notice.do");
