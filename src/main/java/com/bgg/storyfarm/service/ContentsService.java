@@ -17,8 +17,8 @@ public class ContentsService {
 	/** 콘텐츠 목록을 가져옴
 	 * @return
 	 */
-	public List<Map<String, Object>> list() {
-		return contentsDao.list();
+	public List<Map<String, Object>> list(Map<String, Object> contentMap) {
+		return contentsDao.list(contentMap);
 	}
 	
 	/** 콘텐츠 상세 정보를 가져옴

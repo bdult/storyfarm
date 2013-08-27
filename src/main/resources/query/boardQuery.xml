@@ -3,35 +3,68 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="boardQuery">
-	
-	<!-- select -->
-	<select id="detailBoard"  resultType="hashmap" parameterType="hashmap">
-		select
-		CONTENTS_ID,
-		MEMBER_ID,
-		TITLE,
-		CONTENTS,
-		REG_DT
-		from
-		BG_BOARD_CONTENTS
-	</select>
-	
-	
-	<!-- insert -->
-	<insert id="insertBoard"  parameterType="hashmap">
-		INSERT INTO BG_BOARD_CONTENTS (
-		BOARD_ID,
-		MEMBER_ID,
-		TITLE,
-		CONTENTS
-		)
-		VALUES (
+
+    <!-- select -->
+    <select id="boards" resultType="hashmap">
+    SELECT
+        *
+    FROM
+        BG_BOARD_MASTER
+    </select>
+    
+    <select id="list" resultType="hashmap" parameterType="hashmap">
+    SELECT
+        BG_BOARD_CONTENTS.*
+    FROM
+        BG_BOARD_CONTENTS, BG_BOARD_MASTER
+    WHERE
+        BG_BOARD_MASTER.board_id = #{ board_id }
+    </select>
+
+    <select id="detail" resultType="hashmap" parameterType="hashmap">
+    SELECT
+        contents_id,
+        member_id,
+        title,
+        contents,
+        reg_dt
+    FROM
+        BG_BOARD_CONTENTS
+    WHERE
+        contents_id = #{ contents_id }
+    </select>
+
+
+    <!-- insert -->
+    <insert id="create" parameterType="hashmap">
+    INSERT INTO BG_BOARD_CONTENTS (
+        board_id,
+        member_id,
+        title,
+        contents,
+        reg_dt,
+        mod_dt
+    )
+    VALUES (
         #{ board_id },
-        #{ id },
-        #{ board_title },
-        #{ board_contents }
-		)
-	
-	</insert>
+        #{ member_id },
+        #{ title },
+        #{ contents },
+        NOW(),
+        NOW()
+    )
+    </insert>
+
+    <!-- update -->
+    <update id="modify" parameterType="hashmap">
+    UPDATE BG_BOARD_CONTENTS
+        <set>
+        title= #{ title },
+        contents = #{ contents },
+        mod_dt = NOW()
+        </set>
+    WHERE
+        contents_id = #{ contents_id }
+    </update>
 
 </mapper>

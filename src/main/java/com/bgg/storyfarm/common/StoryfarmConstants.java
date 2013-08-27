@@ -6,7 +6,7 @@ public class StoryfarmConstants {
 	public final static String BREADCRUMB_URL = "url";
 	public final static String BREADCRUMBS = "breadcrumbs";
 
-	// BREADCRUMB LIST
+	//BREADCRUMB LIST
 	public final static int BREADCRUMB_HOME = 100;
 	public final static int BREADCRUMB_LOGIN = 101;
 	public final static int BREADCRUMB_REGISTER = 102;
@@ -18,5 +18,19 @@ public class StoryfarmConstants {
 	
 	public final static int BREADCRUMB_PARENTS_ROOM = 400;
 	
+	
+	//BOARD
+	public final static String BOARD_ID = "board_id";
+	public final static String BOARD_CONTENTS_ID = "contents_id";
+	public final static String BOARD_MEMBER_ID = "member_id";
+	public final static String BOARD_DEL_YN = "del_yn";
+	public final static String BOARD_TITLE = "title";
+	public final static String BOARD_CONTENTS = "contents";
+	
+	
+	//CONTENTS
+	public final static String BRAND_ID = "brand_id";
+	public final static String CONTENTS_ID = "contents_id";
+	public final static String CONTENTS_SERIES_ID = "contents_series_id";
 
 }

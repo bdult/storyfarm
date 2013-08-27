@@ -64,51 +64,29 @@ section#noti .well-half {
 <!-- SlidesJS Required: -->
 
 <section id="brand">
-		<div class="row">
-		  <div class="col-lg-1">
-		  	<a href="#" class="slidesjs-previous slidesjs-navigation"><i class="icon-chevron-left icon-3x"></i></a>
+	<div class="row">
+	  <div class="col-lg-1">
+	  	<a href="#" class="slidesjs-previous slidesjs-navigation"><i class="icon-chevron-left icon-3x"></i></a>
+	  </div>
+	  <c:forEach begin="1" end="5" varStatus="status">
+	    <div class="col-lg-2">
+	    	<c:forEach begin="1" end="2">
+			  	<div class="row">
+			  		<div class="col-lg-12">
+					    <a href="${ contextPath }/brand.do" class="thumbnail">
+					      <img style="width: 100%; height: 130px;" alt="브랜드 배너 영역 ${ status.count }">
+					    </a>
+			  		</div>
+			  	</div>
+			  	<br />
+	    	</c:forEach>
 		  </div>
-<div class="container-slides">
-	<div id="slides">
-		<div class="slide">
-			  <c:forEach begin="1" end="5" varStatus="status">
-			    <div class="col-lg-2">
-			    	<c:forEach begin="1" end="2">
-					  	<div class="row">
-					  		<div class="col-lg-12">
-							    <a href="${ contextPath }/brand.do" class="thumbnail">
-							      <img style="width: 100%; height: 130px;" alt="브랜드 배너 영역 ${ status.count }">
-							    </a>
-					  		</div>
-					  	</div>
-					  	<br />
-			    	</c:forEach>
-				  </div>
-		   	</c:forEach>
-		</div>
-		<div class="slide">
-			  <c:forEach begin="1" end="5" varStatus="status">
-			    <div class="col-lg-2">
-			    	<c:forEach begin="1" end="2">
-					  	<div class="row">
-					  		<div class="col-lg-12">
-							    <a href="${ contextPath }/brand.do" class="thumbnail">
-							      <img style="width: 100%; height: 130px;" alt="브랜드 배너 영역 ${ status.count }">
-							    </a>
-					  		</div>
-					  	</div>
-					  	<br />
-			    	</c:forEach>
-				  </div>
-		   	</c:forEach>
-		</div>
+   	</c:forEach>
+	  <div class="col-lg-1">
+	  	<a href="#" class="slidesjs-next slidesjs-navigation"><i class="icon-chevron-right icon-3x"></i></a>
+	  </div>
 	</div>
-</div>
-		  <div class="col-lg-1">
-		  	<a href="#" class="slidesjs-next slidesjs-navigation"><i class="icon-chevron-right icon-3x"></i></a>
-		  </div>
-		</div>
-<hr />
+	<hr />
 </section>
 	
 

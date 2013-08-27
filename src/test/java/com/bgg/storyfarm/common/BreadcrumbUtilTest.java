@@ -11,13 +11,15 @@ public class BreadcrumbUtilTest {
 	Logger logger = LoggerFactory.getLogger(BreadcrumbUtilTest.class);
 	@Test
 	public void test() {
-		testInt(1, 2, 3, 4);
-		testString("one", "two", "three", "four");
+	}
+	
+	public void testString(){
+		logger.info("정기석");
 	}
 	
 	private void testInt(int... numbers){
 	   for (int i = 0; i < numbers.length; i++){
-		   logger.info("{}", numbers[i]);
+		   logger.info("wtf {}", numbers[i]);
 	   }
 	}
 	
