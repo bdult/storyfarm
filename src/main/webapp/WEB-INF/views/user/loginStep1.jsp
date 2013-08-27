@@ -35,7 +35,8 @@
 					      <button class="btn btn-info pull-right">로그인</button>
 						  </div>
 						  <div class="form-group">
-					      <a href="${ contextPath }/cs/find.do">아이디/비밀번호 찾기</a>
+					      <a href="${ contextPath }/findId.do">아이디 찾기</a><br>
+					      <a href="${ contextPath }/findPwd.do">비밀번호 찾기</a>
 						  </div>
 						  <c:if test="${ msg == 'login_fail' }">로그인 실패</c:if>
 						</form>

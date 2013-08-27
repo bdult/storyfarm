@@ -56,6 +56,7 @@ public class UserController {
 		}
 	}
 
+
 	@RequestMapping(value = "logout.do", method = RequestMethod.GET)
 	public String logout(Model model, HttpServletRequest request, HttpSession session) {
 		logger.info("logout.do");
@@ -67,28 +68,6 @@ public class UserController {
 		return "view/dashboard";
 	}
 
-	// @RequestMapping(value = "loginStep2.do", method = RequestMethod.GET)
-	// public ModelAndView loginStep2(@RequestParam Map<String,Object> paramMap,
-	// HttpServletRequest request, HttpSession session) {
-	//
-	// ModelAndView mav = new ModelAndView();
-	//
-	//
-	// HashMap<String, String> sessionMap = (HashMap<String,
-	// String>)viewService.getUserData(paramMap);
-	//
-	// session.setAttribute("login_session", sessionMap);
-	//
-	// if(session.getAttribute("login_session") == null)
-	// {
-	// session.invalidate();
-	// mav.addObject("msg", "login_fail");
-	// mav.setViewName("user/loginStep1");
-	// }else{
-	// mav.setViewName("user/loginStep2");
-	// }
-	// return mav;
-	// }
 
 	@RequestMapping(value = "leave.do", method = RequestMethod.GET)
 	public String leave(Model model) {
@@ -111,4 +90,51 @@ public class UserController {
 		return mav;
 	}
 
+	@RequestMapping(value = "joinStep3.do", method = RequestMethod.GET)
+	public ModelAndView joinStep3(Model model) {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("user/joinStep3");
+		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_REGISTER));
+		return mav;
+	}
+	
+	@RequestMapping(value = "findId.do", method = RequestMethod.GET)
+	public ModelAndView findId(Model model) {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("user/findId");
+		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_FINDID));
+		return mav;
+	}
+
+	@RequestMapping(value = "findIdFail.do", method = RequestMethod.GET)
+	public ModelAndView findIdFail(Model model) {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("user/findIdFail");
+		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_FINDID_FAIL));
+		return mav;
+	}
+
+	@RequestMapping(value = "findIdResult.do", method = RequestMethod.GET)
+	public ModelAndView findIdResult(Model model) {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("user/findIdResult");
+		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_FINDID_RESULT));
+		return mav;
+	}
+	
+	@RequestMapping(value = "findPwd.do", method = RequestMethod.GET)
+	public ModelAndView findPwd(Model model) {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("user/findPwd");
+		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_FINDPWD));
+		return mav;
+	}
+	
+	@RequestMapping(value = "findPwdResult.do", method = RequestMethod.GET)
+	public ModelAndView findPwdResult(Model model) {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("user/findPwdResult");
+		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_FINDPWD_RESULT));
+		return mav;
+	}
 }

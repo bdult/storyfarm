@@ -118,11 +118,5 @@ public class UserServiceTest {
 		logger.info("{}", userDTO);
 	}
 	
-	
-	@Test
-	public void testInsertBoard() {
-		logger.info("게시판 생성 테스트 입니다.");
-		
-	}
 }
 	

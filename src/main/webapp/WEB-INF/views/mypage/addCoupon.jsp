@@ -2,13 +2,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <div class="row">
-	<div class="col-lg-12">
-		문의하기<br>
-		스토리팜 이용쿠폰 등록 및 등록 내역을 확인 하실 수 있습니다.<br><br>
-	</div>
 	<div class="well">
 		<div class="col-lg-12">
-			스토리팜 쿠폰등록<br><br>
+			쿠폰등록<br><br>
 		</div>
 		<div class="col-lg-12">
 			<div class="row">

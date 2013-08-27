@@ -3,7 +3,7 @@
     
 <div class="row">
 	<div class="col-lg-12 text-center">
-		부모방<br>
+		회원탈퇴 완료<br>
 		Enjoy  whenever our contents<br><br>
 	</div>
 </div>

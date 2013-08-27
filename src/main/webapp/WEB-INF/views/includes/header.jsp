@@ -15,6 +15,7 @@
 	 				</c:otherwise>
 	 			</c:choose>
 	 			<a href="${ contextPath }/joinStep1.do" class="btn btn-default">회원가입</a>
+	 			<a href="${ contextPath }/mypage/info.do" class="btn btn-default">마이페이지</a>
 	 			<a href="${ contextPath }/children/room.do" class="btn btn-default">자녀방</a>
 	 			<a href="${ contextPath }/parents/room.do" class="btn btn-default">부모방</a>
 	 			<span id="headerBoxBtn" data-toggle="tooltip" data-placement="right" class="btn btn-success"><i class="icon-chevron-down"></i></span>
@@ -70,7 +71,7 @@
 	 			<a href="${ contextPath }/contentslist.do" class="btn btn-default">동요</a>
 	 			<a href="${ contextPath }/contentslist.do" class="btn btn-default">동화</a>
 	 			<a href="${ contextPath }/contentslist.do" class="btn btn-default">생활</a>
-	 			<a href="#" class="btn btn-warning">스토리팜소개</a>
+	 			<a href="${ contextPath }/introduce/storyfarmIntro.do" class="btn btn-warning">스토리팜소개</a>
 	 			<a href="#" class="btn btn-warning">이벤트</a>
 	 		</div>
  			<div class="pull-right col-lg-2">

@@ -134,7 +134,7 @@
 		</div>
 		<div class="row">
 			<div class="col-lg-12 text-center">
-				<a class="btn btn-default">가입하기</a>
+				<a class="btn btn-default" href="${ contextPath }/joinStep3.do">가입하기</a>
 				<a class="btn btn-default">취소</a>
 			</div>
 		</div>
