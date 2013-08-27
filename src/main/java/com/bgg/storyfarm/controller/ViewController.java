@@ -51,6 +51,46 @@ public class ViewController {
 		return mav;
 	}
 	
+	@RequestMapping(value = "about.do", method = RequestMethod.GET)
+	public ModelAndView about(Model model) {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("view/about");
+		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(
+				StoryfarmConstants.BREADCRUMB_HOME,
+				StoryfarmConstants.BREADCRUMB_ABOUT));
+		return mav;
+	}
+	
+	@RequestMapping(value = "serviceRules.do", method = RequestMethod.GET)
+	public ModelAndView serviceRules(Model model) {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("view/serviceRules");
+		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(
+				StoryfarmConstants.BREADCRUMB_HOME,
+				StoryfarmConstants.BREADCRUMB_SERVICERULES));
+		return mav;
+	}
+	
+	@RequestMapping(value = "privacyRules.do", method = RequestMethod.GET)
+	public ModelAndView privacyRules(Model model) {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("view/privacyRules");
+		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(
+				StoryfarmConstants.BREADCRUMB_HOME,
+				StoryfarmConstants.BREADCRUMB_PRIVACYRULES));
+		return mav;
+	}
+	
+	@RequestMapping(value = "sitemap.do", method = RequestMethod.GET)
+	public ModelAndView sitemap(Model model) {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("view/sitemap");
+		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(
+				StoryfarmConstants.BREADCRUMB_HOME,
+				StoryfarmConstants.BREADCRUMB_SITEMAP));
+		return mav;
+	}
+	
 	@RequestMapping(value = "play.do", method = RequestMethod.GET)
 	public String play(Model model) {
 		return "view/play";

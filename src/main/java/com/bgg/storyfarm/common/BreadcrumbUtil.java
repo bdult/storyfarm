@@ -104,6 +104,18 @@ public class BreadcrumbUtil {
 			case StoryfarmConstants.BREADCRUMB_PARENTS_MONTHLY:
 				this.setBreadcrumbMap("월별학습현황", "/parents/monthly.do");
 				break;
+			case StoryfarmConstants.BREADCRUMB_ABOUT:
+				this.setBreadcrumbMap("회사소개", "/about.do");
+				break;
+			case StoryfarmConstants.BREADCRUMB_SERVICERULES:
+				this.setBreadcrumbMap("이용약관", "/serviceRules.do");
+				break;
+			case StoryfarmConstants.BREADCRUMB_PRIVACYRULES:
+				this.setBreadcrumbMap("개인정보취급방침", "/privacyRules.do");
+				break;
+			case StoryfarmConstants.BREADCRUMB_SITEMAP:
+				this.setBreadcrumbMap("사이트맵", "/sitemap.do");
+				break;
 			default:
 				break;
 			}

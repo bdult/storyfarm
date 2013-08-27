@@ -4,7 +4,7 @@
 <header>
 	<div class="container">
 	 	<div class="row">
-	 		<div class="col-lg-12">
+	 		<div class="col-md-12">
 	 			<div class="pull-right">
 	 			<c:choose>
 	 				<c:when test="${ login_session == null }">
@@ -24,9 +24,10 @@
 	 		</div>
 	 	</div>
 	 	
+	 	<div id="headerBox" style="display: none;">
 	 	<c:choose>
 	 		<c:when test="${ login_session != null }">
-	 			<div class="col-lg-12 text-center">
+	 			<div class="col-md-12 text-center">
 	 				<div class="row well">
 	 				<a class="btn btn-default">학습레벨: ${ "?단계" }</a>
 	 				<a class="btn btn-default">칭찬스티커: ${ "?개" }</a>
@@ -40,16 +41,16 @@
 	 		<c:when test="${ msg == 'login_fail' }">
 	 		</c:when>
 	 		<c:otherwise>
-	 			<div class="col-lg-12 text-center">
+	 			<div class="col-md-12 text-center">
 	 				<div class="row well">
 					<form role="form" method="post" action="${ contextPath }/loginStep2.do">
-	 					<div class="col-lg-3 col-lg-offset-2">
+	 					<div class="col-md-3 col-md-offset-2">
 						<input type="text" class="form-control" name="id" placeholder="아이디"> 
 	 					</div>
-	 					<div class="col-lg-3">
+	 					<div class="col-md-3">
 						<input type="text" class="form-control" name="pwd" placeholder="비밀번호">
 	 					</div>
-	 					<div class="col-lg-1">
+	 					<div class="col-md-1">
 						<button class="btn btn-info pull-right">로그인</button>
 	 					</div>
 					</form>
@@ -57,11 +58,12 @@
 				</div>
 	 		</c:otherwise>
 	 	</c:choose>
+	 	</div>
 	 	
 	 	<br />
 	 	
 	 	<div class="row">
-	 		<div class="col-lg-10">
+	 		<div class="col-md-10">
 	 			<a href="${ contextPath }/" class="btn btn-info btn-lg">Story Farm</a>
 	 			<a href="${ contextPath }/contentslist.do" class="btn btn-default">국어</a>
 	 			<a href="${ contextPath }/contentslist.do" class="btn btn-default">영어</a>
@@ -74,7 +76,7 @@
 	 			<a href="${ contextPath }/introduce/storyfarmIntro.do" class="btn btn-warning">스토리팜소개</a>
 	 			<a href="#" class="btn btn-warning">이벤트</a>
 	 		</div>
- 			<div class="pull-right col-lg-2">
+ 			<div class="pull-right col-md-2">
 		    <div class="input-group" style="margin-top: 5px;">
 		      <input type="text" class="form-control">
 		      <span class="input-group-btn">
@@ -84,9 +86,10 @@
 		  </div>
 	 	</div>
 	
+		<br />
 		<!-- breadcrumb/ -->
 		<div class="row">
-			<div class="col-lg-12">
+			<div class="col-md-12">
 				<ol class="breadcrumb">
 					<c:forEach items="${ breadcrumbs }" var="obj" varStatus="status">
 						<c:choose>
