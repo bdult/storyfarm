@@ -3,7 +3,8 @@
 
 <div class="row">
 	<div class="col-lg-12">
-		<h4>서비스이용현황</h4>
+		<h4>과거 이용내역</h4><br>
+		<a href="${ contextPath }/mypage/purchasingInfo.do" class="btn btn-default">현재이용내역</a>
 	</div>
 </div>
 

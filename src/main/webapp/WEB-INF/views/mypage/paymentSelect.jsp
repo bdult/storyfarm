@@ -259,7 +259,7 @@
 </div>
 <div class="row">
 	<div class="col-lg-12 text-center">
-		<a class="btn btn-default">결제하기</a>
+		<a class="btn btn-default" href="${ contextPath }/mypage/paymentResult.do">결제하기</a>
 		<a class="btn btn-default">이전페이지</a>
 	</div>
 </div>
