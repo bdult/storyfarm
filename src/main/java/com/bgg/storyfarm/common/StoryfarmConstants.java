@@ -8,16 +8,29 @@ public class StoryfarmConstants {
 
 	//BREADCRUMB LIST
 	public final static int BREADCRUMB_HOME = 100;
-	public final static int BREADCRUMB_LOGIN = 101;
-	public final static int BREADCRUMB_REGISTER = 111;
-	public final static int BREADCRUMB_REGISTER_AGREE = 111;
 	
-	public final static int BREADCRUMB_CSCENTER = 201;
-	public final static int BREADCRUMB_CSCENTER_NOTI = 202;
+	public final static int BREADCRUMB_LOGIN = 200;
+	public final static int BREADCRUMB_FINDID = 210;
+	public final static int BREADCRUMB_FINDID_RESULT = 211;
+	public final static int BREADCRUMB_FINDID_FAIL = 212;
+	public final static int BREADCRUMB_FINDPWD = 220;
+	public final static int BREADCRUMB_FINDPWD_RESULT = 221;
 	
-	public final static int BREADCRUMB_CHILDREN_ROOM = 300;
+	public final static int BREADCRUMB_REGISTER = 300;
+	public final static int BREADCRUMB_JOINTEP2 = 310;
+	public final static int BREADCRUMB_JOINTEP3 = 320;
 	
-	public final static int BREADCRUMB_PARENTS_ROOM = 400;
+	public final static int BREADCRUMB_STORYFARM_INTRO = 410;
+	public final static int BREADCRUMB_PUBLISHER_INTRO = 420;
+	public final static int BREADCRUMB_PARENTSROOM_INTRO = 430;
+	public final static int BREADCRUMB_PAYMENT_INFO = 440;
+	
+	public final static int BREADCRUMB_CSCENTER = 501;
+	public final static int BREADCRUMB_CSCENTER_NOTI = 502;
+	
+	public final static int BREADCRUMB_CHILDREN_ROOM = 600;
+	
+	public final static int BREADCRUMB_PARENTS_ROOM = 700;
 	
 	
 	//BOARD

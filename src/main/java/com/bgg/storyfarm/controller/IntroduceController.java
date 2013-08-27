@@ -21,7 +21,7 @@ public class IntroduceController {
 	public ModelAndView storyfarmIntro(Model model) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("side-introduce/storyfarmIntro");
-		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_REGISTER));
+		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_STORYFARM_INTRO));
 		return mav;
 	}
 	
@@ -29,7 +29,7 @@ public class IntroduceController {
 	public ModelAndView publisherIntro(Model model) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("side-introduce/publisherIntro");
-		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_REGISTER));
+		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_PUBLISHER_INTRO));
 		return mav;
 	}
 	
@@ -37,7 +37,7 @@ public class IntroduceController {
 	public ModelAndView parentsroomIntro(Model model) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("side-introduce/parentsroomIntro");
-		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_REGISTER));
+		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_PARENTSROOM_INTRO));
 		return mav;
 	}
 	
@@ -45,7 +45,7 @@ public class IntroduceController {
 	public ModelAndView paymentInfo(Model model) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("side-introduce/paymentInfo");
-		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_REGISTER));
+		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_PAYMENT_INFO));
 		return mav;
 	}
 }

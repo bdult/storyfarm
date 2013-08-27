@@ -35,14 +35,41 @@ public class BreadcrumbUtil {
 			case StoryfarmConstants.BREADCRUMB_LOGIN:
 				this.setBreadcrumbMap("로그인", "/login.do");
 				break;
+			case StoryfarmConstants.BREADCRUMB_FINDID:
+				this.setBreadcrumbMap("아이디 찾기", "/findId.do");
+				break;
+			case StoryfarmConstants.BREADCRUMB_FINDID_RESULT:
+				this.setBreadcrumbMap("아이디 찾기 결과", "/findIdResult.do");
+				break;
+			case StoryfarmConstants.BREADCRUMB_FINDID_FAIL:
+				this.setBreadcrumbMap("아이디 찾기 없음", "/findIdFail.do");
+				break;
+			case StoryfarmConstants.BREADCRUMB_FINDPWD:
+				this.setBreadcrumbMap("비밀번호 찾기", "/findPwd.do");
+				break;
+			case StoryfarmConstants.BREADCRUMB_FINDPWD_RESULT:
+				this.setBreadcrumbMap("비밀번호 찾기 결과", "/findPwdResult.do");
+				break;
 			case StoryfarmConstants.BREADCRUMB_REGISTER:
 				this.setBreadcrumbMap("회원가입", "/register.do");
+				break;
+			case StoryfarmConstants.BREADCRUMB_STORYFARM_INTRO:
+				this.setBreadcrumbMap("스토리팜 소개", "/introduce/storyfarmIntro.do");
+				break;
+			case StoryfarmConstants.BREADCRUMB_PUBLISHER_INTRO:
+				this.setBreadcrumbMap("제휴출판사 소개", "/introduce/publisherIntro.do");
+				break;
+			case StoryfarmConstants.BREADCRUMB_PARENTSROOM_INTRO:
+				this.setBreadcrumbMap("부모방 소개", "/introduce/storyfarmIntro.do");
+				break;
+			case StoryfarmConstants.BREADCRUMB_PAYMENT_INFO:
+				this.setBreadcrumbMap("유료서비스 안내", "/introduce/storyfarmIntro.do");
 				break;
 			case StoryfarmConstants.BREADCRUMB_CSCENTER_NOTI:
 				this.setBreadcrumbMap("공지사항", "/cscenter/notice.do");
 				break;
 			case StoryfarmConstants.BREADCRUMB_CSCENTER:
-				this.setBreadcrumbMap("고객센터", "/cscenter.do");
+				this.setBreadcrumbMap("고객센터", "/cscenter/notice.do");
 				break;
 			case StoryfarmConstants.BREADCRUMB_CHILDREN_ROOM:
 				this.setBreadcrumbMap("자녀방", "/children/room.do");

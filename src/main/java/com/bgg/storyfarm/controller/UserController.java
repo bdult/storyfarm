@@ -102,7 +102,7 @@ public class UserController {
 	public ModelAndView findId(Model model) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("user/findId");
-		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_REGISTER));
+		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_FINDID));
 		return mav;
 	}
 
@@ -110,7 +110,7 @@ public class UserController {
 	public ModelAndView findIdFail(Model model) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("user/findIdFail");
-		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_REGISTER));
+		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_FINDID_FAIL));
 		return mav;
 	}
 
@@ -118,7 +118,7 @@ public class UserController {
 	public ModelAndView findIdResult(Model model) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("user/findIdResult");
-		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_REGISTER));
+		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_FINDID_RESULT));
 		return mav;
 	}
 	
@@ -126,7 +126,7 @@ public class UserController {
 	public ModelAndView findPwd(Model model) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("user/findPwd");
-		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_REGISTER));
+		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_FINDPWD));
 		return mav;
 	}
 	
@@ -134,7 +134,7 @@ public class UserController {
 	public ModelAndView findPwdResult(Model model) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("user/findPwdResult");
-		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_REGISTER));
+		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_FINDPWD_RESULT));
 		return mav;
 	}
 }
