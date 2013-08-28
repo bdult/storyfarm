@@ -18,6 +18,13 @@ public class BoardDao extends SqlSessionDaoSupport {
 		return (List<Map<String, Object>>)getSqlSession().selectList("boardQuery.boards");
 	}
 	
+	/** 게시판 글 전체갯수
+	 * @return
+	 */
+	public int count(Map<String, Object> boardMap) {
+		return (Integer)getSqlSession().selectOne("boardQuery.count", boardMap);
+	}
+	
 	/** 게시판 글 목록 조회
 	 * @return
 	 */

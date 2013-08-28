@@ -1,105 +1,73 @@
-//package com.bgg.storyfarm.common;
-//
-//import java.util.ArrayList;
-//import java.util.List;
-//import java.util.Map;
-//
-//import org.springframework.stereotype.Component;
-//
-//@Component
-//public class PageUtil {
-//
-//	private int pageSize = 10; // 한 화면에 보여질 **페이지** 갯수
-//	private int perPage = 15; // 한 페이지에 보여질 **글** 갯수
-//
-//	public int getPerPage() {
-//		return perPage;
-//	}
-//
-//	public int getTotalPageCnt(int totalCnt) {
-//		return ((totalCnt - 1) / perPage) + 1;
-//	}
-//
-//	public int getFirstPageNum(int pageNum) {
-//		// ( (페이지 번호 -1) / 총 페이지 사이즈 ) * 총 페이지 사이즈 + 1
-//		return ((pageNum - 1) / pageSize) * pageSize + 1;
-//	}
-//
-//	public int getLastPageNum(int fistPageNum) {
-//		// 시작 페이지 번호 + 페이지 총 사이즈 -1
-//		return (fistPageNum + pageSize) - 1;
-//	}
-//
-//	public int getStartRowNum(int pageNum, int perPage) {
-//		return (pageNum - 1) * perPage;
-//	}
-//
-//	public PageLinkDTO setPageLinkDTO(int totalCnt, int pageNum) {
-//		PageLinkDTO pageLink = new PageLinkDTO();
-//		int firstPageNum = this.getFirstPageNum(pageNum);
-//		int lastPageNum = this.getLastPageNum(firstPageNum);
-//		int totalPage = this.getTotalPageCnt(totalCnt);
-//
-//		lastPageNum = totalPage < lastPageNum ? totalPage : lastPageNum;
-//
-//		List<CommonDTO> pageList = new ArrayList<CommonDTO>();
-//		for (int pageNumSeq = firstPageNum; pageNumSeq <= lastPageNum; pageNumSeq++) {
-//			CommonDTO pageDTO = new CommonDTO();
-//			pageDTO.setPageNum(pageNumSeq);
-//			pageList.add(pageDTO);
-//		}
-//
-//		pageLink.setTotalCnt(totalCnt);
-//		pageLink.setPageList(pageList);// 페이지 리스트
-//		pageLink.setPageNum(pageNum); // 현재 페이지 번호
-//
-//		// 1페이지가 아니라면
-//		if (1 != firstPageNum) {
-//			pageLink.setPagePrev(firstPageNum - 1); // 이전
-//		}
-//		// 마지막 페이지 리스트가 아니라면
-//		if (totalPage != lastPageNum) {
-//			pageLink.setPageNext(lastPageNum + 1); // 다음
-//		}
-//		return pageLink;
-//	}
-//	
-//	public Map<String, int> setPageLinkDTO(int totalCnt, int pageNum) {
-//		
-//		Map<String, String> paginationMap = new Map<String, String>();
-//		paginationMap.put("", 0);
-//		private int totalCnt = 0;
-//		private int pageNum = 1;
-//		private int pagePrev;
-//		private int pageNext;
-//		private List<CommonDTO> pageList;
-//		
-//		PageLinkDTO pageLink = new PageLinkDTO();
-//		int firstPageNum = this.getFirstPageNum(pageNum);
-//		int lastPageNum = this.getLastPageNum(firstPageNum);
-//		int totalPage = this.getTotalPageCnt(totalCnt);
-//		
-//		lastPageNum = totalPage < lastPageNum ? totalPage : lastPageNum;
-//		
-//		List<CommonDTO> pageList = new ArrayList<CommonDTO>();
-//		for (int pageNumSeq = firstPageNum; pageNumSeq <= lastPageNum; pageNumSeq++) {
-//			CommonDTO pageDTO = new CommonDTO();
-//			pageDTO.setPageNum(pageNumSeq);
-//			pageList.add(pageDTO);
-//		}
-//		
-//		pageLink.setTotalCnt(totalCnt);
-//		pageLink.setPageList(pageList);// 페이지 리스트
-//		pageLink.setPageNum(pageNum); // 현재 페이지 번호
-//		
-//		// 1페이지가 아니라면
-//		if (1 != firstPageNum) {
-//			pageLink.setPagePrev(firstPageNum - 1); // 이전
-//		}
-//		// 마지막 페이지 리스트가 아니라면
-//		if (totalPage != lastPageNum) {
-//			pageLink.setPageNext(lastPageNum + 1); // 다음
-//		}
-//		return pageLink;
-//	}
-//}
+package com.bgg.storyfarm.common;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.stereotype.Component;
+
+@Component
+public class PageUtil {
+
+	//key name
+	public static final String ROWNUM_KEY = "rownum";
+	public static final String PER_KEY = "perpage"; 
+	
+	public static final int PAGE_NUM = 1; // 기본 페이지 번호
+	public static final int PAGE_SIZE = 5; // 한 화면에 보여질 **페이지** 갯수
+	public static final int PER_PAGE = 2; // 한 페이지에 보여질 **글** 갯수
+
+	public int getPerPage() {
+		return PER_PAGE;
+	}
+
+	public int getTotalPageCnt(int totalCnt) {
+		return ((totalCnt - 1) / PER_PAGE) + 1;
+	}
+
+	public int getFirstPageNum(int pageNum) {
+		// ( (페이지 번호 -1) / 총 페이지 사이즈 ) * 총 페이지 사이즈 + 1
+		return ((pageNum - 1) / PAGE_SIZE) * PAGE_SIZE + 1;
+	}
+
+	public int getLastPageNum(int fistPageNum) {
+		// 시작 페이지 번호 + 페이지 총 사이즈 -1
+		return (fistPageNum + PAGE_SIZE) - 1;
+	}
+
+	public int getStartRowNum(int pageNum, int perPage) {
+		return (pageNum - 1) * perPage;
+	}
+
+	public Map<String, Object> setPageLinkDTO(int totalCnt, int pageNum) {
+		Map<String, Object> pageLinkMap = new HashMap<String, Object>();
+		int firstPageNum = this.getFirstPageNum(pageNum);
+		int lastPageNum = this.getLastPageNum(firstPageNum);
+		int totalPage = this.getTotalPageCnt(totalCnt);
+
+		lastPageNum = totalPage < lastPageNum ? totalPage : lastPageNum;
+
+		List<Map<String, String>> pageList = new ArrayList<Map<String, String>>();
+		for (int pageNumSeq = firstPageNum; pageNumSeq <= lastPageNum; pageNumSeq++) {
+			Map<String, String> pageMap = new HashMap<String, String>();
+			pageMap.put("pageNum", pageNumSeq + "");
+			pageList.add(pageMap);
+		}
+
+		pageLinkMap.put("totalCnt", totalCnt);
+		pageLinkMap.put("pageList", pageList);// 페이지 리스트
+		pageLinkMap.put("pageNum", pageNum);// 현재 페이지 번호
+
+		// 1페이지가 아니라면
+		if (1 != firstPageNum) {
+			pageLinkMap.put("pagePrev", firstPageNum - 1);// 이전
+		}
+		// 마지막 페이지 리스트가 아니라면
+		if (totalPage != lastPageNum) {
+			pageLinkMap.put("pageNext", lastPageNum + 1);// 다음
+		}
+		return pageLinkMap;
+	}
+	
+}

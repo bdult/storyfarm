@@ -20,5 +20,21 @@
 				</tr>
 			</c:forEach>
 		</table>
+		
+		<c:if test="${ not empty pageLink }">
+		<div class="text-center">
+			<ul class="pagination">
+				<c:if test="${ not empty pageLink.pagePrev }">
+				<li><a href="${ contextPath }/cscenter/notice.do?pageNum=${ pageLink.pagePrev }${ empty search.search? '' : search.search }">Prev</a></li>
+				</c:if>
+				<c:forEach items="${ pageLink.pageList }" var="page" >
+				<li data-page-num="${ page.pageNum }"><a href="${ contextPath }/cscenter/notice.do?pageNum=${ page.pageNum }${ empty search.search? '' : search.search }">${ page.pageNum }</a></li>
+				</c:forEach>
+				<c:if test="${ not empty pageLink.pageNext }">
+				<li><a href="${ contextPath }/cscenter/notice.do?pageNum=${ pageLink.pageNext }${ empty search.search? '' : search.search }">Next</a></li>
+				</c:if>
+			</ul>
+		</div>
+		</c:if>
 	</div>
 </div>

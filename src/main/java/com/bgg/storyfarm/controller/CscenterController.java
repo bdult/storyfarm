@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.bgg.storyfarm.common.BreadcrumbUtil;
+import com.bgg.storyfarm.common.PageUtil;
 import com.bgg.storyfarm.common.StoryfarmConstants;
 import com.bgg.storyfarm.service.BoardService;
 
@@ -29,16 +30,16 @@ public class CscenterController {
 	private final int NOTI_BOARD_ID = 25; //공지사항
 	private final int EVENT_BOARD_ID = 24; //이벤트
 	
-	//페이징 TODO : 상수처리?
-	private final String ROWNUM = "rownum"; //key name
-	private final int START_ROWNUM = 0; //시작글 번호
-	private final int PER_PAGE = 15; //글 목록 갯수
+	private int pageNum = 1; //시작글 번호
 	
 	@Autowired
 	private BreadcrumbUtil breadcrumbUtil;
 
 	@Autowired
 	private BoardService boardService;
+	
+	@Autowired
+	private PageUtil pageUtil;
 	
 	@RequestMapping(value = "notice.do", method = RequestMethod.GET)
 	public ModelAndView notice(@RequestParam Map<String, Object> paramsMap) {
@@ -50,18 +51,28 @@ public class CscenterController {
 				StoryfarmConstants.BREADCRUMB_CSCENTER_NOTI));
 		
 		Map<String, Object> boardMap = new HashMap<String, Object>();
-		boardMap.put(StoryfarmConstants.BOARD_ID, NOTI_BOARD_ID); //임시 공지사항 게시판 아이디
-		// 컨텐츠 가져오기
-		String pageNum = paramsMap.get("pageNum").toString();
+		boardMap.put(StoryfarmConstants.BOARD_ID, NOTI_BOARD_ID);
 		
-		int rowNum = 0;
 		Object obj = paramsMap.get("pageNum");
 		if(obj != null){
-			rowNum = Integer.valueOf(obj.toString());
+			try {
+				pageNum = Integer.valueOf(obj.toString());
+			} catch (NumberFormatException nfe) {
+				nfe.printStackTrace();
+			}
 		}
-		boardMap.put(ROWNUM, (rowNum - 1) * PER_PAGE); 
+		if(pageNum <= 1){
+			pageNum = 1;
+		}
+		boardMap.put(PageUtil.ROWNUM_KEY, (pageNum - 1) * PageUtil.PER_PAGE);
+		boardMap.put(PageUtil.PER_KEY, PageUtil.PER_PAGE);
+		
 		List<Map<String, Object>> noticeList = boardService.list(boardMap);
 		mav.addObject("noticeList", noticeList);
+		
+		int totalCnt = boardService.totalCount(boardMap);
+		Map<String, Object> pageLinkMap = pageUtil.setPageLinkDTO(totalCnt, pageNum);
+		mav.addObject("pageLink", pageLinkMap);
 		
 		return mav;
 	}

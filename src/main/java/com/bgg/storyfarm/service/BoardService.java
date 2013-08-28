@@ -24,6 +24,15 @@ public class BoardService {
 		
 		return boardDao.list(boardMap);
 	}
+	
+	/** 게시판 전체 글 갯수 조회
+	 * @param boardMap { StoryfarmConstants.BOARD_ID 필수 }
+	 * @return List
+	 */
+	public int totalCount(Map<String, Object> boardMap) {
+		
+		return boardDao.count(boardMap);
+	}
 
 	/** 게시판 글 상세보기
 	 * @param contentsId

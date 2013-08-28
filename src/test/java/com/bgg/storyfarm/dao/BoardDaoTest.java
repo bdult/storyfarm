@@ -61,6 +61,23 @@ public class BoardDaoTest {
 		assertThat(boardList.size(), is(not(0)));
 	}
 	
+	//게시판 글목록 가져오기
+	@Test
+	public void testCount() {
+		
+		//given
+		Map<String, Object> boardMap = new HashMap<String, Object>();
+		boardMap.put(StoryfarmConstants.BOARD_ID, "11");
+		//페이징 처리시 파라미터 추가
+		//boardMap.put(StoryfarmConstants.BOARD_PAGE, "1");
+		
+		//when
+		int count = boardDao.count(boardMap);
+		
+		//than
+		assertThat(count, is(not(0)));
+	}
+	
 	//게시판 글 생성 테스트 입니다.
 	@Test
 	public void testCreate() {

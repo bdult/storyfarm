@@ -21,9 +21,23 @@
         BG_BOARD_MASTER.board_id = #{ board_id }
     AND
         BG_BOARD_MASTER.board_id = BG_BOARD_CONTENTS.board_id
-    <if test="pageNum gt 0">
-        LIMIT #{ startRownum }, #{ perPage }
-    </if>
+    LIMIT #{ rownum }, #{ perpage }
+    </select>
+    
+    <select id="count" resultType="int" parameterType="hashmap">
+    SELECT /* boardQuery.count */
+        count(*)
+    FROM
+    (
+        SELECT
+            BG_BOARD_CONTENTS.*
+        FROM
+            BG_BOARD_CONTENTS, BG_BOARD_MASTER
+        WHERE 
+            BG_BOARD_MASTER.board_id = #{ board_id }
+        AND
+            BG_BOARD_CONTENTS.board_id = BG_BOARD_MASTER.board_id
+    ) TMP
     </select>
 
     <select id="detail" resultType="hashmap" parameterType="hashmap">
