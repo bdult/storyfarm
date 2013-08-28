@@ -14,25 +14,15 @@
 	</div>
 </div>
 
-<div class="row">
-	<div class="col-md-3">
-		<a href="${ contextPath }/children/player.do" class="thumbnail">
-    	<img src="http://bigstarglobal.cafe24.com/data/file/product/1988317226_RUS2wCKt_product_abc_productThumb.jpg" alt="썸네일" />
-    </a>
-	</div>
-	<div class="col-md-3">
-		<a href="${ contextPath }/children/player.do" class="thumbnail">
-    	<img src="http://bigstarglobal.cafe24.com/data/file/product/1988317226_RUS2wCKt_product_abc_productThumb.jpg" alt="썸네일" />
-    </a>
-	</div>
-	<div class="col-md-3">
-		<a href="${ contextPath }/children/player.do" class="thumbnail">
-    	<img src="http://bigstarglobal.cafe24.com/data/file/product/1988317226_RUS2wCKt_product_abc_productThumb.jpg" alt="썸네일" />
-    </a>
-	</div>
-	<div class="col-md-3">
-		<a href="${ contextPath }/children/player.do" class="thumbnail">
-    	<img src="http://bigstarglobal.cafe24.com/data/file/product/1988317226_RUS2wCKt_product_abc_productThumb.jpg" alt="썸네일" />
-    </a>
-	</div>
-</div>
+<c:forEach var="movieList" items="${movieList}" varStatus="status">
+	<tr>
+		<td>
+			<div class="col-md-3">
+				<a href="${ contextPath }/children/player.do?contents_id=${ movieList.CONTENTS_ID }" class="thumbnail">
+					<img src="http://bigstarglobal.cafe24.com/data/file/product/1988317226_RUS2wCKt_product_abc_productThumb.jpg" alt="썸네일" />
+					${movieList.CONTENTS_NM}
+				</a>
+			</div>
+		</td>
+	</tr>
+</c:forEach>

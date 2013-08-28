@@ -9,14 +9,15 @@
 
 <!-- CSS/ -->
 <link rel="stylesheet" type="text/css" href="${ contextPath }/css/imgareaselect-default.css" />
+<link rel="stylesheet" href="${ contextPath }/js/flowplayer/skin/minimalist.css">
 <!-- /CSS -->
 
 <!-- JS/ -->
 <script src="//code.jquery.com/jquery.js"></script>
 <script src="${ contextPath }/js/jquery.imgareaselect.pack.js"></script>
 <script src="${ contextPath }/js/jquery.slides.min.js"></script>
+<script src="${ contextPath }/js/flowplayer/flowplayer.min.js"></script>
 <!-- /JS -->
-
 
 
 
