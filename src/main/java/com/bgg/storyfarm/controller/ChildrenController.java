@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.bgg.storyfarm.common.BreadcrumbUtil;
@@ -61,4 +62,10 @@ public class ChildrenController {
 		
 		return mav;
 	}
+	
+	@RequestMapping(value = "stat.do", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
+	public @ResponseBody String stat(@RequestParam Map<String, Object> paramMap) {
+		return "aaaa";
+	}
+	
 }
