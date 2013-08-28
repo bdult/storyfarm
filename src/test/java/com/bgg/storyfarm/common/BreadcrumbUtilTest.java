@@ -1,6 +1,7 @@
 package com.bgg.storyfarm.common;
 
-import static org.junit.Assert.*;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.junit.Test;
 import org.slf4j.Logger;
@@ -8,7 +9,7 @@ import org.slf4j.LoggerFactory;
 
 public class BreadcrumbUtilTest {
 
-	Logger logger = LoggerFactory.getLogger(BreadcrumbUtilTest.class);
+	static Logger logger = LoggerFactory.getLogger(BreadcrumbUtilTest.class);
 	@Test
 	public void test() {
 	}
@@ -27,6 +28,10 @@ public class BreadcrumbUtilTest {
 		for (int i = 0; i < strings.length; i++){
 			logger.info("{}", strings[i]);
 		}
+	}
+	
+	public static void main(String[] args){
+		
 	}
 
 }

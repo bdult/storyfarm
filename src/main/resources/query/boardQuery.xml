@@ -17,17 +17,36 @@
         BG_BOARD_CONTENTS.*
     FROM
         BG_BOARD_CONTENTS, BG_BOARD_MASTER
-    WHERE
+    WHERE 
         BG_BOARD_MASTER.board_id = #{ board_id }
+    AND
+        BG_BOARD_MASTER.board_id = BG_BOARD_CONTENTS.board_id
+    LIMIT #{ rownum }, #{ perpage }
+    </select>
+    
+    <select id="count" resultType="int" parameterType="hashmap">
+    SELECT /* boardQuery.count */
+        count(*)
+    FROM
+    (
+        SELECT
+            BG_BOARD_CONTENTS.*
+        FROM
+            BG_BOARD_CONTENTS, BG_BOARD_MASTER
+        WHERE 
+            BG_BOARD_MASTER.board_id = #{ board_id }
+        AND
+            BG_BOARD_CONTENTS.board_id = BG_BOARD_MASTER.board_id
+    ) TMP
     </select>
 
     <select id="detail" resultType="hashmap" parameterType="hashmap">
     SELECT
-        contents_id,
-        member_id,
-        title,
-        contents,
-        reg_dt
+        CONTENTS_ID,
+        MEMBER_ID,
+        TITLE,
+        CONTENTS,
+        REG_DT
     FROM
         BG_BOARD_CONTENTS
     WHERE
@@ -38,12 +57,12 @@
     <!-- insert -->
     <insert id="create" parameterType="hashmap">
     INSERT INTO BG_BOARD_CONTENTS (
-        board_id,
-        member_id,
-        title,
-        contents,
-        reg_dt,
-        mod_dt
+        BOARD_ID,
+        MEMBER_ID,
+        TITLE,
+        CONTENTS,
+        REG_DT,
+        MOD_DT
     )
     VALUES (
         #{ board_id },
@@ -59,12 +78,12 @@
     <update id="modify" parameterType="hashmap">
     UPDATE BG_BOARD_CONTENTS
         <set>
-        title= #{ title },
-        contents = #{ contents },
-        mod_dt = NOW()
+        TITLE= #{ title },
+        CONTENTS = #{ contents },
+        MOD_DT = NOW()
         </set>
     WHERE
-        contents_id = #{ contents_id }
+        CONTENTS_ID = #{ contents_id }
     </update>
 
 </mapper>
