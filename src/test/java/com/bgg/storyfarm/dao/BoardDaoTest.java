@@ -67,10 +67,10 @@ public class BoardDaoTest {
 
 		//given
 		Map<String, Object> boardMap = new HashMap<String, Object>();
-		boardMap.put(StoryfarmConstants.BOARD_ID, "11");
+		boardMap.put(StoryfarmConstants.BOARD_ID, "25");
 		boardMap.put(StoryfarmConstants.BOARD_MEMBER_ID, "test");
-		boardMap.put(StoryfarmConstants.BOARD_TITLE, "good1");
-		boardMap.put(StoryfarmConstants.BOARD_CONTENTS, "goodcontents");
+		boardMap.put(StoryfarmConstants.BOARD_TITLE, "공지사항 >.....<");
+		boardMap.put(StoryfarmConstants.BOARD_CONTENTS, "공지사항 내용 유 ");
 		
 		//when
 		int result = boardDao.create(boardMap);
