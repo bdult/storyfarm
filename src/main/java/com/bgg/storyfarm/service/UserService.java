@@ -18,7 +18,7 @@ public class UserService {
 	public List<HashMap<String, String>> list() {
 		return userDao.list();
 	}
-
+	
 	/**
 	 * 아이디와 비밀번호로
 	 * 유저정보 불러오기

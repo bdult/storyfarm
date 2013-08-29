@@ -27,7 +27,7 @@
 	 	<div id="headerBox" style="display: none;">
 	 	<c:choose>
 	 		<c:when test="${ login_session != null }">
-	 			<div class="col-md-12 text-center">
+	 			<div id="success" class="col-md-12 text-center">
 	 				<div class="row well">
 	 				<a class="btn btn-default">학습레벨: ${ "?단계" }</a>
 	 				<a class="btn btn-default">칭찬스티커: ${ "?개" }</a>
@@ -59,8 +59,8 @@
 	 		</c:otherwise>
 	 	</c:choose>
 	 	</div>
-	 	
 	 	<button id="test">테스트</button>
+	 	<lable id="test2"></lable>
 	 	<br />
 	 	
 	 	<div class="row">
@@ -110,18 +110,29 @@
 </header>
 
 <script>
-$("#test").click(function(){
+$("#test").click(function(event){
 
-    var id = $('#id').val();
-    var pwd = $('#pwd').val();
 	$.ajax({
-	      type: "POST",
-	      url: "http://localhost:9090/loginDummy.do",
-	      data: "id=" + id + "&pwd=" + pwd,
-	      success: function(msg){
-	            alert( "Data : " + msg );
-	      }
-	});
+	    type: "POST",
+	    url: "http://localhost:9090/loginDummy.do",
+	    data: {
+	    	id : $('#id').val(),
+	    	pwd : $('#pwd').val()
+	    }
+	}).done(function(data){
+    	console.info("code : " + data.code);
+    	console.info("msg : " + data.msg);
+    	if(data.code == 200) {
+    		//로그인 성공 처리
+    		$("#test2").append("<li>AJAX 테스트 성공.</li>");
+    		$("#success").clone();
+    	} else {
+    		$("#test2").append("<li>아이디 or 비밀번호가 틀립니다.</li>");
+    		//로그인 실패 메시지 처리
+    	}
+    }).fail(function(data){
+    	alert( "서버에러 죄송합니다.");
+    })
 });
 
 	
