@@ -82,14 +82,14 @@ public class BoardDaoTest {
 	@Test
 	public void testCreate() {
 
-		for(int begin = 1; begin <= 50; begin++) {
+		for(int begin=1; begin <= 50; begin++){
 			
 			//given
 			Map<String, Object> boardMap = new HashMap<String, Object>();
-			boardMap.put(StoryfarmConstants.BOARD_ID, 1);
+			boardMap.put(StoryfarmConstants.BOARD_ID, 2);
 			boardMap.put(StoryfarmConstants.BOARD_MEMBER_ID, "test");
-			boardMap.put(StoryfarmConstants.BOARD_TITLE, "공지사항 " + begin);
-			boardMap.put(StoryfarmConstants.BOARD_CONTENTS, "공지사항 내용 " + begin);
+			boardMap.put(StoryfarmConstants.BOARD_TITLE, "이벤트" + begin);
+			boardMap.put(StoryfarmConstants.BOARD_CONTENTS, "이벤트 내용 " + begin);
 			
 			//when
 			int result = boardDao.create(boardMap);
