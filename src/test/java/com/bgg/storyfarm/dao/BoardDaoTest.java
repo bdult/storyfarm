@@ -82,20 +82,23 @@ public class BoardDaoTest {
 	@Test
 	public void testCreate() {
 
-		//given
-		Map<String, Object> boardMap = new HashMap<String, Object>();
-		boardMap.put(StoryfarmConstants.BOARD_ID, "25");
-		boardMap.put(StoryfarmConstants.BOARD_MEMBER_ID, "test");
-		boardMap.put(StoryfarmConstants.BOARD_TITLE, "공지사항 >.....<");
-		boardMap.put(StoryfarmConstants.BOARD_CONTENTS, "공지사항 내용 유 ");
-		
-		//when
-		int result = boardDao.create(boardMap);
+		for(int begin = 1; begin <= 50; begin++) {
+			
+			//given
+			Map<String, Object> boardMap = new HashMap<String, Object>();
+			boardMap.put(StoryfarmConstants.BOARD_ID, 1);
+			boardMap.put(StoryfarmConstants.BOARD_MEMBER_ID, "test");
+			boardMap.put(StoryfarmConstants.BOARD_TITLE, "공지사항 " + begin);
+			boardMap.put(StoryfarmConstants.BOARD_CONTENTS, "공지사항 내용 " + begin);
+			
+			//when
+			int result = boardDao.create(boardMap);
+		}
 		
 		//than
-		assertNotNull(boardMap);
-		assertThat(result, is(not(0)));
-		logger.info("{}", boardMap);
+//		assertNotNull(boardMap);
+//		assertThat(result, is(not(0)));
+//		logger.info("{}", boardMap);
 	}
 
 	//게시판 글 수정 테스트 입니다.

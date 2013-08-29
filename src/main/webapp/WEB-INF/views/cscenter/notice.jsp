@@ -1,5 +1,6 @@
 <%@ page contentType="text/html" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 
 <div class="alert alert-success">스토리팜 고객님께 새로운 소식 및 공지사항을 알려드립니다.</div>
@@ -16,7 +17,8 @@
 				<tr>
 					<td>${ obj.CONTENTS_ID }</td>
 					<td><a href="${ contextPath }/cscenter/noticeView.do?contentsId=${ obj.CONTENTS_ID }">${ obj.TITLE }</a></td>
-					<td>${ obj.REG_DT }</td>
+					<td><fmt:formatDate value="${ obj.REG_DT }" pattern="yyyy-MM-dd"/></td>
+					
 				</tr>
 			</c:forEach>
 		</table>
