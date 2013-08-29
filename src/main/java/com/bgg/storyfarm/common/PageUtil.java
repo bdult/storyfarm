@@ -16,7 +16,7 @@ public class PageUtil {
 	
 	public static final int PAGE_NUM = 1; // 기본 페이지 번호
 	public static final int PAGE_SIZE = 5; // 한 화면에 보여질 **페이지** 갯수
-	public static final int PER_PAGE = 2; // 한 페이지에 보여질 **글** 갯수
+	public static final int PER_PAGE = 10; // 한 페이지에 보여질 **글** 갯수
 
 	public int getPerPage() {
 		return PER_PAGE;
@@ -40,7 +40,7 @@ public class PageUtil {
 		return (pageNum - 1) * perPage;
 	}
 
-	public Map<String, Object> setPageLinkDTO(int totalCnt, int pageNum) {
+	public Map<String, Object> setPageLink(int totalCnt, int pageNum) {
 		Map<String, Object> pageLinkMap = new HashMap<String, Object>();
 		int firstPageNum = this.getFirstPageNum(pageNum);
 		int lastPageNum = this.getLastPageNum(firstPageNum);
