@@ -16,6 +16,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.bgg.storyfarm.common.BreadcrumbUtil;
@@ -33,6 +34,14 @@ public class UserController {
 
 	private Logger logger = LoggerFactory.getLogger(UserController.class);
 
+	@RequestMapping(value = "loginDummy.do", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	public @ResponseBody String loginDummy(@RequestParam Map<String, Object> paramMap){
+		HashMap<String, String> sessionMap = (HashMap<String, String>) userService.detail(paramMap);
+
+		return "loginStep2.do";
+	}
+	
+	
 	@RequestMapping(value = "loginStep1.do", method = RequestMethod.GET)
 	public ModelAndView loginStep1(Model model, HttpServletRequest request, HttpSession session) {
 		ModelAndView mav = new ModelAndView();

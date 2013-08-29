@@ -23,7 +23,7 @@
 	 			</div>
 	 		</div>
 	 	</div>
-	 	
+	 	 
 	 	<div id="headerBox" style="display: none;">
 	 	<c:choose>
 	 		<c:when test="${ login_session != null }">
@@ -43,12 +43,12 @@
 	 		<c:otherwise>
 	 			<div class="col-md-12 text-center">
 	 				<div class="row well">
-					<form role="form" method="post" action="${ contextPath }/loginStep2.do">
+					<form role="form" method="post" id="submit" action="${ contextPath }/loginStep2.do">
 	 					<div class="col-md-3 col-md-offset-2">
-						<input type="text" class="form-control" name="id" placeholder="아이디"> 
+						<input type="text" class="form-control" name="id" id="id" placeholder="아이디"> 
 	 					</div>
 	 					<div class="col-md-3">
-						<input type="text" class="form-control" name="pwd" placeholder="비밀번호">
+						<input type="text" class="form-control" name="pwd" id="pwd" placeholder="비밀번호">
 	 					</div>
 	 					<div class="col-md-1">
 						<button class="btn btn-info pull-right">로그인</button>
@@ -60,6 +60,7 @@
 	 	</c:choose>
 	 	</div>
 	 	
+	 	<button id="test">테스트</button>
 	 	<br />
 	 	
 	 	<div class="row">
@@ -109,7 +110,20 @@
 </header>
 
 <script>
-$(function(){
+$("#test").click(function(){
+
+    var id = $('#id').val();
+    var pwd = $('#pwd').val();
+	$.ajax({
+	      type: "POST",
+	      url: "http://localhost:9090/loginDummy.do",
+	      data: "id=" + id + "&pwd=" + pwd,
+	      success: function(msg){
+	            alert( "Data : " + msg );
+	      }
+	});
+});
+
 	
 	//헤더박스 열기/닫기
 	$("#headerBoxBtn").click(function(){
@@ -129,5 +143,4 @@ $(function(){
 		}
 		
 	});
-});
 </script>
