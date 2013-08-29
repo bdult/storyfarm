@@ -23,11 +23,11 @@
 	 			</div>
 	 		</div>
 	 	</div>
-	 	
+	 	 
 	 	<div id="headerBox" style="display: none;">
 	 	<c:choose>
 	 		<c:when test="${ login_session != null }">
-	 			<div class="col-md-12 text-center">
+	 			<div id="success" class="col-md-12 text-center">
 	 				<div class="row well">
 	 				<a class="btn btn-default">학습레벨: ${ "?단계" }</a>
 	 				<a class="btn btn-default">칭찬스티커: ${ "?개" }</a>
@@ -43,12 +43,12 @@
 	 		<c:otherwise>
 	 			<div class="col-md-12 text-center">
 	 				<div class="row well">
-					<form role="form" method="post" action="${ contextPath }/loginStep2.do">
+					<form role="form" method="post" id="submit" action="${ contextPath }/loginStep2.do">
 	 					<div class="col-md-3 col-md-offset-2">
-						<input type="text" class="form-control" name="id" placeholder="아이디"> 
+						<input type="text" class="form-control" name="id" id="id" placeholder="아이디"> 
 	 					</div>
 	 					<div class="col-md-3">
-						<input type="text" class="form-control" name="pwd" placeholder="비밀번호">
+						<input type="text" class="form-control" name="pwd" id="pwd" placeholder="비밀번호">
 	 					</div>
 	 					<div class="col-md-1">
 						<button class="btn btn-info pull-right">로그인</button>
@@ -59,7 +59,8 @@
 	 		</c:otherwise>
 	 	</c:choose>
 	 	</div>
-	 	
+	 	<button id="test">테스트</button>
+	 	<lable id="test2"></lable>
 	 	<br />
 	 	
 	 	<div class="row">
@@ -109,7 +110,31 @@
 </header>
 
 <script>
-$(function(){
+$("#test").click(function(event){
+
+	$.ajax({
+	    type: "POST",
+	    url: "http://localhost:9090/loginDummy.do",
+	    data: {
+	    	id : $('#id').val(),
+	    	pwd : $('#pwd').val()
+	    }
+	}).done(function(data){
+    	console.info("code : " + data.code);
+    	console.info("msg : " + data.msg);
+    	if(data.code == 200) {
+    		//로그인 성공 처리
+    		$("#test2").append("<li>AJAX 테스트 성공.</li>");
+    		$("#success").clone();
+    	} else {
+    		$("#test2").append("<li>아이디 or 비밀번호가 틀립니다.</li>");
+    		//로그인 실패 메시지 처리
+    	}
+    }).fail(function(data){
+    	alert( "서버에러 죄송합니다.");
+    })
+});
+
 	
 	//헤더박스 열기/닫기
 	$("#headerBoxBtn").click(function(){
@@ -129,5 +154,4 @@ $(function(){
 		}
 		
 	});
-});
 </script>

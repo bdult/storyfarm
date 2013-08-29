@@ -22,8 +22,11 @@
 
 $(function() {
 	var api = flowplayer();
-	api.bind("finish", function() {
-		alert("finish");
+	api.bind("pause", function() {
+		var jqxhr = $.ajax( "http://localhost:9090/children/stat.do" )
+	    .done(function() { alert("success"); })
+	    .fail(function() { alert("error"); })
+	    .always(function() { alert("complete"); });
 	});
 });
 </script>

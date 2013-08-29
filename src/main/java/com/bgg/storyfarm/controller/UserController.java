@@ -1,13 +1,13 @@
 package com.bgg.storyfarm.controller;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +16,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.bgg.storyfarm.common.BreadcrumbUtil;
@@ -33,6 +34,41 @@ public class UserController {
 
 	private Logger logger = LoggerFactory.getLogger(UserController.class);
 
+	@RequestMapping(value = "loginDummy.do", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	public @ResponseBody String loginDummy(@RequestParam Map<String, Object> paramMap){
+		HashMap<String, String> sessionMap = (HashMap<String, String>) userService.detail(paramMap);
+		
+		if(sessionMap == null){
+
+			JSONObject jsonObj=new JSONObject();
+			jsonObj.put("code", null);
+			jsonObj.put("msg", "okay!!!!");
+			
+			return jsonObj.toJSONString();
+		}else{
+
+			JSONObject jsonObj=new JSONObject();
+			jsonObj.put("code", "200");
+			jsonObj.put("msg", "okay!!!!");
+			
+			JSONObject js1=new JSONObject();
+			js1.put("contentId", 1);
+			js1.put("contentPath", "/resource/ddd.mov");
+			
+			JSONObject js2=new JSONObject();
+			js2.put("contentId", 2);
+			js2.put("contentPath", "/resource/ccc.mov");
+			JSONArray arr = new JSONArray();
+			arr.add(js1);
+			arr.add(js2);
+			
+			jsonObj.put("playList", arr);
+			
+			return jsonObj.toJSONString();
+		}
+	}
+	
+	
 	@RequestMapping(value = "loginStep1.do", method = RequestMethod.GET)
 	public ModelAndView loginStep1(Model model, HttpServletRequest request, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
@@ -45,16 +81,21 @@ public class UserController {
 	public String loginStep2(Model model, @RequestParam Map<String, Object> paramMap, HttpServletRequest request, HttpSession session) {
 
 		HashMap<String, String> sessionMap = (HashMap<String, String>) userService.detail(paramMap);
-		session.setAttribute("login_session", sessionMap);
 		
-		if (session.getAttribute("login_session") == null) {
-			session.invalidate();
+		if(sessionMap == null) {
 			model.addAttribute("msg", "login_fail");
 			return "user/loginStep1";
-		} else {
-			return "user/loginStep2";
 		}
+		
+		if(session.getAttribute("login_session") == null){
+			session.setAttribute("login_session", sessionMap);
+		}
+		
+		return "user/loginStep2";
+		
 	}
+	
+	
 
 
 	@RequestMapping(value = "logout.do", method = RequestMethod.GET)
