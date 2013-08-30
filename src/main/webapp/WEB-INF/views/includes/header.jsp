@@ -27,7 +27,7 @@
 	 	<div id="headerBox" style="display: none;">
 	 	<c:choose>
 	 		<c:when test="${ login_session != null }">
-	 			<div id="success" class="col-md-12 text-center">
+	 			<div class="col-md-12 text-center">
 	 				<div class="row well">
 	 				<a class="btn btn-default">학습레벨: ${ "?단계" }</a>
 	 				<a class="btn btn-default">칭찬스티커: ${ "?개" }</a>
@@ -124,10 +124,9 @@ $("#test").click(function(event){
     	console.info("msg : " + data.msg);
     	if(data.code == 200) {
     		//로그인 성공 처리
-    		$("#test2").append("<li>AJAX 테스트 성공.</li>");
-    		$("#success").clone();
+    		$("#test2").text("AJAX 테스트 성공.");
     	} else {
-    		$("#test2").append("<li>아이디 or 비밀번호가 틀립니다.</li>");
+    		$("#test2").text("아이디 or 비밀번호가 틀립니다.");
     		//로그인 실패 메시지 처리
     	}
     }).fail(function(data){
