@@ -33,6 +33,14 @@ public class BoardService {
 		
 		return boardDao.count(boardMap);
 	}
+	
+	/** 게시판 댓글 보기
+	 * @param boardMap
+	 * @return
+	 */
+	public List<Map<String, Object>> detailComments(Map<String, Object> boardMap) {
+		return boardDao.detailComments(boardMap);
+	}
 
 	/** 게시판 글 상세보기
 	 * @param contentsId

@@ -40,6 +40,14 @@ public class BoardDao extends SqlSessionDaoSupport {
 		return (Map<String, Object>)getSqlSession().selectOne("boardQuery.detail", contentsId);
 	}
 	
+	/** 게시판 댓글 조회
+	 * @param boardCommentsMap
+	 * @return
+	 */
+	public List<Map<String, Object>> detailComments(Map<String, Object> boardCommentsMap) {
+		return (List<Map<String, Object>>)getSqlSession().selectList("boardQuery.detailComments", boardCommentsMap);
+	}
+	
 	/** 게시판 글 생성
 	 * @param boardMap
 	 * @return

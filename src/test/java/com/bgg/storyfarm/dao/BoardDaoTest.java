@@ -78,6 +78,23 @@ public class BoardDaoTest {
 		assertThat(count, is(not(0)));
 	}
 	
+	//게시판 댓글목록 가져오기
+	@Test
+	public void testDetailComments() {
+		
+		//given
+		Map<String, Object> boardMap = new HashMap<String, Object>();
+		boardMap.put(StoryfarmConstants.BOARD_CONTENTS_ID, "69");
+		
+		//when
+		List<Map<String, Object>> detailComments = boardDao.detailComments(boardMap);
+//		int detailComments = boardDao.detailComments(boardMap);
+
+		//than
+		logger.info("{}", boardMap);
+		assertThat(detailComments.size(), is(not(0)));
+	}
+	
 	//게시판 글 생성 테스트 입니다.
 	@Test
 	public void testCreate() {

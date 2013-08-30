@@ -53,6 +53,15 @@
         contents_id = #{ contents_id }
     </select>
 
+	<select id="detailComments" resultType="hashmap" parameterType="hashmap">
+	SELECT
+		MEMBER_ID,
+		COMMENT
+	FROM
+		BG_BOARD_COMMENTS
+	WHERE
+		CONTENTS_ID = #{ contents_id }
+	</select>
 
     <!-- insert -->
     <insert id="create" parameterType="hashmap">

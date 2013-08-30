@@ -130,6 +130,11 @@ public class CscenterController {
 		String contentId = paramsMap.get("contentsId").toString();
 		Map<String, Object> writing = boardService.detail(Integer.valueOf(contentId));
 		mav.addObject("writing", writing);
+
+		//댓글 목록 view
+		Map<String, Object> boardMap = new HashMap<String, Object>();
+		boardMap.put(StoryfarmConstants.BOARD_CONTENTS_ID, paramsMap.get("contentsId").toString());
+		mav.addObject("detailComments", boardService.detailComments(boardMap));
 		
 		return mav;
 	}

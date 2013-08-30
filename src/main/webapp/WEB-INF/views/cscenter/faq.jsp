@@ -13,23 +13,44 @@
 			<li><a href="#">서비스안내</a></li>
 			<li><a href="#">이용장애안내</a></li>
 		</ul>
-		
 		<table class="table table-striped table-hover">
 			<tr>
 				<td><a href="#">사이트가입방법을 모르겠어요</a></td>
 			</tr>
+			<tr>	
+				<td hidden="true">FAQ 내용</td>
+			</tr>
 			<tr>
 				<td><a href="#">무료회원과 유료회원의 차이를 모르겠어요</a></td>
+			</tr>
+			<tr>	
+				<td hidden="true">FAQ 내용</td>
 			</tr>
 			<tr>
 				<td><a href="#">아이디/비밀번호를 잊어버렸어요</a></td>
 			</tr>
+			<tr>	
+				<td hidden="true">FAQ 내용</td>
+			</tr>
 			<tr>
 				<td><a href="#">ㅇㅇ</a></td>
+			</tr>
+			<tr>	
+				<td hidden="true">FAQ 내용</td>
 			</tr>
 			<tr>
 				<td><a href="#">ㅁㅁ</a></td>
 			</tr>
+			<tr>	
+				<td hidden="true">FAQ 내용</td>
+			</tr>
 		</table>
 	</div>
 </div>
+
+<script type="text/javascript">
+	$('tr:even').click(function(){
+		var index = $('tr').index(this) + 1;
+		$('td').eq(index).toggle(100);
+	});
+</script>
