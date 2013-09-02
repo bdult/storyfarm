@@ -1,26 +1,19 @@
 package com.bgg.storyfarm.service;
 
 import static org.hamcrest.CoreMatchers.*;
-import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;
-import static org.hamcrest.CoreMatchers.nullValue;
 import static org.junit.Assert.*;
-import static org.junit.Assert.assertThat;
-
 import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
 
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mock.web.MockHttpServletRequest;
-import org.springframework.mock.web.MockHttpSession;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -70,8 +63,8 @@ public class UserServiceTest {
 	    
 	    //than
 	    assertThat(sessionMap, is(notNullValue()));
-		assertThat((String)sessionMap.get("MEMBER_ID"), is("test"));
-		assertThat((String)sessionMap.get("MEMBER_PW"), is("123"));
+		assertThat(sessionMap.get("MEMBER_ID"), is("test"));
+		assertThat(sessionMap.get("MEMBER_PW"), is("123"));
 	    
 	}
 	

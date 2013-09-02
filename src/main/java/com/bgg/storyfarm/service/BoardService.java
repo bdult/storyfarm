@@ -66,5 +66,13 @@ public class BoardService {
 		return boardDao.modify(boardMap);
 	}
 	
+	/** 게시판 글 삭제
+	 * @param boardMap
+	 * @return
+	 */
+	public int commentDelete(Map<String, Object> boardMap){
+		return boardDao.commentDelete(boardMap);
+	}
+	
 	
 }

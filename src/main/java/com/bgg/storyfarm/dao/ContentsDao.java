@@ -1,8 +1,5 @@
 package com.bgg.storyfarm.dao;
 
-import java.awt.Stroke;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -10,8 +7,6 @@ import org.mybatis.spring.support.SqlSessionDaoSupport;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
-
-import com.bgg.storyfarm.common.StoryfarmConstants;
 
 @Repository
 public class ContentsDao extends SqlSessionDaoSupport {
@@ -23,7 +18,7 @@ public class ContentsDao extends SqlSessionDaoSupport {
 	 */
 	public List<Map<String, Object>> list(Map<String, Object> contentMap) {
 		
-		return (List<Map<String, Object>>)getSqlSession().selectList( "contentsQuery.list", contentMap);
+		return getSqlSession().selectList( "contentsQuery.list", contentMap);
 	}
 
 	/** 콘텐츠 상세 정보

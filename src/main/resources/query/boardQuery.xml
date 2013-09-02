@@ -55,12 +55,14 @@
 
 	<select id="detailComments" resultType="hashmap" parameterType="hashmap">
 	SELECT
+		COMMENT_ID,
 		MEMBER_ID,
 		COMMENT
 	FROM
 		BG_BOARD_COMMENTS
 	WHERE
-		CONTENTS_ID = #{ contents_id }
+		CONTENTS_ID = #{ contents_id } and
+        DEL_YN = 'N'
 	</select>
 
     <!-- insert -->

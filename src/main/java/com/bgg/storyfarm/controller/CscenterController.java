@@ -1,7 +1,6 @@
 package com.bgg.storyfarm.controller;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -162,6 +161,18 @@ public class CscenterController {
 //		mav.setViewName("cscenter/eventView");
 		
 		return "redirect:/cscenter/eventView.do?contentsId="+paramsMap.get("contents_id");
+	}
+	
+	@RequestMapping(value = "commentDelete.do", method = RequestMethod.GET)
+	public String commentDelete(@RequestParam Map<String, Object> paramsMap) {
+		ModelAndView mav = new ModelAndView();
+		
+		
+		Map<String, Object> boardMap = new HashMap<String, Object>();
+		boardMap.put(StoryfarmConstants.COMMENT_ID, paramsMap.get("comment_id"));
+		
+		mav.addObject("commentDelete", boardService.commentDelete(boardMap));
+		return "redirect:/cscenter/eventView.do?contentsId=";
 	}
 	
 	@RequestMapping(value = "ask.do", method = RequestMethod.GET)

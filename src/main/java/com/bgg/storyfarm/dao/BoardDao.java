@@ -1,6 +1,5 @@
 package com.bgg.storyfarm.dao;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -15,7 +14,7 @@ public class BoardDao extends SqlSessionDaoSupport {
 	 * @return
 	 */
 	public List<Map<String, Object>> boards() {
-		return (List<Map<String, Object>>)getSqlSession().selectList("boardQuery.boards");
+		return getSqlSession().selectList("boardQuery.boards");
 	}
 	
 	/** 게시판 글 전체갯수
@@ -29,7 +28,7 @@ public class BoardDao extends SqlSessionDaoSupport {
 	 * @return
 	 */
 	public List<Map<String, Object>> list(Map<String, Object> boardMap) {
-		return (List<Map<String, Object>>)getSqlSession().selectList("boardQuery.list", boardMap);
+		return getSqlSession().selectList("boardQuery.list", boardMap);
 	}
 
 	/** 게시판 글 조회
@@ -45,7 +44,7 @@ public class BoardDao extends SqlSessionDaoSupport {
 	 * @return
 	 */
 	public List<Map<String, Object>> detailComments(Map<String, Object> boardCommentsMap) {
-		return (List<Map<String, Object>>)getSqlSession().selectList("boardQuery.detailComments", boardCommentsMap);
+		return getSqlSession().selectList("boardQuery.detailComments", boardCommentsMap);
 	}
 	
 	/** 게시판 글 생성

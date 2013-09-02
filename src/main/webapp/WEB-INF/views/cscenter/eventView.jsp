@@ -25,6 +25,7 @@
 							<c:if test="${ comment.MEMBER_ID == login_session.MEMBER_ID }">
 								<a class="btn btn-default">수정</a>
 								<form method="get" action="${ contextPath }/cscenter/commentDelete.do">
+									<input type="hidden" name="comment_id" value="${comment.COMMENT_ID}">
 									<button class="btn btn-default">삭제</button>
 								</form>
 							</c:if>
@@ -33,7 +34,6 @@
 				</div>
 			</tr>
 		</c:forEach>
-		
 		<form method="get" action="${ contextPath }/cscenter/commentCreate.do">
 			<div class="panel panel-info">
 				<input type="hidden" name="contents_id" value="${contentsId}">

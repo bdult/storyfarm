@@ -209,7 +209,6 @@ public class BoardDaoTest {
 		
 		//given
 		int contents_id = 1;
-		
 		//when
 		Map<String, Object> content = boardDao.detail(contents_id);
 
