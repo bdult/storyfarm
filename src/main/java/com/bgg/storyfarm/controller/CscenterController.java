@@ -4,6 +4,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -155,13 +158,19 @@ public class CscenterController {
 	 * @return
 	 */
 	@RequestMapping(value = "email.do", method = RequestMethod.GET)
-	public ModelAndView email(Model model) {
+	public ModelAndView email(Model model, HttpServletRequest request, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("side-cscenter/email");
 		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(
 				StoryfarmConstants.BREADCRUMB_HOME, 
 				StoryfarmConstants.BREADCRUMB_CSCENTER, 
 				StoryfarmConstants.BREADCRUMB_CSCENTER_ASK));
+		
+		if( session.getAttribute("login_session") != null){
+			mav.setViewName("side-mypage/question");
+		}else{
+			mav.setViewName("side-cscenter/email");
+		}
 		return mav;
 	}
 

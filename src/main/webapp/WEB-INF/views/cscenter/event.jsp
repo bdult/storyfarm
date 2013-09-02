@@ -24,6 +24,7 @@
 		<c:if test="${ not empty pageLink }">
 		<div class="text-center">
 			<ul class="pagination">
+			<li><a href="${ contextPath }/cscenter/event.do?pageNum=1">처음으로</a></li>
 				<c:if test="${ not empty pageLink.pagePrev }">
 				<li><a href="${ contextPath }/cscenter/event.do?pageNum=${ pageLink.pagePrev }${ empty search.search? '' : search.search }">Prev</a></li>
 				</c:if>
@@ -37,6 +38,7 @@
 				<c:if test="${ not empty pageLink.pageNext }">
 				<li><a href="${ contextPath }/cscenter/event.do?pageNum=${ pageLink.pageNext }${ empty search.search? '' : search.search }">Next</a></li>
 				</c:if>
+			<li><a href="${ contextPath }/cscenter/event.do?pageNum=${pageLink.totalCnt / 10}">마지막으로</a></li>
 			</ul>
 		</div>
 		</c:if>
