@@ -138,8 +138,30 @@ public class CscenterController {
 		Map<String, Object> boardMap = new HashMap<String, Object>();
 		boardMap.put(StoryfarmConstants.BOARD_CONTENTS_ID, paramsMap.get("contentsId").toString());
 		mav.addObject("detailComments", boardService.detailComments(boardMap));
+		mav.addObject("contentsId", contentId);
 		
 		return mav;
+	}
+	
+	@RequestMapping(value = "commentCreate.do", method = RequestMethod.GET)
+	public String commentCreate(@RequestParam Map<String, Object> paramsMap, HttpServletRequest request, HttpSession session) {
+		ModelAndView mav = new ModelAndView();
+	
+		if(session.getAttribute("login_session") == null){
+			mav.addObject("msg", "login_fail");
+			return "redirect:/cscenter/eventView.do?contentsId="+paramsMap.get("contents_id");
+		}
+		
+		Map<String, Object> boardMap = new HashMap<String, Object>();
+		boardMap.put(StoryfarmConstants.CONTENTS_ID, paramsMap.get("contents_id"));
+		boardMap.put(StoryfarmConstants.MEMBER_ID, paramsMap.get("member_id"));
+		boardMap.put(StoryfarmConstants.COMMENT, paramsMap.get("comment"));
+		
+		mav.addObject("commentCreate", boardService.commentCreate(boardMap));
+		
+//		mav.setViewName("cscenter/eventView");
+		
+		return "redirect:/cscenter/eventView.do?contentsId="+paramsMap.get("contents_id");
 	}
 	
 	@RequestMapping(value = "ask.do", method = RequestMethod.GET)

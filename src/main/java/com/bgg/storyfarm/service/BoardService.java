@@ -50,6 +50,14 @@ public class BoardService {
 		return boardDao.detail(contentsId);
 	}
 	
+	/** 게시판 덧글 생성
+	 * @param boardMap
+	 * @return
+	 */
+	public int commentCreate(Map<String, Object> boardMap) {
+		return boardDao.commentCreate(boardMap);
+	}
+	
 	/** 게시판 글 수정
 	 * @param boardMap
 	 * @return

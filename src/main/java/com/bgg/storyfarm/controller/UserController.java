@@ -81,7 +81,7 @@ public class UserController {
 	public String loginStep2(Model model, @RequestParam Map<String, Object> paramMap, HttpServletRequest request, HttpSession session) {
 
 		HashMap<String, String> sessionMap = (HashMap<String, String>) userService.detail(paramMap);
-		
+
 		if(sessionMap == null) {
 			model.addAttribute("msg", "login_fail");
 			return "user/loginStep1";

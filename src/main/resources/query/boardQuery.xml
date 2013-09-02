@@ -83,6 +83,19 @@
     )
     </insert>
 
+	<insert id="commentCreate" parameterType="hashmap">
+	INSERT INTO BG_BOARD_COMMENTS (
+		CONTENTS_ID,
+		MEMBER_ID,
+		COMMENT
+	)
+	VALUES (
+		#{ contents_id },
+		#{ member_id },
+		#{ comment }
+	)
+	
+	</insert>
     <!-- update -->
     <update id="modify" parameterType="hashmap">
     UPDATE BG_BOARD_CONTENTS
@@ -94,5 +107,23 @@
     WHERE
         CONTENTS_ID = #{ contents_id }
     </update>
+    
+    <update id="commentModify" parameterType="hashmap">
+    UPDATE BG_BOARD_COMMENTS
+    	<set>
+    	COMMENT = #{ comment }
+    	</set>
+    WHERE
+    	COMMENT_ID = #{ comment_id } and CONTENTS_ID = #{ contents_id } and MEMBER_ID = #{ member_id }
+    </update>
 
+	<!-- delete -->
+	<update id="commentDelete" parameterType="hashmap">
+	UPDATE BG_BOARD_COMMENTS
+		<set>
+			DEL_YN = 'Y'
+		</set>
+	WHERE
+		COMMENT_ID = #{ comment_id }
+	</update>
 </mapper>
