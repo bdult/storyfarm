@@ -114,7 +114,7 @@ $("#test").click(function(event){
 
 	$.ajax({
 	    type: "POST",
-	    url: "http://localhost:9090/loginDummy.do",
+	    url: "${ contextPath }/loginDummy.do",
 	    data: {
 	    	id : $('#id').val(),
 	    	pwd : $('#pwd').val()

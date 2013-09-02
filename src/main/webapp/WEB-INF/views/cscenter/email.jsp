@@ -7,21 +7,21 @@
 	<div class="col-md-12">
 		<form class="form-horizontal" role="form">
 			<div class="form-group">
-				<label for="inputEmail1" class="col-md-1 control-label">이메일</label>
+				<label for="inputEmail" class="col-md-1 control-label">이메일</label>
 				<div class="col-md-11">
-					<input type="email" class="form-control" id="inputEmail1" placeholder="답변받을 메일주소를 입력해 주세요.">
+					<input type="email" class="form-control" id="inputEmail" name="email" placeholder="답변받을 메일주소를 입력해 주세요.">
 				</div>
 			</div>
 			<div class="form-group">
-				<label for="inputPassword1" class="col-md-1 control-label">제목</label>
+				<label for="inputSubject" class="col-md-1 control-label">제목</label>
 				<div class="col-md-11">
-					<input type="password" class="form-control" id="inputPassword1" placeholder="제목을 입력해 주세요.">
+					<input type="password" class="form-control" id="inputSubject" name="subject" placeholder="제목을 입력해 주세요.">
 				</div>
 			</div>
 			<div class="form-group">
-				<label for="inputPassword1" class="col-md-1 control-label">내용</label>
+				<label for="inputContent" class="col-md-1 control-label">내용</label>
 				<div class="col-md-11">
-					<textarea name="content" class="form-control" rows="7" placeholder="문의 내용을 입력해 주세요."></textarea>
+					<textarea name="content" id="inputContent" class="form-control" rows="7" placeholder="문의 내용을 입력해 주세요."></textarea>
 				</div>
 			</div>
 			<div class="form-group">
