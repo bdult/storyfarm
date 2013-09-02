@@ -38,7 +38,7 @@
 				<c:if test="${ not empty pageLink.pageNext }">
 				<li><a href="${ contextPath }/cscenter/event.do?pageNum=${ pageLink.pageNext }${ empty search.search? '' : search.search }">Next</a></li>
 				</c:if>
-			<li><a href="${ contextPath }/cscenter/event.do?pageNum=${pageLink.totalCnt / 10}">마지막으로</a></li>
+			<li><a href="${ contextPath }/cscenter/event.do?pageNum=${pageLink.lastPage}">마지막으로</a></li>
 			</ul>
 		</div>
 		</c:if>
