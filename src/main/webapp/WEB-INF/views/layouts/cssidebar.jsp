@@ -12,8 +12,8 @@
 
 	<div class="container">
 		<div class="row">
-			<div class="col-lg-2"><tiles:insertAttribute name="cssidebar" /></div>
-			<div class="col-lg-10"><tiles:insertAttribute name="content" /></div>
+			<div class="col-md-2"><tiles:insertAttribute name="cssidebar" /></div>
+			<div class="col-md-10"><tiles:insertAttribute name="content" /></div>
 		</div>
 	</div>
 

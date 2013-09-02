@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="contentsQuery">
+
+    <!-- SELECT -->
+    <select id="list" resultType="map">
+        SELECT /* contentsQuery.list */
+            *
+        FROM BG_CONTENTS
+        <where>
+            <if test="contents_series_id != null">
+                AND contents_series_id = #{ contents_series_id }
+            </if>
+            <if test="brand_id != null">
+                AND brand_id = #{ brand_id }
+            </if>
+        </where>
+    </select>
+
+    <select id="detail" resultType="map" parameterType="int">
+        SELECT /* contentsQuery.detail */
+            *
+        FROM BG_CONTENTS
+        WHERE contents_id = #{ contents_id }
+    </select>
+    
+</mapper>

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="boardQuery">
+
+    <!-- select -->
+    <select id="boards" resultType="hashmap">
+    SELECT
+        *
+    FROM
+        BG_BOARD_MASTER
+    </select>
+    
+    <select id="list" resultType="hashmap" parameterType="hashmap">
+    SELECT
+        BG_BOARD_CONTENTS.*
+    FROM
+        BG_BOARD_CONTENTS, BG_BOARD_MASTER
+    WHERE 
+        BG_BOARD_MASTER.board_id = #{ board_id }
+    AND
+        BG_BOARD_MASTER.board_id = BG_BOARD_CONTENTS.board_id
+    LIMIT #{ rownum }, #{ perpage }
+    </select>
+    
+    <select id="count" resultType="int" parameterType="hashmap">
+    SELECT /* boardQuery.count */
+        count(*)
+    FROM
+    (
+        SELECT
+            BG_BOARD_CONTENTS.*
+        FROM
+            BG_BOARD_CONTENTS, BG_BOARD_MASTER
+        WHERE 
+            BG_BOARD_MASTER.board_id = #{ board_id }
+        AND
+            BG_BOARD_CONTENTS.board_id = BG_BOARD_MASTER.board_id
+    ) TMP
+    </select>
+
+    <select id="detail" resultType="hashmap" parameterType="hashmap">
+    SELECT
+        CONTENTS_ID,
+        MEMBER_ID,
+        TITLE,
+        CONTENTS,
+        REG_DT
+    FROM
+        BG_BOARD_CONTENTS
+    WHERE
+        contents_id = #{ contents_id }
+    </select>
+
+	<select id="detailComments" resultType="hashmap" parameterType="hashmap">
+	SELECT
+		MEMBER_ID,
+		COMMENT
+	FROM
+		BG_BOARD_COMMENTS
+	WHERE
+		CONTENTS_ID = #{ contents_id }
+	</select>
+
+    <!-- insert -->
+    <insert id="create" parameterType="hashmap">
+    INSERT INTO BG_BOARD_CONTENTS (
+        BOARD_ID,
+        MEMBER_ID,
+        TITLE,
+        CONTENTS,
+        REG_DT,
+        MOD_DT
+    )
+    VALUES (
+        #{ board_id },
+        #{ member_id },
+        #{ title },
+        #{ contents },
+        NOW(),
+        NOW()
+    )
+    </insert>
+
+    <!-- update -->
+    <update id="modify" parameterType="hashmap">
+    UPDATE BG_BOARD_CONTENTS
+        <set>
+        TITLE= #{ title },
+        CONTENTS = #{ contents },
+        MOD_DT = NOW()
+        </set>
+    WHERE
+        CONTENTS_ID = #{ contents_id }
+    </update>
+
+</mapper>
