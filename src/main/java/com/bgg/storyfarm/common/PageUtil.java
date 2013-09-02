@@ -55,7 +55,7 @@ public class PageUtil {
 			pageList.add(pageMap);
 		}
 		
-		pageLinkMap.put("lastPage", (int)Math.ceil(totalPage / firstPageNum));
+		pageLinkMap.put("lastPage", (int)Math.ceil(totalPage / 1));
 		pageLinkMap.put("totalCnt", totalCnt);
 		pageLinkMap.put("pageList", pageList);// 페이지 리스트
 		pageLinkMap.put("pageNum", pageNum);// 현재 페이지 번호
