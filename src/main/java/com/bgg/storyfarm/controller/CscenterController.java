@@ -140,7 +140,7 @@ public class CscenterController {
 		return mav;
 	}
 	
-	@RequestMapping(value = "commentCreate.do", method = RequestMethod.GET)
+	@RequestMapping(value = "commentCreate.do", method = RequestMethod.POST)
 	public String commentCreate(@RequestParam Map<String, Object> paramsMap, HttpServletRequest request, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 	
@@ -154,7 +154,7 @@ public class CscenterController {
 		return "redirect:/cscenter/eventView.do?contentsId="+paramsMap.get("contents_id");
 	}
 	
-	@RequestMapping(value = "commentDelete.do", method = RequestMethod.GET)
+	@RequestMapping(value = "commentDelete.do", method = RequestMethod.POST)
 	public String commentDelete(@RequestParam Map<String, Object> paramsMap) {
 		ModelAndView mav = new ModelAndView();
 		
