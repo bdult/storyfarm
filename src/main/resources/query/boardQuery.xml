@@ -113,10 +113,11 @@
     <update id="commentModify" parameterType="hashmap">
     UPDATE BG_BOARD_COMMENTS
     	<set>
-    	COMMENT = #{ comment }
+    	COMMENT = #{ comment },
+        MOD_DT = NOW()
     	</set>
     WHERE
-    	COMMENT_ID = #{ comment_id } and CONTENTS_ID = #{ contents_id } and MEMBER_ID = #{ member_id }
+    	COMMENT_ID = #{ comment_id }
     </update>
 
 	<!-- delete -->

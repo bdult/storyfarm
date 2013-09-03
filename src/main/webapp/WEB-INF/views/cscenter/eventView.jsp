@@ -17,13 +17,31 @@
 				<div class="panel panel-info">
 					<td><div class="panel-body">아이디 : ${ comment.MEMBER_ID }</div></td>
 					<td>
-						<c:if test="">내용 : <input type="text" value="${ comment.COMMENT }"></c:if>
-						<div class="panel-body">내용 : ${ comment.COMMENT }</div>
+						<div class="panel-body">
+							<c:choose>
+								<c:when test="${ comment.COMMENT_ID == commentsId }">
+									<form method="post" action="${ contextPath }/cscenter/commentModifyComplete.do">
+										<textarea class="form-control" name="comment" rows="3">${ comment.COMMENT }</textarea>
+										<input type="hidden" name="contents_id" value="${contentsId}">
+										<input type="hidden" name="comment_id" value="${comment.COMMENT_ID}">
+										<button class="btn btn-default">수정완료</button>
+									</form>
+								</c:when>
+								<c:otherwise>
+									내용 : ${ comment.COMMENT }
+								</c:otherwise>
+							</c:choose>						
+						</div>
 					</td>
 					<td>
 						<div class="panel-body">
 							<c:if test="${ comment.MEMBER_ID == login_session.MEMBER_ID }">
-								<a class="btn btn-default">수정</a>
+								<form method="post" action="${ contextPath }/cscenter/commentModify.do">
+									<input type="hidden" name="contents_id" value="${contentsId}">
+									<input type="hidden" name="comment_id" value="${comment.COMMENT_ID}">
+									<input type="hidden" name="comment" value="${comment.COMMENT}">
+									<button class="btn btn-default">수정</button>
+								</form>
 								<form method="post" action="${ contextPath }/cscenter/commentDelete.do">
 									<input type="hidden" name="contents_id" value="${contentsId}">
 									<input type="hidden" name="comment_id" value="${comment.COMMENT_ID}">

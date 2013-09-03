@@ -136,6 +136,7 @@ public class CscenterController {
 		//댓글 목록 view
 		mav.addObject("detailComments", boardService.detailComments(paramsMap));
 		mav.addObject("contentsId", contentId);
+		mav.addObject("commentsId", paramsMap.get("comment_id"));
 		
 		return mav;
 	}
@@ -150,7 +151,6 @@ public class CscenterController {
 		}
 		
 		mav.addObject("commentCreate", boardService.commentCreate(paramsMap));
-		
 		return "redirect:/cscenter/eventView.do?contentsId="+paramsMap.get("contents_id");
 	}
 	
@@ -159,6 +159,21 @@ public class CscenterController {
 		ModelAndView mav = new ModelAndView();
 		
 		mav.addObject("commentDelete", boardService.commentDelete(paramsMap));
+		return "redirect:/cscenter/eventView.do?contentsId="+paramsMap.get("contents_id");
+	}
+
+	@RequestMapping(value = "commentModify.do", method = RequestMethod.POST)
+	public String commentModify(@RequestParam Map<String, Object> paramsMap) {
+		ModelAndView mav = new ModelAndView();
+		
+		return "redirect:/cscenter/eventView.do?contentsId="+paramsMap.get("contents_id") + "&comment_id=" + paramsMap.get("comment_id");
+	}
+
+	@RequestMapping(value = "commentModifyComplete.do", method = RequestMethod.POST)
+	public String commentModifyComplete(@RequestParam Map<String, Object> paramsMap) {
+		ModelAndView mav = new ModelAndView();
+		
+		mav.addObject("commentModify", boardService.commentModify(paramsMap));
 		return "redirect:/cscenter/eventView.do?contentsId="+paramsMap.get("contents_id");
 	}
 	

@@ -168,14 +168,10 @@ public class BoardDaoTest {
 	public void testCommentModify() {
 		
 		//given
-		int comment_id = 1;
-		int contents_id = 69;
-		String member_id = "test";
+		int comment_id = 44;
 		
 		Map<String, Object> boardMap = new HashMap<String, Object>();
 		boardMap.put(StoryfarmConstants.COMMENT_ID, comment_id);
-		boardMap.put(StoryfarmConstants.CONTENTS_ID, contents_id);
-		boardMap.put(StoryfarmConstants.MEMBER_ID, member_id);
 		boardMap.put(StoryfarmConstants.COMMENT, "Modify comment test");
 		
 		//when

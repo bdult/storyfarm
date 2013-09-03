@@ -78,7 +78,16 @@ public class BoardService {
 		return boardDao.modify(boardMap);
 	}
 	
-	/** 게시판 글 삭제
+	public int commentModify(Map<String, Object> boardMap) {
+
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put(StoryfarmConstants.COMMENT_ID, boardMap.get("comment_id"));
+		map.put(StoryfarmConstants.COMMENT, boardMap.get("comment"));
+		
+		return boardDao.commentModify(map);
+	}
+	
+	/** 게시판 덧글 삭제
 	 * @param boardMap
 	 * @return
 	 */
