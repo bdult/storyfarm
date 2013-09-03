@@ -16,11 +16,56 @@
 			<tr>
 				<div class="panel panel-info">
 					<td><div class="panel-body">아이디 : ${ comment.MEMBER_ID }</div></td>
-					<td><div class="panel-body">내용 : ${ comment.COMMENT }</div></td>
+					<td>
+						<div class="panel-body">
+							<c:choose>
+								<c:when test="${ comment.COMMENT_ID == commentsId }">
+									<form method="post" action="${ contextPath }/cscenter/commentModifyComplete.do">
+										<textarea class="form-control" name="comment" rows="3">${ comment.COMMENT }</textarea>
+										<input type="hidden" name="contents_id" value="${contentsId}">
+										<input type="hidden" name="comment_id" value="${comment.COMMENT_ID}">
+										<button class="btn btn-default">수정완료</button>
+									</form>
+								</c:when>
+								<c:otherwise>
+									내용 : ${ comment.COMMENT }
+								</c:otherwise>
+							</c:choose>						
+						</div>
+					</td>
+					<td>
+						<div class="panel-body">
+							<c:if test="${ comment.MEMBER_ID == login_session.MEMBER_ID }">
+								<form method="post" action="${ contextPath }/cscenter/commentModify.do">
+									<input type="hidden" name="contents_id" value="${contentsId}">
+									<input type="hidden" name="comment_id" value="${comment.COMMENT_ID}">
+									<input type="hidden" name="comment" value="${comment.COMMENT}">
+									<button class="btn btn-default">수정</button>
+								</form>
+								<form method="post" action="${ contextPath }/cscenter/commentDelete.do">
+									<input type="hidden" name="contents_id" value="${contentsId}">
+									<input type="hidden" name="comment_id" value="${comment.COMMENT_ID}">
+									<button class="btn btn-default">삭제</button>
+								</form>
+							</c:if>
+						</div>
+					</td>
 				</div>
 			</tr>
 		</c:forEach>
+		<form method="post" action="${ contextPath }/cscenter/commentCreate.do">
+			<div class="panel panel-info">
+				<input type="hidden" name="contents_id" value="${contentsId}">
+				<input type="hidden" name="member_id" value="${login_session.MEMBER_ID}">
+				<textarea class="form-control" name="comment" rows="3"></textarea>
+				<button class="btn btn-default pull-right">입력</button>
+			</div>
+		</form>
+		
+		<c:if test="${ msg == 'login_fail' }">로그인을 해주세요</c:if>
+		
 		<a href="javascript:history.back();" class="btn btn-default">뒤로</a>
+		
 		
 	</div>
 </div>

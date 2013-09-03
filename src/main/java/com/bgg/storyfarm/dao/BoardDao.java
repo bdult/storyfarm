@@ -1,6 +1,5 @@
 package com.bgg.storyfarm.dao;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -15,7 +14,7 @@ public class BoardDao extends SqlSessionDaoSupport {
 	 * @return
 	 */
 	public List<Map<String, Object>> boards() {
-		return (List<Map<String, Object>>)getSqlSession().selectList("boardQuery.boards");
+		return getSqlSession().selectList("boardQuery.boards");
 	}
 	
 	/** 게시판 글 전체갯수
@@ -29,7 +28,7 @@ public class BoardDao extends SqlSessionDaoSupport {
 	 * @return
 	 */
 	public List<Map<String, Object>> list(Map<String, Object> boardMap) {
-		return (List<Map<String, Object>>)getSqlSession().selectList("boardQuery.list", boardMap);
+		return getSqlSession().selectList("boardQuery.list", boardMap);
 	}
 
 	/** 게시판 글 조회
@@ -45,7 +44,7 @@ public class BoardDao extends SqlSessionDaoSupport {
 	 * @return
 	 */
 	public List<Map<String, Object>> detailComments(Map<String, Object> boardCommentsMap) {
-		return (List<Map<String, Object>>)getSqlSession().selectList("boardQuery.detailComments", boardCommentsMap);
+		return getSqlSession().selectList("boardQuery.detailComments", boardCommentsMap);
 	}
 	
 	/** 게시판 글 생성
@@ -56,6 +55,14 @@ public class BoardDao extends SqlSessionDaoSupport {
 		return getSqlSession().insert("boardQuery.create", boardMap);
 	}
 	
+	/** 게시판 덧글 생성
+	 * @param boardMap
+	 * @return
+	 */
+	public int commentCreate(Map<String, Object> boardMap){
+		return getSqlSession().insert("boardQuery.commentCreate", boardMap);
+	}
+	
 	/** 게시판 글 수정
 	 * @param boardMap
 	 * @return
@@ -63,5 +70,20 @@ public class BoardDao extends SqlSessionDaoSupport {
 	public int modify(Map<String, Object> boardMap){
 		return getSqlSession().insert("boardQuery.modify", boardMap);
 	}
+	
+	/** 게시판 글 삭제
+	 * @param boardMap
+	 * @return
+	 */
+	public int commentDelete(Map<String, Object> boardMap){
+		return getSqlSession().insert("boardQuery.commentDelete", boardMap);
+	}
 
+	/** 게시판 덧글 수정
+	 * @param boardMap
+	 * @return
+	 */
+	public int commentModify(Map<String, Object> boardMap){
+		return getSqlSession().insert("boardQuery.commentModify", boardMap);
+	}
 }

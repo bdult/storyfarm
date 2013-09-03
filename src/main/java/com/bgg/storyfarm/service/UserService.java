@@ -37,10 +37,10 @@ public class UserService {
 	public int insertUser(Map<String, Object> paramMap){
 		
 		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("id", (String)paramMap.get("id"));
-		map.put("name", (String)paramMap.get("name"));
-		map.put("pwd", (String)paramMap.get("pwd"));
-		map.put("role", (String)paramMap.get("role"));
+		map.put("id", paramMap.get("id"));
+		map.put("name", paramMap.get("name"));
+		map.put("pwd", paramMap.get("pwd"));
+		map.put("role", paramMap.get("role"));
 		
 		return userDao.insertUser(map);
 	}
@@ -48,10 +48,10 @@ public class UserService {
 	public int updateUser(Map<String, Object> paramMap){
 		
 		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("id", (String)paramMap.get("id"));
-		map.put("name", (String)paramMap.get("name"));
-		map.put("pwd", (String)paramMap.get("pwd"));
-		map.put("role", (String)paramMap.get("role"));
+		map.put("id", paramMap.get("id"));
+		map.put("name", paramMap.get("name"));
+		map.put("pwd", paramMap.get("pwd"));
+		map.put("role", paramMap.get("role"));
 		
 		return userDao.updateUser(map);
 	}

@@ -45,7 +45,7 @@ public class PageUtil {
 		int firstPageNum = this.getFirstPageNum(pageNum);
 		int lastPageNum = this.getLastPageNum(firstPageNum);
 		int totalPage = this.getTotalPageCnt(totalCnt);
-
+		
 		lastPageNum = totalPage < lastPageNum ? totalPage : lastPageNum;
 
 		List<Map<String, String>> pageList = new ArrayList<Map<String, String>>();
@@ -54,11 +54,12 @@ public class PageUtil {
 			pageMap.put("pageNum", pageNumSeq + "");
 			pageList.add(pageMap);
 		}
-
+		
+		pageLinkMap.put("lastPage", (int)Math.ceil(totalPage / 1));
 		pageLinkMap.put("totalCnt", totalCnt);
 		pageLinkMap.put("pageList", pageList);// 페이지 리스트
 		pageLinkMap.put("pageNum", pageNum);// 현재 페이지 번호
-
+		
 		// 1페이지가 아니라면
 		if (1 != firstPageNum) {
 			pageLinkMap.put("pagePrev", firstPageNum - 1);// 이전

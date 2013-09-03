@@ -117,6 +117,26 @@ public class BoardDaoTest {
 //		assertThat(result, is(not(0)));
 //		logger.info("{}", boardMap);
 	}
+	
+	
+	//덧글 글 생성 테스트 입니다.
+	@Test
+	public void testCommentCreate() {
+		
+		//given
+		Map<String, Object> boardMap = new HashMap<String, Object>();
+		boardMap.put(StoryfarmConstants.CONTENTS_ID, "69");
+		boardMap.put(StoryfarmConstants.MEMBER_ID, "test");
+		boardMap.put(StoryfarmConstants.COMMENT, "comment field");
+		
+		//when
+		int result = boardDao.commentCreate(boardMap);
+		
+		//than
+		assertNotNull(boardMap);
+		assertThat(result, is(not(0)));
+		logger.info("{}", boardMap);
+	}
 
 	//게시판 글 수정 테스트 입니다.
 	@Test
@@ -142,13 +162,49 @@ public class BoardDaoTest {
 		}
 	}
 	
+	
+	//게시판 덧글 수정 테스트 입니다.
+	@Test
+	public void testCommentModify() {
+		
+		//given
+		int comment_id = 44;
+		
+		Map<String, Object> boardMap = new HashMap<String, Object>();
+		boardMap.put(StoryfarmConstants.COMMENT_ID, comment_id);
+		boardMap.put(StoryfarmConstants.COMMENT, "Modify comment test");
+		
+		//when
+		int result = boardDao.commentModify(boardMap);
+		
+		//than
+		assertThat(result, is(not(0)));
+		
+	}
+	
+	//게시판 덧글 삭제 테스트 입니다.
+	@Test
+	public void testCommentDelete() {
+		
+		//given
+		int comment_id = 1;
+		
+		Map<String, Object> boardMap = new HashMap<String, Object>();
+		boardMap.put(StoryfarmConstants.COMMENT_ID, comment_id);
+		
+		//when
+		int result = boardDao.commentDelete(boardMap);
+
+		//than
+		assertThat(result, is(not(0)));
+	}
+	
 	//뷰 테스트 입니다.
 	@Test
 	public void testDetail() {
 		
 		//given
 		int contents_id = 1;
-		
 		//when
 		Map<String, Object> content = boardDao.detail(contents_id);
 

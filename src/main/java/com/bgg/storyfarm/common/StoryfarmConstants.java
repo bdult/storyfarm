@@ -80,6 +80,10 @@ public class StoryfarmConstants {
 	public final static String BOARD_TITLE = "title";
 	public final static String BOARD_CONTENTS = "contents";
 	
+	//COMMENTS
+	public final static String COMMENT_ID = "comment_id";
+	public final static String MEMBER_ID = "member_id";
+	public final static String COMMENT = "comment";
 	
 	//CONTENTS
 	public final static String BRAND_ID = "brand_id";

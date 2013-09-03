@@ -1,7 +1,6 @@
 package com.bgg.storyfarm.controller;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -135,11 +134,47 @@ public class CscenterController {
 		mav.addObject("writing", writing);
 
 		//댓글 목록 view
-		Map<String, Object> boardMap = new HashMap<String, Object>();
-		boardMap.put(StoryfarmConstants.BOARD_CONTENTS_ID, paramsMap.get("contentsId").toString());
-		mav.addObject("detailComments", boardService.detailComments(boardMap));
+		mav.addObject("detailComments", boardService.detailComments(paramsMap));
+		mav.addObject("contentsId", contentId);
+		mav.addObject("commentsId", paramsMap.get("comment_id"));
 		
 		return mav;
+	}
+	
+	@RequestMapping(value = "commentCreate.do", method = RequestMethod.POST)
+	public String commentCreate(@RequestParam Map<String, Object> paramsMap, HttpServletRequest request, HttpSession session) {
+		ModelAndView mav = new ModelAndView();
+	
+		if(session.getAttribute("login_session") == null){
+			mav.addObject("msg", "login_fail");
+			return "redirect:/cscenter/eventView.do?contentsId="+paramsMap.get("contents_id");
+		}
+		
+		mav.addObject("commentCreate", boardService.commentCreate(paramsMap));
+		return "redirect:/cscenter/eventView.do?contentsId="+paramsMap.get("contents_id");
+	}
+	
+	@RequestMapping(value = "commentDelete.do", method = RequestMethod.POST)
+	public String commentDelete(@RequestParam Map<String, Object> paramsMap) {
+		ModelAndView mav = new ModelAndView();
+		
+		mav.addObject("commentDelete", boardService.commentDelete(paramsMap));
+		return "redirect:/cscenter/eventView.do?contentsId="+paramsMap.get("contents_id");
+	}
+
+	@RequestMapping(value = "commentModify.do", method = RequestMethod.POST)
+	public String commentModify(@RequestParam Map<String, Object> paramsMap) {
+		ModelAndView mav = new ModelAndView();
+		
+		return "redirect:/cscenter/eventView.do?contentsId="+paramsMap.get("contents_id") + "&comment_id=" + paramsMap.get("comment_id");
+	}
+
+	@RequestMapping(value = "commentModifyComplete.do", method = RequestMethod.POST)
+	public String commentModifyComplete(@RequestParam Map<String, Object> paramsMap) {
+		ModelAndView mav = new ModelAndView();
+		
+		mav.addObject("commentModify", boardService.commentModify(paramsMap));
+		return "redirect:/cscenter/eventView.do?contentsId="+paramsMap.get("contents_id");
 	}
 	
 	@RequestMapping(value = "ask.do", method = RequestMethod.GET)
