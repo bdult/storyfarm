@@ -1,11 +1,13 @@
 package com.bgg.storyfarm.service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.bgg.storyfarm.common.StoryfarmConstants;
 import com.bgg.storyfarm.dao.BoardDao;
 
 @Service
@@ -39,7 +41,11 @@ public class BoardService {
 	 * @return
 	 */
 	public List<Map<String, Object>> detailComments(Map<String, Object> boardMap) {
-		return boardDao.detailComments(boardMap);
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put(StoryfarmConstants.BOARD_CONTENTS_ID, boardMap.get("contentsId").toString());
+		
+		return boardDao.detailComments(map);
 	}
 
 	/** 게시판 글 상세보기
@@ -55,7 +61,13 @@ public class BoardService {
 	 * @return
 	 */
 	public int commentCreate(Map<String, Object> boardMap) {
-		return boardDao.commentCreate(boardMap);
+
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put(StoryfarmConstants.CONTENTS_ID, boardMap.get("contents_id"));
+		map.put(StoryfarmConstants.MEMBER_ID, boardMap.get("member_id"));
+		map.put(StoryfarmConstants.COMMENT, boardMap.get("comment"));
+		
+		return boardDao.commentCreate(map);
 	}
 	
 	/** 게시판 글 수정
@@ -71,7 +83,11 @@ public class BoardService {
 	 * @return
 	 */
 	public int commentDelete(Map<String, Object> boardMap){
-		return boardDao.commentDelete(boardMap);
+
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put(StoryfarmConstants.COMMENT_ID, boardMap.get("comment_id"));
+		
+		return boardDao.commentDelete(map);
 	}
 	
 	

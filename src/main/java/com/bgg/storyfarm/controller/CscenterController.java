@@ -134,9 +134,7 @@ public class CscenterController {
 		mav.addObject("writing", writing);
 
 		//댓글 목록 view
-		Map<String, Object> boardMap = new HashMap<String, Object>();
-		boardMap.put(StoryfarmConstants.BOARD_CONTENTS_ID, paramsMap.get("contentsId").toString());
-		mav.addObject("detailComments", boardService.detailComments(boardMap));
+		mav.addObject("detailComments", boardService.detailComments(paramsMap));
 		mav.addObject("contentsId", contentId);
 		
 		return mav;
@@ -151,14 +149,7 @@ public class CscenterController {
 			return "redirect:/cscenter/eventView.do?contentsId="+paramsMap.get("contents_id");
 		}
 		
-		Map<String, Object> boardMap = new HashMap<String, Object>();
-		boardMap.put(StoryfarmConstants.CONTENTS_ID, paramsMap.get("contents_id"));
-		boardMap.put(StoryfarmConstants.MEMBER_ID, paramsMap.get("member_id"));
-		boardMap.put(StoryfarmConstants.COMMENT, paramsMap.get("comment"));
-		
-		mav.addObject("commentCreate", boardService.commentCreate(boardMap));
-		
-//		mav.setViewName("cscenter/eventView");
+		mav.addObject("commentCreate", boardService.commentCreate(paramsMap));
 		
 		return "redirect:/cscenter/eventView.do?contentsId="+paramsMap.get("contents_id");
 	}
@@ -167,12 +158,8 @@ public class CscenterController {
 	public String commentDelete(@RequestParam Map<String, Object> paramsMap) {
 		ModelAndView mav = new ModelAndView();
 		
-		
-		Map<String, Object> boardMap = new HashMap<String, Object>();
-		boardMap.put(StoryfarmConstants.COMMENT_ID, paramsMap.get("comment_id"));
-		
-		mav.addObject("commentDelete", boardService.commentDelete(boardMap));
-		return "redirect:/cscenter/eventView.do?contentsId=";
+		mav.addObject("commentDelete", boardService.commentDelete(paramsMap));
+		return "redirect:/cscenter/eventView.do?contentsId="+paramsMap.get("contents_id");
 	}
 	
 	@RequestMapping(value = "ask.do", method = RequestMethod.GET)
