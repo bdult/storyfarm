@@ -3,23 +3,31 @@
 
 <header>
 	<div class="container">
+		
+		<br />
+		
 	 	<div class="row">
-	 		<div class="col-md-12">
+	 		<div class="col-md-2">
+	 			<a href="${ contextPath }/" class="btn btn-info">OZ world 오즈월드</a>
+	 		</div>
+	 		<div class="col-md-10">
 	 			<div class="pull-right">
-	 			<c:choose>
-	 				<c:when test="${ login_session == null }">
-	 					<a href="${ contextPath }/loginStep1.do" class="btn btn-default">로그인</a>
-	 				</c:when>
-	 				<c:otherwise>
-	 					<a href="${ contextPath }/logout.do" class="btn btn-default">${ login_session.MEMBER_ID }님 로그아웃</a>
-	 				</c:otherwise>
-	 			</c:choose>
-	 			<a href="${ contextPath }/joinStep1.do" class="btn btn-default">회원가입</a>
-	 			<a href="${ contextPath }/mypage/info.do" class="btn btn-default">마이페이지</a>
-	 			<a href="${ contextPath }/children/room.do" class="btn btn-default">자녀방</a>
-	 			<a href="${ contextPath }/parents/room.do" class="btn btn-default">부모방</a>
-	 			<span id="headerBoxBtn" data-toggle="tooltip" data-placement="right" class="btn btn-success"><i class="icon-chevron-down"></i></span>
-	 			
+		 			<c:choose>
+		 				<c:when test="${ login_session == null }">
+		 					<a href="${ contextPath }/loginStep1.do" class="btn btn-default">로그인</a>
+		 				</c:when>
+		 				<c:otherwise>
+		 					<a href="${ contextPath }/logout.do" class="btn btn-default">${ login_session.MEMBER_ID }님 로그아웃</a>
+		 				</c:otherwise>
+		 			</c:choose>
+		 			<a href="${ contextPath }/joinStep1.do" class="btn btn-default">회원가입</a>
+		 			<a href="${ contextPath }/cscenter/notice.do" class="btn btn-default">고객센터</a>
+					<a href="${ contextPath }/introduce.do" class="btn btn-default">오즈월드소개</a>
+					<!-- 
+		 			<a href="${ contextPath }/mypage/info.do" class="btn btn-default">마이페이지</a>
+		 			<a href="${ contextPath }/children/room.do" class="btn btn-default">자녀방</a>
+		 			<a href="${ contextPath }/parents/room.do" class="btn btn-default">부모방</a>
+					 -->
 	 			</div>
 	 		</div>
 	 	</div>
@@ -59,32 +67,20 @@
 	 		</c:otherwise>
 	 	</c:choose>
 	 	</div>
-	 	<button id="test">테스트</button>
-	 	<lable id="test2"></lable>
 	 	<br />
 	 	
 	 	<div class="row">
-	 		<div class="col-md-10">
-	 			<a href="${ contextPath }/" class="btn btn-info btn-lg">Story Farm</a>
-	 			<a href="${ contextPath }/contentslist.do" class="btn btn-default">국어</a>
-	 			<a href="${ contextPath }/contentslist.do" class="btn btn-default">영어</a>
-	 			<a href="${ contextPath }/contentslist.do" class="btn btn-default">수학</a>
-	 			<a href="${ contextPath }/contentslist.do" class="btn btn-default">과학</a>
-	 			<a href="${ contextPath }/contentslist.do" class="btn btn-default">창의</a>
-	 			<a href="${ contextPath }/contentslist.do" class="btn btn-default">동요</a>
-	 			<a href="${ contextPath }/contentslist.do" class="btn btn-default">동화</a>
-	 			<a href="${ contextPath }/contentslist.do" class="btn btn-default">생활</a>
-	 			<a href="${ contextPath }/introduce/storyfarmIntro.do" class="btn btn-warning">스토리팜소개</a>
-	 			<a href="#" class="btn btn-warning">이벤트</a>
+	 		<div class="col-md-12 text-center">
+	 			<a href="${ contextPath }/contentsList.do" class="btn btn-default">한글</a>
+	 			<a href="${ contextPath }/contentsList.do" class="btn btn-default">영어</a>
+	 			<a href="${ contextPath }/contentsList.do" class="btn btn-default">수학</a>
+	 			<a href="${ contextPath }/contentsList.do" class="btn btn-default">과학</a>
+	 			<a href="${ contextPath }/contentsList.do" class="btn btn-default">창의</a>
+	 			<a href="${ contextPath }/contentsList.do" class="btn btn-default">동요</a>
+	 			<a href="${ contextPath }/contentsList.do" class="btn btn-default">동화</a>
+	 			<a href="${ contextPath }/contentsList.do" class="btn btn-default">생활</a>
+	 			<a href="${ contextPath }/contentsList.do" class="btn btn-default">프린트학습</a>
 	 		</div>
- 			<div class="pull-right col-md-2">
-		    <div class="input-group" style="margin-top: 5px;">
-		      <input type="text" class="form-control">
-		      <span class="input-group-btn">
-		        <button class="btn btn-default" type="button"><i class="icon-search"></i></button>
-		      </span>
-		    </div>
-		  </div>
 	 	</div>
 	
 		<br />
@@ -133,24 +129,5 @@ $("#test").click(function(event){
     	alert( "서버에러 죄송합니다.");
     })
 });
-
 	
-	//헤더박스 열기/닫기
-	$("#headerBoxBtn").click(function(){
-		var $this = $(this);
-		var $icon = $this.find("i");
-		var $target = $("#headerBox");
-		if( $icon.hasClass("icon-chevron-down") ) {
-			$icon
-				.removeClass("icon-chevron-down")
-				.addClass("icon-chevron-up");
-			$target.show(777);
-		} else {
-			$icon
-				.removeClass("icon-chevron-up")
-				.addClass("icon-chevron-down");
-			$target.hide(777);
-		}
-		
-	});
 </script>

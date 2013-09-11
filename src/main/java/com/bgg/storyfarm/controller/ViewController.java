@@ -39,10 +39,10 @@ public class ViewController {
 	public String brand(Model model) {
 		return "view/brand";
 	}
-	@RequestMapping(value = "contentslist.do", method = RequestMethod.GET)
-	public ModelAndView contentslist(Model model) {
+	@RequestMapping(value = "contentsList.do", method = RequestMethod.GET)
+	public ModelAndView contentsList(Model model) {
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("view/contentslist");
+		mav.setViewName("view/contentsList");
 		
 		//dummy
 		HashMap<String, Object> paramMap = new HashMap<String, Object>();
@@ -52,13 +52,13 @@ public class ViewController {
 		return mav;
 	}
 	
-	@RequestMapping(value = "about.do", method = RequestMethod.GET)
-	public ModelAndView about(Model model) {
+	@RequestMapping(value = "introduce.do", method = RequestMethod.GET)
+	public ModelAndView introduce(Model model) {
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("view/about");
+		mav.setViewName("view/introduce");
 		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(
 				StoryfarmConstants.BREADCRUMB_HOME,
-				StoryfarmConstants.BREADCRUMB_ABOUT));
+				StoryfarmConstants.BREADCRUMB_INTRODUCE));
 		return mav;
 	}
 	

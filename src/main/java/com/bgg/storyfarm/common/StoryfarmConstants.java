@@ -8,7 +8,7 @@ public class StoryfarmConstants {
 
 	//BREADCRUMB LIST
 	public final static int BREADCRUMB_HOME = 100;
-	public final static int BREADCRUMB_ABOUT = 101;
+	public final static int BREADCRUMB_INTRODUCE = 101;
 	public final static int BREADCRUMB_SERVICERULES = 102;
 	public final static int BREADCRUMB_PRIVACYRULES = 103;
 	public final static int BREADCRUMB_SITEMAP = 104;

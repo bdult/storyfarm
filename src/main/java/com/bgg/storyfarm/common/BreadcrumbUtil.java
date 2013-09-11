@@ -72,7 +72,7 @@ public class BreadcrumbUtil {
 				this.setBreadcrumbMap("유료서비스 안내", "/introduce/storyfarmIntro.do");
 				break;
 			case StoryfarmConstants.BREADCRUMB_KOREANLANGUAGE:
-				this.setBreadcrumbMap("국어", "/contentslist.do");
+				this.setBreadcrumbMap("국어", "/contentsList.do");
 				break;
 			case StoryfarmConstants.BREADCRUMB_MYPAGE_INFO:
 				this.setBreadcrumbMap("마이페이지", "/mypage/info.do");
@@ -176,8 +176,8 @@ public class BreadcrumbUtil {
 			case StoryfarmConstants.BREADCRUMB_PARENTS_MONTHLY:
 				this.setBreadcrumbMap("월별학습현황", "/parents/monthly.do");
 				break;
-			case StoryfarmConstants.BREADCRUMB_ABOUT:
-				this.setBreadcrumbMap("회사소개", "/about.do");
+			case StoryfarmConstants.BREADCRUMB_INTRODUCE:
+				this.setBreadcrumbMap("오즈월드 소개", "/introduce.do");
 				break;
 			case StoryfarmConstants.BREADCRUMB_SERVICERULES:
 				this.setBreadcrumbMap("이용약관", "/serviceRules.do");
