@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import org.junit.runners.Parameterized.Parameters;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -128,14 +129,21 @@ public class UserController {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("user/joinStep2");
 		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_REGISTER, StoryfarmConstants.BREADCRUMB_JOINSTEP2));
+		
+		
 		return mav;
 	}
 
 	@RequestMapping(value = "joinStep3.do", method = RequestMethod.GET)
-	public ModelAndView joinStep3(Model model) {
+	public ModelAndView joinStep3(Model model, @RequestParam Map<String, Object> paramMap) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("user/joinStep3");
 		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_REGISTER, StoryfarmConstants.BREADCRUMB_JOINSTEP2, StoryfarmConstants.BREADCRUMB_JOINSTEP3));
+		
+		logger.info("paramMap is : " + paramMap);
+		
+		userService.insertUser(paramMap);
+		
 		return mav;
 	}
 	

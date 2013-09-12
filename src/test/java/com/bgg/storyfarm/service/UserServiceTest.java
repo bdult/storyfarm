@@ -73,18 +73,20 @@ public class UserServiceTest {
 		logger.info("회원가입 테스트 입니다.");
 
 		//given
-		Map<String, Object> userDTO = new TreeMap();
-		userDTO.put("id", "test12");
-		userDTO.put("name", "test1");
-		userDTO.put("pwd", 123);
-		userDTO.put("role", 123);
+		Map<String, Object> userDTO = new HashMap<String,Object>();
+		userDTO.put("member_id", "test12");
+		userDTO.put("member_nm", "test1");
+		userDTO.put("member_pw", "123");
+		userDTO.put("member_email", "qwe@naver.com");
+		userDTO.put("member_tel", "010-1111-1111");
+		userDTO.put("member_addr_1", "서울시");
+		userDTO.put("member_addr_2", "123호");
 		
 		//when
-		int result = userDao.insertUser(userDTO);
+		userService.insertUser(userDTO);
 		
 		//than
 		assertNotNull(userDTO);
-		assertThat(result, is(not(0)));
 		logger.info("{}", userDTO);
 	}
 

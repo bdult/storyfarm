@@ -34,25 +34,13 @@ public class UserService {
 	 * @param paramMap
 	 * @return
 	 */
-	public int insertUser(Map<String, Object> paramMap){
+	public void insertUser(Map<String, Object> paramMap){
 		
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("id", paramMap.get("id"));
-		map.put("name", paramMap.get("name"));
-		map.put("pwd", paramMap.get("pwd"));
-		map.put("role", paramMap.get("role"));
-		
-		return userDao.insertUser(map);
+		userDao.insertUser(paramMap);
 	}
 	
-	public int updateUser(Map<String, Object> paramMap){
+	public void updateUser(Map<String, Object> paramMap){
 		
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("id", paramMap.get("id"));
-		map.put("name", paramMap.get("name"));
-		map.put("pwd", paramMap.get("pwd"));
-		map.put("role", paramMap.get("role"));
-		
-		return userDao.updateUser(map);
+		userDao.updateUser(paramMap);
 	}
 }

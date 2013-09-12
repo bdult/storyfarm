@@ -24,13 +24,21 @@
 		MEMBER_ID,
 		MEMBER_NM,
 		MEMBER_PW,
-		MEMBER_ROLE
+		MEMBER_EMAIL,
+		MEMBER_TEL,
+		MEMBER_ADDR_1,
+		MEMBER_ADDR_2,
+		REG_DT
 		)
 		VALUES (
-        #{ id },
-        #{ name },
-        #{ pwd },
-        #{ role }
+        #{ member_id },
+        #{ member_nm },
+        #{ member_pw },
+        #{ member_email },
+        #{ member_tel },
+        #{ member_addr_1 },
+        #{ member_addr_2 },
+        NOW()
 		)
 	
 	</insert>

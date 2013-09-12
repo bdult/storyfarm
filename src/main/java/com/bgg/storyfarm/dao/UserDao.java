@@ -34,11 +34,11 @@ public class UserDao extends SqlSessionDaoSupport {
 	 * @param userListMap
 	 * @return
 	 */
-	public int insertUser(Map<String, Object> userListMap){
-		return getSqlSession().insert("userQuery.insertUser",userListMap);
+	public void insertUser(Map<String, Object> userListMap){
+		getSqlSession().insert("userQuery.insertUser",userListMap);
 	}
 
-	public int updateUser(Map<String, Object> userListMap) {
-		return getSqlSession().update("userQuery.updateUser", userListMap);
+	public void updateUser(Map<String, Object> userListMap) {
+		getSqlSession().update("userQuery.updateUser", userListMap);
 	}
 }
