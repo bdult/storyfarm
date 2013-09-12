@@ -15,16 +15,16 @@
 	<div class="col-lg-12">
 		<div class="well">
 			<h4>약관동의</h4>
-			<input type="checkbox"> 이용약관, 개인정보 수집 및 이용에 모두 동의 합니다.<br><br>
+			<input type="checkbox" id="checkall"> 이용약관, 개인정보 수집 및 이용에 모두 동의 합니다.<br><br>
 			오즈월드 이용약관<br>
 			<div class="col-lg-12 text-right">
 			<textarea class="form-control" rows="3" disabled="disabled">이용약관 a</textarea><br>
-			<input type="checkbox"> 오즈월드 이용약관에 동의합니다.
+			<input type="checkbox" id="checkbox1"> 오즈월드 이용약관에 동의합니다.
 			</div>
 			개인정보 수집 및 이용에 대한 안내<br>
 			<div class="col-lg-12 text-right">
 			<textarea class="form-control" rows="3" disabled="disabled">이용약관 b</textarea><br>
-			<input type="checkbox"> 개인정보 수집 및 이용에 동의합니다.
+			<input type="checkbox" id="checkbox2"> 개인정보 수집 및 이용에 동의합니다.
 			</div>
 		</div>
 	</div>
@@ -49,7 +49,30 @@
 		</div>
 	</div>
 	<div class="col-lg-12 text-right">
-		<a class="btn btn-default" href="${ contextPath }/joinStep2.do">확인</a>
+		<a class="btn btn-default" id="submit-btn">확인</a>
 		<a class="btn btn-default">취소</a>
 	</div>
 </div>
+
+<script type="text/javascript">
+	$("#checkall").change(function(){
+		var chk = $("#checkall").is(':checked');
+		if(chk == true){
+			$("#checkbox1").prop('checked', true);
+			$("#checkbox2").prop('checked', true);
+		}else if(chk == false){
+			$("#checkbox1").prop('checked', false);
+			$("#checkbox2").prop('checked', false);
+		}
+	});
+
+	$("#submit-btn").click(function(){
+		if($("#checkbox1").is(':checked') == false || $("#checkbox2").is(':checked') == false){
+			alert("이용약관에 동의해주세요");
+		}else {
+			$("#submit-btn").attr({
+				href: '${ contextPath }/joinStep2.do'
+			});
+		}
+	});
+</script>

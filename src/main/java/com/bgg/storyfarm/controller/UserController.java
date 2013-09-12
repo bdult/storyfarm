@@ -134,13 +134,11 @@ public class UserController {
 		return mav;
 	}
 
-	@RequestMapping(value = "joinStep3.do", method = RequestMethod.GET)
+	@RequestMapping(value = "joinStep3.do", method = RequestMethod.POST)
 	public ModelAndView joinStep3(Model model, @RequestParam Map<String, Object> paramMap) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("user/joinStep3");
 		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_REGISTER, StoryfarmConstants.BREADCRUMB_JOINSTEP2, StoryfarmConstants.BREADCRUMB_JOINSTEP3));
-		
-		logger.info("paramMap is : " + paramMap);
 		
 		userService.insertUser(paramMap);
 		

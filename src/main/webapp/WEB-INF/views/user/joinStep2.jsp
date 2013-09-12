@@ -13,7 +13,7 @@
 		</div>
 	</div>
 	<div class="col-lg-12">
-		<form class="form-horizontal well" method="get" action="${ contextPath }/joinStep3.do">
+		<form class="form-horizontal well" id="joinForm">
 			<p class="text-center">기본정보 입력</p><br>
 			
 			<div class="form-group">
@@ -30,7 +30,7 @@
 				</div>
 				<label class="col-lg-2 control-label">비밀번호 재입력 :</label>
 				<div class="col-lg-3">
-					<input class="form-control" name="member_pw" type="password">
+					<input class="form-control" type="password">
 				</div>
 			</div>
 			<div class="form-group">
@@ -41,11 +41,12 @@
 			</div>
 			<div class="form-group">
 				<label class="col-lg-2 control-label">이메일 :</label>
+				<input class="hidden" id="member_email" name="member_email">
 				<div class="col-lg-3">
-					<input class="form-control" name="member_email">
+					<input class="form-control" id="email1">
 				</div>
 				<div class="col-lg-2">
-					<select class="form-control" name="member_email">
+					<select class="form-control" id="email2">
 						<option>naver.com1</option>
 						<option>naver.com2</option>
 						<option>naver.com3</option>
@@ -56,8 +57,9 @@
 			</div>
 			<div class="form-group">
 				<label class="col-lg-2 control-label">휴대번호 : </label>
+				<input class="hidden" id="member_tel" name="member_tel">
 				<div class="col-lg-2">
-					<select class="form-control" name="member_tel">
+					<select class="form-control" id="tel1">
 						<option>010</option>
 						<option>011</option>
 						<option>012</option>
@@ -66,10 +68,10 @@
 					</select>
 				</div>
 				<div class="col-lg-2">
-					<input class="form-control" name="member_tel">
+					<input class="form-control" id="tel2">
 				</div>
 				<div class="col-lg-2">
-					<input class="form-control" name="member_tel">
+					<input class="form-control" id="tel3">
 				</div>
 			</div>
 			<div class="form-group">
@@ -115,7 +117,7 @@
 			
 			<div class="row">
 				<div class="col-lg-12 text-center">
-					<button class="btn btn-default">가입하기</button>
+					<button class="btn btn-default" id="submit-btn">가입하기</button>
 					<a class="btn btn-default">취소</a>
 				</div>
 			</div>
@@ -124,5 +126,17 @@
 </div>
 
 <script type="text/javascript">
-
+	$("#submit-btn").click(function(){
+		$("#member_email").attr({
+			value: $("#email1").val() + "@" + $("#email2").val()
+		});
+		$("#member_tel").attr({
+			value: $("#tel1").val() + "-" + $("#tel2").val() + "-" + $("#tel3").val()
+		});
+		
+		$("#joinForm").attr({
+			method: 'post',
+			action: '${ contextPath }/joinStep3.do'
+		});
+	});
 </script>
