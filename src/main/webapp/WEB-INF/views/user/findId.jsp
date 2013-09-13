@@ -25,7 +25,7 @@
 
 			<br>
 
-			<form class="form-horizontal" id="memberFind-tel" method="get" action="${ contextPath }/findIdResult.do">
+			<form class="form-horizontal" id="memberFind-tel" method="post" action="${ contextPath }/findIdResult.do">
 				<div class="form-group">
 					<label class="col-lg-2 control-label">이름</label>
 					<div class="col-lg-10">
@@ -57,7 +57,7 @@
 				</div>
 			</form>
 			
-			<form class="form-horizontal" id="memberFind-email" method="get" action="${ contextPath }/findIdResult.do" style="display:none;"> 
+			<form class="form-horizontal" id="memberFind-email" method="post" action="${ contextPath }/findIdResult.do" style="display:none;"> 
 				<div class="form-group">
 					<label class="col-lg-2 control-label">이름</label>
 					<div class="col-lg-10">
@@ -76,7 +76,7 @@
 				</div>
 				
 			</form>
-			<form class="form-horizontal" id="memberFind-birth" method="get" action="${ contextPath }/findIdResult.do" style="display:none;">
+			<form class="form-horizontal" id="memberFind-birth" method="post" action="${ contextPath }/findIdResult.do" style="display:none;">
 				<div class="form-group" >
 					<label class="col-lg-2 control-label">이름</label>
 					<div class="col-lg-10">
@@ -176,15 +176,12 @@
 		$("#memberFind-tel").css("display", "none");
 		$("#memberFind-email").css("display", "none");
 	});
-	
+
 	$("#submit-btn").click(function(){
+
 		$("#member_tel").attr({
 			value: $("#tel1").val() + "-" + $("#tel2").val() + "-" + $("#tel3").val()
 		});
 		
-		$("#memberFind-form").attr({
-			method: 'get',
-			action: '${ contextPath }/findIdResult.do'
-		});
 	});
 </script>

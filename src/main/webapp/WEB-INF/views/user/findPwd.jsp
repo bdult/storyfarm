@@ -25,7 +25,7 @@
 
 			<br>
 
-			<form class="form-horizontal" id="memberFind-tel" method="get" action="${ contextPath }/findPwdResult.do">  
+			<form class="form-horizontal" id="memberFind-tel" method="post" action="${ contextPath }/findPwdResult.do">  
 				<div class="form-group">
 					<label class="col-lg-2 control-label">아이디</label>
 					<div class="col-lg-10">
@@ -63,7 +63,7 @@
 				</div>
 			</form>
 			
-			<form class="form-horizontal" id="memberFind-email" method="get" action="${ contextPath }/findPwdResult.do" style="display:none;">  
+			<form class="form-horizontal" id="memberFind-email" method="post" action="${ contextPath }/findPwdResult.do" style="display:none;">  
 				<div class="form-group">
 					<label class="col-lg-2 control-label">아이디</label>
 					<div class="col-lg-10">
@@ -88,7 +88,7 @@
 				</div>
 				
 			</form>
-			<form class="form-horizontal" id="memberFind-birth" method="get" action="${ contextPath }/findPwdResult.do" style="display:none;">  
+			<form class="form-horizontal" id="memberFind-birth" method="post" action="${ contextPath }/findPwdResult.do" style="display:none;">  
 				<div class="form-group">
 					<label class="col-lg-2 control-label">아이디</label>
 					<div class="col-lg-10">
@@ -199,5 +199,6 @@
 		$("#member_tel").attr({
 			value: $("#tel1").val() + "-" + $("#tel2").val() + "-" + $("#tel3").val()
 		});
+		
 	});
 </script>

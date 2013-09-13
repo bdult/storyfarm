@@ -161,7 +161,7 @@ public class UserController {
 		return mav;
 	}
 
-	@RequestMapping(value = "findIdResult.do", method = RequestMethod.GET)
+	@RequestMapping(value = "findIdResult.do", method = RequestMethod.POST)
 	public ModelAndView findIdResult(Model model, @RequestParam Map<String, Object> paramMap) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("user/findIdResult");
@@ -180,7 +180,7 @@ public class UserController {
 		return mav;
 	}
 	
-	@RequestMapping(value = "findPwdResult.do", method = RequestMethod.GET)
+	@RequestMapping(value = "findPwdResult.do", method = RequestMethod.POST)
 	public ModelAndView findPwdResult(Model model, @RequestParam Map<String, Object> paramMap) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("user/findPwdResult");

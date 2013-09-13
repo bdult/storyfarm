@@ -19,8 +19,8 @@
 				<c:if test="${ findUserData.MEMBER_EMAIL == null }">
 					<h3>해당 정보로 조회한 결과 맞는 아이디가 없습니다.</h3><br><br>
 				</c:if>
-				비밀번호를 모르시는 경우<a class="btn btn-default">비밀번호 찾기</a><br>
-				회원이 아니신 경우 <a class="btn btn-default">회원가입</a><br><br><br>
+				비밀번호를 모르시는 경우<a class="btn btn-default" href="${ contextPath }/findPwd.do">비밀번호 찾기</a><br>
+				회원이 아니신 경우 <a class="btn btn-default" href="${ contextPath }/joinStep1.do">회원가입</a><br><br><br>
 				
 				문의 : 고객센터 02-9874-5632(주말, 공휴일 휴무)<br>
 				운영시간 : 평일 오전 10시~ 오후 5시(점심 12시~1시)<br>
