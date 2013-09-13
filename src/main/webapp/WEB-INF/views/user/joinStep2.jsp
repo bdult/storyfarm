@@ -93,27 +93,27 @@
 				</div>
 			</div>
 			
-			<!-- <div class="form-group">
+			<div class="form-group">
 				<label class="col-lg-2 control-label">성별 : </label>	
 				<div class="col-lg-2">
 					<label>
-    					<input type="radio" value="option1" checked>남  
-						<input type="radio" value="option2">여
+    					<input type="radio" name="member_gender" value="남" checked>남  
+						<input type="radio" name="member_gender" value="여">여
 					</label>
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-lg-2 control-label">생년월일 : </label>	
 				<div class="col-lg-2">
-					<input class="form-control" placeholder="연도">
+					<input class="form-control" name="member_year" placeholder="연도">
 				</div>
 				<div class="col-lg-2">
-					<input class="form-control" placeholder="월">
+					<input class="form-control" name="member_month" placeholder="월">
 				</div>
 				<div class="col-lg-2">
-					<input class="form-control" placeholder="일">
+					<input class="form-control" name="member_day" placeholder="일">
 				</div>
-			</div> -->
+			</div>
 			
 			<div class="row">
 				<div class="col-lg-12 text-center">

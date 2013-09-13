@@ -81,7 +81,12 @@
 		MEMBER_TEL,
 		MEMBER_ADDR_1,
 		MEMBER_ADDR_2,
-		REG_DT
+		MEMBER_GENDER,
+		MEMBER_YEAR,
+		MEMBER_MONTH,
+		MEMBER_DAY,
+		REG_DT,
+		MOD_DT
 		)
 		VALUES (
         #{ member_id },
@@ -91,6 +96,11 @@
         #{ member_tel },
         #{ member_addr_1 },
         #{ member_addr_2 },
+        #{ member_gender },
+        #{ member_year },
+        #{ member_month },
+        #{ member_day },
+        NOW(),
         NOW()
 		)
 	
