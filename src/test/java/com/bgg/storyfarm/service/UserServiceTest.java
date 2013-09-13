@@ -105,13 +105,37 @@ public class UserServiceTest {
 		userDTO.put("role", "2");
 		
 		//when
-		int result = userDao.updateUser(userDTO);
+		userDao.updateUser(userDTO);
 		
 		//than
 		assertNotNull(userDTO);
-		assertThat(result, is(not(0)));
 		logger.info("{}", userDTO);
 	}
 	
+	@Test
+	public void testFindId(){
+		logger.info("아이디 찾기 테스트 입니다.");
+		
+		//given
+		String nm = "test";
+		String tel = "010-123-122";
+		String email = "fxx@naver.com1";
+		String gender = "남";
+		String year = "2007";
+		String month = "06";
+		String day = "12";
+		
+		Map<String, Object> userData = new HashMap<String, Object>();
+		userData.put("member_nm", nm);
+//		userData.put("member_tel", tel);
+//		userData.put("member_email", email);
+		userData.put("member_gender", gender);
+		userData.put("member_year", year);
+		userData.put("member_month", month);
+		userData.put("member_day", day);
+		
+		//when
+		userService.findId(userData);
+	}
 }
 	

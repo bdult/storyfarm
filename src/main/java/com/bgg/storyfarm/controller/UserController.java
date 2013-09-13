@@ -162,10 +162,13 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "findIdResult.do", method = RequestMethod.GET)
-	public ModelAndView findIdResult(Model model) {
+	public ModelAndView findIdResult(Model model, @RequestParam Map<String, Object> paramMap) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("user/findIdResult");
 		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_FINDID_RESULT));
+
+		model.addAttribute("findUserData", userService.findId(paramMap));
+		
 		return mav;
 	}
 	
@@ -178,10 +181,13 @@ public class UserController {
 	}
 	
 	@RequestMapping(value = "findPwdResult.do", method = RequestMethod.GET)
-	public ModelAndView findPwdResult(Model model) {
+	public ModelAndView findPwdResult(Model model, @RequestParam Map<String, Object> paramMap) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("user/findPwdResult");
 		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_FINDPWD_RESULT));
+
+		model.addAttribute("findUserData", userService.findPwd(paramMap));
+		
 		return mav;
 	}
 }

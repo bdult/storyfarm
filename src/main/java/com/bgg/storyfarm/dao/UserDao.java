@@ -29,6 +29,13 @@ public class UserDao extends SqlSessionDaoSupport {
 		return (Map<String, String>)getSqlSession().selectOne("userQuery.detail", UserData);
 	}
 	
+	public Map<String, Object> findId(Map<String, Object> userData){
+		return (Map<String, Object>)getSqlSession().selectOne("userQuery.findId", userData);
+	}
+
+	public Map<String, Object> findPwd(Map<String, Object> userData){
+		return (Map<String, Object>)getSqlSession().selectOne("userQuery.findPwd", userData);
+	}
 	/**
 	 * 유저 정보 생성
 	 * @param userListMap

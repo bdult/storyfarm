@@ -18,6 +18,59 @@
 		MEMBER_ID = #{ id } and MEMBER_PW = #{ pwd }
 	</select>
 	
+	<select id="findId" resultType="hashmap">
+		SELECT
+		MEMBER_ID
+		FROM
+		BG_MEMBER
+		WHERE
+			MEMBER_NM = #{ member_nm }
+		<choose>
+			<when test="member_tel != null and member_tel != ''">
+				AND MEMBER_TEL = #{ member_tel }
+			</when>
+			<when test="member_email != null and member_email != ''">
+				AND MEMBER_EMAIL = #{ member_email }
+			</when>
+			<when test="member_gender != null and member_gender != '' 
+			and member_year != null and member_year != ''
+			and member_month != null and member_month != ''
+			and member_day != null and member_day != ''">
+				AND MEMBER_GENDER = #{ member_gender }
+				AND MEMBER_YEAR = #{ member_year }
+				AND MEMBER_MONTH = #{ member_month }
+				AND MEMBER_DAY = #{ member_day }
+			</when>
+		</choose>
+	</select>
+	
+	<select id="findPwd" resultType="hashmap">
+		SELECT
+		MEMBER_EMAIL
+		FROM
+		BG_MEMBER
+		WHERE
+			MEMBER_ID = #{ member_id }
+			AND MEMBER_NM = #{ member_nm }
+		<choose>
+			<when test="member_tel != null and member_tel != ''">
+				AND MEMBER_TEL = #{ member_tel }
+			</when>
+			<when test="member_email != null and member_email != ''">
+				AND MEMBER_EMAIL = #{ member_email }
+			</when>
+			<when test="member_gender != null and member_gender != '' 
+			and member_year != null and member_year != ''
+			and member_month != null and member_month != ''
+			and member_day != null and member_day != ''">
+				AND MEMBER_GENDER = #{ member_gender }
+				AND MEMBER_YEAR = #{ member_year }
+				AND MEMBER_MONTH = #{ member_month }
+				AND MEMBER_DAY = #{ member_day }
+			</when>
+		</choose>
+	</select>
+	
 	<!-- insert -->
 	<insert id="insertUser"  parameterType="hashmap">
 		INSERT INTO BG_MEMBER (
@@ -47,11 +100,11 @@
 	<update id="updateUser" parameterType="hashmap">
 		UPDATE BG_MEMBER
 		<set>
-			MEMBER_ID = #{ id },
-			MEMBER_NM = #{ name },
-			MEMBER_PW = #{ pwd },
-			MEMBER_ROLE = #{ role }
+			MEMBER_ID = #{ member_id },
+			MEMBER_NM = #{ member_nm },
+			MEMBER_PW = #{ member_pw },
+			MEMBER_ROLE = #{ member_role }
 		</set>
-		WHERE MEMBER_ID = #{ id }
+		WHERE MEMBER_ID = #{ member_id }
 	</update>
 </mapper>

@@ -29,6 +29,13 @@ public class UserService {
 		return userDao.detail(paramMap);
 	}
 
+	public Map<String, Object> findId(Map<String, Object> paramMap) {
+		return userDao.findId(paramMap);
+	}
+
+	public Map<String, Object> findPwd(Map<String, Object> paramMap) {
+		return userDao.findPwd(paramMap);
+	}
 	/**
 	 * 유저 정보 생성
 	 * @param paramMap
