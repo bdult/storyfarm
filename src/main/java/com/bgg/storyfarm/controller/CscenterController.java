@@ -142,19 +142,22 @@ public class CscenterController {
 	}
 	
 	@RequestMapping(value = "commentCreate.do", method = RequestMethod.POST)
-	public String commentCreate(@RequestParam Map<String, Object> paramsMap, HttpServletRequest request, HttpSession session) {
+	public String commentCreate(@RequestParam Map<String, Object> paramsMap, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
-	
+
+		String fLocation = paramsMap.get("fLocation").toString();
+		String sLocation = paramsMap.get("sLocation").toString();
+		
 		if(session.getAttribute("login_session") == null){
 			mav.addObject("msg", "login_fail");
-			return "redirect:/cscenter/eventView.do?contentsId="+paramsMap.get("contents_id");
+			return "redirect:/" + fLocation + "/" + sLocation + ".do?contentsId="+paramsMap.get("contents_id");
 		}
 		
 		mav.addObject("commentCreate", boardService.commentCreate(paramsMap));
-		return "redirect:/cscenter/eventView.do?contentsId="+paramsMap.get("contents_id");
+		return "redirect:/" + fLocation + "/" + sLocation + ".do?contentsId="+paramsMap.get("contents_id");
 	}
 	
-	@RequestMapping(value = "commentDelete.do", method = RequestMethod.POST)
+	@RequestMapping(value = "commentDelete.do", method = RequestMethod.GET)
 	public String commentDelete(@RequestParam Map<String, Object> paramsMap) {
 		ModelAndView mav = new ModelAndView();
 		
@@ -166,15 +169,12 @@ public class CscenterController {
 	public String commentModify(@RequestParam Map<String, Object> paramsMap) {
 		ModelAndView mav = new ModelAndView();
 		
-		return "redirect:/cscenter/eventView.do?contentsId="+paramsMap.get("contents_id") + "&comment_id=" + paramsMap.get("comment_id");
-	}
+		String fLocation = paramsMap.get("fLocation").toString();
+		String sLocation = paramsMap.get("sLocation").toString();
 
-	@RequestMapping(value = "commentModifyComplete.do", method = RequestMethod.POST)
-	public String commentModifyComplete(@RequestParam Map<String, Object> paramsMap) {
-		ModelAndView mav = new ModelAndView();
-		
 		mav.addObject("commentModify", boardService.commentModify(paramsMap));
-		return "redirect:/cscenter/eventView.do?contentsId="+paramsMap.get("contents_id");
+		
+		return "redirect:/" + fLocation + "/" + sLocation + ".do?contentsId="+paramsMap.get("contents_id") + "&comment_id=" + paramsMap.get("comment_id");
 	}
 	
 	@RequestMapping(value = "ask.do", method = RequestMethod.GET)
