@@ -19,77 +19,65 @@ section#noti .well-half {
 }
 </style>
 
-<!-- SlidesJS Required: These styles are required if you'd like a responsive slideshow -->
-<style>
-  #slides {
-    display: none
-  }
-
-  .container-slides {
-    margin: 0 auto
-  }
-
-  /* For tablets & smart phones */
-  @media (max-width: 767px) {
-    body {
-      padding-left: 20px;
-      padding-right: 20px;
-    }
-    .container-slides {
-      width: auto
-    }
-  }
-
-  /* For smartphones */
-  @media (max-width: 480px) {
-    .container-slides {
-      width: auto
-    }
-  }
-
-  /* For smaller displays like laptops */
-  @media (min-width: 768px) and (max-width: 979px) {
-    .container-slides {
-      width: 724px
-    }
-  }
-
-  /* For larger displays */
-  @media (min-width: 1200px) {
-    .container-slides {
-      width: 1170px
-    }
-  }
-</style>
-<!-- SlidesJS Required: -->
+<section class="slides">
+	<div id="carousel-example-generic" class="carousel slide">
+	  <!-- Indicators -->
+	  <ol class="carousel-indicators">
+	    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+	    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+	    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+	  </ol>
+	
+	  <!-- Wrapper for slides -->
+	  <div class="carousel-inner">
+	    <div class="item active">
+	      <img src="http://bigstarglobal.com/en/wp-content/uploads/2013/04/peet-and-baba_1.jpg" alt="...">
+	      <div class="carousel-caption">
+	        피트앤바바
+	      </div>
+	    </div>
+	    <div class="item">
+	      <img src="http://bigstarglobal.com/en/wp-content/uploads/2013/03/dinomain.jpg" alt="...">
+	      <div class="carousel-caption">
+	        디노 테일
+	      </div>
+	    </div>
+	    <div class="item">
+	      <img src="http://bigstarglobal.com/en/wp-content/uploads/2013/02/BoomBoom_Banner.png" alt="...">
+	      <div class="carousel-caption">
+	        붐붐
+	      </div>
+	    </div>
+	  </div>
+	
+	  <!-- Controls -->
+	  <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+	    <span class="icon-chevron-left"></span>
+	  </a>
+	  <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+	    <span class="icon-chevron-right"></span>
+	  </a>
+	</div>
+</section>
 
 <section id="brand">
-	<div class="row">
-	  <div class="col-md-1">
-	  	<a href="#" class="slidesjs-previous slidesjs-navigation"><i class="icon-chevron-left icon-3x"></i></a>
-	  </div>
-	  <c:forEach begin="1" end="5" varStatus="status">
-	    <div class="col-md-2">
-	    	<c:forEach begin="1" end="2">
-			  	<div class="row">
-			  		<div class="col-md-12">
-					    <a href="${ contextPath }/brand.do" class="thumbnail">
-					      <img style="width: 100%; height: 130px;" alt="브랜드 배너 영역 ${ status.count }">
-					    </a>
-			  		</div>
-			  	</div>
-			  	<br />
-	    	</c:forEach>
-		  </div>
-   	</c:forEach>
-	  <div class="col-md-1">
-	  	<a href="#" class="slidesjs-next slidesjs-navigation"><i class="icon-chevron-right icon-3x"></i></a>
-	  </div>
-	</div>
-	<hr />
+  <div class="row">
+  	<div class="col-md-12">
+  		<c:forEach items="${ brandList }" var="obj" varStatus="status">
+  			<c:if test="${ status.count le 12 }">
+				<div class="col-md-2">
+					<a href="${ contextPath }/brand.do?brand_id=${ obj.BRAND_ID }" class="thumbnail">
+						${ obj.BRAND_NM }
+						<img src="${ obj.IMG_PATH }" style="width: 100%; height: 130px;" alt="${ obj.BRAND_NM }">
+					</a>
+				</div>
+  			</c:if>
+  		</c:forEach>
+  	</div>
+  </div>
 </section>
 	
-
+<!-- 	
 <section id="contents">
 	<div class="row">
 		<div class="col-md-12">
@@ -130,7 +118,9 @@ section#noti .well-half {
 		
 	</div>
 </section>
+ -->
 
+<!-- 
 <section id="recommend">
 	<div class="row">
 		<div class="col-md-12">
@@ -166,6 +156,7 @@ section#noti .well-half {
 		
 	</div>
 </section>
+ -->
 
 <section id="noti">
 	<div class="row">

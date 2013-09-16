@@ -71,8 +71,11 @@ public class BreadcrumbUtil {
 			case StoryfarmConstants.BREADCRUMB_PAYMENT_INFO:
 				this.setBreadcrumbMap("유료서비스 안내", "/introduce/storyfarmIntro.do");
 				break;
-			case StoryfarmConstants.BREADCRUMB_KOREANLANGUAGE:
-				this.setBreadcrumbMap("국어", "/contentsList.do");
+			case StoryfarmConstants.BREADCRUMB_BIG_CATE:
+				this.setBreadcrumbMap("대카테고리", "/category.do");
+				break;
+			case StoryfarmConstants.BREADCRUMB_SERIES:
+				this.setBreadcrumbMap("시리즈", "/series.do");
 				break;
 			case StoryfarmConstants.BREADCRUMB_MYPAGE_INFO:
 				this.setBreadcrumbMap("마이페이지", "/mypage/info.do");

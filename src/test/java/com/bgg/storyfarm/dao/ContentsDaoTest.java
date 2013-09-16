@@ -36,7 +36,7 @@ public class ContentsDaoTest {
 	@Test
 	public void testList() {
 		HashMap<String, Object> paramMap = new HashMap<String, Object>();
-		paramMap.put(StoryfarmConstants.BRAND_ID, 2);
+//		paramMap.put(StoryfarmConstants.BRAND_ID, 2);
 //		paramMap.put(StoryfarmConstants.CONTENTS_SERIES_ID, 1);
 		
 		List<Map<String, Object>> contents = contentsDao.list(paramMap);
@@ -58,4 +58,64 @@ public class ContentsDaoTest {
 		assertNotNull(content);
 	}
 	
+	//시리즈 상세 테스트
+	@Test
+	public void testSeriesDetail() {
+		
+		int contents_series_id = 148; 
+		
+		HashMap<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put(StoryfarmConstants.CONTENTS_SERIES_ID, contents_series_id);
+		
+		Map<String, Object> series = contentsDao.seriesDetail(paramMap);
+		assertNotNull(series);
+	}
+	
+	//시리즈 상세 테스트
+	@Test
+	public void testCateDetail() {
+		
+		int contents_series_id = 39; 
+		
+		HashMap<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put(StoryfarmConstants.CATE_ID, contents_series_id);
+		
+		Map<String, Object> series = contentsDao.cateDetail(paramMap);
+		assertNotNull(series);
+	}
+	
+	//브랜드 목록 조회 테스트
+	@Test
+	public void testBrandList() {
+		HashMap<String, Object> paramMap = new HashMap<String, Object>();
+//		paramMap.put(StoryfarmConstants.BRAND_ID, 2);
+//		paramMap.put(StoryfarmConstants.CONTENTS_SERIES_ID, 1);
+		
+		List<Map<String, Object>> contents = contentsDao.brandList(paramMap);
+		logger.info( consoleUtil.prettyConsoleLog(contents));
+		assertThat(contents.size(), is(not(0)));
+		
+	}
+	//카테고리 아이디로 시리즈 목록 조회 테스트
+	@Test
+	public void testSeriesListByCategory() {
+		HashMap<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put(StoryfarmConstants.CATE_ID, 40);//한글
+		
+		List<Map<String, Object>> contents = contentsDao.seriesListByCategory(paramMap);
+		logger.info( consoleUtil.prettyConsoleLog(contents));
+		assertThat(contents.size(), is(not(0)));
+		
+	}
+	//브랜드 아이디로 시리즈 목록 조회 테스트
+	@Test
+	public void testSeriesListByBrand() {
+		HashMap<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put(StoryfarmConstants.BRAND_ID, 137); //YBM시사
+		
+		List<Map<String, Object>> contents = contentsDao.seriesListByBrand(paramMap);
+		logger.info( consoleUtil.prettyConsoleLog(contents));
+		assertThat(contents.size(), is(not(0)));
+		
+	}
 }

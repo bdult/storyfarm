@@ -14,7 +14,7 @@ public class ContentsDao extends SqlSessionDaoSupport {
 	
 	private Logger _logger = LoggerFactory.getLogger(getClass());
 	
-	/** 콘텐츠 목록을 조회
+	/** 콘텐츠 목록 조회
 	 * @return List
 	 */
 	public List<Map<String, Object>> list(Map<String, Object> contentMap) {
@@ -30,4 +30,47 @@ public class ContentsDao extends SqlSessionDaoSupport {
 		
 		return (Map<String, Object>)getSqlSession().selectOne("contentsQuery.detail", contentMap);
 	}
+	
+	/** 시리즈 상세 정보
+	 * @param contentMap
+	 * @return Map
+	 */
+	public Map<String, Object> seriesDetail(Map<String, Object> contentMap){
+		
+		return (Map<String, Object>)getSqlSession().selectOne("contentsQuery.seriesDetail", contentMap);
+	}
+	
+	/** 카테고리 상세 정보
+	 * @param contentMap
+	 * @return Map
+	 */
+	public Map<String, Object> cateDetail(Map<String, Object> contentMap){
+		
+		return (Map<String, Object>)getSqlSession().selectOne("contentsQuery.cateDetail", contentMap);
+	}
+	
+	/** 브랜드 목록 조회
+	 * @return List
+	 */
+	public List<Map<String, Object>> brandList(Map<String, Object> contentMap) {
+		
+		return getSqlSession().selectList( "contentsQuery.brandList", contentMap);
+	}
+	
+	/** 카테고리 아이디로 시리즈 목록 조회
+	 * @return List
+	 */
+	public List<Map<String, Object>> seriesListByCategory(Map<String, Object> contentMap) {
+		
+		return getSqlSession().selectList( "contentsQuery.seriesListByCategory", contentMap);
+	}
+	
+	/** 브랜드 아이디로 시리즈 목록 조회
+	 * @return List
+	 */
+	public List<Map<String, Object>> seriesListByBrand(Map<String, Object> contentMap) {
+		
+		return getSqlSession().selectList( "contentsQuery.seriesListByBrand", contentMap);
+	}
+
 }
