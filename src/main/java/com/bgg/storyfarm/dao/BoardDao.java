@@ -6,10 +6,10 @@ import java.util.Map;
 import org.mybatis.spring.support.SqlSessionDaoSupport;
 import org.springframework.stereotype.Repository;
 
+@SuppressWarnings("unchecked")
 @Repository
 public class BoardDao extends SqlSessionDaoSupport {
 
-	
 	/** 테스트 시 게시판 board_id 조회용
 	 * @return
 	 */
