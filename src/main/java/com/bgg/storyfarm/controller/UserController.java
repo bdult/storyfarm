@@ -24,6 +24,7 @@ import com.bgg.storyfarm.common.BreadcrumbUtil;
 import com.bgg.storyfarm.common.StoryfarmConstants;
 import com.bgg.storyfarm.service.UserService;
 
+@SuppressWarnings("unchecked")
 @Controller
 public class UserController {
 
