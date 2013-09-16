@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
+@SuppressWarnings("unchecked")
 @Repository
 public class ContentsDao extends SqlSessionDaoSupport {
 	

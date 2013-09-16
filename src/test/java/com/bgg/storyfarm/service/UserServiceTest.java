@@ -75,18 +75,20 @@ public class UserServiceTest {
 		logger.info("회원가입 테스트 입니다.");
 
 		//given
-		Map<String, Object> userDTO = new TreeMap();
-		userDTO.put("id", "test12");
-		userDTO.put("name", "test1");
-		userDTO.put("pwd", 123);
-		userDTO.put("role", 123);
+		Map<String, Object> userDTO = new HashMap<String,Object>();
+		userDTO.put("member_id", "test12");
+		userDTO.put("member_nm", "test1");
+		userDTO.put("member_pw", "123");
+		userDTO.put("member_email", "qwe@naver.com");
+		userDTO.put("member_tel", "010-1111-1111");
+		userDTO.put("member_addr_1", "서울시");
+		userDTO.put("member_addr_2", "123호");
 		
 		//when
-		int result = userDao.insertUser(userDTO);
+		userService.insertUser(userDTO);
 		
 		//than
 		assertNotNull(userDTO);
-		assertThat(result, is(not(0)));
 		logger.info("{}", userDTO);
 	}
 
@@ -105,13 +107,37 @@ public class UserServiceTest {
 		userDTO.put("role", "2");
 		
 		//when
-		int result = userDao.updateUser(userDTO);
+		userDao.updateUser(userDTO);
 		
 		//than
 		assertNotNull(userDTO);
-		assertThat(result, is(not(0)));
 		logger.info("{}", userDTO);
 	}
 	
+	@Test
+	public void testFindId(){
+		logger.info("아이디 찾기 테스트 입니다.");
+		
+		//given
+		String nm = "test";
+		String tel = "010-123-122";
+		String email = "fxx@naver.com1";
+		String gender = "남";
+		String year = "2007";
+		String month = "06";
+		String day = "12";
+		
+		Map<String, Object> userData = new HashMap<String, Object>();
+		userData.put("member_nm", nm);
+//		userData.put("member_tel", tel);
+//		userData.put("member_email", email);
+		userData.put("member_gender", gender);
+		userData.put("member_year", year);
+		userData.put("member_month", month);
+		userData.put("member_day", day);
+		
+		//when
+		userService.findId(userData);
+	}
 }
 	

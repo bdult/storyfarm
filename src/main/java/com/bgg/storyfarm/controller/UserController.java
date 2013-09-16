@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import org.junit.runners.Parameterized.Parameters;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,7 @@ import com.bgg.storyfarm.common.BreadcrumbUtil;
 import com.bgg.storyfarm.common.StoryfarmConstants;
 import com.bgg.storyfarm.service.UserService;
 
+@SuppressWarnings("unchecked")
 @Controller
 public class UserController {
 
@@ -128,14 +130,19 @@ public class UserController {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("user/joinStep2");
 		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_REGISTER, StoryfarmConstants.BREADCRUMB_JOINSTEP2));
+		
+		
 		return mav;
 	}
 
-	@RequestMapping(value = "joinStep3.do", method = RequestMethod.GET)
-	public ModelAndView joinStep3(Model model) {
+	@RequestMapping(value = "joinStep3.do", method = RequestMethod.POST)
+	public ModelAndView joinStep3(Model model, @RequestParam Map<String, Object> paramMap) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("user/joinStep3");
 		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_REGISTER, StoryfarmConstants.BREADCRUMB_JOINSTEP2, StoryfarmConstants.BREADCRUMB_JOINSTEP3));
+		
+		userService.insertUser(paramMap);
+		
 		return mav;
 	}
 	
@@ -155,11 +162,14 @@ public class UserController {
 		return mav;
 	}
 
-	@RequestMapping(value = "findIdResult.do", method = RequestMethod.GET)
-	public ModelAndView findIdResult(Model model) {
+	@RequestMapping(value = "findIdResult.do", method = RequestMethod.POST)
+	public ModelAndView findIdResult(Model model, @RequestParam Map<String, Object> paramMap) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("user/findIdResult");
 		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_FINDID_RESULT));
+
+		model.addAttribute("findUserData", userService.findId(paramMap));
+		
 		return mav;
 	}
 	
@@ -171,11 +181,14 @@ public class UserController {
 		return mav;
 	}
 	
-	@RequestMapping(value = "findPwdResult.do", method = RequestMethod.GET)
-	public ModelAndView findPwdResult(Model model) {
+	@RequestMapping(value = "findPwdResult.do", method = RequestMethod.POST)
+	public ModelAndView findPwdResult(Model model, @RequestParam Map<String, Object> paramMap) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("user/findPwdResult");
 		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_FINDPWD_RESULT));
+
+		model.addAttribute("findUserData", userService.findPwd(paramMap));
+		
 		return mav;
 	}
 }
