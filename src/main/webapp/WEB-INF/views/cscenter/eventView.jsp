@@ -21,7 +21,7 @@
 		<ul class="list-unstyled">
 			<c:forEach var="comment" items="${ detailComments }">
 			
-				<li class="panel panel-info commentList">
+				<li class="panel panel-info panel-body commentList">
 					<c:if test="${ comment.MEMBER_ID == login_session.MEMBER_ID }">
 						<dl>
 							<dt class="pull-right">
@@ -94,24 +94,26 @@
 		var $this = $(this);
 		
 		$this.click(function(){
-			
-			$.ajax({
-				type: "POST",
-				url: "${ contextPath }/cscenter/commentDelete.do",
-				data: {
-					id : $.trim($this.closest(".commentList").find(".member_id").text()),
-					comment : $.trim($this.closest(".commentList").find(".comment").text()),
-					comment_id : $.trim($this.closest(".commentList").find(":input[name=comment_id]").val())
-				}
-			}).done(function(data){
-		    	if(data.code == 200) {
-		    		$this.closest(".commentList").remove();
-		    	}else {
-		    		alert("실패");
-		    	}
-			}).fail(function(data){
-				alert("서버에러");
-			});
+			var r=confirm("삭제 하시겠습니까?");
+			if (r==true){
+				$.ajax({
+					type: "POST",
+					url: "${ contextPath }/cscenter/commentDelete.do",
+					data: {
+						id : $.trim($this.closest(".commentList").find(".member_id").text()),
+						comment : $.trim($this.closest(".commentList").find(".comment").text()),
+						comment_id : $.trim($this.closest(".commentList").find(":input[name=comment_id]").val())
+					}
+				}).done(function(data){
+			    	if(data.code == 200) {
+			    		$this.closest(".commentList").remove();
+			    	}else {
+			    		alert("실패");
+			    	}
+				}).fail(function(data){
+					alert("서버에러");
+				});
+			}
 		});
 	});
 	
