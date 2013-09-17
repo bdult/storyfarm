@@ -71,15 +71,15 @@
 	 	
 	 	<div class="row">
 	 		<div class="col-md-12 text-center">
-	 			<a href="${ contextPath }/contentsList.do" class="btn btn-default">한글</a>
-	 			<a href="${ contextPath }/contentsList.do" class="btn btn-default">영어</a>
-	 			<a href="${ contextPath }/contentsList.do" class="btn btn-default">수학</a>
-	 			<a href="${ contextPath }/contentsList.do" class="btn btn-default">과학</a>
-	 			<a href="${ contextPath }/contentsList.do" class="btn btn-default">창의</a>
-	 			<a href="${ contextPath }/contentsList.do" class="btn btn-default">동요</a>
-	 			<a href="${ contextPath }/contentsList.do" class="btn btn-default">동화</a>
-	 			<a href="${ contextPath }/contentsList.do" class="btn btn-default">생활</a>
-	 			<a href="${ contextPath }/contentsList.do" class="btn btn-default">프린트학습</a>
+	 			<a href="${ contextPath }/category.do?cate_id=40" class="btn btn-default">한글</a>
+	 			<a href="${ contextPath }/category.do?cate_id=41" class="btn btn-default">영어</a>
+	 			<a href="${ contextPath }/category.do?cate_id=39" class="btn btn-default">수학</a>
+	 			<a href="${ contextPath }/category.do?cate_id=47" class="btn btn-default">과학</a>
+	 			<a href="${ contextPath }/category.do?cate_id=46" class="btn btn-default">창의</a>
+	 			<a href="${ contextPath }/category.do?cate_id=42" class="btn btn-default">동요</a>
+	 			<a href="${ contextPath }/category.do?cate_id=48" class="btn btn-default">동화</a>
+	 			<a href="${ contextPath }/category.do?cate_id=49" class="btn btn-default">생활</a>
+	 			<a href="${ contextPath }/worksheet.do" class="btn btn-default">프린트학습</a>
 	 		</div>
 	 	</div>
 	

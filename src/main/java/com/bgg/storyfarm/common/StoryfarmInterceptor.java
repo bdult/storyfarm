@@ -91,7 +91,7 @@ public class StoryfarmInterceptor extends HandlerInterceptorAdapter {
 			sb.append("_PARAM_[");
 
 			// parameter
-			Enumeration eNames = request.getParameterNames();
+			Enumeration<?> eNames = request.getParameterNames();
 			while (eNames.hasMoreElements()) {
 				String name = (String) eNames.nextElement();
 				String[] values = request.getParameterValues(name);
