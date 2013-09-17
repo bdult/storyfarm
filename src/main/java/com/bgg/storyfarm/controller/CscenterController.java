@@ -6,6 +6,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.json.simple.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.bgg.storyfarm.common.BreadcrumbUtil;
@@ -136,7 +138,6 @@ public class CscenterController {
 		//댓글 목록 view
 		mav.addObject("detailComments", boardService.detailComments(paramsMap));
 		mav.addObject("contentsId", contentId);
-		mav.addObject("commentsId", paramsMap.get("comment_id"));
 		
 		return mav;
 	}
@@ -157,12 +158,15 @@ public class CscenterController {
 		return "redirect:/" + fLocation + "/" + sLocation + ".do?contentsId="+paramsMap.get("contents_id");
 	}
 	
-	@RequestMapping(value = "commentDelete.do", method = RequestMethod.GET)
-	public String commentDelete(@RequestParam Map<String, Object> paramsMap) {
-		ModelAndView mav = new ModelAndView();
+	@RequestMapping(value = "commentDelete.do", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	public @ResponseBody String commentDelete(@RequestParam Map<String, Object> paramsMap) {
 		
-		mav.addObject("commentDelete", boardService.commentDelete(paramsMap));
-		return "redirect:/cscenter/eventView.do?contentsId="+paramsMap.get("contents_id");
+		boardService.commentDelete(paramsMap);
+		
+		JSONObject jsonObj=new JSONObject();
+		jsonObj.put("code", "200");
+		
+		return jsonObj.toJSONString();
 	}
 
 	@RequestMapping(value = "commentModify.do", method = RequestMethod.POST)

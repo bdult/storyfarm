@@ -90,12 +90,16 @@
 	INSERT INTO BG_BOARD_COMMENTS (
 		CONTENTS_ID,
 		MEMBER_ID,
-		COMMENT
+		COMMENT,
+		REG_DT,
+		MOD_DT
 	)
 	VALUES (
 		#{ contents_id },
 		#{ member_id },
-		#{ comment }
+		#{ comment },
+		NOW(),
+		NOW()
 	)
 	
 	</insert>
@@ -125,7 +129,8 @@
 	<update id="commentDelete" parameterType="hashmap">
 	UPDATE BG_BOARD_COMMENTS
 		<set>
-			DEL_YN = 'Y'
+			DEL_YN = 'Y',
+			MOD_DT = NOW()
 		</set>
 	WHERE
 		COMMENT_ID = #{ comment_id }
