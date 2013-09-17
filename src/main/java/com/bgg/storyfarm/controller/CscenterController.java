@@ -197,7 +197,7 @@ public class CscenterController {
 	 * @return
 	 */
 	@RequestMapping(value = "email.do", method = RequestMethod.GET)
-	public ModelAndView email(Model model, HttpServletRequest request, HttpSession session) {
+	public String email(Model model, HttpServletRequest request, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("side-cscenter/email");
 		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(
@@ -207,10 +207,11 @@ public class CscenterController {
 		
 		if( session.getAttribute("login_session") != null){
 			mav.setViewName("side-mypage/question");
+			return "redirect:/mypage/question.do";
 		}else{
 			mav.setViewName("side-cscenter/email");
+			return "side-cscenter/email";
 		}
-		return mav;
 	}
 
 	/** 페이지 처리

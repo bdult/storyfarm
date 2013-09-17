@@ -48,16 +48,25 @@
 			</c:forEach>
 		</ul>
 		
-		<form method="post" action="${ contextPath }/cscenter/commentCreate.do">
-			<div class="panel panel-info">
-				<input type="hidden" name="fLocation" value="cscenter">
-				<input type="hidden" name="sLocation" value="eventView">
-				<input type="hidden" name="contents_id" value="${contentsId}">
-				<input type="hidden" name="member_id" value="${login_session.MEMBER_ID}">
-				<textarea class="form-control" rows="3" name="comment"></textarea>
-				<button class="btn btn-default pull-right">덧글입력</button>
-			</div>
-		</form>
+		<c:choose>
+			<c:when test="${ login_session.MEMBER_ID != null }">
+				<form method="post" action="${ contextPath }/cscenter/commentCreate.do">
+					<div class="panel panel-info">
+						<input type="hidden" name="fLocation" value="cscenter">
+						<input type="hidden" name="sLocation" value="eventView">
+						<input type="hidden" name="contents_id" value="${contentsId}">
+						<input type="hidden" name="member_id" value="${login_session.MEMBER_ID}">
+						<textarea class="form-control" rows="3" name="comment"></textarea>
+						<button class="btn btn-default pull-right">덧글입력</button>
+					</div>
+				</form>
+			</c:when>
+			<c:otherwise>
+				<div class="panel panel-info">
+					로그인한 사람에게만 덧글쓰기를 허용하고 있습니다. <a href="${ contextPath }/loginStep1.do">로그인</a> 후 이용해 주세요
+				</div>
+			</c:otherwise>
+		</c:choose>
 		
 		<a href="javascript:history.back();" class="btn btn-default">뒤로</a>
 		
