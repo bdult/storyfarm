@@ -1,5 +1,6 @@
 package com.bgg.storyfarm.service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -54,5 +55,9 @@ public class ContentsService {
 	 */
 	public List<Map<String, Object>> seriesListByBrand(Map<String, Object> contentMap) {
 		return contentsDao.seriesListByBrand(contentMap);
+	}
+
+	public List<Map<String, Object>> cateList(HashMap<String, Object> paramMap) {
+		return contentsDao.cateList(paramMap);
 	}
 }

@@ -24,7 +24,12 @@
         SELECT /* contentsQuery.detail */
             *
         FROM BG_CONTENTS
+        <if test="contents_id == null">
+        WHERE contents_id = 5
+        </if>
+        <if test="contents_id != null">
         WHERE contents_id = #{ contents_id }
+        </if>
     </select>
     
     <select id="brandList" resultType="map">
@@ -32,6 +37,13 @@
             *
         FROM BG_BRAND
         ORDER BY BRAND_NM
+    </select>
+    
+    <select id="categoryList" resultType="map">
+        SELECT /* contentsQuery.categoryList */
+            *
+        FROM BG_CATE
+        ORDER BY ORDERING_NO
     </select>
     
     <select id="seriesDetail" resultType="map">
