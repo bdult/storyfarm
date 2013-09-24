@@ -17,9 +17,10 @@
                 AND brand_id = #{ brand_id }
             </if>
         </where>
+        ORDER BY REG_DT
     </select>
 
-    <select id="detail" resultType="map" parameterType="int">
+    <select id="detail" resultType="map">
         SELECT /* contentsQuery.detail */
             *
         FROM BG_CONTENTS
@@ -29,6 +30,56 @@
         <if test="contents_id != null">
         WHERE contents_id = #{ contents_id }
         </if>
+    </select>
+    
+    <select id="brandList" resultType="map">
+        SELECT /* contentsQuery.brandList */
+            *
+        FROM BG_BRAND
+        ORDER BY BRAND_NM
+    </select>
+    
+    <select id="categoryList" resultType="map">
+        SELECT /* contentsQuery.categoryList */
+            *
+        FROM BG_CATE
+        ORDER BY ORDERING_NO
+    </select>
+    
+    <select id="seriesDetail" resultType="map">
+        SELECT /* contentsQuery.seriesDetail */
+            *
+        FROM BG_CONTENTS_SERIES
+        WHERE CONTENTS_SERIES_ID = #{ contents_series_id }
+    </select>
+    
+    <select id="cateDetail" resultType="map">
+        SELECT /* contentsQuery.cateDetail */
+            *
+        FROM BG_CATE
+        WHERE CATE_ID = #{ cate_id }
+    </select>
+
+    <select id="seriesListByBrand" resultType="map">
+        SELECT /* contentsQuery.seriesListByBrand */
+            *
+        FROM BG_CONTENTS_SERIES
+		WHERE 1=1
+		AND BRAND_ID = #{ brand_id }
+    </select>
+
+    <select id="seriesListByCategory" resultType="map">
+		SELECT /* contentsQuery.seriesListByCategory */ 
+			B.CONTENTS_SERIES_ID,
+			B.CONTENTS_SERIES_NM,
+			B.SERIES_DESC,
+			B.BRAND_ID,
+			B.IMG_PATH
+		FROM BG_CATE_SERIES_RELATIONSHIPS A, BG_CONTENTS_SERIES B
+		WHERE 1=1 
+		AND A.CATE_ID = #{ cate_id }
+		AND A.USE_YN = 'Y'
+		AND A.CONTENTS_SERIES_ID = B.CONTENTS_SERIES_ID 
     </select>
     
 </mapper>

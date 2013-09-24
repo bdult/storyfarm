@@ -6,6 +6,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.json.simple.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.bgg.storyfarm.common.BreadcrumbUtil;
@@ -136,45 +138,47 @@ public class CscenterController {
 		//댓글 목록 view
 		mav.addObject("detailComments", boardService.detailComments(paramsMap));
 		mav.addObject("contentsId", contentId);
-		mav.addObject("commentsId", paramsMap.get("comment_id"));
 		
 		return mav;
 	}
 	
 	@RequestMapping(value = "commentCreate.do", method = RequestMethod.POST)
-	public String commentCreate(@RequestParam Map<String, Object> paramsMap, HttpServletRequest request, HttpSession session) {
+	public String commentCreate(@RequestParam Map<String, Object> paramsMap, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
-	
+
+		String fLocation = paramsMap.get("fLocation").toString();
+		String sLocation = paramsMap.get("sLocation").toString();
+		
 		if(session.getAttribute("login_session") == null){
 			mav.addObject("msg", "login_fail");
-			return "redirect:/cscenter/eventView.do?contentsId="+paramsMap.get("contents_id");
+			return "redirect:/" + fLocation + "/" + sLocation + ".do?contentsId="+paramsMap.get("contents_id");
 		}
 		
 		mav.addObject("commentCreate", boardService.commentCreate(paramsMap));
-		return "redirect:/cscenter/eventView.do?contentsId="+paramsMap.get("contents_id");
+		return "redirect:/" + fLocation + "/" + sLocation + ".do?contentsId="+paramsMap.get("contents_id");
 	}
 	
-	@RequestMapping(value = "commentDelete.do", method = RequestMethod.POST)
-	public String commentDelete(@RequestParam Map<String, Object> paramsMap) {
-		ModelAndView mav = new ModelAndView();
+	@RequestMapping(value = "commentDelete.do", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	public @ResponseBody String commentDelete(@RequestParam Map<String, Object> paramsMap) {
 		
-		mav.addObject("commentDelete", boardService.commentDelete(paramsMap));
-		return "redirect:/cscenter/eventView.do?contentsId="+paramsMap.get("contents_id");
+		boardService.commentDelete(paramsMap);
+		
+		JSONObject jsonObj=new JSONObject();
+		jsonObj.put("code", "200");
+		
+		return jsonObj.toJSONString();
 	}
 
 	@RequestMapping(value = "commentModify.do", method = RequestMethod.POST)
 	public String commentModify(@RequestParam Map<String, Object> paramsMap) {
 		ModelAndView mav = new ModelAndView();
 		
-		return "redirect:/cscenter/eventView.do?contentsId="+paramsMap.get("contents_id") + "&comment_id=" + paramsMap.get("comment_id");
-	}
+		String fLocation = paramsMap.get("fLocation").toString();
+		String sLocation = paramsMap.get("sLocation").toString();
 
-	@RequestMapping(value = "commentModifyComplete.do", method = RequestMethod.POST)
-	public String commentModifyComplete(@RequestParam Map<String, Object> paramsMap) {
-		ModelAndView mav = new ModelAndView();
-		
 		mav.addObject("commentModify", boardService.commentModify(paramsMap));
-		return "redirect:/cscenter/eventView.do?contentsId="+paramsMap.get("contents_id");
+		
+		return "redirect:/" + fLocation + "/" + sLocation + ".do?contentsId="+paramsMap.get("contents_id") + "&comment_id=" + paramsMap.get("comment_id");
 	}
 	
 	@RequestMapping(value = "ask.do", method = RequestMethod.GET)
@@ -193,7 +197,7 @@ public class CscenterController {
 	 * @return
 	 */
 	@RequestMapping(value = "email.do", method = RequestMethod.GET)
-	public ModelAndView email(Model model, HttpServletRequest request, HttpSession session) {
+	public String email(Model model, HttpServletRequest request, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("side-cscenter/email");
 		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(
@@ -203,10 +207,11 @@ public class CscenterController {
 		
 		if( session.getAttribute("login_session") != null){
 			mav.setViewName("side-mypage/question");
+			return "redirect:/mypage/question.do";
 		}else{
 			mav.setViewName("side-cscenter/email");
+			return "side-cscenter/email";
 		}
-		return mav;
 	}
 
 	/** 페이지 처리

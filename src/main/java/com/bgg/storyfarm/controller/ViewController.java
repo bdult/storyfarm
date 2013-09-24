@@ -2,6 +2,7 @@ package com.bgg.storyfarm.controller;
 
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.slf4j.Logger;
@@ -34,23 +35,74 @@ public class ViewController {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("view/dashboard");
 		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME));
+		
+		HashMap<String, Object> paramMap = new HashMap<String, Object>();
+//		paramMap.put(StoryfarmConstants.BRAND_ID, 2);
+//		paramMap.put(StoryfarmConstants.CONTENTS_SERIES_ID, 1);
+		
+		List<Map<String, Object>> brandList = contentsService.brandList(paramMap);
+		List<Map<String, Object>> categoryList = contentsService.cateList(paramMap);
+		mav.addObject("brandList", brandList);
+		mav.addObject("categoryList", categoryList);
+		
 		return mav;
 	}
 	
 	@RequestMapping(value = "brand.do", method = RequestMethod.GET)
-	public String brand(Model model) {
-		return "view/brand";
-	}
-	@RequestMapping(value = "contentsList.do", method = RequestMethod.GET)
-	public ModelAndView contentsList(Model model) {
+	public ModelAndView brand( @RequestParam Map<String,Object> paramMap ) {
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("view/contentsList");
+		mav.setViewName("view/brand");
+		//TODO 네비게이션 지정 필요
+		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME));
 		
-		//dummy
-		HashMap<String, Object> paramMap = new HashMap<String, Object>();
+		List<Map<String, Object>> seriesList = contentsService.seriesListByBrand(paramMap);
+		mav.addObject("seriesList", seriesList);
 		
-		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_KOREANLANGUAGE));
+		return mav;
+	}
+
+	/** 카테고리(대) 페이지
+	 * @param paramMap
+	 * @return
+	 */
+	@RequestMapping(value = "category.do", method = RequestMethod.GET)
+	public ModelAndView category( @RequestParam Map<String,Object> paramMap ) {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("view/category");
+		
+		Map<String, Object> cateDetail = contentsService.seriesDetail(paramMap);
+		mav.addObject("cateDetail", cateDetail);
+		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_BIG_CATE));
+		
+		mav.addObject("seriesList", contentsService.seriesListByCategory(paramMap));
+		return mav;
+	}
+	
+	/** 시리즈 페이지
+	 * @param paramMap
+	 * @return
+	 */
+	@RequestMapping(value = "series.do", method = RequestMethod.GET)
+	public ModelAndView series( @RequestParam Map<String,Object> paramMap ) {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("view/series");
+		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_SERIES));
+		
+		mav.addObject("seriesDetail", contentsService.seriesDetail(paramMap));
 		mav.addObject("contentList", contentsService.list(paramMap));
+		return mav;
+	}
+
+	/** 프린트학습 페이지
+	 * @param paramMap
+	 * @return
+	 */
+	@RequestMapping(value = "worksheet.do", method = RequestMethod.GET)
+	public ModelAndView worksheet( @RequestParam Map<String,Object> paramMap ) {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("view/worksheet");
+//		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_KOREANLANGUAGE));
+		
 		return mav;
 	}
 	
@@ -94,12 +146,14 @@ public class ViewController {
 		return mav;
 	}
 	
-	@RequestMapping(value = "play.do")
-	public String play(Model model, @RequestParam Map<String, Object> paramMap) {
-		Map contentsDetail = contentsService.detail(paramMap);
-		logger.info("{}", contentsDetail);
-		model.addAttribute("detail", contentsDetail);
-		return "view/play";
+	@RequestMapping(value = "play.do", method = RequestMethod.GET)
+	public ModelAndView play( @RequestParam Map<String,Object> paramMap ) {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("view/play");
+		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME));
+		
+		mav.addObject("contents", contentsService.detail(paramMap));
+		return mav;
 	}
 	
 	// UNDER CODE IS TEST_CODE

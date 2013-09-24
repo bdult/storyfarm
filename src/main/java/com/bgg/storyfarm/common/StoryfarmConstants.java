@@ -29,7 +29,8 @@ public class StoryfarmConstants {
 	public final static int BREADCRUMB_PARENTSROOM_INTRO = 430;
 	public final static int BREADCRUMB_PAYMENT_INFO = 440;
 	
-	public final static int BREADCRUMB_KOREANLANGUAGE = 500;
+	public final static int BREADCRUMB_BIG_CATE = 500;
+	public final static int BREADCRUMB_SERIES = 501;
 	
 	public final static int BREADCRUMB_MYPAGE_INFO = 600;
 	public final static int BREADCRUMB_MYPAGE_PAYMENT = 601;
@@ -89,5 +90,6 @@ public class StoryfarmConstants {
 	public final static String BRAND_ID = "brand_id";
 	public final static String CONTENTS_ID = "contents_id";
 	public final static String CONTENTS_SERIES_ID = "contents_series_id";
+	public final static String CATE_ID = "cate_id";
 	
 }
