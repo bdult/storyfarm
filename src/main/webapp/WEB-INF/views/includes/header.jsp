@@ -71,9 +71,20 @@
 	 	
 	 	<div class="row">
 	 		<div class="col-md-12 text-center">
-	 		<c:forEach items="${categoryList}" var="cate">
-	 			<a href="${ contextPath }/category.do?cate_id=${cate.CATE_ID}" class="btn btn-default">${cate.CATE_NM }</a>
-	 		</c:forEach>
+	 		<!-- 
+		 		<c:forEach items="${categoryList}" var="cate">
+		 			<a href="${ contextPath }/category.do?cate_id=${cate.CATE_ID}" class="btn btn-default">${cate.CATE_NM }</a>
+		 		</c:forEach>
+	 		 -->
+	 			<a href="${ contextPath }/category.do?cate_id=78" class="btn btn-default">한글</a>
+	 			<a href="${ contextPath }/category.do?cate_id=32" class="btn btn-default">영어</a>
+	 			<a href="${ contextPath }/category.do?cate_id=38" class="btn btn-default">수학</a>
+	 			<a href="${ contextPath }/category.do?cate_id=41" class="btn btn-default">과학</a>
+	 			<a href="${ contextPath }/category.do?cate_id=46" class="btn btn-default">창의</a>
+	 			<a href="${ contextPath }/category.do?cate_id=54" class="btn btn-default">동요</a>
+	 			<a href="${ contextPath }/category.do?cate_id=79" class="btn btn-default">동화</a>
+	 			<a href="${ contextPath }/category.do?cate_id=68" class="btn btn-default">생활</a>
+	 			<a href="${ contextPath }/worksheet.do" class="btn btn-default">프린트 학습</a>
 	 		</div>
 	 	</div>
 	

@@ -41,9 +41,9 @@ public class ViewController {
 //		paramMap.put(StoryfarmConstants.CONTENTS_SERIES_ID, 1);
 		
 		List<Map<String, Object>> brandList = contentsService.brandList(paramMap);
-		List<Map<String, Object>> categoryList = contentsService.cateList(paramMap);
+//		List<Map<String, Object>> categoryList = contentsService.cateList(paramMap);
 		mav.addObject("brandList", brandList);
-		mav.addObject("categoryList", categoryList);
+//		mav.addObject("categoryList", categoryList);
 		
 		return mav;
 	}
