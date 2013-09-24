@@ -23,7 +23,12 @@
         SELECT /* contentsQuery.detail */
             *
         FROM BG_CONTENTS
+        <if test="contents_id == null">
+        WHERE contents_id = 5
+        </if>
+        <if test="contents_id != null">
         WHERE contents_id = #{ contents_id }
+        </if>
     </select>
     
 </mapper>

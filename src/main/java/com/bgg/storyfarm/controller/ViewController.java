@@ -2,6 +2,7 @@ package com.bgg.storyfarm.controller;
 
 
 import java.util.HashMap;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.bgg.storyfarm.common.BreadcrumbUtil;
@@ -92,8 +94,11 @@ public class ViewController {
 		return mav;
 	}
 	
-	@RequestMapping(value = "play.do", method = RequestMethod.GET)
-	public String play(Model model) {
+	@RequestMapping(value = "play.do")
+	public String play(Model model, @RequestParam Map<String, Object> paramMap) {
+		Map contentsDetail = contentsService.detail(paramMap);
+		logger.info("{}", contentsDetail);
+		model.addAttribute("detail", contentsDetail);
 		return "view/play";
 	}
 	

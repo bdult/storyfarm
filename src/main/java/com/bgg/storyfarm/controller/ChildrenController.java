@@ -58,6 +58,7 @@ public class ChildrenController {
 				StoryfarmConstants.BREADCRUMB_CHILDREN_PLAYER));
 		
 		Map<String, Object> contentsMap = contentsDao.detail(paramMap);
+		logger.info("{}", contentsMap);
 		mav.addObject("movie", contentsMap);
 		
 		return mav;
