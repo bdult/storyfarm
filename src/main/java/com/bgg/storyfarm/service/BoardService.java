@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.bgg.storyfarm.common.StoryfarmConstants;
 import com.bgg.storyfarm.dao.BoardDao;
@@ -68,6 +69,11 @@ public class BoardService {
 		map.put(StoryfarmConstants.COMMENT, boardMap.get("comment"));
 		
 		return boardDao.commentCreate(map);
+	}
+	
+	public void boardCreate(Map<String, Object> boardMap) {
+		
+		boardDao.create(boardMap);
 	}
 	
 	/** 게시판 글 수정

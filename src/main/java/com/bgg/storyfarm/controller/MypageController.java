@@ -3,6 +3,8 @@ package com.bgg.storyfarm.controller;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -174,11 +176,19 @@ public class MypageController {
 	}
 	
 	@RequestMapping(value = "questionInsert.do", method = RequestMethod.GET)
-	public ModelAndView questionInsert(Model model) {
+	public ModelAndView questionInsert(Model model, @RequestParam Map<String, Object> paramsMap) {
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("side-mypage/questionInsert");
+		mav.setViewName("board/boardWrite");
 		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_MYPAGE_INFO, StoryfarmConstants.BREADCRUMB_MYPAGE_QUESTION, StoryfarmConstants.BREADCRUMB_MYPAGE_QUESTION_INSERT));
+		
+		mav.addObject("board_id", paramsMap.get("board_id"));
 		return mav;
+	}
+	
+	@RequestMapping(value = "boardCreate.do", method = RequestMethod.POST)
+	public String boardCreate(Model model, @RequestParam Map<String, Object> paramsMap) {
+		boardService.boardCreate(paramsMap);
+		return "redirect:question.do";
 	}
 	
 	@RequestMapping(value = "questionUpdate.do", method = RequestMethod.GET)

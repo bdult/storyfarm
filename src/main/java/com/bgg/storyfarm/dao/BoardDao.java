@@ -51,8 +51,8 @@ public class BoardDao extends SqlSessionDaoSupport {
 	 * @param boardMap
 	 * @return
 	 */
-	public int create(Map<String, Object> boardMap){
-		return getSqlSession().insert("boardQuery.create", boardMap);
+	public void create(Map<String, Object> boardMap){
+		getSqlSession().insert("boardQuery.create", boardMap);
 	}
 	
 	/** 게시판 덧글 생성

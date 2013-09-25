@@ -24,6 +24,7 @@
 				</tr>
 			</c:forEach>
 		</table>
+		<a class="btn btn-primary pull-right" href="${ contextPath }/mypage/questionInsert.do?board_id=3" id="write">문의 신청</a>
 		
 		<c:if test="${ not empty pageLink }">
 		<div class="text-center">
