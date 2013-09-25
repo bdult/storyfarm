@@ -58,6 +58,14 @@ public class ContentsDao extends SqlSessionDaoSupport {
 		return getSqlSession().selectList( "contentsQuery.brandList", contentMap);
 	}
 	
+	/** 브랜드 목록 조회
+	 * @return List
+	 */
+	public Map<String, Object> brandDetail(Map<String, Object> contentMap) {
+		
+		return (Map<String, Object>)getSqlSession().selectOne( "contentsQuery.brandDetail", contentMap);
+	}
+	
 	/** 카테고리 목록 조회
 	 * @param paramMap
 	 * @return

@@ -66,9 +66,18 @@ public class ViewController {
 		//TODO 네비게이션 지정 필요
 		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME));
 		
+		//브랜드 상세정보 조회
+		mav.addObject("brand", contentsService.brandDetail(paramMap));
+
+		//브랜드 아이디로 시리즈 목록 조회
 		List<Map<String, Object>> seriesList = contentsService.seriesListByBrand(paramMap);
 		mav.addObject("seriesList", seriesList);
 		
+		//첫번째 시리즈의 콘텐츠 목록 조회
+		Map<String, Object> seriesFirst = seriesList.get(0);
+		paramMap.put("contents_series_id", seriesFirst.get("CONTENTS_SERIES_ID"));
+		List<Map<String, Object>> contentList = contentsService.list(paramMap);
+		mav.addObject("contentList", contentList);
 		
 		return mav;
 	}

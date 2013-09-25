@@ -13,9 +13,6 @@
             <if test="contents_series_id != null">
                 AND contents_series_id = #{ contents_series_id }
             </if>
-            <if test="brand_id != null">
-                AND brand_id = #{ brand_id }
-            </if>
         </where>
         ORDER BY REG_DT
     </select>
@@ -37,6 +34,14 @@
             *
         FROM BG_BRAND
         ORDER BY BRAND_NM
+    </select>
+    
+    <select id="brandDetail" resultType="map">
+        SELECT /* contentsQuery.brandDetail */
+            *
+        FROM BG_BRAND
+        WHERE brand_id = #{ brand_id }
+        AND DEL_YN = 'N'
     </select>
     
     <select id="categoryList" resultType="map">

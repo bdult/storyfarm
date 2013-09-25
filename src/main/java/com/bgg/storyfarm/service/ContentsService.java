@@ -43,6 +43,13 @@ public class ContentsService {
 		return contentsDao.brandList(contentMap);
 	}
 	
+	/** 브랜드 상세 정보 보기
+	 * @return
+	 */
+	public Map<String, Object> brandDetail(Map<String, Object> contentMap) {
+		return contentsDao.brandDetail(contentMap);
+	}
+	
 	/** 카테고리 아이디로 시리즈 목록 조회
 	 * @return
 	 */
