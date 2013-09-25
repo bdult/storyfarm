@@ -3,11 +3,13 @@ package com.bgg.storyfarm.controller;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,8 +32,11 @@ public class ViewController {
 	@Autowired
 	private ContentsService contentsService; 
 	
+	@Autowired
+	private MessageSource messageSource;
+	
 	@RequestMapping(value = "dashboard.do", method = RequestMethod.GET)
-	public ModelAndView main(Model model) {
+	public ModelAndView main(Model model, Locale locale) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("view/dashboard");
 		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME));
@@ -45,6 +50,12 @@ public class ViewController {
 		mav.addObject("brandList", brandList);
 //		mav.addObject("categoryList", categoryList);
 		
+		
+		logger.info( locale.getLanguage());
+		logger.info( messageSource.getMessage("brand", null, Locale.ENGLISH));
+		
+		logger.info( messageSource.getMessage("brand", null, locale));
+		
 		return mav;
 	}
 	
@@ -57,6 +68,7 @@ public class ViewController {
 		
 		List<Map<String, Object>> seriesList = contentsService.seriesListByBrand(paramMap);
 		mav.addObject("seriesList", seriesList);
+		
 		
 		return mav;
 	}
