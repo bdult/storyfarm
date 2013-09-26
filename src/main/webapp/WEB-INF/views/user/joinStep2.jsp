@@ -135,23 +135,26 @@
 <script type="text/javascript">
 
 $("#duplication_id").click(function(event){
-
-	$.ajax({
-	    type: "POST",
-	    url: "${ contextPath }/duplication.do",
-	    data: {
-	    	member_id : $('#member_id').val()
-	    }
-	}).done(function(data){
-    	console.info("code : " + data.code);
-    	if(data.code == 200) {
-    		$("#duplication_text").text("사용가능한 아이디 입니다.");
-    	} else {
-    		$("#duplication_text").text("이미 사용중인 아이디 입니다.");
-    	}
-    }).fail(function(data){
-    	alert( "서버에러 죄송합니다.");
-    });
+	if($("#member_id").val() == null || $("#member_id").val() == ''){
+		alert("한글자 이상 입력해 주세요");
+	}else{
+		$.ajax({
+		    type: "POST",
+		    url: "${ contextPath }/duplication.do",
+		    data: {
+		    	member_id : $('#member_id').val()
+		    }
+		}).done(function(data){
+	    	console.info("code : " + data.code);
+	    	if(data.code == 200) {
+	    		$("#duplication_text").text("사용가능한 아이디 입니다.");
+	    	} else {
+	    		$("#duplication_text").text("이미 사용중인 아이디 입니다.");
+	    	}
+	    }).fail(function(data){
+	    	alert( "서버에러 죄송합니다.");
+	    });
+	}
 });
 
 	/* $("#duplication_id").click(function(ev){
