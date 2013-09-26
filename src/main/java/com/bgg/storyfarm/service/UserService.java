@@ -50,4 +50,8 @@ public class UserService {
 		
 		userDao.updateUser(paramMap);
 	}
+	
+	public Map<String, Object> duplicationUser(Map<String, Object> paramMap) {
+		return userDao.duplicationUser(paramMap);
+	}
 }

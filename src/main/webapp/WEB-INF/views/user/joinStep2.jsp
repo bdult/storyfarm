@@ -21,7 +21,8 @@
 				<div class="col-lg-3">
 					<input class="form-control" id="member_id" name="member_id">
 				</div>
-				<a class="btn btn-default">중복확인</a>
+				<a class="btn btn-default" id="duplication_id">중복확인</a>
+				<label id="duplication_text"></label>
 			</div>
 			<div class="form-group">
 				<label class="col-lg-2 control-label">비밀번호 :</label>
@@ -103,16 +104,22 @@
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="col-lg-2 control-label">생년월일 : </label>	
-				<div class="col-lg-2">
-					<input class="form-control" name="member_year" placeholder="연도">
-				</div>
-				<div class="col-lg-2">
-					<input class="form-control" name="member_month" placeholder="월">
-				</div>
-				<div class="col-lg-2">
-					<input class="form-control" name="member_day" placeholder="일">
-				</div>
+					<label class="col-lg-2 control-label">생년월일 : </label>
+					<div class="col-lg-2">
+						<select class="form-control" id="yearBox" name="member_year">
+							<option>년도</option>
+						</select>
+					</div>
+					<div class="col-lg-2">
+						<select class="form-control" id="monthBox" name="member_month">
+							<option>월</option>
+						</select>
+					</div>
+					<div class="col-lg-2">
+						<select class="form-control" id="dayBox" name="member_day">
+							<option>일</option>
+						</select>
+					</div>
 			</div>
 			
 			<div class="row">
@@ -126,6 +133,44 @@
 </div>
 
 <script type="text/javascript">
+
+$("#duplication_id").click(function(event){
+
+	$.ajax({
+	    type: "POST",
+	    url: "${ contextPath }/duplication.do",
+	    data: {
+	    	member_id : $('#member_id').val()
+	    }
+	}).done(function(data){
+    	console.info("code : " + data.code);
+    	if(data.code == 200) {
+    		$("#duplication_text").text("사용가능한 아이디 입니다.");
+    	} else {
+    		$("#duplication_text").text("이미 사용중인 아이디 입니다.");
+    	}
+    }).fail(function(data){
+    	alert( "서버에러 죄송합니다.");
+    });
+});
+
+	/* $("#duplication_id").click(function(ev){
+		window.open('/duplication.do',
+				'Continue_to_Application','width=400,height=300');
+		ev.preventDefault();
+		return false;
+	}); */
+
+	for(var i=2013; i >= 1900; i--){
+		$("#yearBox").append("<option value=" + i +">" + i + "</option>");
+	}
+	for(var i=1; i <= 12; i++){
+		$("#monthBox").append("<option value=" + i +">" + i + "</option>");
+	}
+	for(var i=1; i <= 31; i++){
+		$("#dayBox").append("<option value=" + i +">" + i + "</option>");
+	}
+	
 	$("#submit-btn").click(function(){
 		$("#member_email").attr({
 			value: $("#email1").val() + "@" + $("#email2").val()

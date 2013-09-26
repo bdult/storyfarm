@@ -25,8 +25,8 @@ public class UserDao extends SqlSessionDaoSupport {
 	 * @param UserData
 	 * @return
 	 */
-	public Map<String, String> detail(Map<String, Object> UserData){
-		return (Map<String, String>)getSqlSession().selectOne("userQuery.detail", UserData);
+	public Map<String, String> detail(Map<String, Object> userData){
+		return (Map<String, String>)getSqlSession().selectOne("userQuery.detail", userData);
 	}
 	
 	public Map<String, Object> findId(Map<String, Object> userData){
@@ -47,5 +47,9 @@ public class UserDao extends SqlSessionDaoSupport {
 
 	public void updateUser(Map<String, Object> userListMap) {
 		getSqlSession().update("userQuery.updateUser", userListMap);
+	}
+	
+	public Map<String, Object> duplicationUser(Map<String, Object> userData){
+		return (Map<String, Object>)getSqlSession().selectOne("userQuery.duplicationUser", userData);
 	}
 }

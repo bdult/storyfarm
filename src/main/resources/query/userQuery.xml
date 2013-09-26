@@ -117,4 +117,11 @@
 		</set>
 		WHERE MEMBER_ID = #{ member_id }
 	</update>
+	
+	<!-- duplication -->
+	<select id="duplicationUser" resultType="hashmap">
+		SELECT MEMBER_ID
+		FROM BG_MEMBER
+		WHERE MEMBER_ID = #{ member_id }
+	</select>
 </mapper>

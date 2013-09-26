@@ -133,6 +133,23 @@ public class UserController {
 		
 		return mav;
 	}
+	@RequestMapping(value = "duplication.do", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	public @ResponseBody String duplication(@RequestParam Map<String, Object> paramMap) {
+		Map<String, Object> user_id = userService.duplicationUser(paramMap);
+		
+		
+		if(user_id == null){
+			JSONObject jsonObj=new JSONObject();
+			jsonObj.put("code", "200");
+			
+			return jsonObj.toJSONString();
+		}else{
+			JSONObject jsonObj=new JSONObject();
+			jsonObj.put("code", null);
+			
+			return jsonObj.toJSONString();
+		}
+	}
 
 	@RequestMapping(value = "joinStep3.do", method = RequestMethod.POST)
 	public ModelAndView joinStep3(Model model, @RequestParam Map<String, Object> paramMap) {

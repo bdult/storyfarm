@@ -139,5 +139,16 @@ public class UserServiceTest {
 		//when
 		userService.findId(userData);
 	}
+	
+	@Test
+	public void duplicationUser(){
+		logger.info("중복체크 테스트 입니다.");
+		
+		//given
+		String user_id = "test";
+		
+		//when
+		userService.duplicationUser(user_id);
+	}
 }
 	
