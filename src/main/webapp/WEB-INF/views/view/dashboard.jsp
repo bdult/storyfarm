@@ -65,10 +65,10 @@ section#noti .well-half {
   	<div class="col-md-12">
   		<c:forEach items="${ brandList }" var="obj" varStatus="status">
   			<c:if test="${ status.count le 12 }">
-				<div class="col-md-2">
+				<div class="col-md-2 text-center" style="font-size: 12px;">
 					<a href="${ contextPath }/brand.do?brand_id=${ obj.BRAND_ID }" class="thumbnail">
-						${ obj.BRAND_NM }
 						<img src="${ obj.IMG_PATH }" style="width: 100%; height: 130px;" alt="${ obj.BRAND_NM }">
+						${ obj.BRAND_NM }
 					</a>
 				</div>
   			</c:if>
