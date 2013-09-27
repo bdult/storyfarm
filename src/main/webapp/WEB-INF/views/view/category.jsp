@@ -11,17 +11,15 @@
 
 	<br />
 	
-	<div class="row">
-	  	<div class="col-md-12">
-	  		<c:forEach items="${ seriesList }" var="obj" varStatus="status">
-				<div class="col-md-2">
-					<a href="${ contextPath }/series.do?contents_series_id=${ obj.CONTENTS_SERIES_ID }" class="thumbnail">
-						<span class="name-box">${ fn:substring(obj.CONTENTS_SERIES_NM, 0, 15)  }</span>
-						<img src="${ obj.IMG_PATH }" style="width: 100%; height: 130px;" alt="${ obj.CONTENTS_SERIES_NM }">
+	<div class="row fivecolumns">
+	  		<c:forEach items="${ contentListByCate }" var="obj" varStatus="status">
+				<div class="col-md-2 text-center" style="font-size: 11px;">
+					<a href="${ contextPath }/play.do?contents_id=${ obj.CONTENTS_ID }" class="thumbnail">
+						<img src="${ obj.IMG_PATH }" style="width: 100%; height: 130px;" alt="${ obj.CONTENTS_NM }">
+						 ${ fn:substring(obj.CONTENTS_NM, 0, 15)  }
 					</a>
 				</div>
 	  		</c:forEach>
-	  	</div>
   	</div>
 	
 	<div class="row">

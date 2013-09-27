@@ -22,6 +22,14 @@ public class ContentsService {
 		return contentsDao.list(contentMap);
 	}
 	
+	/** 카테고리별 콘텐츠 목록 조회
+	 * @param paramMap
+	 * @return
+	 */
+	public List<Map<String, Object>> contentsListByCate(Map<String, Object> paramMap) {
+		return contentsDao.contentsListByCate(paramMap);
+	}
+	
 	/** 콘텐츠 상세 정보 보기
 	 * @return
 	 */
@@ -67,4 +75,6 @@ public class ContentsService {
 	public List<Map<String, Object>> cateList(HashMap<String, Object> paramMap) {
 		return contentsDao.cateList(paramMap);
 	}
+
+	
 }

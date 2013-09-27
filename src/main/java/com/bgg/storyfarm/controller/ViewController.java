@@ -95,7 +95,7 @@ public class ViewController {
 		mav.addObject("cateDetail", cateDetail);
 		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_BIG_CATE));
 		
-		mav.addObject("seriesList", contentsService.seriesListByCategory(paramMap));
+		mav.addObject("contentListByCate", contentsService.contentsListByCate(paramMap));
 		return mav;
 	}
 	

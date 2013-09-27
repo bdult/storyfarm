@@ -16,6 +16,16 @@
         </where>
         ORDER BY REG_DT
     </select>
+    
+    <select id="contentsListByCate" resultType="map">
+        SELECT /* contentsQuery.contentsListByCate */
+            BC.*
+        FROM BG_CONTENTS BC, BG_CATE_CONTENTS_RELATIONSHIPS BCCR
+        WHERE 1=1
+        AND BC.CONTENTS_ID = BCCR.CONTENTS_ID
+        AND BCCR.CATE_ID = #{ cate_id } 
+        ORDER BY REG_DT
+    </select>
 
     <select id="detail" resultType="map">
         SELECT /* contentsQuery.detail */

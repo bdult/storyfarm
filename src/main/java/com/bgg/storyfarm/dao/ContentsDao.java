@@ -90,6 +90,10 @@ public class ContentsDao extends SqlSessionDaoSupport {
 		return getSqlSession().selectList( "contentsQuery.seriesListByBrand", contentMap);
 	}
 
+	public List<Map<String, Object>> contentsListByCate(Map<String, Object> paramMap) {
+		return getSqlSession().selectList("contentsQuery.contentsListByCate", paramMap);
+	}
+
 	
 
 }
