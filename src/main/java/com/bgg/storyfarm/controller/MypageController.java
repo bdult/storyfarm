@@ -45,7 +45,6 @@ public class MypageController {
 		
 		@SuppressWarnings("unchecked")
 		Map<String, Object> sessionMap = (Map<String, Object>)session.getAttribute("login_session");
-		sessionMap.get("member_id");
 
 		Map<String, Object> boardMap = new HashMap<String, Object>();
 		boardMap.put(StoryfarmConstants.BOARD_ID, QUESTION_BOARD_ID);
@@ -153,13 +152,17 @@ public class MypageController {
 	}
 	
 	@RequestMapping(value = "question.do", method = RequestMethod.GET)
-	public ModelAndView question(@RequestParam Map<String, Object> paramsMap) {
+	public ModelAndView question(@RequestParam Map<String, Object> paramsMap, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("side-mypage/question");
 		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_MYPAGE_INFO, StoryfarmConstants.BREADCRUMB_MYPAGE_QUESTION));
 
+		@SuppressWarnings("unchecked")
+		Map<String, Object> sessionMap = (Map<String, Object>)session.getAttribute("login_session");
+
 		Map<String, Object> boardMap = new HashMap<String, Object>();
 		boardMap.put(StoryfarmConstants.BOARD_ID, QUESTION_BOARD_ID);
+		boardMap.put("member_id", sessionMap.get("MEMBER_ID"));
 		
 		//페이징 로직
 		int totalCnt = boardService.totalCount(boardMap);
@@ -167,7 +170,7 @@ public class MypageController {
 		mav.addObject("pageLink", pageUtil.setPageLink(totalCnt, pageNum));
 		//페이징 로직
 		
-		mav.addObject("list", boardService.list(boardMap));
+		mav.addObject("list", boardService.questionList(boardMap));
 		
 		return mav;
 	}

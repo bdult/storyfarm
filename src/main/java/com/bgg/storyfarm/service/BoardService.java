@@ -22,6 +22,11 @@ public class BoardService {
 		return boardDao.listTop5(boardMap);
 	}
 	
+	public List<Map<String, Object>> questionList(Map<String, Object> boardMap) {
+		
+		return boardDao.questionList(boardMap);
+	}
+	
 	/** 게시판 글 목록 조회
 	 * @param boardMap { StoryfarmConstants.BOARD_ID 필수 }
 	 * @return List

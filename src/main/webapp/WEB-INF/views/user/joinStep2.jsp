@@ -138,6 +138,7 @@ $("#duplication_id").click(function(event){
 	if($("#member_id").val() == null || $("#member_id").val() == ''){
 		alert("한글자 이상 입력해 주세요");
 	}else{
+		$("#duplication_text").empty();
 		$.ajax({
 		    type: "POST",
 		    url: "${ contextPath }/duplication.do",
