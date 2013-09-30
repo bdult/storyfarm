@@ -17,10 +17,9 @@
         BG_BOARD_CONTENTS.*
     FROM
         BG_BOARD_CONTENTS, BG_BOARD_MASTER
-    WHERE 
-        BG_BOARD_MASTER.board_id = #{ board_id }
-    AND
-        BG_BOARD_MASTER.board_id = BG_BOARD_CONTENTS.board_id
+    WHERE 1 = 1
+    AND BG_BOARD_MASTER.board_id = #{ board_id }
+    AND BG_BOARD_MASTER.board_id = BG_BOARD_CONTENTS.board_id
     LIMIT #{ rownum }, #{ perpage }
     </select>
     

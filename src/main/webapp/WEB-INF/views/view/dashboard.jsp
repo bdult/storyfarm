@@ -17,6 +17,26 @@ section#noti .well {
 section#noti .well-half {
 	height: 90px;
 }
+@media (min-width: 768px){
+    .fivecolumns .col-md-2, .fivecolumns .col-sm-2, .fivecolumns .col-lg-2  {
+        width: 20%;
+        *width: 20%;
+    }
+}
+@media (min-width: 1200px) {
+    .fivecolumns .col-md-2, .fivecolumns .col-sm-2, .fivecolumns .col-lg-2 {
+        width: 20%;
+        *width: 20%;
+    }
+}
+@media (min-width: 768px) and (max-width: 979px) {
+    .fivecolumns .col-md-2, .fivecolumns .col-sm-2, .fivecolumns .col-lg-2 {
+        width: 20%;
+        *width: 20%;
+        float: left;
+    }
+}
+
 </style>
 
 <section class="slides">
@@ -61,8 +81,7 @@ section#noti .well-half {
 </section>
 
 <section id="brand">
-  <div class="row">
-  	<div class="col-md-12">
+  <div class="row fivecolumns">
   		<c:forEach items="${ brandList }" var="obj" varStatus="status">
   			<c:if test="${ status.count le 12 }">
 				<div class="col-md-2 text-center" style="font-size: 12px;">
@@ -73,7 +92,6 @@ section#noti .well-half {
 				</div>
   			</c:if>
   		</c:forEach>
-  	</div>
   </div>
 </section>
 	

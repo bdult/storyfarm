@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.bgg.storyfarm.common.BreadcrumbUtil;
+import com.bgg.storyfarm.common.PageUtil;
 import com.bgg.storyfarm.common.StoryfarmConstants;
 import com.bgg.storyfarm.service.ContentsService;
 
@@ -31,6 +32,9 @@ public class ViewController {
 	
 	@Autowired
 	private ContentsService contentsService; 
+	
+	@Autowired
+	private PageUtil pageUtil; 
 	
 	@Autowired
 	private MessageSource messageSource;
@@ -69,14 +73,13 @@ public class ViewController {
 		//브랜드 상세정보 조회
 		mav.addObject("brand", contentsService.brandDetail(paramMap));
 
-		//브랜드 아이디로 시리즈 목록 조회
-		List<Map<String, Object>> seriesList = contentsService.seriesListByBrand(paramMap);
-		mav.addObject("seriesList", seriesList);
+		//페이징 
+		int totalCnt = contentsService.contentsCountByBrand(paramMap);
+		int pageNum = setPage(paramMap);
+		mav.addObject("pageLink", pageUtil.getPageLinkMap(totalCnt, pageNum));
 		
-		//첫번째 시리즈의 콘텐츠 목록 조회
-		Map<String, Object> seriesFirst = seriesList.get(0);
-		paramMap.put("contents_series_id", seriesFirst.get("CONTENTS_SERIES_ID"));
-		List<Map<String, Object>> contentList = contentsService.list(paramMap);
+		//브랜드 아이디로 콘텐츠 목록 조회
+		List<Map<String, Object>> contentList = contentsService.contentsListByBrand(paramMap);
 		mav.addObject("contentList", contentList);
 		
 		return mav;
@@ -91,9 +94,14 @@ public class ViewController {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("view/category");
 		
-		Map<String, Object> cateDetail = contentsService.seriesDetail(paramMap);
+		Map<String, Object> cateDetail = contentsService.cateDetail(paramMap);
 		mav.addObject("cateDetail", cateDetail);
 		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_BIG_CATE));
+		
+		//페이징 
+		int totalCnt = contentsService.contentsCountByCate(paramMap);
+		int pageNum = setPage(paramMap);
+		mav.addObject("pageLink", pageUtil.getPageLinkMap(totalCnt, pageNum));
 		
 		mav.addObject("contentListByCate", contentsService.contentsListByCate(paramMap));
 		return mav;
@@ -110,7 +118,12 @@ public class ViewController {
 		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_SERIES));
 		
 		mav.addObject("seriesDetail", contentsService.seriesDetail(paramMap));
-		mav.addObject("contentList", contentsService.list(paramMap));
+		
+		//페이징 
+		int totalCnt = contentsService.contentsCountBySeries(paramMap);
+		int pageNum = setPage(paramMap);
+		mav.addObject("pageLink", pageUtil.getPageLinkMap(totalCnt, pageNum));
+		mav.addObject("contentList", contentsService.contentsListBySeries(paramMap));
 		return mav;
 	}
 
@@ -181,6 +194,26 @@ public class ViewController {
 	@RequestMapping(value = "cropTest.do", method = RequestMethod.GET)
 	public String cropTest(Model model) {
 		return "pure-cropTest";
+	}
+	
+	/** 페이지 처리
+	 * @param paramsMap
+	 * @param boardMap
+	 * @return
+	 */
+	private int setPage(Map<String, Object> paramsMap) {
+		int pageNum = 1; //시작글 번호
+		Object obj = paramsMap.get("pageNum");
+		if(obj != null){
+			try {
+				pageNum = Integer.valueOf(obj.toString());
+			} catch (NumberFormatException nfe) {
+				nfe.printStackTrace();
+			}
+		}
+		paramsMap.put(PageUtil.ROWNUM_KEY, (pageNum - 1) * PageUtil.PER_PAGE);
+		paramsMap.put(PageUtil.PER_KEY, PageUtil.PER_PAGE);
+		return pageNum;
 	}
 	
 }

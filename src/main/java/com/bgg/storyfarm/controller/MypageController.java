@@ -147,7 +147,7 @@ public class MypageController {
 		//페이징 로직
 		int totalCnt = boardService.totalCount(boardMap);
 		int pageNum = setPage(paramsMap, boardMap);
-		mav.addObject("pageLink", pageUtil.setPageLink(totalCnt, pageNum));
+		mav.addObject("pageLink", pageUtil.getPageLinkMap(totalCnt, pageNum));
 		//페이징 로직
 		
 		mav.addObject("list", boardService.list(boardMap));
