@@ -12,6 +12,20 @@
         BG_BOARD_MASTER
     </select>
     
+    <select id="listTop5" resultType="hashmap">
+    SELECT
+    	CONTENTS_ID,
+    	TITLE
+    FROM
+    	BG_BOARD_CONTENTS
+    WHERE
+    	BOARD_ID = #{ board_id } AND
+    	MEMBER_ID = #{ member_id }
+    ORDER BY CONTENTS_ID DESC
+    LIMIT 0, 5
+    
+    </select>
+    
     <select id="list" resultType="hashmap" parameterType="hashmap">
     SELECT
         BG_BOARD_CONTENTS.*

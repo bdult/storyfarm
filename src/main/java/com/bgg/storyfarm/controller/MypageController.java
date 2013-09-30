@@ -5,6 +5,8 @@ import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -33,11 +35,24 @@ public class MypageController {
 	@Autowired
 	private PageUtil pageUtil;
 	
+	private Logger logger = LoggerFactory.getLogger(UserController.class);
+	
 	@RequestMapping(value = "info.do", method = RequestMethod.GET)
-	public ModelAndView info(Model model) {
+	public ModelAndView info(Model model, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("side-mypage/info");
 		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_MYPAGE_INFO));
+		
+		@SuppressWarnings("unchecked")
+		Map<String, Object> sessionMap = (Map<String, Object>)session.getAttribute("login_session");
+		sessionMap.get("member_id");
+
+		Map<String, Object> boardMap = new HashMap<String, Object>();
+		boardMap.put(StoryfarmConstants.BOARD_ID, QUESTION_BOARD_ID);
+		boardMap.put("member_id", sessionMap.get("MEMBER_ID"));
+		
+		mav.addObject("questionList", boardService.listTop5(boardMap));
+		
 		return mav;
 	}
 	

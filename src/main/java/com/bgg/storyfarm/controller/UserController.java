@@ -34,40 +34,6 @@ public class UserController {
 	private BreadcrumbUtil breadcrumbUtil;
 
 	private Logger logger = LoggerFactory.getLogger(UserController.class);
-
-	@RequestMapping(value = "loginDummy.do", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
-	public @ResponseBody String loginDummy(@RequestParam Map<String, Object> paramMap){
-		HashMap<String, String> sessionMap = (HashMap<String, String>) userService.detail(paramMap);
-		
-		if(sessionMap == null){
-
-			JSONObject jsonObj=new JSONObject();
-			jsonObj.put("code", null);
-			jsonObj.put("msg", "okay!!!!");
-			
-			return jsonObj.toJSONString();
-		}else{
-
-			JSONObject jsonObj=new JSONObject();
-			jsonObj.put("code", "200");
-			jsonObj.put("msg", "okay!!!!");
-			
-			JSONObject js1=new JSONObject();
-			js1.put("contentId", 1);
-			js1.put("contentPath", "/resource/ddd.mov");
-			
-			JSONObject js2=new JSONObject();
-			js2.put("contentId", 2);
-			js2.put("contentPath", "/resource/ccc.mov");
-			JSONArray arr = new JSONArray();
-			arr.add(js1);
-			arr.add(js2);
-			
-			jsonObj.put("playList", arr);
-			
-			return jsonObj.toJSONString();
-		}
-	}
 	
 	
 	@RequestMapping(value = "loginStep1.do", method = RequestMethod.GET)
@@ -135,20 +101,16 @@ public class UserController {
 	}
 	@RequestMapping(value = "duplication.do", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	public @ResponseBody String duplication(@RequestParam Map<String, Object> paramMap) {
-		Map<String, Object> user_id = userService.duplicationUser(paramMap);
+		Map<String, Object> userIdMap = userService.duplicationUser(paramMap);
+
+		JSONObject jsonObj = new JSONObject();
+		jsonObj.put("code", null);
 		
-		
-		if(user_id == null){
-			JSONObject jsonObj=new JSONObject();
+		if(userIdMap == null){
 			jsonObj.put("code", "200");
-			
-			return jsonObj.toJSONString();
-		}else{
-			JSONObject jsonObj=new JSONObject();
-			jsonObj.put("code", null);
-			
-			return jsonObj.toJSONString();
 		}
+		
+		return jsonObj.toJSONString();
 	}
 
 	@RequestMapping(value = "joinStep3.do", method = RequestMethod.POST)

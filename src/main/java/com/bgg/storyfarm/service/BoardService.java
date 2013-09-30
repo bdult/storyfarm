@@ -17,6 +17,11 @@ public class BoardService {
 	@Autowired
 	private BoardDao boardDao;
 	
+	
+	public List<Map<String, Object>> listTop5(Map<String, Object> boardMap) {
+		return boardDao.listTop5(boardMap);
+	}
+	
 	/** 게시판 글 목록 조회
 	 * @param boardMap { StoryfarmConstants.BOARD_ID 필수 }
 	 * @return List

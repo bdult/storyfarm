@@ -18,6 +18,7 @@
 		 				</c:when>
 		 				<c:otherwise>
 		 					<a href="${ contextPath }/logout.do" class="btn btn-default">${ login_session.MEMBER_ID }님 로그아웃</a>
+		 					<a href="${ contextPath }/mypage/info.do" class="btn btn-default">마이페이지</a>
 		 				</c:otherwise>
 		 			</c:choose>
 		 			<a href="${ contextPath }/joinStep1.do" class="btn btn-default">회원가입</a>

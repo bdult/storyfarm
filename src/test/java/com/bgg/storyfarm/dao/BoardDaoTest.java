@@ -43,6 +43,22 @@ public class BoardDaoTest {
 		logger.info("게시판 갯수 : {}", boards.size());
 	}
 	
+	@Test
+	public void testListTop5(){
+		
+		//given
+		Map<String, Object> boardMap = new HashMap<String, Object>();
+		boardMap.put(StoryfarmConstants.BOARD_ID, "3");
+		boardMap.put("member_id", "test");
+		
+		//when
+		List<Map<String, Object>> boardList = boardDao.listTop5(boardMap);
+		
+		//then
+		logger.info("{}", boardMap);
+		assertThat(boardList.size(), is(not(0)));
+		
+	}
 	//게시판 글목록 가져오기
 	@Test
 	public void testList() {

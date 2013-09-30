@@ -31,6 +31,10 @@ public class BoardDao extends SqlSessionDaoSupport {
 		return getSqlSession().selectList("boardQuery.list", boardMap);
 	}
 
+	public List<Map<String, Object>> listTop5(Map<String, Object> boardMap){
+		return getSqlSession().selectList("boardQuery.listTop5", boardMap);
+	}
+	
 	/** 게시판 글 조회
 	 * @param boardMap
 	 * @return HashMap<String, Object>
