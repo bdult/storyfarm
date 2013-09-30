@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="excelQuery">
+
+    <!-- select -->
+    <select id="contentsId" resultType="int" parameterType="hashmap">
+    select
+		contents_id
+	FROM BG_CONTENTS
+	WHERE TRIM(contents_nm) like '%${query}%'
+    </select>
+    
+	<!-- update -->
+	<update id="updateContent" parameterType="hashmap">
+	UPDATE BG_CONTENTS
+		<set>
+			serial_num = #{ serial_num }
+		</set>
+	WHERE contents_id = #{ contents_id }
+	</update>
+</mapper>

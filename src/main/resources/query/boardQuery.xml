@@ -12,6 +12,7 @@
         BG_BOARD_MASTER
     </select>
     
+    
     <select id="listTop5" resultType="hashmap">
     SELECT
     	CONTENTS_ID,

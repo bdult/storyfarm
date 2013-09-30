@@ -1,5 +1,6 @@
 package com.bgg.storyfarm.service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -19,6 +20,14 @@ public class ContentsService {
 	 */
 	public List<Map<String, Object>> list(Map<String, Object> contentMap) {
 		return contentsDao.list(contentMap);
+	}
+	
+	/** 카테고리별 콘텐츠 목록 조회
+	 * @param paramMap
+	 * @return
+	 */
+	public List<Map<String, Object>> contentsListByCate(Map<String, Object> paramMap) {
+		return contentsDao.contentsListByCate(paramMap);
 	}
 	
 	/** 콘텐츠 상세 정보 보기
@@ -42,6 +51,13 @@ public class ContentsService {
 		return contentsDao.brandList(contentMap);
 	}
 	
+	/** 브랜드 상세 정보 보기
+	 * @return
+	 */
+	public Map<String, Object> brandDetail(Map<String, Object> contentMap) {
+		return contentsDao.brandDetail(contentMap);
+	}
+	
 	/** 카테고리 아이디로 시리즈 목록 조회
 	 * @return
 	 */
@@ -55,4 +71,10 @@ public class ContentsService {
 	public List<Map<String, Object>> seriesListByBrand(Map<String, Object> contentMap) {
 		return contentsDao.seriesListByBrand(contentMap);
 	}
+
+	public List<Map<String, Object>> cateList(HashMap<String, Object> paramMap) {
+		return contentsDao.cateList(paramMap);
+	}
+
+	
 }

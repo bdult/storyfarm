@@ -5,6 +5,6 @@
 
 <div class="row">
   <div class="col-md-12">
-  	<div class="well">프린트 학습 다운 페이지 개발 예정</div>
+  	<div class="well"><a class="btn btn-primary" href="${ contextPath }/source/worksheet_kung_fu_sentences.pdf" target="_blank">프린트 다운로드</a></div>
   </div>
 </div>

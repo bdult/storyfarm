@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 
 <header>
 	<div class="container">
@@ -8,22 +9,22 @@
 		
 	 	<div class="row">
 	 		<div class="col-md-2">
-	 			<a href="${ contextPath }/" class="btn btn-info">OZ world 오즈월드</a>
+	 			<a href="${ contextPath }/" class="btn btn-info"><spring:message code="brand"/></a>
 	 		</div>
 	 		<div class="col-md-10">
 	 			<div class="pull-right">
 		 			<c:choose>
 		 				<c:when test="${ login_session == null }">
-		 					<a href="${ contextPath }/loginStep1.do" class="btn btn-default">로그인</a>
+		 					<a href="${ contextPath }/loginStep1.do" class="btn btn-default"><spring:message code="login"/></a>
 		 				</c:when>
 		 				<c:otherwise>
 		 					<a href="${ contextPath }/logout.do" class="btn btn-default">${ login_session.MEMBER_ID }님 로그아웃</a>
 		 					<a href="${ contextPath }/mypage/info.do" class="btn btn-default">마이페이지</a>
 		 				</c:otherwise>
 		 			</c:choose>
-		 			<a href="${ contextPath }/joinStep1.do" class="btn btn-default">회원가입</a>
-		 			<a href="${ contextPath }/cscenter/notice.do" class="btn btn-default">고객센터</a>
-					<a href="${ contextPath }/introduce.do" class="btn btn-default">오즈월드소개</a>
+		 			<a href="${ contextPath }/joinStep1.do" class="btn btn-default"><spring:message code="join"/></a>
+		 			<a href="${ contextPath }/cscenter/notice.do" class="btn btn-default"><spring:message code="cscenter"/></a>
+					<a href="${ contextPath }/introduce.do" class="btn btn-default"><spring:message code="ozIntroduce"/></a>
 					<!-- 
 		 			<a href="${ contextPath }/mypage/info.do" class="btn btn-default">마이페이지</a>
 		 			<a href="${ contextPath }/children/room.do" class="btn btn-default">자녀방</a>
@@ -72,15 +73,20 @@
 	 	
 	 	<div class="row">
 	 		<div class="col-md-12 text-center">
-	 			<a href="${ contextPath }/category.do?cate_id=40" class="btn btn-default">한글</a>
-	 			<a href="${ contextPath }/category.do?cate_id=41" class="btn btn-default">영어</a>
-	 			<a href="${ contextPath }/category.do?cate_id=39" class="btn btn-default">수학</a>
-	 			<a href="${ contextPath }/category.do?cate_id=47" class="btn btn-default">과학</a>
+	 		<!-- 
+		 		<c:forEach items="${categoryList}" var="cate">
+		 			<a href="${ contextPath }/category.do?cate_id=${cate.CATE_ID}" class="btn btn-default">${cate.CATE_NM }</a>
+		 		</c:forEach>
+	 		 -->
+	 			<a href="${ contextPath }/category.do?cate_id=78" class="btn btn-default">한글</a>
+	 			<a href="${ contextPath }/category.do?cate_id=32" class="btn btn-default">영어</a>
+	 			<a href="${ contextPath }/category.do?cate_id=38" class="btn btn-default">수학</a>
+	 			<a href="${ contextPath }/category.do?cate_id=41" class="btn btn-default">과학</a>
 	 			<a href="${ contextPath }/category.do?cate_id=46" class="btn btn-default">창의</a>
-	 			<a href="${ contextPath }/category.do?cate_id=42" class="btn btn-default">동요</a>
-	 			<a href="${ contextPath }/category.do?cate_id=48" class="btn btn-default">동화</a>
-	 			<a href="${ contextPath }/category.do?cate_id=49" class="btn btn-default">생활</a>
-	 			<a href="${ contextPath }/worksheet.do" class="btn btn-default">프린트학습</a>
+	 			<a href="${ contextPath }/category.do?cate_id=54" class="btn btn-default">동요</a>
+	 			<a href="${ contextPath }/category.do?cate_id=79" class="btn btn-default">동화</a>
+	 			<a href="${ contextPath }/category.do?cate_id=68" class="btn btn-default">생활</a>
+	 			<a href="${ contextPath }/worksheet.do" class="btn btn-default">프린트 학습</a>
 	 		</div>
 	 	</div>
 	

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <footer>
 	<div class="container">
 		<hr />
@@ -11,11 +11,11 @@
 			<div class="col-md-11">
 				<div class="row">
 					<div class="col-md-12">
-						<a href="${ contextPath }/cscenter/notice.do" class="btn btn-default">고객센터</a>
-						<a href="${ contextPath }/about.do" class="btn btn-default">회사소개</a>
-						<a href="${ contextPath }/serviceRules.do" class="btn btn-default">이용약관</a>
-						<a href="${ contextPath }/privacyRules.do" class="btn btn-default">개인정보취급방침</a>
-						<a href="${ contextPath }/sitemap.do" class="btn btn-default">사이트맵</a>
+						<a href="${ contextPath }/cscenter/notice.do" class="btn btn-default"><spring:message code="cscenter"/></a>
+						<a href="${ contextPath }/about.do" class="btn btn-default"><spring:message code="companyIntroduce"/></a>
+						<a href="${ contextPath }/serviceRules.do" class="btn btn-default"><spring:message code="serviceRules"/></a>
+						<a href="${ contextPath }/privacyRules.do" class="btn btn-default"><spring:message code="privacyRules"/></a>
+						<a href="${ contextPath }/sitemap.do" class="btn btn-default"><spring:message code="sitemap"/></a>
 					</div>
 				</div>
 				

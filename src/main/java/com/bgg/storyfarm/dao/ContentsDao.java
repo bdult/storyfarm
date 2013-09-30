@@ -1,5 +1,6 @@
 package com.bgg.storyfarm.dao;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -57,6 +58,22 @@ public class ContentsDao extends SqlSessionDaoSupport {
 		return getSqlSession().selectList( "contentsQuery.brandList", contentMap);
 	}
 	
+	/** 브랜드 목록 조회
+	 * @return List
+	 */
+	public Map<String, Object> brandDetail(Map<String, Object> contentMap) {
+		
+		return (Map<String, Object>)getSqlSession().selectOne( "contentsQuery.brandDetail", contentMap);
+	}
+	
+	/** 카테고리 목록 조회
+	 * @param paramMap
+	 * @return
+	 */
+	public List<Map<String, Object>> cateList(HashMap<String, Object> paramMap) {
+		return getSqlSession().selectList("contentsQuery.categoryList", paramMap);
+	}
+	
 	/** 카테고리 아이디로 시리즈 목록 조회
 	 * @return List
 	 */
@@ -72,5 +89,11 @@ public class ContentsDao extends SqlSessionDaoSupport {
 		
 		return getSqlSession().selectList( "contentsQuery.seriesListByBrand", contentMap);
 	}
+
+	public List<Map<String, Object>> contentsListByCate(Map<String, Object> paramMap) {
+		return getSqlSession().selectList("contentsQuery.contentsListByCate", paramMap);
+	}
+
+	
 
 }
