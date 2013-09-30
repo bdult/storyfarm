@@ -24,6 +24,10 @@ public class BoardDao extends SqlSessionDaoSupport {
 		return (Integer)getSqlSession().selectOne("boardQuery.count", boardMap);
 	}
 	
+	public List<Map<String, Object>> questionList(Map<String, Object> boardMap) {
+		return getSqlSession().selectList("boardQuery.questionList", boardMap);
+	}
+	
 	/** 게시판 글 목록 조회
 	 * @return
 	 */
@@ -31,6 +35,10 @@ public class BoardDao extends SqlSessionDaoSupport {
 		return getSqlSession().selectList("boardQuery.list", boardMap);
 	}
 
+	public List<Map<String, Object>> listTop5(Map<String, Object> boardMap){
+		return getSqlSession().selectList("boardQuery.listTop5", boardMap);
+	}
+	
 	/** 게시판 글 조회
 	 * @param boardMap
 	 * @return HashMap<String, Object>
@@ -51,8 +59,8 @@ public class BoardDao extends SqlSessionDaoSupport {
 	 * @param boardMap
 	 * @return
 	 */
-	public int create(Map<String, Object> boardMap){
-		return getSqlSession().insert("boardQuery.create", boardMap);
+	public void create(Map<String, Object> boardMap){
+		getSqlSession().insert("boardQuery.create", boardMap);
 	}
 	
 	/** 게시판 덧글 생성

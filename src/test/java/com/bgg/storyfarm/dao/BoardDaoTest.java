@@ -43,6 +43,43 @@ public class BoardDaoTest {
 		logger.info("게시판 갯수 : {}", boards.size());
 	}
 	
+	@Test
+	public void testListTop5(){
+		
+		//given
+		Map<String, Object> boardMap = new HashMap<String, Object>();
+		boardMap.put(StoryfarmConstants.BOARD_ID, "3");
+		boardMap.put("member_id", "test");
+		
+		//when
+		List<Map<String, Object>> boardList = boardDao.listTop5(boardMap);
+		
+		//then
+		logger.info("{}", boardMap);
+		assertThat(boardList.size(), is(not(0)));
+		
+	}
+	
+
+	//게시판 글목록 가져오기
+	@Test
+	public void testQuestionList() {
+		
+		//given
+		Map<String, Object> boardMap = new HashMap<String, Object>();
+		boardMap.put(StoryfarmConstants.BOARD_ID, "11");
+		boardMap.put("member_id", "test");
+		//페이징 처리시 파라미터 추가
+		//boardMap.put(StoryfarmConstants.BOARD_PAGE, "1");
+		
+		//when
+		List<Map<String, Object>> boardList = boardDao.questionList(boardMap);
+		
+		//than
+		logger.info("{}", boardMap);
+		assertThat(boardList.size(), is(not(0)));
+	}
+	
 	//게시판 글목록 가져오기
 	@Test
 	public void testList() {

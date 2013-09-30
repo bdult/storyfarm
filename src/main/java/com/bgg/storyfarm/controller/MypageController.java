@@ -3,6 +3,10 @@ package com.bgg.storyfarm.controller;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,11 +35,23 @@ public class MypageController {
 	@Autowired
 	private PageUtil pageUtil;
 	
+	private Logger logger = LoggerFactory.getLogger(UserController.class);
+	
 	@RequestMapping(value = "info.do", method = RequestMethod.GET)
-	public ModelAndView info(Model model) {
+	public ModelAndView info(Model model, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("side-mypage/info");
 		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_MYPAGE_INFO));
+		
+		@SuppressWarnings("unchecked")
+		Map<String, Object> sessionMap = (Map<String, Object>)session.getAttribute("login_session");
+
+		Map<String, Object> boardMap = new HashMap<String, Object>();
+		boardMap.put(StoryfarmConstants.BOARD_ID, QUESTION_BOARD_ID);
+		boardMap.put("member_id", sessionMap.get("MEMBER_ID"));
+		
+		mav.addObject("questionList", boardService.listTop5(boardMap));
+		
 		return mav;
 	}
 	
@@ -136,13 +152,17 @@ public class MypageController {
 	}
 	
 	@RequestMapping(value = "question.do", method = RequestMethod.GET)
-	public ModelAndView question(@RequestParam Map<String, Object> paramsMap) {
+	public ModelAndView question(@RequestParam Map<String, Object> paramsMap, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("side-mypage/question");
 		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_MYPAGE_INFO, StoryfarmConstants.BREADCRUMB_MYPAGE_QUESTION));
 
+		@SuppressWarnings("unchecked")
+		Map<String, Object> sessionMap = (Map<String, Object>)session.getAttribute("login_session");
+
 		Map<String, Object> boardMap = new HashMap<String, Object>();
 		boardMap.put(StoryfarmConstants.BOARD_ID, QUESTION_BOARD_ID);
+		boardMap.put("member_id", sessionMap.get("MEMBER_ID"));
 		
 		//페이징 로직
 		int totalCnt = boardService.totalCount(boardMap);
@@ -150,7 +170,7 @@ public class MypageController {
 		mav.addObject("pageLink", pageUtil.getPageLinkMap(totalCnt, pageNum));
 		//페이징 로직
 		
-		mav.addObject("list", boardService.list(boardMap));
+		mav.addObject("list", boardService.questionList(boardMap));
 		
 		return mav;
 	}
@@ -174,11 +194,19 @@ public class MypageController {
 	}
 	
 	@RequestMapping(value = "questionInsert.do", method = RequestMethod.GET)
-	public ModelAndView questionInsert(Model model) {
+	public ModelAndView questionInsert(Model model, @RequestParam Map<String, Object> paramsMap) {
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("side-mypage/questionInsert");
+		mav.setViewName("board/boardWrite");
 		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_MYPAGE_INFO, StoryfarmConstants.BREADCRUMB_MYPAGE_QUESTION, StoryfarmConstants.BREADCRUMB_MYPAGE_QUESTION_INSERT));
+		
+		mav.addObject("board_id", paramsMap.get("board_id"));
 		return mav;
+	}
+	
+	@RequestMapping(value = "boardCreate.do", method = RequestMethod.POST)
+	public String boardCreate(Model model, @RequestParam Map<String, Object> paramsMap) {
+		boardService.boardCreate(paramsMap);
+		return "redirect:question.do";
 	}
 	
 	@RequestMapping(value = "questionUpdate.do", method = RequestMethod.GET)

@@ -2,12 +2,54 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <div class="row">
-	<div class="col-lg-12 text-center">
-		<h3>마이페이지</h3>
-		<small>Enjoy whenever out contents</small>
+	<div class="col-lg-12 text-left">
+		안녕하세요 ${ login_session.MEMBER_ID } 님
 	</div>
-	<div class="col-lg-12 text-center">
-		<a class="btn btn-default" href="${ contextPath }/dashboard.do">메인으로</a>
+</div>
+<div class="row">
+	<div class="col-lg-6">
+		<div class="well">
+			현재 이용중인 서비스
+			<a class="btn btn-default">자세히보기</a>
+			<ul>
+				<li>프리미엄 서비스를 이용하고 계십니다.</li>
+				<li>이용가능메뉴 : 전체메뉴 이용가능</li>
+				<li>이용기간 : 2013.9.15까지</li>
+			</ul>
+		</div>
+	</div>
+	<div class="col-lg-6">
+		<div class="well">
+			1:1 문의 내역
+			<a class="btn btn-default" href="${ contextPath }/mypage/question.do">자세히보기</a>
+			<ul>
+				<c:forEach var="questionList" items="${ questionList }">
+					<li><a href="${ contextPath }/mypage/questionDetail.do?contentsId=${ questionList.CONTENTS_ID }">${ questionList.TITLE }</a></li>
+				</c:forEach>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-lg-4">
+		<div class="well">
+			<br>쿠폰 등록<br><br>
+		</div>
+	</div>
+	<div class="col-lg-4">
+		<div class="well">
+			<br>회원정보 수정<br><br>
+		</div>
+	</div>
+	<div class="col-lg-4">
+		<div class="well">
+			<br>일시중지<br><br>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-lg-12">
+		<div class="well"><br>EVENT banner<br><br></div>
 	</div>
 </div>
 <!--/row-fluid-->

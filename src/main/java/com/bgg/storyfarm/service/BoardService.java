@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.bgg.storyfarm.common.StoryfarmConstants;
 import com.bgg.storyfarm.dao.BoardDao;
@@ -15,6 +16,16 @@ public class BoardService {
 
 	@Autowired
 	private BoardDao boardDao;
+	
+	
+	public List<Map<String, Object>> listTop5(Map<String, Object> boardMap) {
+		return boardDao.listTop5(boardMap);
+	}
+	
+	public List<Map<String, Object>> questionList(Map<String, Object> boardMap) {
+		
+		return boardDao.questionList(boardMap);
+	}
 	
 	/** 게시판 글 목록 조회
 	 * @param boardMap { StoryfarmConstants.BOARD_ID 필수 }
@@ -68,6 +79,11 @@ public class BoardService {
 		map.put(StoryfarmConstants.COMMENT, boardMap.get("comment"));
 		
 		return boardDao.commentCreate(map);
+	}
+	
+	public void boardCreate(Map<String, Object> boardMap) {
+		
+		boardDao.create(boardMap);
 	}
 	
 	/** 게시판 글 수정

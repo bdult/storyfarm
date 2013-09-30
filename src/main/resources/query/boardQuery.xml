@@ -12,6 +12,35 @@
         BG_BOARD_MASTER
     </select>
     
+    
+    <select id="listTop5" resultType="hashmap">
+    SELECT
+    	CONTENTS_ID,
+    	TITLE
+    FROM
+    	BG_BOARD_CONTENTS
+    WHERE
+    	BOARD_ID = #{ board_id } AND
+    	MEMBER_ID = #{ member_id }
+    ORDER BY CONTENTS_ID DESC
+    LIMIT 0, 5
+    
+    </select>
+    
+    <select id="questionList" resultType="hashmap" parameterType="hashmap">
+    SELECT
+        BG_BOARD_CONTENTS.*
+    FROM
+        BG_BOARD_CONTENTS, BG_BOARD_MASTER
+    WHERE 
+        BG_BOARD_MASTER.board_id = #{ board_id }
+    AND
+    	BG_BOARD_CONTENTS.member_id = #{ member_id }
+    AND
+        BG_BOARD_MASTER.board_id = BG_BOARD_CONTENTS.board_id
+    LIMIT #{ rownum }, #{ perpage }
+    </select>
+    
     <select id="list" resultType="hashmap" parameterType="hashmap">
     SELECT
         BG_BOARD_CONTENTS.*
