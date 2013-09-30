@@ -39,7 +39,7 @@
   		<c:forEach items="${ contentList }" var="obj" varStatus="status">
   			<c:if test="${ status.count le 12 }">
 				<div class="col-md-2">
-					<a href="#" class="thumbnail">
+					<a href="${ contextPath }/play.do?contents_id=${ obj.CONTENTS_ID }" class="thumbnail">
 						${ obj.CONTENTS_NM }
 						<img src="${ obj.IMG_PATH }" style="width: 100%; height: 130px;" alt="${ obj.CONTENTS_NM }">
 					</a>
