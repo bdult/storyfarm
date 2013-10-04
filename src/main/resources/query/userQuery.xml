@@ -12,10 +12,18 @@
 	
 	<select id="detail" resultType="hashmap" parameterType="hashmap">
 		SELECT /* userQuery.detail */
-		MEMBER_ROLE, MEMBER_ID, MEMBER_PW
+		MEMBER_ROLE, MEMBER_ID, MEMBER_STATUS
 		FROM BG_MEMBER
 		WHERE 
 		MEMBER_ID = #{ id } and MEMBER_PW = #{ pwd }
+	</select>
+	
+	<select id="userDetail" resultType="hashmap">
+		SELECT
+		*
+		FROM BG_MEMBER
+		WHERE
+		MEMBER_ID = #{ member_id }
 	</select>
 	
 	<select id="findId" resultType="hashmap">
@@ -113,7 +121,15 @@
 			MEMBER_ID = #{ member_id },
 			MEMBER_NM = #{ member_nm },
 			MEMBER_PW = #{ member_pw },
-			MEMBER_ROLE = #{ member_role }
+			MEMBER_EMAIL = #{ member_email },
+			MEMBER_TEL = #{ member_tel },
+			MEMBER_ADDR_1 = #{ member_addr_1 },
+			MEMBER_ADDR_2 = #{ member_addr_2 },
+			MEMBER_GENDER = #{ member_gender },
+			MEMBER_YEAR = #{ member_year },
+			MEMBER_MONTH = #{ member_month },
+			MEMBER_DAY = #{ member_day },
+			MOD_DT = NOW()
 		</set>
 		WHERE MEMBER_ID = #{ member_id }
 	</update>

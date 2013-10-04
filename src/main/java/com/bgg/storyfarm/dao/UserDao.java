@@ -29,6 +29,10 @@ public class UserDao extends SqlSessionDaoSupport {
 		return (Map<String, String>)getSqlSession().selectOne("userQuery.detail", userData);
 	}
 	
+	public Map<String, Object> userDetail(Map<String, Object> userData){
+		return (Map<String, Object>)getSqlSession().selectOne("userQuery.userDetail", userData);
+	}
+	
 	public Map<String, Object> findId(Map<String, Object> userData){
 		return (Map<String, Object>)getSqlSession().selectOne("userQuery.findId", userData);
 	}

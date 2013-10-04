@@ -3,7 +3,7 @@
 
 <div class="row">
 	<div class="col-lg-12 text-center">
-		<h3>회원정보 수정</h3>
+		<h3>회원정보 수정완료</h3>
 		<small>Enjoy whenever out contents</small>
 	</div>
 	<div class="col-lg-12 text-center">

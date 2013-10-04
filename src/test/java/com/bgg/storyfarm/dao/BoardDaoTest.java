@@ -146,7 +146,7 @@ public class BoardDaoTest {
 			boardMap.put(StoryfarmConstants.BOARD_CONTENTS, "이벤트 내용 " + begin);
 			
 			//when
-			int result = boardDao.create(boardMap);
+			boardDao.create(boardMap);
 		}
 		
 		//than

@@ -53,7 +53,7 @@
 					</div>
 				</div>
 				<div class="col-lg-12 text-center">
-					<button class="btn btn-default" id="submit-btn">확인</button>
+					<button class="btn btn-default" id="submit_tel_btn">확인</button>
 				</div>
 			</form>
 			
@@ -72,7 +72,7 @@
 					</div>
 				</div>
 				<div class="col-lg-12 text-center">
-					<button class="btn btn-default" id="submit-btn">확인</button>
+					<button class="btn btn-default" id="submit_email_btn">확인</button>
 				</div>
 				
 			</form>
@@ -118,7 +118,7 @@
 				</div>
 				</div>
 				<div class="col-lg-12 text-center">
-					<button class="btn btn-default" id="submit-btn">확인</button>
+					<button class="btn btn-default" id="submit_birth_btn">확인</button>
 				</div>
 			</form>
 		</div>
@@ -151,16 +151,8 @@
 
 <script type="text/javascript">
 
-	for(var i=2013; i >= 1900; i--){
-		$("#yearBox").append("<option value=" + i +">" + i + "</option>");
-	}
-	for(var i=1; i <= 12; i++){
-		$("#monthBox").append("<option value=" + i +">" + i + "</option>");
-	}
-	for(var i=1; i <= 31; i++){
-		$("#dayBox").append("<option value=" + i +">" + i + "</option>");
-	}
-	
+	birth.call();
+
 	$("#phone_radio").change(function(){
 		$("#memberFind-tel").show();
 		$("#memberFind-email").css("display", "none");
@@ -177,11 +169,8 @@
 		$("#memberFind-email").css("display", "none");
 	});
 
-	$("#submit-btn").click(function(){
-
-		$("#member_tel").attr({
-			value: $("#tel1").val() + "-" + $("#tel2").val() + "-" + $("#tel3").val()
-		});
+	$("#submit_tel_btn").click(function(){
+		combineTel.call();
 		
 	});
 </script>

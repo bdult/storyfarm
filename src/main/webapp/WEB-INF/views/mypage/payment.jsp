@@ -160,8 +160,8 @@
 </div>
 
 <script type="text/javascript">
-	var $this = $(this);
 	$("[type=radio]").click(function(){
+		
 		var total = parseInt($('[name=korean]:checked').val()) + parseInt($('[name=english]:checked').val()) + parseInt($('[name=math]:checked').val()) + parseInt($('[name=science]:checked').val()) + parseInt($('[name=creative]:checked').val()) + parseInt($('[name=song]:checked').val()) + parseInt($('[name=story]:checked').val()) + parseInt($('[name=life]:checked').val());
 		$("#totalSubject").val(total);
 	});

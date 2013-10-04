@@ -11,28 +11,14 @@
 			<tr>
 				<td>신청요금제</td>
 				<td>1달 정기요금제</td>
-				<td>요금제변경</td>
-				<td>
-					<select class="form-control">
-						<option>요금제선택</option>
-						<option>2</option>
-						<option>3</option>
-						<option>4</option>
-						<option>5</option>
-					</select>
-				</td>
 			</tr>
 			<tr>
 				<td>서비스 이용기간</td>
 				<td>2013년 9월 1일 - 2013년 10월 1일</td>
-				<td></td>
-				<td></td>
 			</tr>
 			<tr>
 				<td>서비스 요금</td>
 				<td>9900원</td>
-				<td></td>
-				<td></td>
 			</tr>
 		</table>
 	</div>
@@ -41,13 +27,19 @@
 			할인 및 최종결제금액<br>
 		<table class="table">
 			<tr>
-				<td>포인트사용</td>
+				<td>쿠폰선택</td>
 				<td>
-					<div class="col-lg-3">
-						<input type="text" class="form-control">
-					</div>
-					<a class="btn btn-default">전체사용</a>
-					보유포인트 <a href="#">200</a> 포인트
+				<div class="col-lg-3">
+					<select class="form-control">
+						<option>선택하기</option>
+						<option>2</option>
+						<option>3</option>
+						<option>4</option>
+						<option>5</option>
+					</select>
+				</div>
+					<a class="btn btn-default">선택사용</a>
+					보유쿠폰 <a href="#">1</a> 장
 				</td>
 			</tr>
 			<tr>
@@ -74,7 +66,7 @@
 					</div>
 					<div class="col-lg-3">
 					<div class="radio">
-						<label> <input type="radio" id="radioa" name="optionsRadios" value="option2">
+						<label> <input type="radio" name="optionsRadios" value="option2">
 							실시간 계좌이체
 						</label>
 					</div>
@@ -95,56 +87,60 @@
 					</div>
 				</td>
 			</tr>
-			
-			<c:if test="true">
-				<tr>
-					<td>카드종류</td>
-					<td>
-						<div class="col-lg-3">
-							<select class="form-control">
-								<option>카드선택</option>
-								<option>2</option>
-								<option>3</option>
-								<option>4</option>
-								<option>5</option>
-							</select>
-						</div>
-					</td>
-				</tr>
-				<tr>
-					<td>할부기간</td>
-					<td>
-						<div class="col-lg-3">
-							<select class="form-control">
-								<option>일시불</option>
-								<option>2</option>
-								<option>3</option>
-								<option>4</option>
-								<option>5</option>
-							</select>
-						</div>
-					</td>
-				</tr>
-				<tr>
-					<td>카드사 공지사항</td>
-					<td>
-						<div class="col-lg-3">
-							카드사공지 확인 후 기재
-						</div>
-					</td>
-				</tr>
-			</c:if>
-			<c:if test="true">
-				<tr>
-					<td>계좌이체안내</td>
-					<td>
-						<div class="col-lg-12">
-							회원님의 계좌에서 바로 이체되는 서비스이며, 이체 수수료는 무료입니다.<br>
-							23시 이후에는 은행별 이용 가능시간을 미리 확인하신 후 결제를 진행해 주세요.
-						</div>
-					</td>
-				</tr>
-			</c:if>
+		</table>
+			<form class="form-horizontal" id="" method="post">
+				<table class="table">
+					<tr>
+						<td>카드종류</td>
+						<td>
+							<div class="col-lg-3">
+								<select class="form-control">
+									<option>카드선택</option>
+									<option>2</option>
+									<option>3</option>
+									<option>4</option>
+									<option>5</option>
+								</select>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>할부기간</td>
+						<td>
+							<div class="col-lg-3">
+								<select class="form-control">
+									<option>일시불</option>
+									<option>2</option>
+									<option>3</option>
+									<option>4</option>
+									<option>5</option>
+								</select>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>카드사 공지사항</td>
+						<td>
+							<div class="col-lg-3">
+								카드사공지 확인 후 기재
+							</div>
+						</td>
+					</tr>
+				</table>
+			</form>
+			<form class="form-horizontal" id="" method="post">
+				<table>
+					<tr>
+						<td>계좌이체안내</td>
+						<td>
+							<div class="col-lg-12">
+								회원님의 계좌에서 바로 이체되는 서비스이며, 이체 수수료는 무료입니다.<br>
+								23시 이후에는 은행별 이용 가능시간을 미리 확인하신 후 결제를 진행해 주세요.
+							</div>
+						</td>
+					</tr>
+				</table>
+			</form>
 			<c:if test="true">
 				<tr>
 					<td>환불계좌</td>

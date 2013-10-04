@@ -28,6 +28,10 @@ public class UserService {
 	public Map<String, String> detail(Map<String, Object> paramMap) {
 		return userDao.detail(paramMap);
 	}
+	
+	public Map<String, Object> userDetail(Map<String, Object> paramMap) {
+		return userDao.userDetail(paramMap);
+	}
 
 	public Map<String, Object> findId(Map<String, Object> paramMap) {
 		return userDao.findId(paramMap);

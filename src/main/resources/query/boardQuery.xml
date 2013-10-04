@@ -38,6 +38,7 @@
     	BG_BOARD_CONTENTS.member_id = #{ member_id }
     AND
         BG_BOARD_MASTER.board_id = BG_BOARD_CONTENTS.board_id
+    ORDER BY BG_BOARD_CONTENTS.contents_id DESC
     LIMIT #{ rownum }, #{ perpage }
     </select>
     

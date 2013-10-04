@@ -158,30 +158,12 @@ $("#duplication_id").click(function(event){
 	}
 });
 
-	/* $("#duplication_id").click(function(ev){
-		window.open('/duplication.do',
-				'Continue_to_Application','width=400,height=300');
-		ev.preventDefault();
-		return false;
-	}); */
-
-	for(var i=2013; i >= 1900; i--){
-		$("#yearBox").append("<option value=" + i +">" + i + "</option>");
-	}
-	for(var i=1; i <= 12; i++){
-		$("#monthBox").append("<option value=" + i +">" + i + "</option>");
-	}
-	for(var i=1; i <= 31; i++){
-		$("#dayBox").append("<option value=" + i +">" + i + "</option>");
-	}
+	birth.call();
 	
 	$("#submit-btn").click(function(){
-		$("#member_email").attr({
-			value: $("#email1").val() + "@" + $("#email2").val()
-		});
-		$("#member_tel").attr({
-			value: $("#tel1").val() + "-" + $("#tel2").val() + "-" + $("#tel3").val()
-		});
+		
+		combineEmail.call();
+		combineTel.call();
 		
 		$("#joinForm").attr({
 			method: 'post',

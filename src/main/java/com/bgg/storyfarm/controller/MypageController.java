@@ -19,6 +19,7 @@ import com.bgg.storyfarm.common.BreadcrumbUtil;
 import com.bgg.storyfarm.common.PageUtil;
 import com.bgg.storyfarm.common.StoryfarmConstants;
 import com.bgg.storyfarm.service.BoardService;
+import com.bgg.storyfarm.service.UserService;
 
 @Controller
 @RequestMapping(value = "mypage")
@@ -33,6 +34,9 @@ public class MypageController {
 	private BoardService boardService;
 
 	@Autowired
+	private UserService userService;
+	
+	@Autowired
 	private PageUtil pageUtil;
 	
 	private Logger logger = LoggerFactory.getLogger(UserController.class);
@@ -43,12 +47,7 @@ public class MypageController {
 		mav.setViewName("side-mypage/info");
 		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_MYPAGE_INFO));
 		
-		@SuppressWarnings("unchecked")
-		Map<String, Object> sessionMap = (Map<String, Object>)session.getAttribute("login_session");
-
-		Map<String, Object> boardMap = new HashMap<String, Object>();
-		boardMap.put(StoryfarmConstants.BOARD_ID, QUESTION_BOARD_ID);
-		boardMap.put("member_id", sessionMap.get("MEMBER_ID"));
+		Map<String, Object> boardMap = getSessionId(session);
 		
 		mav.addObject("questionList", boardService.listTop5(boardMap));
 		
@@ -127,42 +126,13 @@ public class MypageController {
 		return mav;
 	}
 	
-	@RequestMapping(value = "pauseRequestResult.do", method = RequestMethod.GET)
-	public ModelAndView pauseRequestResult(Model model) {
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("side-mypage/pauseRequestResult");
-		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_MYPAGE_INFO, StoryfarmConstants.BREADCRUMB_MYPAGE_PAUSEREQUEST, StoryfarmConstants.BREADCRUMB_MYPAGE_PAUSEREQUEST_RESULT));
-		return mav;
-	}
-	
-	@RequestMapping(value = "pauseCancel.do", method = RequestMethod.GET)
-	public ModelAndView pauseCancel(Model model) {
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("side-mypage/pauseCancel");
-		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_MYPAGE_INFO, StoryfarmConstants.BREADCRUMB_MYPAGE_PAUSECANCEL));
-		return mav;
-	}
-	
-	@RequestMapping(value = "pauseCancelResult.do", method = RequestMethod.GET)
-	public ModelAndView pauseCancelResult(Model model) {
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("side-mypage/pauseCancelResult");
-		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_MYPAGE_INFO, StoryfarmConstants.BREADCRUMB_MYPAGE_PAUSECANCEL, StoryfarmConstants.BREADCRUMB_MYPAGE_PAUSECANCEL_RESULT));
-		return mav;
-	}
-	
 	@RequestMapping(value = "question.do", method = RequestMethod.GET)
 	public ModelAndView question(@RequestParam Map<String, Object> paramsMap, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("side-mypage/question");
 		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_MYPAGE_INFO, StoryfarmConstants.BREADCRUMB_MYPAGE_QUESTION));
 
-		@SuppressWarnings("unchecked")
-		Map<String, Object> sessionMap = (Map<String, Object>)session.getAttribute("login_session");
-
-		Map<String, Object> boardMap = new HashMap<String, Object>();
-		boardMap.put(StoryfarmConstants.BOARD_ID, QUESTION_BOARD_ID);
-		boardMap.put("member_id", sessionMap.get("MEMBER_ID"));
+		Map<String, Object> boardMap = getSessionId(session);
 		
 		//페이징 로직
 		int totalCnt = boardService.totalCount(boardMap);
@@ -218,18 +188,25 @@ public class MypageController {
 	}
 	
 	@RequestMapping(value = "userInfo.do", method = RequestMethod.GET)
-	public ModelAndView userInfo(Model model) {
+	public ModelAndView userInfo(Model model, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("side-mypage/userInfo");
 		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_MYPAGE_INFO, StoryfarmConstants.BREADCRUMB_MYPAGE_USERINFO));
+
+		Map<String, Object> boardMap = getSessionId(session);
+		
+		mav.addObject("userInfo", userService.userDetail(boardMap));
+		
 		return mav;
 	}
-	
-	@RequestMapping(value = "userInfoUpdate.do", method = RequestMethod.GET)
-	public ModelAndView userInfoUpdate(Model model) {
+
+	@RequestMapping(value = "userInfoUpdate.do", method = RequestMethod.POST)
+	public ModelAndView userInfoUpdate(Model model, @RequestParam Map<String, Object> paramsMap) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("side-mypage/userInfoUpdate");
 		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_MYPAGE_INFO, StoryfarmConstants.BREADCRUMB_MYPAGE_USERINFO, StoryfarmConstants.BREADCRUMB_MYPAGE_USERINFO_UPDATE));
+		
+		userService.updateUser(paramsMap);
 		return mav;
 	}
 	
@@ -268,6 +245,16 @@ public class MypageController {
 		boardMap.put(PageUtil.ROWNUM_KEY, (pageNum - 1) * PageUtil.PER_PAGE);
 		boardMap.put(PageUtil.PER_KEY, PageUtil.PER_PAGE);
 		return pageNum;
+	}
+
+	private Map<String, Object> getSessionId(HttpSession session) {
+		@SuppressWarnings("unchecked")
+		Map<String, Object> sessionMap = (Map<String, Object>)session.getAttribute("login_session");
+
+		Map<String, Object> boardMap = new HashMap<String, Object>();
+		boardMap.put(StoryfarmConstants.BOARD_ID, QUESTION_BOARD_ID);
+		boardMap.put("member_id", sessionMap.get("MEMBER_ID"));
+		return boardMap;
 	}
 	
 }
