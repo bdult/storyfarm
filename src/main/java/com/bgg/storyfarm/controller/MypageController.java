@@ -210,6 +210,20 @@ public class MypageController {
 		return mav;
 	}
 	
+	@RequestMapping(value = "userInfoDelete.do", method = RequestMethod.GET)
+	public ModelAndView userInfoDelete(Model model, HttpSession session) {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("view/dashboard");
+		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_MYPAGE_INFO, StoryfarmConstants.BREADCRUMB_MYPAGE_USERINFO, StoryfarmConstants.BREADCRUMB_MYPAGE_USERINFO_UPDATE));
+		
+		Map<String, Object> boardMap = getSessionId(session);
+		
+		userService.deleteUser(boardMap);
+		
+		session.invalidate();
+		return mav;
+	}
+	
 	@RequestMapping(value = "leave.do", method = RequestMethod.GET)
 	public ModelAndView leave(Model model) {
 		ModelAndView mav = new ModelAndView();

@@ -58,9 +58,9 @@
 			</div>
 			<div class="form-group">
 				<label class="col-lg-2 control-label">휴대번호 : </label>
-				<input class="hidden" id="member_tel" name="member_tel">
+				<input class="hidden" id="member_cel" name="member_cel">
 				<div class="col-lg-2">
-					<select class="form-control" id="tel1">
+					<select class="form-control" id="cel1">
 						<option>010</option>
 						<option>011</option>
 						<option>012</option>
@@ -69,10 +69,10 @@
 					</select>
 				</div>
 				<div class="col-lg-2">
-					<input class="form-control" id="tel2">
+					<input class="form-control" id="cel2">
 				</div>
 				<div class="col-lg-2">
-					<input class="form-control" id="tel3">
+					<input class="form-control" id="cel3">
 				</div>
 			</div>
 			<div class="form-group">
@@ -163,7 +163,7 @@ $("#duplication_id").click(function(event){
 	$("#submit-btn").click(function(){
 		
 		combineEmail.call();
-		combineTel.call();
+		combineCel.call();
 		
 		$("#joinForm").attr({
 			method: 'post',

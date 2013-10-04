@@ -53,6 +53,10 @@ public class UserDao extends SqlSessionDaoSupport {
 		getSqlSession().update("userQuery.updateUser", userListMap);
 	}
 	
+	public void deleteUser(Map<String, Object> userListMap) {
+		getSqlSession().update("userQuery.deleteUser", userListMap);
+	}
+	
 	public Map<String, Object> duplicationUser(Map<String, Object> userData){
 		return (Map<String, Object>)getSqlSession().selectOne("userQuery.duplicationUser", userData);
 	}

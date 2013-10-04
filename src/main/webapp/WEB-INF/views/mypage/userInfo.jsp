@@ -49,9 +49,9 @@
 			</div>
 			<div class="form-group">
 				<label class="col-lg-2 control-label">휴대번호 : </label>
-				<input class="hidden" id="member_tel" name="member_tel">
+				<input class="hidden" id="member_cel" name="member_cel">
 				<div class="col-lg-2">
-					<select class="form-control" id="tel1">
+					<select class="form-control" id="cel1">
 						<option>011</option>
 						<option>010</option>
 						<option>012</option>
@@ -60,10 +60,10 @@
 					</select>
 				</div>
 				<div class="col-lg-2">
-					<input class="form-control" id="tel2">
+					<input class="form-control" id="cel2">
 				</div>
 				<div class="col-lg-2">
-					<input class="form-control" id="tel3">
+					<input class="form-control" id="cel3">
 				</div>
 			</div>
 			<div class="form-group">
@@ -114,6 +114,9 @@
 					</div>
 			</div>
 			<div class="col-lg-12 text-center">
+				<a class="btn btn-default" id="delete_btn" href="${ contextPath }/mypage/userInfoDelete.do">회원탈퇴</a>
+			</div>
+			<div class="col-lg-12 text-center">
 				<button class="btn btn-default" id="update_btn">회원정보 수정</button>
 			</div>
 			<div class="col-lg-12 text-center">
@@ -134,11 +137,11 @@
 	$("#email1").attr("value", emailBreak[0]);
 	$("#email2").val(emailBreak[1]);
 	
- 	var memberTel = "${ userInfo.MEMBER_CEL }";
- 	var memberTelBreak = memberTel.split("-");
- 	$("#tel1").val(memberTelBreak[0]);
- 	$("#tel2").attr("value", memberTelBreak[1]);
- 	$("#tel3").attr("value", memberTelBreak[2]);
+ 	var memberCel = "${ userInfo.MEMBER_CEL }";
+ 	var memberCelBreak = memberCel.split("-");
+ 	$("#cel1").val(memberCelBreak[0]);
+ 	$("#cel2").attr("value", memberCelBreak[1]);
+ 	$("#cel3").attr("value", memberCelBreak[2]);
  	
  	$("input[name=member_gender]:input[value='${ userInfo.MEMBER_GENDER }']").attr("checked", true);
  	
@@ -150,11 +153,12 @@
 	$("#update_btn").click(function(){
 		
 		combineEmail.call();
-		combineTel.call();
+		combineCel.call();
 		
 		$("#update_form").attr({
 			method: 'post',
 			action: '${ contextPath }/mypage/userInfoUpdate.do'
 		});
 	});
+	
 </script>

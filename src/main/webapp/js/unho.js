@@ -18,9 +18,9 @@ function combineEmail()
 	});
 }
 
-function combineTel()
+function combineCel()
 {
-	$("#member_tel").attr({
-		value: $("#tel1").val() + "-" + $("#tel2").val() + "-" + $("#tel3").val()
+	$("#member_cel").attr({
+		value: $("#cel1").val() + "-" + $("#cel2").val() + "-" + $("#cel3").val()
 	});
 }

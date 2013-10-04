@@ -55,6 +55,11 @@ public class UserService {
 		userDao.updateUser(paramMap);
 	}
 	
+	public void deleteUser(Map<String, Object> paramMap){
+		
+		userDao.deleteUser(paramMap);
+	}
+	
 	public Map<String, Object> duplicationUser(Map<String, Object> paramMap) {
 		return userDao.duplicationUser(paramMap);
 	}
