@@ -43,7 +43,7 @@ public class ChildrenController {
 		HashMap<String, Object> paramMap = new HashMap<String, Object>();
 		paramMap.put(StoryfarmConstants.BRAND_ID, 1);
 		
-		List<Map<String, Object>> playListContents =  contentsDao.list(paramMap);
+		List<Map<String, Object>> playListContents =  contentsDao.contentsListByBrand(paramMap);
 		mav.addObject("movieList", playListContents);
 		return mav;
 	}

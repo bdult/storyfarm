@@ -25,9 +25,32 @@
 
 </style>
 
+<style>
+@media (min-width: 768px){
+    .fivecolumns .col-md-2, .fivecolumns .col-sm-2, .fivecolumns .col-lg-2  {
+        width: 20%;
+        *width: 20%;
+    }
+}
+@media (min-width: 1200px) {
+    .fivecolumns .col-md-2, .fivecolumns .col-sm-2, .fivecolumns .col-lg-2 {
+        width: 20%;
+        *width: 20%;
+    }
+}
+@media (min-width: 768px) and (max-width: 979px) {
+    .fivecolumns .col-md-2, .fivecolumns .col-sm-2, .fivecolumns .col-lg-2 {
+        width: 20%;
+        *width: 20%;
+        float: left;
+    }
+}
+
+</style>
+
 	<div class="row">
 		<div class="col-md-12">
-			<img src="" alt="${ cateDetail.CATE_NM }" style="width: 100%;"/>
+			<img src="" alt="${ cateDetail.CATE_NM } 카테고리 이미지" style="width: 100%; height: 150px;"/>
 		</div>
 	</div>
 
@@ -44,24 +67,27 @@
 	  		</c:forEach>
   	</div>
 	
-	<div class="row">
-		<div class="col-md-12 text-center">
-			<ul class="pagination">
-			  <li><a href="#">&laquo;</a></li>
-			  <li><a href="#">1</a></li>
-			  <li><a href="#">2</a></li>
-			  <li><a href="#">3</a></li>
-			  <li><a href="#">4</a></li>
-			  <li><a href="#">5</a></li>
-			  <li><a href="#">6</a></li>
-			  <li><a href="#">7</a></li>
-			  <li><a href="#">8</a></li>
-			  <li><a href="#">9</a></li>
-			  <li><a href="#">10</a></li>
-			  <li><a href="#">&raquo;</a></li>
-			</ul>
-		</div>
+	<c:if test="${ not empty pageLink }">
+	<div class="text-center">
+		<ul class="pagination">
+		<li><a href="${ contextPath }/category.do?cate_id=${ cateDetail.CATE_ID }&pageNum=1"><i class="icon-double-angle-left icon-large"></i></a></li>
+			<c:if test="${ not empty pageLink.pagePrev }">
+			<li><a href="${ contextPath }/category.do?cate_id=${ cateDetail.CATE_ID }&pageNum=${ pageLink.pagePrev }${ empty search.search? '' : search.search }">Prev</a></li>
+			</c:if>
+			<c:forEach items="${ pageLink.pageList }" var="page">
+				<c:choose>
+					<c:when test="${ page.pageNum eq pageLink.pageNum }"><li class="active"></c:when>
+					<c:otherwise><li></c:otherwise>
+				</c:choose>
+				<a href="${ contextPath }/category.do?cate_id=${ cateDetail.CATE_ID }&pageNum=${ page.pageNum }${ empty search.search? '' : search.search }">${ page.pageNum }</a></li>
+			</c:forEach>
+			<c:if test="${ not empty pageLink.pageNext }">
+			<li><a href="${ contextPath }/category.do?cate_id=${ cateDetail.CATE_ID }&pageNum=${ pageLink.pageNext }${ empty search.search? '' : search.search }">Next</a></li>
+			</c:if>
+		<li><a href="${ contextPath }/category.do?cate_id=${ cateDetail.CATE_ID }&pageNum=${pageLink.lastPage}"><i class="icon-double-angle-right icon-large"></i></a></li>
+		</ul>
 	</div>
+	</c:if>
 	
 	<hr />
 	

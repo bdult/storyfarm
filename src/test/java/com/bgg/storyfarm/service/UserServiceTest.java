@@ -138,6 +138,10 @@ public class UserServiceTest {
 		
 		//when
 		userService.findId(userData);
+
+		//than
+		assertNotNull(userData);
+		logger.info("{}", userData);
 	}
 	
 	@Test
@@ -145,10 +149,15 @@ public class UserServiceTest {
 		logger.info("중복체크 테스트 입니다.");
 		
 		//given
-		String user_id = "test";
+		Map<String, Object> userIdMap = new HashMap<String, Object>();
+		userIdMap.put("member_id", "test");
 		
 		//when
-		userService.duplicationUser(user_id);
+		userService.duplicationUser(userIdMap);
+		
+		//than
+		assertNotNull(userIdMap);
+		logger.info("{}", userIdMap);
 	}
 }
 	

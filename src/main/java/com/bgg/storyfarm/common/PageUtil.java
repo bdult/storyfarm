@@ -40,7 +40,7 @@ public class PageUtil {
 		return (pageNum - 1) * perPage;
 	}
 
-	public Map<String, Object> setPageLink(int totalCnt, int pageNum) {
+	public Map<String, Object> getPageLinkMap(int totalCnt, int pageNum) {
 		Map<String, Object> pageLinkMap = new HashMap<String, Object>();
 		int firstPageNum = this.getFirstPageNum(pageNum);
 		int lastPageNum = this.getLastPageNum(firstPageNum);
