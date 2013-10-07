@@ -37,7 +37,7 @@
 						</tr>
 						<tr>
 							<td class="col-lg-4">답변일시</td>
-							<td class="col-lg-8">${ comments.REG_DT }</td>
+							<td class="col-lg-8">${ comments.MOD_DT }</td>
 						</tr>
 						<tr>
 							<td class="col-lg-4">답변자</td>
