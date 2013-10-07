@@ -166,7 +166,7 @@ public class MypageController {
 	@RequestMapping(value = "questionInsert.do", method = RequestMethod.GET)
 	public ModelAndView questionInsert(Model model, @RequestParam Map<String, Object> paramsMap) {
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("board/boardWrite");
+		mav.setViewName("side-mypage/questionWrite");
 		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_MYPAGE_INFO, StoryfarmConstants.BREADCRUMB_MYPAGE_QUESTION, StoryfarmConstants.BREADCRUMB_MYPAGE_QUESTION_INSERT));
 		
 		mav.addObject("board_id", paramsMap.get("board_id"));
@@ -179,12 +179,20 @@ public class MypageController {
 		return "redirect:question.do";
 	}
 	
-	@RequestMapping(value = "questionUpdate.do", method = RequestMethod.GET)
-	public ModelAndView questionUpdate(Model model) {
+	@RequestMapping(value = "questionUpdate.do", method = RequestMethod.POST)
+	public ModelAndView questionUpdate(Model model, @RequestParam Map<String, Object> paramsMap) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("side-mypage/questionUpdate");
 		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_MYPAGE_INFO, StoryfarmConstants.BREADCRUMB_MYPAGE_QUESTION, StoryfarmConstants.BREADCRUMB_MYPAGE_QUESTION_UPDATE));
+
+		mav.addObject("writing", paramsMap);
 		return mav;
+	}
+	
+	@RequestMapping(value = "boardModify.do", method = RequestMethod.POST)
+	public String boardModify(Model model, @RequestParam Map<String, Object> paramsMap) {
+		boardService.modify(paramsMap);
+		return "redirect:question.do";
 	}
 	
 	@RequestMapping(value = "userInfo.do", method = RequestMethod.GET)

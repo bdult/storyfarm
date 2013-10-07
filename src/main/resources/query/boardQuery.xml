@@ -27,7 +27,7 @@
     
     </select>
     
-    <select id="questionList" resultType="hashmap" parameterType="hashmap">
+    <select id="boardList" resultType="hashmap" parameterType="hashmap">
     SELECT
         BG_BOARD_CONTENTS.*
     FROM
@@ -39,6 +39,21 @@
     AND
         BG_BOARD_MASTER.board_id = BG_BOARD_CONTENTS.board_id
     ORDER BY BG_BOARD_CONTENTS.contents_id DESC
+    LIMIT #{ rownum }, #{ perpage }
+    </select>
+    
+    <select id="questionList" resultType="hashmap" parameterType="hashmap">
+    SELECT
+        BG_BOARD_CONTENTS.*, @RNUM:=@RNUM + 1 AS ROWNUM
+    FROM
+        BG_BOARD_CONTENTS, BG_BOARD_MASTER, ( SELECT @RNUM := 0 ) R
+    WHERE 
+        BG_BOARD_MASTER.board_id = #{ board_id }
+    AND
+    	BG_BOARD_CONTENTS.member_id = #{ member_id }
+    AND
+        BG_BOARD_MASTER.board_id = BG_BOARD_CONTENTS.board_id
+    ORDER BY ROWNUM DESC
     LIMIT #{ rownum }, #{ perpage }
     </select>
     
@@ -75,7 +90,7 @@
         MEMBER_ID,
         TITLE,
         CONTENTS,
-        REG_DT
+        MOD_DT
     FROM
         BG_BOARD_CONTENTS
     WHERE
@@ -87,7 +102,8 @@
 		CONTENTS_ID,
 		COMMENT_ID,
 		MEMBER_ID,
-		COMMENT
+		COMMENT,
+		MOD_DT
 	FROM
 		BG_BOARD_COMMENTS
 	WHERE
