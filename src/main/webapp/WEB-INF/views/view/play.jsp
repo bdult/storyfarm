@@ -17,20 +17,24 @@
 					mozallowfullscreen allowfullscreen></iframe>
 			</c:when>
 			<c:otherwise>
+				
 				<div class="row">
 					<div class="col-lg-12">
+						<video width="850" height="500" controls poster="${contents.IMG_PATH}">
+						  <source src="${contents.SRC_PATH}" type="video/mp4">
+							video 요소를 지원하지 않는 브라우저입니다.
+						</video>
+						<!-- 
 						<div id="01" class="flowplayer" data-swf="player/flowplayer.swf" >
 							<video>
 								<source type="video/mp4" src="${contents.SRC_PATH}">
 							</video>
 						</div>
+						 -->
 					</div>			
 				</div>
 			</c:otherwise>
 		</c:choose>
-		<p>
-			...
-		</p>
 	</div>
 	<div class="col-md-3">
 		<div class="well">${ contents.CONTENTS_DESC }</div>

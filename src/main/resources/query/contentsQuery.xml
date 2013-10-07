@@ -5,18 +5,62 @@
 <mapper namespace="contentsQuery">
 
     <!-- SELECT -->
-    <select id="list" resultType="map">
-        SELECT /* contentsQuery.list */
+    <select id="contentsListByBrand" resultType="map">
+        SELECT /* contentsQuery.listByBrand */
             *
         FROM BG_CONTENTS
-        <where>
-            <if test="contents_series_id != null">
-                AND contents_series_id = #{ contents_series_id }
-            </if>
-        </where>
-        ORDER BY REG_DT
+        WHERE CONTENTS_SERIES_ID IN (
+			SELECT
+				contents_series_id
+			FROM BG_CONTENTS_SERIES
+			WHERE 1=1
+			AND brand_id = #{ brand_id }
+		)
+        ORDER BY reg_dt
+        <if test="rownum != null">
+        LIMIT #{ rownum }, #{ perpage }
+        </if>
     </select>
     
+    <select id="contentsCountByBrand" resultType="int">
+	    SELECT /* contentsQuery.contentsCountByBrand */
+	    	COUNT(*)
+	    FROM (
+	        SELECT 
+	            *
+	        FROM BG_CONTENTS
+	        WHERE CONTENTS_SERIES_ID IN (
+				SELECT
+					contents_series_id
+				FROM BG_CONTENTS_SERIES
+				WHERE 1=1
+				AND brand_id = #{ brand_id }
+			)
+	    ) TBL
+    </select>
+    
+    <select id="contentsListBySeries" resultType="map">
+        SELECT /* contentsQuery.contentsListBySeries */
+            *
+        FROM BG_CONTENTS
+        WHERE contents_series_id = #{ contents_series_id }
+        ORDER BY reg_dt
+        <if test="rownum != null">
+        LIMIT #{ rownum }, #{ perpage }
+        </if>
+    </select>
+
+    <select id="contentsCountBySeries" resultType="int">
+	    SELECT /* contentsQuery.contentsCountBySeries */
+	    	COUNT(*)
+	    FROM (
+	        SELECT
+	            *
+	        FROM BG_CONTENTS
+	        WHERE contents_series_id = #{ contents_series_id }
+	    ) TBL
+    </select>
+
     <select id="contentsListByCate" resultType="map">
         SELECT /* contentsQuery.contentsListByCate */
             BC.*
@@ -25,6 +69,22 @@
         AND BC.CONTENTS_ID = BCCR.CONTENTS_ID
         AND BCCR.CATE_ID = #{ cate_id } 
         ORDER BY REG_DT
+        <if test="rownum != null">
+        LIMIT #{ rownum }, #{ perpage }
+        </if>
+    </select>
+
+    <select id="contentsCountByCate" resultType="int">
+	    SELECT /* contentsQuery.contentsCountByCate */
+	    	COUNT(*)
+	    FROM (
+	        SELECT
+	            BC.*
+	        FROM BG_CONTENTS BC, BG_CATE_CONTENTS_RELATIONSHIPS BCCR
+	        WHERE 1=1
+	        AND BC.CONTENTS_ID = BCCR.CONTENTS_ID
+	        AND BCCR.CATE_ID = #{ cate_id } 
+	    ) TBL
     </select>
 
     <select id="detail" resultType="map">
@@ -37,6 +97,22 @@
         <if test="contents_id != null">
         WHERE contents_id = #{ contents_id }
         </if>
+    </select>
+    
+    <select id="contentsCount" resultType="int" parameterType="hashmap">
+    SELECT /* contentsQuery.count */
+        count(*)
+    FROM
+    (
+        SELECT
+            BG_BOARD_CONTENTS.*
+        FROM
+            BG_BOARD_CONTENTS, BG_BOARD_MASTER
+        WHERE 
+            BG_BOARD_MASTER.board_id = #{ board_id }
+        AND
+            BG_BOARD_CONTENTS.board_id = BG_BOARD_MASTER.board_id
+    ) TMP
     </select>
     
     <select id="brandList" resultType="map">
