@@ -26,8 +26,4 @@
 	  <h4><a href="${ contextPath }/mypage/userInfo.do">회원정보수정</a></h4>
 	  <hr />
 	</div>
-	<div class="col-md-12">
-	  <h4><a href="${ contextPath }/mypage/leave.do">회원탈퇴</a></h4>
-	  <hr />
-	</div>
 </div>

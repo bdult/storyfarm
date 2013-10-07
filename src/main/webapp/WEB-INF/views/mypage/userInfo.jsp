@@ -114,7 +114,7 @@
 					</div>
 			</div>
 			<div class="col-lg-12 text-center">
-				<a class="btn btn-default" id="delete_btn" href="${ contextPath }/mypage/userInfoDelete.do">회원탈퇴</a>
+				<a class="btn btn-default" id="delete_btn" href="${ contextPath }/mypage/leave.do">회원탈퇴</a>
 			</div>
 			<div class="col-lg-12 text-center">
 				<button class="btn btn-default" id="update_btn">회원정보 수정</button>

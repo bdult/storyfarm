@@ -210,33 +210,35 @@ public class MypageController {
 		return mav;
 	}
 	
-	@RequestMapping(value = "userInfoDelete.do", method = RequestMethod.GET)
-	public ModelAndView userInfoDelete(Model model, HttpSession session) {
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("view/dashboard");
-		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_MYPAGE_INFO, StoryfarmConstants.BREADCRUMB_MYPAGE_USERINFO, StoryfarmConstants.BREADCRUMB_MYPAGE_USERINFO_UPDATE));
-		
-		Map<String, Object> boardMap = getSessionId(session);
-		
-		userService.deleteUser(boardMap);
-		
-		session.invalidate();
-		return mav;
-	}
-	
 	@RequestMapping(value = "leave.do", method = RequestMethod.GET)
 	public ModelAndView leave(Model model) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("side-mypage/leave");
 		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_MYPAGE_INFO, StoryfarmConstants.BREADCRUMB_MYPAGE_LEAVE));
+		
 		return mav;
 	}
 	
-	@RequestMapping(value = "leaveResult.do", method = RequestMethod.GET)
-	public ModelAndView leaveResult(Model model) {
+	@RequestMapping(value = "leaveResult.do", method = RequestMethod.POST)
+	public ModelAndView leaveResult(Model model, @RequestParam Map<String, Object> paramsMap, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("side-mypage/leaveResult");
 		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_MYPAGE_INFO, StoryfarmConstants.BREADCRUMB_MYPAGE_LEAVE, StoryfarmConstants.BREADCRUMB_MYPAGE_LEAVE_RESULT ));
+
+		Map<String, Object> boardMap = getSessionId(session);
+		
+		logger.info("boardMap is : " + boardMap.get("member_id"));
+		logger.info("paramsMap is : " + paramsMap.get("member_id"));
+		
+		if(paramsMap.get("member_id").equals(boardMap.get("member_id"))){
+			logger.info("paramsMap is : " + paramsMap);
+			userService.deleteUser(paramsMap);
+			session.invalidate();
+			mav.setViewName("view/dashboard");
+		}else {
+			mav.addObject("msg", "loginFail");
+			mav.setViewName("side-mypage/leave");
+		}
+		
 		return mav;
 	}
 	
