@@ -1,9 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 <div class="row">
-	<div class="col-lg-12 text-center">
-		<h3>1:1 문의</h3>
+	<div class="col-lg-12">
+		<ul>
+			<li><a href="#">${ login_session.MEMBER_ID }</a>님의 1:1 문의내역 입니다.</li>
+		</ul>
 	</div>
 </div>
 
@@ -14,17 +17,31 @@
 			<tr>
 				<th>No</th>
 				<th>제목</th>
+				<th>답변여부</th>
 				<th>등록일</th>
 			</tr>
-			<c:forEach items="${ list }" var="obj">
+			<c:forEach items="${ list }" var="obj" varStatus="status">
 				<tr>
-					<td>${ obj.CONTENTS_ID }</td>
+					<td>${ obj.ROWNUM }</td>
 					<td><a href="${ contextPath }/mypage/questionDetail.do?contentsId=${ obj.CONTENTS_ID }">${ obj.TITLE }</a></td>
+					<td>
+						<c:choose>
+							<c:when test="${ obj.ANSWER == 0 }">
+								<a style="color:red;">대기중</a>
+							</c:when>
+							<c:when test="${ obj.ANSWER == 1 }">
+								<a style="color:blue;">답변완료</a>
+							</c:when>
+							<c:otherwise>
+								<a>답변오류</a>
+							</c:otherwise>
+						</c:choose>
+					</td>
 					<td><fmt:formatDate value="${ obj.REG_DT }" pattern="yyyy-MM-dd"/></td>
 				</tr>
 			</c:forEach>
 		</table>
-		<a class="btn btn-primary pull-right" href="${ contextPath }/mypage/questionInsert.do?board_id=3" id="write">문의 신청</a>
+		<a class="btn btn-primary pull-right" href="${ contextPath }/mypage/questionInsert.do?board_id=3" id="write">1:1 문의하기</a>
 		
 		<c:if test="${ not empty pageLink }">
 		<div class="text-center">
