@@ -15,12 +15,21 @@
 		MEMBER_ROLE, MEMBER_ID, MEMBER_STATUS
 		FROM BG_MEMBER
 		WHERE 
-		MEMBER_ID = #{ id } and MEMBER_PW = #{ pwd }
+		MEMBER_ID = #{ id } and MEMBER_PW = password(#{ pwd })
 	</select>
 	
 	<select id="userDetail" resultType="hashmap">
 		SELECT
-		*
+		MEMBER_ID,
+		MEMBER_NM,
+		MEMBER_EMAIL,
+		MEMBER_CEL,
+		MEMBER_ADDR_1,
+		MEMBER_ADDR_2,
+		MEMBER_GENDER,
+		MEMBER_YEAR,
+		MEMBER_MONTH,
+		MEMBER_DAY
 		FROM BG_MEMBER
 		WHERE
 		MEMBER_ID = #{ member_id }
@@ -99,7 +108,7 @@
 		VALUES (
         #{ member_id },
         #{ member_nm },
-        #{ member_pw },
+        password(#{ member_pw }),
         #{ member_email },
         #{ member_cel },
         #{ member_addr_1 },
@@ -120,7 +129,7 @@
 		<set>
 			MEMBER_ID = #{ member_id },
 			MEMBER_NM = #{ member_nm },
-			MEMBER_PW = #{ member_pw },
+			MEMBER_PW = password(#{ member_pw }),
 			MEMBER_EMAIL = #{ member_email },
 			MEMBER_CEL = #{ member_cel },
 			MEMBER_ADDR_1 = #{ member_addr_1 },
@@ -142,7 +151,7 @@
 			MOD_DT = NOW()
 		</set>
 		WHERE MEMBER_ID = #{ member_id } AND
-		MEMBER_PW = #{ member_pw }
+		MEMBER_PW = password(#{ member_pw })
 	</update>
 	
 	<!-- duplication -->

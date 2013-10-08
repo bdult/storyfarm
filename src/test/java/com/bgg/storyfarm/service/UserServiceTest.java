@@ -78,11 +78,15 @@ public class UserServiceTest {
 		Map<String, Object> userDTO = new HashMap<String,Object>();
 		userDTO.put("member_id", "test12");
 		userDTO.put("member_nm", "test1");
-		userDTO.put("member_pw", "123");
+		userDTO.put("member_pw", "1233333333");
 		userDTO.put("member_email", "qwe@naver.com");
-		userDTO.put("member_tel", "010-1111-1111");
+		userDTO.put("member_cel", "010-1111-1111");
 		userDTO.put("member_addr_1", "서울시");
 		userDTO.put("member_addr_2", "123호");
+		userDTO.put("member_gender", "남");
+		userDTO.put("member_year", 2013);
+		userDTO.put("member_month", 3);
+		userDTO.put("member_day", 3);
 		
 		//when
 		userService.insertUser(userDTO);
@@ -98,13 +102,20 @@ public class UserServiceTest {
 		logger.info("회원수정 테스트 입니다.");
 
 		//given
-		String id = "test12";
+		String id = "test";
 
 		Map<String, Object> userDTO = new HashMap<String, Object>();
-		userDTO.put("id", id);
-		userDTO.put("name", "굿굿");
-		userDTO.put("pwd", "1234");
-		userDTO.put("role", "2");
+		userDTO.put("member_id", id);
+		userDTO.put("member_nm", "test1");
+		userDTO.put("member_pw", "123");
+		userDTO.put("member_email", "qwe@naver1.com");
+		userDTO.put("member_cel", "010-1111-1111");
+		userDTO.put("member_addr_1", "서울시");
+		userDTO.put("member_addr_2", "123호");
+		userDTO.put("member_gender", "남");
+		userDTO.put("member_year", 2013);
+		userDTO.put("member_month", 3);
+		userDTO.put("member_day", 3);
 		
 		//when
 		userDao.updateUser(userDTO);
