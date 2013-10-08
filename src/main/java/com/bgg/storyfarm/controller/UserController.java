@@ -58,7 +58,8 @@ public class UserController {
 	 */
 	@RequestMapping(value = "loginResult.do", method = RequestMethod.POST)
 	public String loginResult(Model model, @RequestParam Map<String, Object> paramMap, HttpServletRequest request, HttpSession session) {
-
+		model.addAttribute(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_LOGIN));
+		
 		HashMap<String, String> sessionMap = (HashMap<String, String>) userService.detail(paramMap);
 
 		if(sessionMap == null) {
@@ -115,7 +116,7 @@ public class UserController {
 	public ModelAndView joinProvision(Model model) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("user/joinProvision");
-		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_REGISTER));
+		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_JOINPROVISION));
 		return mav;
 	}
 
@@ -127,7 +128,7 @@ public class UserController {
 	public ModelAndView signUp(Model model) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("user/signUp");
-		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_REGISTER, StoryfarmConstants.BREADCRUMB_JOINSTEP2));
+		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_JOINPROVISION, StoryfarmConstants.BREADCRUMB_SIGNUP));
 		
 		
 		return mav;
@@ -142,7 +143,7 @@ public class UserController {
 	public ModelAndView signUpResult(Model model, @RequestParam Map<String, Object> paramMap) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("user/signUpResult");
-		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_REGISTER, StoryfarmConstants.BREADCRUMB_JOINSTEP2, StoryfarmConstants.BREADCRUMB_JOINSTEP3));
+		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_JOINPROVISION, StoryfarmConstants.BREADCRUMB_SIGNUP, StoryfarmConstants.BREADCRUMB_SIGNUPRESULT));
 		
 		userService.insertUser(paramMap);
 		
@@ -157,7 +158,7 @@ public class UserController {
 	public ModelAndView findIdView(Model model) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("user/findIdView");
-		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_LOGIN, StoryfarmConstants.BREADCRUMB_FINDID));
+		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_FINDIDVIEW));
 		return mav;
 	}
 
@@ -186,7 +187,7 @@ public class UserController {
 	public ModelAndView findPwdView(Model model) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("user/findPwdView");
-		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_FINDPWD));
+		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_FINDPWDVIEW));
 		return mav;
 	}
 	

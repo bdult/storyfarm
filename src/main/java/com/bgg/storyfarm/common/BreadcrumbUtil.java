@@ -35,29 +35,26 @@ public class BreadcrumbUtil {
 			case StoryfarmConstants.BREADCRUMB_LOGIN:
 				this.setBreadcrumbMap("로그인", "/login.do");
 				break;
-			case StoryfarmConstants.BREADCRUMB_FINDID:
-				this.setBreadcrumbMap("아이디 찾기", "/findId.do");
+			case StoryfarmConstants.BREADCRUMB_FINDIDVIEW:
+				this.setBreadcrumbMap("아이디 찾기", "/findIdView.do");
 				break;
 			case StoryfarmConstants.BREADCRUMB_FINDID_RESULT:
 				this.setBreadcrumbMap("아이디 찾기 결과", "/findIdResult.do");
 				break;
-			case StoryfarmConstants.BREADCRUMB_FINDID_FAIL:
-				this.setBreadcrumbMap("아이디 찾기 없음", "/findIdFail.do");
-				break;
-			case StoryfarmConstants.BREADCRUMB_FINDPWD:
-				this.setBreadcrumbMap("비밀번호 찾기", "/findPwd.do");
+			case StoryfarmConstants.BREADCRUMB_FINDPWDVIEW:
+				this.setBreadcrumbMap("비밀번호 찾기", "/findPwdView.do");
 				break;
 			case StoryfarmConstants.BREADCRUMB_FINDPWD_RESULT:
 				this.setBreadcrumbMap("비밀번호 찾기 결과", "/findPwdResult.do");
 				break;
-			case StoryfarmConstants.BREADCRUMB_REGISTER:
-				this.setBreadcrumbMap("회원가입", "/register.do");
+			case StoryfarmConstants.BREADCRUMB_JOINPROVISION:
+				this.setBreadcrumbMap("회원가입", "/joinProvision.do");
 				break;
-			case StoryfarmConstants.BREADCRUMB_JOINSTEP2:
-				this.setBreadcrumbMap("회원가입", "/joinstep2.do");
+			case StoryfarmConstants.BREADCRUMB_SIGNUP:
+				this.setBreadcrumbMap("약관동의", "/signUp.do");
 				break;
-			case StoryfarmConstants.BREADCRUMB_JOINSTEP3:
-				this.setBreadcrumbMap("회원가입", "/joinstep3.do");
+			case StoryfarmConstants.BREADCRUMB_SIGNUPRESULT:
+				this.setBreadcrumbMap("회원가입 완료", "/signUpResult.do");
 				break;
 			case StoryfarmConstants.BREADCRUMB_STORYFARM_INTRO:
 				this.setBreadcrumbMap("스토리팜 소개", "/introduce/storyfarmIntro.do");

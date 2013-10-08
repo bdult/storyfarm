@@ -14,15 +14,14 @@ public class StoryfarmConstants {
 	public final static int BREADCRUMB_SITEMAP = 104;
 	
 	public final static int BREADCRUMB_LOGIN = 200;
-	public final static int BREADCRUMB_FINDID = 210;
+	public final static int BREADCRUMB_FINDIDVIEW = 210;
 	public final static int BREADCRUMB_FINDID_RESULT = 211;
-	public final static int BREADCRUMB_FINDID_FAIL = 212;
-	public final static int BREADCRUMB_FINDPWD = 220;
+	public final static int BREADCRUMB_FINDPWDVIEW = 220;
 	public final static int BREADCRUMB_FINDPWD_RESULT = 221;
 	
-	public final static int BREADCRUMB_REGISTER = 300;
-	public final static int BREADCRUMB_JOINSTEP2 = 310;
-	public final static int BREADCRUMB_JOINSTEP3 = 320;
+	public final static int BREADCRUMB_JOINPROVISION = 300;
+	public final static int BREADCRUMB_SIGNUP = 310;
+	public final static int BREADCRUMB_SIGNUPRESULT = 320;
 	
 	public final static int BREADCRUMB_STORYFARM_INTRO = 410;
 	public final static int BREADCRUMB_PUBLISHER_INTRO = 420;
