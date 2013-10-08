@@ -16,7 +16,8 @@
     <select id="listTop5" resultType="hashmap">
     SELECT
     	CONTENTS_ID,
-    	TITLE
+    	TITLE,
+    	ANSWER
     FROM
     	BG_BOARD_CONTENTS
     WHERE

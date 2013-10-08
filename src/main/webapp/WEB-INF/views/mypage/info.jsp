@@ -24,7 +24,22 @@
 			<a class="btn btn-default" href="${ contextPath }/mypage/question.do">자세히보기</a>
 			<ul>
 				<c:forEach var="questionList" items="${ questionList }">
-					<li><a href="${ contextPath }/mypage/questionDetail.do?contentsId=${ questionList.CONTENTS_ID }">${ questionList.TITLE }</a></li>
+					<li>
+						<a class="col-lg-8" href="${ contextPath }/mypage/questionDetail.do?contentsId=${ questionList.CONTENTS_ID }">${ questionList.TITLE }</a>
+						<div class="col-lg-4">
+							<c:choose>
+								<c:when test="${ questionList.ANSWER == 0 }">
+									<a style="color:red;">대기중</a>
+								</c:when>
+								<c:when test="${ questionList.ANSWER == 1 }">
+									<a style="color:blue;">답변완료</a>
+								</c:when>
+								<c:otherwise>
+									<a>답변오류</a>
+								</c:otherwise>
+							</c:choose>
+						</div>
+					</li>
 				</c:forEach>
 			</ul>
 		</div>

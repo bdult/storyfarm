@@ -113,7 +113,7 @@ public class MypageController {
 	@RequestMapping(value = "addCoupon.do", method = RequestMethod.GET)
 	public ModelAndView addCoupon(Model model) {
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("side-mypage/addCoupon");
+		mav.setViewName("pure-mypage/addCoupon");
 		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_MYPAGE_INFO, StoryfarmConstants.BREADCRUMB_MYPAGE_COUPON, StoryfarmConstants.BREADCRUMB_MYPAGE_ADD_COUPON));
 		return mav;
 	}
