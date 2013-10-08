@@ -141,7 +141,7 @@ $("#duplication_id").click(function(event){
 		$("#duplication_text").empty();
 		$.ajax({
 		    type: "POST",
-		    url: "${ contextPath }/duplication.do",
+		    url: "${ contextPath }/duplication.ajax",
 		    data: {
 		    	member_id : $('#member_id').val()
 		    }
@@ -167,7 +167,7 @@ $("#duplication_id").click(function(event){
 		
 		$("#joinForm").attr({
 			method: 'post',
-			action: '${ contextPath }/joinStep3.do'
+			action: '${ contextPath }/signUpResult.do'
 		});
 	});
 </script>

@@ -36,46 +36,41 @@ public class UserController {
 	private Logger logger = LoggerFactory.getLogger(UserController.class);
 	
 	/**
-	 * 로그인 절차 중 첫번째인듯 한데
-	 * step 이라고 하기 보다는 어떠한 절차 인지를 메소드 이름으로 해주면 
-	 * 보기 편할 듯
 	 * @param model
 	 * @param request
 	 * @param session
 	 * @return
 	 */
-	@RequestMapping(value = "loginStep1.do", method = RequestMethod.GET)
-	public ModelAndView loginStep1(Model model, HttpServletRequest request, HttpSession session) {
+	@RequestMapping(value = "loginView.do", method = RequestMethod.GET)
+	public ModelAndView loginView(Model model, HttpServletRequest request, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("user/loginStep1");
+		mav.setViewName("user/loginView");
 		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_LOGIN));
 		return mav;
 	}
 
 	/**
-	 * loginStep1 과 동일한 의문
 	 * @param model
 	 * @param paramMap
 	 * @param request
 	 * @param session
 	 * @return
 	 */
-	@RequestMapping(value = "loginStep2.do", method = RequestMethod.POST)
-	public String loginStep2(Model model, @RequestParam Map<String, Object> paramMap, HttpServletRequest request, HttpSession session) {
+	@RequestMapping(value = "loginResult.do", method = RequestMethod.POST)
+	public String loginResult(Model model, @RequestParam Map<String, Object> paramMap, HttpServletRequest request, HttpSession session) {
 
 		HashMap<String, String> sessionMap = (HashMap<String, String>) userService.detail(paramMap);
 
-		// 없는 아이디와 비밀번호 틀렸다는 결과 메세지를 분리 해야 할듯 한데...
 		if(sessionMap == null) {
 			model.addAttribute("msg", "login_fail");
-			return "user/loginStep1";
+			return "user/loginView";
 		}
 		
 		if(session.getAttribute("login_session") == null){
 			session.setAttribute("login_session", sessionMap);
 		}
 		
-		return "user/loginStep2";
+		return "user/loginResult";
 		
 	}
 	
@@ -94,14 +89,10 @@ public class UserController {
 	}
 
 	/**
-	 * 비동기(ajax) 통신일 경우는 .do 보다는 .ajax 로 value 를 정하는게 보기 쉽지 않을까?
-	 * 메소드 이름도 뒤에 Ajax 를 붙여 주면 좋을 듯
-	 * duplication.do 를 호출 하여 200(ok) 를 받으면 중복 아이디가 있는 것 같은 느낌이 주는데...
-	 * 다른 네이밍은 없을까??
 	 * @param paramMap
 	 * @return
 	 */
-	@RequestMapping(value = "duplication.do", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	@RequestMapping(value = "duplication.ajax", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	public @ResponseBody
 	String duplication(@RequestParam Map<String, Object> paramMap) {
 		Map<String, Object> user_id = userService.duplicationUser(paramMap);
@@ -117,39 +108,25 @@ public class UserController {
 	}
 	
 	/**
-	 * 어떤 기능인지??? 
 	 * @param model
 	 * @return
 	 */
-	@RequestMapping(value = "leave.do", method = RequestMethod.GET)
-	public String leave(Model model) {
-		return "user/leave";
-	}
-
-	/**
-	 * 회원 절차 중 첫번째인듯 한데
-	 * step 이라고 하기 보다는 어떠한 절차 인지를 메소드 이름으로 해주면 
-	 * 보기 편할 듯
-	 * @param model
-	 * @return
-	 */
-	@RequestMapping(value = "joinStep1.do", method = RequestMethod.GET)
-	public ModelAndView joinStep1(Model model) {
+	@RequestMapping(value = "joinProvision.do", method = RequestMethod.GET)
+	public ModelAndView joinProvision(Model model) {
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("user/joinStep1");
+		mav.setViewName("user/joinProvision");
 		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_REGISTER));
 		return mav;
 	}
 
 	/**
-	 * step1 과 동일한 의문
 	 * @param model
 	 * @return
 	 */
-	@RequestMapping(value = "joinStep2.do", method = RequestMethod.GET)
-	public ModelAndView joinStep2(Model model) {
+	@RequestMapping(value = "signUp.do", method = RequestMethod.GET)
+	public ModelAndView signUp(Model model) {
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("user/joinStep2");
+		mav.setViewName("user/signUp");
 		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_REGISTER, StoryfarmConstants.BREADCRUMB_JOINSTEP2));
 		
 		
@@ -157,15 +134,14 @@ public class UserController {
 	}
 
 	/**
-	 * step1 과 동일한 의문
 	 * @param model
 	 * @param paramMap
 	 * @return
 	 */
-	@RequestMapping(value = "joinStep3.do", method = RequestMethod.POST)
-	public ModelAndView joinStep3(Model model, @RequestParam Map<String, Object> paramMap) {
+	@RequestMapping(value = "signUpResult.do", method = RequestMethod.POST)
+	public ModelAndView signUpResult(Model model, @RequestParam Map<String, Object> paramMap) {
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("user/joinStep3");
+		mav.setViewName("user/signUpResult");
 		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_REGISTER, StoryfarmConstants.BREADCRUMB_JOINSTEP2, StoryfarmConstants.BREADCRUMB_JOINSTEP3));
 		
 		userService.insertUser(paramMap);
@@ -174,36 +150,19 @@ public class UserController {
 	}
 	
 	/**
-	 * 화면만을 구성하는 페이지는 뒤에 View를 붙여주면 보기 편할 듯 findIdView.do
-	 * 메소드 이름도 findIdView로 하면 읽기가 쉬울 듯
 	 * @param model
 	 * @return
 	 */
-	@RequestMapping(value = "findId.do", method = RequestMethod.GET)
-	public ModelAndView findId(Model model) {
+	@RequestMapping(value = "findIdView.do", method = RequestMethod.GET)
+	public ModelAndView findIdView(Model model) {
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("user/findId");
+		mav.setViewName("user/findIdView");
 		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_LOGIN, StoryfarmConstants.BREADCRUMB_FINDID));
 		return mav;
 	}
 
-	/**
-	 * 이게 필요한 이유는??
-	 * 아이디 찾기는 페이지에 전체적인 디자인은 같고 결과 같에 따라 안에 문구가 변경이 되는데
-	 * 구지 메소드를 나눌 필요가 있는지???
-	 * @param model
-	 * @return
-	 */
-	@RequestMapping(value = "findIdFail.do", method = RequestMethod.GET)
-	public ModelAndView findIdFail(Model model) {
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("user/findIdFail");
-		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_FINDID_FAIL));
-		return mav;
-	}
 
 	/**
-	 * findIdFail 과 동일한 의문
 	 * @param model
 	 * @param paramMap
 	 * @return
@@ -220,14 +179,13 @@ public class UserController {
 	}
 	
 	/**
-	 * findId 과 동일한 의문
 	 * @param model
 	 * @return
 	 */
-	@RequestMapping(value = "findPwd.do", method = RequestMethod.GET)
-	public ModelAndView findPwd(Model model) {
+	@RequestMapping(value = "findPwdView.do", method = RequestMethod.GET)
+	public ModelAndView findPwdView(Model model) {
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("user/findPwd");
+		mav.setViewName("user/findPwdView");
 		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_FINDPWD));
 		return mav;
 	}

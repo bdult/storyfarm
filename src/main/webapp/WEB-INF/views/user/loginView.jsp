@@ -23,7 +23,7 @@
 			<div class="col-lg-12 well">
 				<div class="row">
 					<div class="col-lg-offset-3 col-lg-6 col-lg-offset-3">
-						<form role="form" method="post" action="${ contextPath }/loginStep2.do">
+						<form role="form" method="post" action="${ contextPath }/loginResult.do">
 						  <div class="form-group">
 						    <input type="text" class="form-control" name="id" placeholder="아이디">
 						  </div>
@@ -35,8 +35,8 @@
 					      <button class="btn btn-info pull-right">로그인</button>
 						  </div>
 						  <div class="form-group">
-					      <a href="${ contextPath }/findId.do">아이디 찾기</a><br>
-					      <a href="${ contextPath }/findPwd.do">비밀번호 찾기</a>
+					      <a href="${ contextPath }/findIdView.do">아이디 찾기</a><br>
+					      <a href="${ contextPath }/findPwdView.do">비밀번호 찾기</a>
 						  </div>
 						  <c:if test="${ msg == 'login_fail' }">로그인 실패</c:if>
 						</form>

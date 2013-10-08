@@ -15,14 +15,14 @@
 	 			<div class="pull-right">
 		 			<c:choose>
 		 				<c:when test="${ login_session == null }">
-		 					<a href="${ contextPath }/loginStep1.do" class="btn btn-default"><spring:message code="login"/></a>
+		 					<a href="${ contextPath }/loginView.do" class="btn btn-default"><spring:message code="login"/></a>
 		 				</c:when>
 		 				<c:otherwise>
 		 					<a href="${ contextPath }/logout.do" class="btn btn-default">${ login_session.MEMBER_ID }님 로그아웃</a>
 		 					<a href="${ contextPath }/mypage/info.do" class="btn btn-default">마이페이지</a>
 		 				</c:otherwise>
 		 			</c:choose>
-		 			<a href="${ contextPath }/joinStep1.do" class="btn btn-default"><spring:message code="join"/></a>
+		 			<a href="${ contextPath }/joinProvision.do" class="btn btn-default"><spring:message code="join"/></a>
 		 			<a href="${ contextPath }/cscenter/notice.do" class="btn btn-default"><spring:message code="cscenter"/></a>
 					<a href="${ contextPath }/introduce.do" class="btn btn-default"><spring:message code="ozIntroduce"/></a>
 					<!-- 
@@ -111,30 +111,3 @@
 		<!-- /breadcrumb -->
 	</div>
 </header>
-
-<script>
-$("#test").click(function(event){
-
-	$.ajax({
-	    type: "POST",
-	    url: "${ contextPath }/loginDummy.do",
-	    data: {
-	    	id : $('#id').val(),
-	    	pwd : $('#pwd').val()
-	    }
-	}).done(function(data){
-    	console.info("code : " + data.code);
-    	console.info("msg : " + data.msg);
-    	if(data.code == 200) {
-    		//로그인 성공 처리
-    		$("#test2").text("AJAX 테스트 성공.");
-    	} else {
-    		$("#test2").text("아이디 or 비밀번호가 틀립니다.");
-    		//로그인 실패 메시지 처리
-    	}
-    }).fail(function(data){
-    	alert( "서버에러 죄송합니다.");
-    })
-});
-	
-</script>

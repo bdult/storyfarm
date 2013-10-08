@@ -71,7 +71,7 @@
 			alert("이용약관에 동의해주세요");
 		}else {
 			$("#submit-btn").attr({
-				href: '${ contextPath }/joinStep2.do'
+				href: '${ contextPath }/signUp.do'
 			});
 		}
 	});
