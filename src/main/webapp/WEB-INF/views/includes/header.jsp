@@ -14,22 +14,19 @@
 	 		<div class="col-md-10">
 	 			<div class="pull-right">
 		 			<c:choose>
-		 				<c:when test="${ login_session == null }">
+		 				<c:when test="${ empty sessionScope.login_session }">
 		 					<a href="${ contextPath }/loginView.do" class="btn btn-default"><spring:message code="login"/></a>
+				 			<a href="${ contextPath }/joinProvision.do" class="btn btn-default"><spring:message code="join"/></a>
 		 				</c:when>
 		 				<c:otherwise>
 		 					<a href="${ contextPath }/logout.do" class="btn btn-default">${ login_session.MEMBER_ID }님 로그아웃</a>
 		 					<a href="${ contextPath }/mypage/info.do" class="btn btn-default">마이페이지</a>
+				 			<a href="${ contextPath }/children/room.do" class="btn btn-default">자녀방</a>
+				 			<a href="${ contextPath }/parents/room.do" class="btn btn-default">부모방</a>
 		 				</c:otherwise>
 		 			</c:choose>
-		 			<a href="${ contextPath }/joinProvision.do" class="btn btn-default"><spring:message code="join"/></a>
 		 			<a href="${ contextPath }/cscenter/notice.do" class="btn btn-default"><spring:message code="cscenter"/></a>
 					<a href="${ contextPath }/introduce.do" class="btn btn-default"><spring:message code="ozIntroduce"/></a>
-					<!-- 
-		 			<a href="${ contextPath }/mypage/info.do" class="btn btn-default">마이페이지</a>
-		 			<a href="${ contextPath }/children/room.do" class="btn btn-default">자녀방</a>
-		 			<a href="${ contextPath }/parents/room.do" class="btn btn-default">부모방</a>
-					 -->
 	 			</div>
 	 		</div>
 	 	</div>

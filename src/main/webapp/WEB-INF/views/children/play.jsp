@@ -4,19 +4,25 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
     
 <div class="row">
-	<div class="col-md-12">
-		<div class="well">플레이어</div>
-	</div>
+	<div class="col-md-8">
+		{ 콘텐츠 제목 }
+	</div>			
+	<div class="col-md-4 text-right">
+		<button class="btn btn-default btn-xs">목록보기</button>
+		<button class="btn btn-default btn-xs">반복보기</button>
+		<button class="btn btn-default btn-xs">닫기</button>
+	</div>			
 </div>
 
+<br />
+
 <div class="row">
-	<div class="col-lg-12">
-		<div id="01" class="flowplayer" data-swf="player/flowplayer.swf" >
-			<video>
-				<source type="video/mp4" src="${movie.SRC_PATH}">
-			</video>
-		</div>
-	</div>			
+	<div class="col-md-12">
+		<video width="100%" height="100%" controls poster="${contents.IMG_PATH}">
+			<source src="http://pcms.bigstarglobal.com/storyfarm/source/movie/85/01.mp4" type="video/mp4">
+			video 요소를 지원하지 않는 브라우저입니다.
+		</video>
+	</div>
 </div>
 <script>
 
