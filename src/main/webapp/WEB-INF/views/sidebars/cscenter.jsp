@@ -7,7 +7,7 @@
 	  <hr />
 		<a>이벤트</a>
 		<br> -<a href="${ contextPath }/cscenter/event.do">진행중인이벤트</a>
-		<br> -<a href="${ contextPath }/cscenter/event.do">당첨자발표</a>
+		<br> -<a href="${ contextPath }/cscenter/winner.do">당첨자발표</a>
 	  <hr />
 		<a href="${ contextPath }/cscenter/faq.do">자주하는질문</a>
 	  <hr />

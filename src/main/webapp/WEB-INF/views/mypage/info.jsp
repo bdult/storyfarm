@@ -28,10 +28,10 @@
 						<a class="col-lg-8" href="${ contextPath }/mypage/questionDetail.do?contentsId=${ questionList.CONTENTS_ID }">${ questionList.TITLE }</a>
 						<div class="col-lg-4">
 							<c:choose>
-								<c:when test="${ questionList.ANSWER == 0 }">
+								<c:when test="${ questionList.STATUS == 0 }">
 									<a style="color:red;">대기중</a>
 								</c:when>
-								<c:when test="${ questionList.ANSWER == 1 }">
+								<c:when test="${ questionList.STATUS == 1 }">
 									<a style="color:blue;">답변완료</a>
 								</c:when>
 								<c:otherwise>

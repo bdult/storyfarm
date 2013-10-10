@@ -17,7 +17,7 @@
     SELECT
     	CONTENTS_ID,
     	TITLE,
-    	ANSWER
+    	STATUS
     FROM
     	BG_BOARD_CONTENTS
     WHERE
@@ -98,7 +98,7 @@
         MEMBER_ID,
         TITLE,
         CONTENTS,
-        ANSWER,
+        STATUS,
         HITS,
         REG_DT
     FROM
