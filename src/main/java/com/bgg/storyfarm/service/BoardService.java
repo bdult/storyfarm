@@ -102,6 +102,11 @@ public class BoardService {
 		
 		return boardDao.commentModify(map);
 	}
+
+	
+	public int hits(int contentsId){
+		return boardDao.hits(contentsId);
+	}
 	
 	/** 게시판 덧글 삭제
 	 * @param boardMap

@@ -59,12 +59,14 @@ public class CscenterController {
 		
 		Map<String, Object> boardMap = new HashMap<String, Object>();
 		boardMap.put(StoryfarmConstants.BOARD_ID, NOTI_BOARD_ID);
+		boardMap.put("search", paramsMap.get("search"));
 		
 		//페이징 로직
 		int totalCnt = boardService.totalCount(boardMap);
 		int pageNum = setPage(paramsMap, boardMap);
 		mav.addObject("pageLink", pageUtil.getPageLinkMap(totalCnt, pageNum));
 		//페이징 로직
+		mav.addObject("searchList", paramsMap);
 		
 		mav.addObject("list", boardService.list(boardMap));
 		
@@ -82,6 +84,7 @@ public class CscenterController {
 				StoryfarmConstants.BREADCRUMB_CSCENTER_NOTI));
 		
 		String contentId = paramsMap.get("contentsId").toString();
+		boardService.hits(Integer.valueOf(contentId));
 		Map<String, Object> writing = boardService.detail(Integer.valueOf(contentId));
 		mav.addObject("writing", writing);
 		
