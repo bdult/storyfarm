@@ -28,7 +28,7 @@
 			<div class="row">
 				<div class="col-md-12">
 						<a href="${ contextPath }/cscenter/eventView.do?contentsId=${ obj.CONTENTS_ID }" class="thumbnail">
-							<img src="${ obj.IMG_PATH }" style="width: 100%; height: 200px;" alt="${ obj.TITLE }">
+							<img src="${ contextPath }/${ obj.IMG_PATH }" style="width: 100%; height: 200px;" alt="${ obj.TITLE }">
 							${ obj.TITLE }
 						</a>
 				</div>
