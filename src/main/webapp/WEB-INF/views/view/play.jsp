@@ -20,7 +20,7 @@
 				
 				<div class="row">
 					<div class="col-lg-12">
-						<video width="850" height="500" controls poster="${contents.IMG_PATH}">
+						<video width="850" height="500" controls poster="http://pcms.bigstarglobal.com/storyfarm/source/thumbnail/85/11.jpg">
 						  <source src="${contents.SRC_PATH}" type="video/mp4">
 							video 요소를 지원하지 않는 브라우저입니다.
 						</video>
