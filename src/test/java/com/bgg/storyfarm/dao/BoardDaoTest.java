@@ -250,4 +250,19 @@ public class BoardDaoTest {
 		logger.info("Result : {}", content.toString());
 
 	}
+	
+	//조회수 추가 테스트 입니다.
+	@Test
+	public void testHits() {
+		
+		//given
+		int contents_id = 19;
+		
+		//when
+		int result = boardDao.hits(contents_id);
+		
+		//than
+		assertThat(result, is(not(0)));
+		
+	}
 }

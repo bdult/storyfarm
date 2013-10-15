@@ -26,10 +26,10 @@
 					<td><a href="${ contextPath }/mypage/questionDetail.do?contentsId=${ obj.CONTENTS_ID }">${ obj.TITLE }</a></td>
 					<td>
 						<c:choose>
-							<c:when test="${ obj.ANSWER == 0 }">
+							<c:when test="${ obj.STATUS == 0 }">
 								<a style="color:red;">대기중</a>
 							</c:when>
-							<c:when test="${ obj.ANSWER == 1 }">
+							<c:when test="${ obj.STATUS == 1 }">
 								<a style="color:blue;">답변완료</a>
 							</c:when>
 							<c:otherwise>

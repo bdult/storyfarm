@@ -69,8 +69,9 @@ public class StoryfarmConstants {
 	public final static int BREADCRUMB_CSCENTER = 901;
 	public final static int BREADCRUMB_CSCENTER_NOTI = 902;
 	public final static int BREADCRUMB_CSCENTER_EVENT = 903;
-	public final static int BREADCRUMB_CSCENTER_FAQ = 904;
-	public final static int BREADCRUMB_CSCENTER_ASK = 905;
+	public final static int BREADCRUMB_CSCENTER_WINNER = 904;
+	public final static int BREADCRUMB_CSCENTER_FAQ = 905;
+	public final static int BREADCRUMB_CSCENTER_ASK = 906;
 	
 	//BOARD
 	public final static String BOARD_ID = "board_id";

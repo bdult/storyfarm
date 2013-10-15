@@ -33,6 +33,7 @@ public class CscenterController {
 	//게시판 TODO : 상수처리?
 	private final int NOTI_BOARD_ID = 1; //공지사항
 	private final int EVENT_BOARD_ID = 2; //이벤트
+	private final int WINNER_BOARD_ID = 4; //당첨자발표
 	private final int FAQ_USER_BOARD_ID = 26; //자주하는질문 회원/가입안내
 	private final int FAQ_PAYMENT_BOARD_ID = 27; //자주하는질문 결제안내
 	private final int FAQ_SERVICE_BOARD_ID = 28; //자주하는질문 서비스안내
@@ -59,12 +60,14 @@ public class CscenterController {
 		
 		Map<String, Object> boardMap = new HashMap<String, Object>();
 		boardMap.put(StoryfarmConstants.BOARD_ID, NOTI_BOARD_ID);
+		boardMap.put("search", paramsMap.get("search"));
 		
 		//페이징 로직
 		int totalCnt = boardService.totalCount(boardMap);
 		int pageNum = setPage(paramsMap, boardMap);
 		mav.addObject("pageLink", pageUtil.getPageLinkMap(totalCnt, pageNum));
 		//페이징 로직
+		mav.addObject("searchList", paramsMap);
 		
 		mav.addObject("list", boardService.list(boardMap));
 		
@@ -82,6 +85,7 @@ public class CscenterController {
 				StoryfarmConstants.BREADCRUMB_CSCENTER_NOTI));
 		
 		String contentId = paramsMap.get("contentsId").toString();
+		boardService.hits(Integer.valueOf(contentId));
 		Map<String, Object> writing = boardService.detail(Integer.valueOf(contentId));
 		mav.addObject("writing", writing);
 		
@@ -214,6 +218,48 @@ public class CscenterController {
 		}
 	}
 
+	@RequestMapping(value = "winner.do", method = RequestMethod.GET)
+	public ModelAndView winner(@RequestParam Map<String, Object> paramsMap) {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("side-cscenter/winner");
+		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(
+				StoryfarmConstants.BREADCRUMB_HOME, 
+				StoryfarmConstants.BREADCRUMB_CSCENTER, 
+				StoryfarmConstants.BREADCRUMB_CSCENTER_WINNER));
+		
+		Map<String, Object> boardMap = new HashMap<String, Object>();
+		boardMap.put(StoryfarmConstants.BOARD_ID, WINNER_BOARD_ID);
+		boardMap.put("search", paramsMap.get("search"));
+		
+		//페이징 로직
+		int totalCnt = boardService.totalCount(boardMap);
+		int pageNum = setPage(paramsMap, boardMap);
+		mav.addObject("pageLink", pageUtil.getPageLinkMap(totalCnt, pageNum));
+		//페이징 로직
+		mav.addObject("searchList", paramsMap);
+		
+		mav.addObject("list", boardService.list(boardMap));
+		
+		
+		return mav;
+	}
+
+	@RequestMapping(value = "winnerView.do", method = RequestMethod.GET)
+	public ModelAndView winnerView(@RequestParam Map<String, Object> paramsMap) {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("side-cscenter/winnerView");
+		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(
+				StoryfarmConstants.BREADCRUMB_HOME, 
+				StoryfarmConstants.BREADCRUMB_CSCENTER, 
+				StoryfarmConstants.BREADCRUMB_CSCENTER_NOTI));
+		
+		String contentId = paramsMap.get("contentsId").toString();
+		boardService.hits(Integer.valueOf(contentId));
+		Map<String, Object> writing = boardService.detail(Integer.valueOf(contentId));
+		mav.addObject("writing", writing);
+		
+		return mav;
+	}
 	/** 페이지 처리
 	 * @param paramsMap
 	 * @param boardMap

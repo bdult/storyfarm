@@ -76,7 +76,11 @@ public class BoardDao extends SqlSessionDaoSupport {
 	 * @return
 	 */
 	public int modify(Map<String, Object> boardMap){
-		return getSqlSession().insert("boardQuery.modify", boardMap);
+		return getSqlSession().update("boardQuery.modify", boardMap);
+	}
+
+	public int hits(int contentsId){
+		return getSqlSession().update("boardQuery.hits", contentsId);
 	}
 	
 	/** 게시판 글 삭제
@@ -84,7 +88,7 @@ public class BoardDao extends SqlSessionDaoSupport {
 	 * @return
 	 */
 	public int commentDelete(Map<String, Object> boardMap){
-		return getSqlSession().insert("boardQuery.commentDelete", boardMap);
+		return getSqlSession().update("boardQuery.commentDelete", boardMap);
 	}
 
 	/** 게시판 덧글 수정
@@ -92,6 +96,6 @@ public class BoardDao extends SqlSessionDaoSupport {
 	 * @return
 	 */
 	public int commentModify(Map<String, Object> boardMap){
-		return getSqlSession().insert("boardQuery.commentModify", boardMap);
+		return getSqlSession().update("boardQuery.commentModify", boardMap);
 	}
 }

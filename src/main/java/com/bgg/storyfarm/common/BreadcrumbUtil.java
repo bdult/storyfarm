@@ -140,6 +140,9 @@ public class BreadcrumbUtil {
 			case StoryfarmConstants.BREADCRUMB_CSCENTER_NOTI:
 				this.setBreadcrumbMap("공지사항", "/cscenter/notice.do");
 				break;
+			case StoryfarmConstants.BREADCRUMB_CSCENTER_WINNER:
+				this.setBreadcrumbMap("당첨자발표", "/cscenter/winner.do");
+				break;
 			case StoryfarmConstants.BREADCRUMB_CSCENTER:
 				this.setBreadcrumbMap("고객센터", "/cscenter/notice.do");
 				break;

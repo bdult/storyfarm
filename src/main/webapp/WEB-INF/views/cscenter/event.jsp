@@ -5,42 +5,35 @@
 <div class="alert alert-success">이벤트</div>
 
 <div class="row">
-	<div class="col-md-12">
-		<table class="table table-striped table-hover">
-			<tr>
-				<th>No</th>
-				<th>제목</th>
-				<th>등록일</th>
-			</tr>
-			<c:forEach items="${ list }" var="obj">
-				<tr>
-					<td>${ obj.CONTENTS_ID }</td>
-					<td><a href="${ contextPath }/cscenter/eventView.do?contentsId=${ obj.CONTENTS_ID }">${ obj.TITLE }</a></td>
-					<td><fmt:formatDate value="${ obj.REG_DT }" pattern="yyyy-MM-dd"/></td>
-				</tr>
-			</c:forEach>
-		</table>
-		
-		<c:if test="${ not empty pageLink }">
-		<div class="text-center">
-			<ul class="pagination">
-			<li><a href="${ contextPath }/cscenter/event.do?pageNum=1">처음으로</a></li>
-				<c:if test="${ not empty pageLink.pagePrev }">
-				<li><a href="${ contextPath }/cscenter/event.do?pageNum=${ pageLink.pagePrev }${ empty search.search? '' : search.search }">Prev</a></li>
-				</c:if>
-				<c:forEach items="${ pageLink.pageList }" var="page">
+	<c:forEach items="${ list }" var="obj">
+		<div class="col-md-6">
+			<div class="row">
+				<div class="col-md-8">
+					<span class="label label-info">오즈월드 오픈 기념 이벤트</span>
+				</div>
+				<div class="col-md-2 col-md-offset-2 text-right">
 					<c:choose>
-						<c:when test="${ page.pageNum eq pageLink.pageNum }"><li class="active"></c:when>
-						<c:otherwise><li></c:otherwise>
+						<c:when test="${ obj.STATUS == 0 }">
+							<span class="label label-danger">진행중</span>
+						</c:when>
+						<c:when test="${ obj.STATUS == 1 }">
+							<span class="label label-default">종료</span>
+						</c:when>
+						<c:otherwise>
+							<a>오류</a>
+						</c:otherwise>
 					</c:choose>
-					<a href="${ contextPath }/cscenter/event.do?pageNum=${ page.pageNum }${ empty search.search? '' : search.search }">${ page.pageNum }</a></li>
-				</c:forEach>
-				<c:if test="${ not empty pageLink.pageNext }">
-				<li><a href="${ contextPath }/cscenter/event.do?pageNum=${ pageLink.pageNext }${ empty search.search? '' : search.search }">Next</a></li>
-				</c:if>
-			<li><a href="${ contextPath }/cscenter/event.do?pageNum=${pageLink.lastPage}">마지막으로</a></li>
-			</ul>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+						<a href="${ contextPath }/cscenter/eventView.do?contentsId=${ obj.CONTENTS_ID }" class="thumbnail">
+							<img src="${ contextPath }/${ obj.IMG_PATH }" style="width: 100%; height: 200px;" alt="${ obj.TITLE }">
+							${ obj.TITLE }
+						</a>
+				</div>
+			</div>
+		<br><br><br>
 		</div>
-		</c:if>
-	</div>
+	</c:forEach>
 </div>
