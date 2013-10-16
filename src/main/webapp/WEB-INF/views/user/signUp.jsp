@@ -1,140 +1,135 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
-<div class="row">
-	<div class="col-lg-12 text-left">
-		<h3>회원가입_회원정보 입력</h3><br>
-	</div>
-	<div class="col-lg-12 text-left">
-		<div class="well">
-		오즈월드 회원 가입을 환영합니다.<br> 
-		전 세계 명작 학습 동화 와 다양한 콘텐츠를 최적의 환경에서 제공 하겠습니다.<br><br>
-		회원 가입을 위해서 아래의 정보를 입력해 주세요.
-		</div>
-	</div>
-	<div class="col-lg-12">
-		<form class="form-horizontal well" id="joinForm">
-			<p class="text-center">기본정보 입력</p><br>
-			
-			<div class="form-group">
-				<label class="col-lg-2 control-label">아이디 :</label>
-				<div class="col-lg-3">
-					<input class="form-control" id="member_id" name="member_id">
-				</div>
-				<a class="btn btn-default" id="duplication_id">중복확인</a>
-				<label id="duplication_text"></label>
-			</div>
-			<div class="form-group">
-				<label class="col-lg-2 control-label">비밀번호 :</label>
-				<div class="col-lg-3">
-					<input class="form-control" id="member_pw" name="member_pw" type="password">
-				</div>
-				<label class="col-lg-2 control-label">비밀번호 재입력 :</label>
-				<div class="col-lg-3">
-					<input class="form-control" type="password">
-				</div>
-			</div>
-			<div class="form-group">
-				<label class="col-lg-2 control-label">이름 :</label>
-				<div class="col-lg-3">
-					<input class="form-control" name="member_nm">
-				</div>
-			</div>
-			<div class="form-group">
-				<label class="col-lg-2 control-label">이메일 :</label>
-				<input class="hidden" id="member_email" name="member_email">
-				<div class="col-lg-3">
-					<input class="form-control" id="email1">
-				</div>
-				<div class="col-lg-2">
-					<select class="form-control" id="email2">
-						<option>naver.com1</option>
-						<option>naver.com2</option>
-						<option>naver.com3</option>
-						<option>naver.com4</option>
-						<option>naver.com5</option>
-					</select>
-				</div>
-			</div>
-			<div class="form-group">
-				<label class="col-lg-2 control-label">휴대번호 : </label>
-				<input class="hidden" id="member_cel" name="member_cel">
-				<div class="col-lg-2">
-					<select class="form-control" id="cel1">
-						<option>010</option>
-						<option>011</option>
-						<option>012</option>
-						<option>013</option>
-						<option>014</option>
-					</select>
-				</div>
-				<div class="col-lg-2">
-					<input class="form-control" id="cel2">
-				</div>
-				<div class="col-lg-2">
-					<input class="form-control" id="cel3">
-				</div>
-			</div>
-			<div class="form-group">
-				<label class="col-lg-2 control-label">주소 : </label>	
-				<div class="col-lg-4">
-					<input class="form-control" placeholder="동/읍/리 입력">
-				</div>
-				<div class="col-lg-2">
-					<a class="btn btn-default">찾아보기</a>
-				</div>
-			</div>
-			<div class="form-group">
-				<label class="col-lg-2"></label>
-				<div class="col-lg-4">
-					<input class="form-control" placeholder="주소1" name="member_addr_1">
-				</div>
-				<div class="col-lg-4">
-					<input class="form-control" placeholder="상세주소 입력" name="member_addr_2">
-				</div>
-			</div>
-			
-			<div class="form-group">
-				<label class="col-lg-2 control-label">성별 : </label>	
-				<div class="col-lg-2">
-					<label>
-    					<input type="radio" name="member_gender" value="남" checked>남  
-						<input type="radio" name="member_gender" value="여">여
-					</label>
-				</div>
-			</div>
-			<div class="form-group">
-					<label class="col-lg-2 control-label">생년월일 : </label>
-					<div class="col-lg-2">
-						<select class="form-control" id="yearBox" name="member_year">
-							<option>년도</option>
-						</select>
-					</div>
-					<div class="col-lg-2">
-						<select class="form-control" id="monthBox" name="member_month">
-							<option>월</option>
-						</select>
-					</div>
-					<div class="col-lg-2">
-						<select class="form-control" id="dayBox" name="member_day">
-							<option>일</option>
-						</select>
-					</div>
-			</div>
-			
-			<div class="row">
-				<div class="col-lg-12 text-center">
-					<button class="btn btn-default" id="submit-btn">가입하기</button>
-					<a class="btn btn-default">취소</a>
-				</div>
-			</div>
-		</form>
-	</div>
-</div>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
+    
+        <!-- container -->
+  	<div id="container">
+   		<div id="content">
+        
+        	<h2 class="divTit"><img src="../assets/images/member/title_join01.gif" alt="회원가입  이용약관동의"></h2>
+            <!-- location -->
+      		<div id="divLocation">
+        		<ul class="location">
+					<c:forEach items="${ breadcrumbs }" var="obj" varStatus="status">
+						<c:choose>
+							<c:when test="${ status.first }">
+          						<li class="first"><a href="/" class="home"><img src="../assets/images/common/blt_home.gif" alt="home"></a></li>
+							</c:when>
+							<c:when test="${ status.last }">
+								<li class="current">${ obj.name }</li>
+							</c:when>
+							<c:otherwise>
+								<li><a href="${ contextPath }${ obj.url }">${ obj.name }</a></li>
+							</c:otherwise>
+						</c:choose>
+          			</c:forEach>
+        		</ul>
+      		</div>
+      		<!-- //location -->
+            
+            <div class="join01_hd"><img src="../assets/images/member/join01_img1.jpg" alt="오즈월드 회원 가입을 환영합니다! 전 세계 명작 학습 동화와 다양한 콘텐츠를 최적의 환경에서 제공하겠습니다."></div>
+            
+       	  	<div class="joinWrap mgt20">
+            	<ul class="ulLst01 brdB">
+                	<li>회원 가입을 위해서 아래의 이용약관 및 개인정보 수집 및 이용에 대한 안내를 읽고 동의해 주세요.</li>
+                </ul>
+                <form id="joinForm">
+                <div class="box03 mgt20">
+                	<table class="joinTbl">
+                    <colgroup>
+                    <col width="90">
+                    <col width="*">
+                    <col width="120">
+                    <col width="">
+                    </colgroup>
+                    <tbody>
+                    <tr>
+                    	<th scope="row">아이디</th>
+                        <td colspan="3"><input id="member_id" name="member_id" type="text" class="input" style="width:205px;"></td>
+                    </tr>
+                    <tr class="brdB">
+                    	<th scope="row">비밀번호</th>
+                        <td><input name="member_pw" type="password" class="input" style="width:205px;"><p class="mgt5"><strong class="fontRed">* 패스워드는 6-10자리 숫자 영문 조합입니다.</strong></p></td>
+                   	  	<th scope="row">비밀번호 재입력</th>
+                      	<td><input type="password" class="input" style="width:205px;"></td>
+                    </tr>
+                    </tbody>
+                    </table>
+                    <table class="joinTbl mgt10">
+                    <colgroup>
+                    <col width="90">
+                    <col width="*">
+                    </colgroup>
+                    <tbody>
+                    <tr>
+                    	<th scope="row">이름</th>
+                        <td colspan="3"><input name="member_nm" type="text" class="input" style="width:290px;"></td>
+                    </tr>
+                    <tr>
+                    	<th scope="row">이메일</th>
+                        <td colspan="3"><input name="member_email" type="text" class="input" style="width:290px;" placeholder="exaple@mail.com"></td>
+                    </tr>
+                    <tr>
+                    	<th scope="row">휴대번호</th>
+                        <td colspan="3">
+							<input class="hidden" id="member_cel" name="member_cel">
+                        	<select name="cel1" class="select" style="width:95px;">
+                        	  <option>010</option>
+                        	</select> -
+                        	<input name="cel2" type="text" class="input" style="width:95px;" > -
+                        	<input name="cel3" type="text" class="input" style="width:95px;" >
+                      </td>
+                    </tr>
+                    <tr>
+                    	<th scope="row">주소</th>
+                        <td colspan="3">
+                        	<input type="text" class="input" style="width:290px;" placeholder="동,읍,리 입력"> <a href="#"><img src="../assets/images/common/btn_find_off.gif" alt="찾아보기" class="rollimg"></a>
+                            <div class="mgt5">
+                           	  	<input name="member_addr_1" type="text" class="input" style="width:290px;" placeholder="주소 1">
+                           	  <input name="member_addr_2" type="text" class="input" style="width:290px;" placeholder="상세주소 입력">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                    	<th scope="row">성별</th>
+                        <td colspan="3">
+                        	<label for="sexM" class="radio"><input name="member_gender" id="sexM" type="radio" value="남" class="aln_middle"> 남</label>
+                   	  	  <label for="sexW"><input name="member_gender" id="sexW" type="radio" value="여" class="aln_middle"> 여</label>
+                   	  </td>
+                    </tr>
+                    <tr>
+                    	<th scope="row">생년월일</th>
+                        <td colspan="3">
+                   	  	  <select name="member_year" id="yearBox" class="select" style="width:95px;">
+                        	  <option>년도</option>
+                        	</select>
+                       	  <select name="member_month" id="monthBox" class="select" style="width:95px;">
+                        	  <option>월</option>
+                        	</select>
+                       	  <select name="member_day" id="dayBox" class="select" style="width:95px;">
+                        	  <option>일</option>
+                        	</select>
+                      </td>
+                    </tr>
+                    </tbody>
+                    </table>
+                	<span class="bg1"></span><span class="bg2"></span><span class="bg3"></span><span class="bg4"></span>
+                </div>
+                </form>
+                <div class="btnSc">
+                	<a href="#" id="submit-btn"><img src="../assets/images/common/btn_join_off.gif" alt="가입하기" class="rollimg"></a>&nbsp;&nbsp;&nbsp;
+                    <a href="#"><img src="../assets/images/common/btn_cancel2_off.gif" alt="취소" class="rollimg"></a>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    <!-- //container -->
+    
 <script type="text/javascript">
 
-$("#duplication_id").click(function(event){
+$("#member_id").keyup(function(event){
 	if($("#member_id").val() == null || $("#member_id").val() == ''){
 		alert("한글자 이상 입력해 주세요");
 	}else{
@@ -161,13 +156,11 @@ $("#duplication_id").click(function(event){
 	birth.call();
 	
 	$("#submit-btn").click(function(){
-		
-		combineEmail.call();
 		combineCel.call();
-		
+
 		$("#joinForm").attr({
 			method: 'post',
 			action: '${ contextPath }/signUpResult.do'
-		});
+		}).submit();
 	});
 </script>

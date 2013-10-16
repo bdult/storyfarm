@@ -8,11 +8,23 @@
             <!-- location -->
       		<div id="divLocation">
         		<ul class="location">
-          			<li class="first"><a href="#" class="home"><img src="../assets/images/common/blt_home.gif" alt="home"></a></li>
-          			<li class="current">로그인</li>
+					<c:forEach items="${ breadcrumbs }" var="obj" varStatus="status">
+						<c:choose>
+							<c:when test="${ status.first }">
+          						<li class="first"><a href="/" class="home"><img src="../assets/images/common/blt_home.gif" alt="home"></a></li>
+							</c:when>
+							<c:when test="${ status.last }">
+								<li class="current">${ obj.name }</li>
+							</c:when>
+							<c:otherwise>
+								<li><a href="${ contextPath }${ obj.url }">${ obj.name }</a></li>
+							</c:otherwise>
+						</c:choose>
+          			</c:forEach>
         		</ul>
       		</div>
       		<!-- //location -->
+      		
             <form>
             <div class="box01 loginBox">
             	<p class="txt01"><img src="../assets/images/member/login_tx01.gif" alt="아이디와 패스워드를 입력하세요."></p>
