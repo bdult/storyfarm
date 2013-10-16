@@ -1,58 +1,45 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<div class="row">
-	<div class="col-lg-offset-2 col-lg-8 col-lg-offset-2">
-		<div class="row">
-			<div class="col-lg-12 text-center">
-				<h3>로그인</h3>
-				<small>Enjoy whenever out contents</small>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-lg-12 well">
-				스토리팜 서비스를 찾아주셔서 감사합니다.
-				<br />
-				스토리팜 서비스는 언제 어디서든 편하게 즐길 수 있는
-				<br />
-				국내 최고의 아동 콘텐츠를 최적의 환경으로 제공하고 있습니다.
-				<br />
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-lg-12 well">
-				<div class="row">
-					<div class="col-lg-offset-3 col-lg-6 col-lg-offset-3">
-						<form role="form" method="post" action="${ contextPath }/loginResult.do">
-						  <div class="form-group">
-						    <input type="text" class="form-control" name="id" placeholder="아이디">
-						  </div>
-						  <div class="form-group">
-						    <input type="text" class="form-control" name="pwd" placeholder="비밀번호">
-						  </div>
-						  <div class="form-group">
-					      <input type="checkbox"> 로그인 유지하기
-					      <button class="btn btn-info pull-right">로그인</button>
-						  </div>
-						  <div class="form-group">
-					      <a href="${ contextPath }/findIdView.do">아이디 찾기</a><br>
-					      <a href="${ contextPath }/findPwdView.do">비밀번호 찾기</a>
-						  </div>
-						  <c:if test="${ msg == 'login_fail' }">로그인 실패</c:if>
-						</form>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-lg-12 well text-center">
-				<h3>무료회원가입</h3>
-				<div>Join member</div>
-				<div>스토리팜서비스 멤버가입 시 다양한 혜택과 서비스를 제공 받으실 수 있습니다.</div>
-				<a href="${ contextPath }/joinStep1.do" class="btn btn-info">회원가입</a>
-			</div>
-		</div>
-		
-	</div>
-</div>
-<!--/row-fluid-->
+    <!-- container -->
+  	<div id="container">
+   		<div id="content">
+        	<h2 class="divTit"><img src="../assets/images/member/title_login.gif" alt="로그인"></h2>
+            <!-- location -->
+      		<div id="divLocation">
+        		<ul class="location">
+          			<li class="first"><a href="#" class="home"><img src="../assets/images/common/blt_home.gif" alt="home"></a></li>
+          			<li class="current">로그인</li>
+        		</ul>
+      		</div>
+      		<!-- //location -->
+            <form>
+            <div class="box01 loginBox">
+            	<p class="txt01"><img src="../assets/images/member/login_tx01.gif" alt="아이디와 패스워드를 입력하세요."></p>
+                <fieldset>
+                <legend>로그인하기</legend>
+                <ul>
+               	  	<li><label for="userId"><img src="../assets/images/member/login_txId.gif" alt="아이디"></label><input name="id" id="userId" type="text" class="input"></li>
+       	  	  	  	<li><label for="userPw"><img src="../assets/images/member/login_txPw.gif" alt="비밀번호"></label><input name="pwd" id="userPw" type="password" class="input"></li>
+       	  	  	  	<li class="saveTx">
+                    	<input name="" id="userSave1" type="checkbox" value=""> <label for="userSave1">ID 저장</label>
+                        <input name="" id="userSave2" type="checkbox" value=""> <label for="userSave2">PW 저장</label>
+                    </li>
+                </ul>
+                <p class="btLogin"><a href="#"><img src="../assets/images/member/btn_login_off.gif" alt="login" class="rollimg"></a></p>
+                </fieldset>
+            	<span class="bg1"></span><span class="bg2"></span><span class="bg3"></span><span class="bg4"></span>
+            </div>
+            </form>
+            
+            <ul class="loginBt">
+            	<li><span class="titTx">아이디를 모르시는 경우</span> <a href="${ contextPath }/findIdView.do"><img src="../assets/images/member/btn_idFind_off.gif" alt="아이디찾기" class="rollimg"></a></li>
+                <li><span class="titTx">비밀번호를 모르시는 경우</span> <a href="${ contextPath }/findPwdView.do"><img src="../assets/images/member/btn_pwFind_off.gif" alt="비밀번호 찾기" class="rollimg"></a></li>
+                <li class="btPay"><a href="#"><img src="../assets/images/member/btn_pay_off.gif" alt="유료결제서비스" class="rollimg"></a></li>
+            </ul>
+            
+            <p class="loginBanner"><a href="${ contextPath }/joinProvision.do"><img src="../assets/images/member/login_join.jpg" alt="무료회원가입 오즈월드 신규회원 가입하시면 다양한 혜택과 서비스를 제공 받으실 수 있습니다." ></a></p>
+            
+        </div>
+    </div>
+    <!-- //container -->

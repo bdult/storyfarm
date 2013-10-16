@@ -33,7 +33,7 @@ public class UserService {
 		return userDao.userDetail(paramMap);
 	}
 
-	public Map<String, Object> findId(Map<String, Object> paramMap) {
+	public List<Map<String, Object>> findId(Map<String, Object> paramMap) {
 		return userDao.findId(paramMap);
 	}
 

@@ -9,12 +9,13 @@
 		<div class="well">
 			<div class="col-lg-12 text-center">
 				
-				<c:if test="${ findUserData.MEMBER_ID != null }">
+				<c:if test="${ findUserData != null }">
 					등록하신 아이디는 아래와 같습니다.<br><br>
-					
-					아이디 : ${ findUserData.MEMBER_ID } <br><br>
+					<c:forEach items="${ findUserData }" var="obj">
+						아이디 : ${ obj.MEMBER_ID } <br><br>
+					</c:forEach>
 				</c:if>
-				<c:if test="${ findUserData.MEMBER_ID == null }">
+				<c:if test="${ findUserData == null }">
 					<h3>해당 정보로 조회한 결과 맞는 아이디가 없습니다.</h3><br><br>
 				</c:if>
 				비밀번호를 모르시는 경우<a class="btn btn-default" href="${ contextPath }/findPwd.do">비밀번호 찾기</a><br>
