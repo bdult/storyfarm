@@ -63,7 +63,7 @@
 			</c:when>
 			<c:otherwise>
 				<div class="panel panel-info">
-					로그인한 사람에게만 덧글쓰기를 허용하고 있습니다. <a href="${ contextPath }/loginStep1.do">로그인</a> 후 이용해 주세요
+					로그인한 사람에게만 덧글쓰기를 허용하고 있습니다. <a href="${ contextPath }/loginView.do">로그인</a> 후 이용해 주세요
 				</div>
 			</c:otherwise>
 		</c:choose>
