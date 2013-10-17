@@ -25,7 +25,7 @@
       		</div>
       		<!-- //location -->
       		
-            <form>
+            <form id="login">
             <div class="box01 loginBox">
             	<p class="txt01"><img src="../assets/images/member/login_tx01.gif" alt="아이디와 패스워드를 입력하세요."></p>
                 <fieldset>
@@ -55,3 +55,13 @@
         </div>
     </div>
     <!-- //container -->
+    
+    
+<script type="text/javascript">
+	$(".btLogin").click(function(){
+		$("#login").attr({
+			method: 'post',
+			action: '${ contextPath }/loginResult.do'
+		}).submit();
+	});
+</script>

@@ -65,13 +65,12 @@ public class UserController {
 		if(sessionMap == null) {
 			model.addAttribute("msg", "login_fail");
 			return "user/loginView";
+		} else {
+			if(session.getAttribute("userInfoSession") == null){
+				session.setAttribute("userInfoSession", sessionMap);
+			}
+			return "user/loginResult";
 		}
-		
-		if(session.getAttribute("login_session") == null){
-			session.setAttribute("login_session", sessionMap);
-		}
-		
-		return "user/loginResult";
 		
 	}
 	

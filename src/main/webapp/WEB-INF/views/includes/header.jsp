@@ -11,7 +11,8 @@
            	  			<li class="fir"><a href="${ contextPath }/loginView.do"><img src="../assets/images/common/utill_mn1.gif" alt="로그인"></a></li>
 					</c:when>
 					<c:otherwise>
-                		<li><a href="${ contextPath }/logout.do"><img src="../assets/images/common/utill_mn2.gif" alt="로그아웃"></a></li>
+                		<li><a href="${ contextPath }/mypage/info.do"><img src="" alt="마이페이지"></a></li>
+                		<li><a href="${ contextPath }/logout.do"><img src="" alt="로그아웃"></a></li>
 					</c:otherwise>
 				</c:choose>
                 <li><a href="${ contextPath }/joinProvision.do"><img src="../assets/images/common/utill_mn2.gif" alt="회원가입"></a></li>
