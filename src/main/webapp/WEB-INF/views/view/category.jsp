@@ -49,7 +49,7 @@
 </style>
 
 	<div class="row">
-		<div class="col-md-12">
+		<div class="col-sm-12">
 			<img src="" alt="${ cateDetail.CATE_NM } 카테고리 이미지" style="width: 100%; height: 150px;"/>
 		</div>
 	</div>
@@ -58,9 +58,9 @@
 	
 	<div class="row fivecolumns">
 	  		<c:forEach items="${ contentListByCate }" var="obj" varStatus="status">
-				<div class="col-md-2 text-center" style="font-size: 11px;">
+				<div class="col-sm-2 text-center" style="font-size: 11px;">
 					<a href="${ contextPath }/play.do?contents_id=${ obj.CONTENTS_ID }" class="thumbnail">
-						<img src="${ obj.IMG_PATH }" style="width: 100%; height: 130px;" alt="${ obj.CONTENTS_NM }">
+						<img src="http://115.71.237.215/${ obj.IMG_PATH }" style="width: 100%; height: 130px;" alt="${ obj.CONTENTS_NM }">
 						 ${ fn:substring(obj.CONTENTS_NM, 0, 15)  }
 					</a>
 				</div>
@@ -92,7 +92,7 @@
 	<hr />
 	
 	<div class="row">
-		<div class="col-md-12 text-right">
+		<div class="col-sm-12 text-right">
 			<a href="#" class="btn btn-primary">선택보기</a>
  			<a href="#" class="btn btn-primary">현재 페이지보기</a>
 			<a href="#" class="btn btn-primary">전체 이어보기</a>

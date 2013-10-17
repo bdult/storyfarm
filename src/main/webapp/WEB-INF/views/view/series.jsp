@@ -37,7 +37,7 @@
 	  		<c:forEach items="${ contentList }" var="obj" varStatus="status">
 				<div class="col-md-2 text-center" style="font-size: 11px;">
 					<a href="${ contextPath }/play.do?contents_id=${ obj.CONTENTS_ID }" class="thumbnail">
-						<img src="${ obj.IMG_PATH }" style="width: 100%; height: 130px;" alt="${ obj.CONTENTS_NM }">
+						<img src="http://115.71.237.215/${ obj.IMG_PATH }" style="width: 100%; height: 130px;" alt="${ obj.CONTENTS_NM }">
 						${ fn:substring(obj.CONTENTS_NM, 0, 15)  }
 					</a>
 				</div>

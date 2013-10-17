@@ -84,9 +84,9 @@ section#noti .well-half {
   <div class="row fivecolumns">
   		<c:forEach items="${ brandList }" var="obj" varStatus="status">
   			<c:if test="${ status.count le 12 }">
-				<div class="col-md-2 text-center" style="font-size: 12px;">
+				<div class="col-sm-2 text-center" style="font-size: 12px;">
 					<a href="${ contextPath }/brand.do?brand_id=${ obj.BRAND_ID }" class="thumbnail">
-						<img src="${ obj.IMG_PATH }" style="width: 100%; height: 130px;" alt="${ obj.BRAND_NM }">
+						<img src="http://115.71.237.215/${ obj.IMG_PATH }" style="width: 100%; height: 130px;" alt="${ obj.BRAND_NM }">
 						${ obj.BRAND_NM }
 					</a>
 				</div>
@@ -98,7 +98,7 @@ section#noti .well-half {
 <!-- 	
 <section id="contents">
 	<div class="row">
-		<div class="col-md-12">
+		<div class="col-sm-12">
 			<div class="btn-group pull-left">
 			  <button type="button" class="btn btn-default btn-primary">신작</button>
 			  <button type="button" class="btn btn-default">베스트</button>
@@ -115,11 +115,11 @@ section#noti .well-half {
 	<div class="row">
 	
 		<c:forEach begin="1" end="6" varStatus="status">
-		  <div class="col-md-2">
+		  <div class="col-sm-2">
 		  
 		  	<c:forEach begin="1" end="2">
 			  	<div class="row">
-						<div class="col-md-12">
+						<div class="col-sm-12">
 					    <div class="thumbnail">
 					      <img style="width: 100%; height: 130px;" alt="콘텐츠 배너 영역 ${ status.count }">
 					      <div class="caption">
@@ -141,7 +141,7 @@ section#noti .well-half {
 <!-- 
 <section id="recommend">
 	<div class="row">
-		<div class="col-md-12">
+		<div class="col-sm-12">
 			<button type="button" class="btn btn-default btn-lg btn-primary">1-2세<br /> 추천</button>
 			<button type="button" class="btn btn-default btn-lg">3-4세<br /> 추천</button>
 			<button type="button" class="btn btn-default btn-lg">5-6세<br /> 추천</button>
@@ -153,11 +153,11 @@ section#noti .well-half {
 	<div class="row">
 	
 		<c:forEach begin="1" end="6" varStatus="status">
-		  <div class="col-md-2">
+		  <div class="col-sm-2">
 
 		  	<c:forEach begin="1" end="3">
 			  	<div class="row">
-						<div class="col-md-12">
+						<div class="col-sm-12">
 					    <div class="thumbnail">
 					      <img style="width: 100%; height: 130px;" alt="추천 배너 영역 ${ status.count }">
 					      <div class="caption">
@@ -178,19 +178,19 @@ section#noti .well-half {
 
 <section id="noti">
 	<div class="row">
-		<div class="col-md-4">
+		<div class="col-sm-4">
 			<div class="well">
 				이벤트 배너영역
 			</div>
 		</div>
-		<div class="col-md-4">
+		<div class="col-sm-4">
 			<div class="row">
-				<div class="col-md-6">
+				<div class="col-sm-6">
 					<div class="well well-half">
 						부모방
 					</div>
 				</div>
-				<div class="col-md-6">
+				<div class="col-sm-6">
 					<div class="well well-half">
 						우리아이
 						<br />
@@ -199,14 +199,14 @@ section#noti .well-half {
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-md-6">
+				<div class="col-sm-6">
 					<div class="well well-half">
 						유료회원
 						<br />
 						가입하기
 					</div>
 				</div>
-				<div class="col-md-6">
+				<div class="col-sm-6">
 					<div class="well well-half">
 						스토리팜
 						<br />
@@ -216,7 +216,7 @@ section#noti .well-half {
 			</div>
 			
 		</div>
-		<div class="col-md-4">
+		<div class="col-sm-4">
 			<div class="well">
 				<h4>공지사항</h4>
 				<ul>

@@ -41,7 +41,7 @@
 				<div class="col-md-2">
 					<a href="${ contextPath }/play.do?contents_id=${ obj.CONTENTS_ID }" class="thumbnail">
 						${ obj.CONTENTS_NM }
-						<img src="${ obj.IMG_PATH }" style="width: 100%; height: 130px;" alt="${ obj.CONTENTS_NM }">
+						<img src="http://115.71.237.215/${ obj.IMG_PATH }" style="width: 100%; height: 130px;" alt="${ obj.CONTENTS_NM }">
 					</a>
 				</div>
   			</c:if>
