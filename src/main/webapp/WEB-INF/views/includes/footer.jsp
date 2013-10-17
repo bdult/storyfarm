@@ -4,7 +4,7 @@
 
     <!-- footer -->
     <div id="footer">
-    	<p class="footerLogo"><img src="../assets/images/common/footer_logo.gif" alt=""></p>
+    	<p class="footerLogo"><img src="${ contextPath }/assets/images/common/footer_logo.gif" alt=""></p>
         <div class="footerWrap">
         	<ul class="footerMn">
             	<li class="fir"><a href="">회사소개</a></li>

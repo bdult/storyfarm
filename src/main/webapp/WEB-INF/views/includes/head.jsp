@@ -9,17 +9,17 @@
 <title>Oz world</title>
 
 <!-- JQUERY 1.10 -->
-<script src="../assets/js/jquery.min.js"></script>
-<script src="../js/unho.js"></script>
+<script src="${ contextPath }/assets/js/jquery.min.js"></script>
+<script src="${ contextPath }/js/unho.js"></script>
 <!-- BOOTSTRAP 3.0 -->
-<script src="../assets/js/bootstrap.min.js"></script>
+<script src="${ contextPath }/assets/js/bootstrap.min.js"></script>
 
-<script src="../assets/js/Publish.js"></script>
+<script src="${ contextPath }/assets/js/Publish.js"></script>
 <!-- AWESOME FONT 3.2.1 -->
 <link href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
 
-<link rel="stylesheet" href="../assets/css/bootstrap.min.css">
-<link rel="stylesheet" href="../assets/css/common.css">
+<link rel="stylesheet" href="${ contextPath }/assets/css/bootstrap.min.css">
+<link rel="stylesheet" href="${ contextPath }/assets/css/common.css">
 
 </head>
 <body>

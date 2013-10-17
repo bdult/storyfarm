@@ -5,14 +5,14 @@
   	<div id="container">
    		<div id="content">
         
-        	<h2 class="divTit"><img src="../assets/images/member/title_idFind.gif" alt="아이디찾기"></h2>
+        	<h2 class="divTit"><img src="${ contextPath }/assets/images/member/title_idFind.gif" alt="아이디찾기"></h2>
             <!-- location -->
       		<div id="divLocation">
         		<ul class="location">
 					<c:forEach items="${ breadcrumbs }" var="obj" varStatus="status">
 						<c:choose>
 							<c:when test="${ status.first }">
-          						<li class="first"><a href="/" class="home"><img src="../assets/images/common/blt_home.gif" alt="home"></a></li>
+          						<li class="first"><a href="/" class="home"><img src="${ contextPath }/assets/images/common/blt_home.gif" alt="home"></a></li>
 							</c:when>
 							<c:when test="${ status.last }">
 								<li class="current">${ obj.name }</li>
@@ -29,7 +29,7 @@
             <div class="idFindBox">
             	
                 <div class="box01 fLeft">
-                	<h3><img src="../assets/images/member/idFind_tx01.gif" alt="등록한 정보로 찾기"></h3>
+                	<h3><img src="${ contextPath }/assets/images/member/idFind_tx01.gif" alt="등록한 정보로 찾기"></h3>
                     <p class="tx01">오즈월드에 등록한 정보로 아이디를 찾으실 수 있습니다.</p>
                     <div class="formFind">
                     	<div class="divChk">
@@ -96,14 +96,14 @@
                     </div>
                     
                     <div class="btnSc">
-                        <a href="#" id="submit_btn"><img src="../assets/images/common/btn_confirm_off.gif" alt="확인" class="rollimg"></a>
+                        <a href="#" id="submit_btn"><img src="${ contextPath }/assets/images/common/btn_confirm_off.gif" alt="확인" class="rollimg"></a>
                     </div>
                     
                     <span class="bg1"></span><span class="bg2"></span><span class="bg3"></span><span class="bg4"></span>
                 </div>
                 
                 <div class="box01 fRight">
-                	<h3><img src="../assets/images/member/idFind_tx02.gif" alt="등록한 정보로 찾기"></h3>
+                	<h3><img src="${ contextPath }/assets/images/member/idFind_tx02.gif" alt="등록한 정보로 찾기"></h3>
                     <p class="tx01">실명이 확인된 아이디는 아이핀 또는 본인 명의의 휴대폰으로 찾을 수 있습니다.</p>
                     <div class="formFind">
                     	<div class="divChk">
@@ -115,7 +115,7 @@
                         		아이핀으로 본인 확인을 합니다.<br>
                             	아이핀이 없다면, 아래의 링크에서 바로 발급 받으실 수 있습니다.
                             	<div class="btnSc">
-                        			<a href="#"><img src="../assets/images/member/btn_ipin_off.gif" alt="아이핀 발급받기" class="rollimg"></a>
+                        			<a href="#"><img src="${ contextPath }/assets/images/member/btn_ipin_off.gif" alt="아이핀 발급받기" class="rollimg"></a>
                     			</div>
                         	</div>
                             <!-- 휴대폰 선택
@@ -126,7 +126,7 @@
                     </div>
                     
                     <div class="btnSc">
-                        <a href="#"><img src="../assets/images/common/btn_confirm_off.gif" alt="확인" class="rollimg"></a>
+                        <a href="#"><img src="${ contextPath }/assets/images/common/btn_confirm_off.gif" alt="확인" class="rollimg"></a>
                     </div>
                     
                     <span class="bg1"></span><span class="bg2"></span><span class="bg3"></span><span class="bg4"></span>

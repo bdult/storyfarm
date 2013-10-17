@@ -7,14 +7,14 @@
   	<div id="container">
    		<div id="content">
         
-        	<h2 class="divTit"><img src="../assets/images/member/title_join01.gif" alt="회원가입  이용약관동의"></h2>
+        	<h2 class="divTit"><img src="${ contextPath }/assets/images/member/title_join01.gif" alt="회원가입  이용약관동의"></h2>
             <!-- location -->
       		<div id="divLocation">
         		<ul class="location">
 					<c:forEach items="${ breadcrumbs }" var="obj" varStatus="status">
 						<c:choose>
 							<c:when test="${ status.first }">
-          						<li class="first"><a href="/" class="home"><img src="../assets/images/common/blt_home.gif" alt="home"></a></li>
+          						<li class="first"><a href="/" class="home"><img src="${ contextPath }/assets/images/common/blt_home.gif" alt="home"></a></li>
 							</c:when>
 							<c:when test="${ status.last }">
 								<li class="current">${ obj.name }</li>
@@ -28,7 +28,7 @@
       		</div>
       		<!-- //location -->
             
-            <div class="join01_hd"><img src="../assets/images/member/join01_img1.jpg" alt="오즈월드 회원 가입을 환영합니다! 전 세계 명작 학습 동화와 다양한 콘텐츠를 최적의 환경에서 제공하겠습니다."></div>
+            <div class="join01_hd"><img src="${ contextPath }/assets/images/member/join01_img1.jpg" alt="오즈월드 회원 가입을 환영합니다! 전 세계 명작 학습 동화와 다양한 콘텐츠를 최적의 환경에서 제공하겠습니다."></div>
             
        	  	<div class="joinWrap mgt20">
             	<ul class="ulLst01 brdB">
@@ -84,7 +84,7 @@
                     <tr>
                     	<th scope="row">주소</th>
                         <td colspan="3">
-                        	<input type="text" class="input" style="width:290px;" placeholder="동,읍,리 입력"> <a href="#"><img src="../assets/images/common/btn_find_off.gif" alt="찾아보기" class="rollimg"></a>
+                        	<input type="text" class="input" style="width:290px;" placeholder="동,읍,리 입력"> <a href="#"><img src="${ contextPath }/assets/images/common/btn_find_off.gif" alt="찾아보기" class="rollimg"></a>
                             <div class="mgt5">
                            	  	<input name="member_addr_1" type="text" class="input" style="width:290px;" placeholder="주소 1">
                            	  <input name="member_addr_2" type="text" class="input" style="width:290px;" placeholder="상세주소 입력">
@@ -118,8 +118,8 @@
                 </div>
                 </form>
                 <div class="btnSc">
-                	<a href="#" id="submit-btn"><img src="../assets/images/common/btn_join_off.gif" alt="가입하기" class="rollimg"></a>&nbsp;&nbsp;&nbsp;
-                    <a href="#"><img src="../assets/images/common/btn_cancel2_off.gif" alt="취소" class="rollimg"></a>
+                	<a href="#" id="submit-btn"><img src="${ contextPath }/assets/images/common/btn_join_off.gif" alt="가입하기" class="rollimg"></a>&nbsp;&nbsp;&nbsp;
+                    <a href="#"><img src="${ contextPath }/assets/images/common/btn_cancel2_off.gif" alt="취소" class="rollimg"></a>
                 </div>
             </div>
             

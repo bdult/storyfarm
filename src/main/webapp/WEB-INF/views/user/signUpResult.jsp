@@ -6,14 +6,14 @@
   	<div id="container">
    		<div id="content">
         
-        	<h2 class="divTit"><img src="../assets/images/member/title_join03.gif" alt="회원가입  회원가입완료"></h2>
+        	<h2 class="divTit"><img src="${ contextPath }/assets/images/member/title_join03.gif" alt="회원가입  회원가입완료"></h2>
             <!-- location -->
       		<div id="divLocation">
         		<ul class="location">
 					<c:forEach items="${ breadcrumbs }" var="obj" varStatus="status">
 						<c:choose>
 							<c:when test="${ status.first }">
-          						<li class="first"><a href="/" class="home"><img src="../assets/images/common/blt_home.gif" alt="home"></a></li>
+          						<li class="first"><a href="/" class="home"><img src="${ contextPath }/assets/images/common/blt_home.gif" alt="home"></a></li>
 							</c:when>
 							<c:when test="${ status.last }">
 								<li class="current">${ obj.name }</li>
@@ -28,7 +28,7 @@
       		<!-- //location -->
       		<!-- //location -->
             
-            <div class="join01_hd"><img src="../assets/images/member/join03_img1.jpg" alt="오즈월드 회원가입이 정상적으로 완료 되었습니다."></div>
+            <div class="join01_hd"><img src="${ contextPath }/assets/images/member/join03_img1.jpg" alt="오즈월드 회원가입이 정상적으로 완료 되었습니다."></div>
             
        	  	<div class="joinWrap mgt20">
             	<ul class="ulLst01 brdB">
@@ -36,9 +36,9 @@
                 </ul>
                 
                 <ul class="join03Bt">
-                	<li><a href="#"><img src="../assets/images/member/join03_bt1.gif" alt="자녀정보등록하러가기"></a></li>
-                	<li><a href="${ contextPath }/cscenter/faq.do"><img src="../assets/images/member/join03_bt2.gif" alt="오즈월드 서비스 FAQ 보러가기"></a></li>
-                	<li><a href="#"><img src="../assets/images/member/join03_bt3.gif" alt="유료 서비스 신청하기"></a></li>
+                	<li><a href="#"><img src="${ contextPath }/assets/images/member/join03_bt1.gif" alt="자녀정보등록하러가기"></a></li>
+                	<li><a href="${ contextPath }/cscenter/faq.do"><img src="${ contextPath }/assets/images/member/join03_bt2.gif" alt="오즈월드 서비스 FAQ 보러가기"></a></li>
+                	<li><a href="#"><img src="${ contextPath }/assets/images/member/join03_bt3.gif" alt="유료 서비스 신청하기"></a></li>
                 </ul>
             </div>
             

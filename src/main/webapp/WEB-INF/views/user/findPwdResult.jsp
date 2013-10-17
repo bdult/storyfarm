@@ -5,14 +5,14 @@
   	<div id="container">
    		<div id="content">
         
-        	<h2 class="divTit"><img src="../assets/images/member/title_pwFind_result.gif" alt="비밀번호찾기 결과"></h2>
+        	<h2 class="divTit"><img src="${ contextPath }/assets/images/member/title_pwFind_result.gif" alt="비밀번호찾기 결과"></h2>
             <!-- location -->
       		<div id="divLocation">
         		<ul class="location">
 					<c:forEach items="${ breadcrumbs }" var="obj" varStatus="status">
 						<c:choose>
 							<c:when test="${ status.first }">
-          						<li class="first"><a href="/" class="home"><img src="../assets/images/common/blt_home.gif" alt="home"></a></li>
+          						<li class="first"><a href="/" class="home"><img src="${ contextPath }/assets/images/common/blt_home.gif" alt="home"></a></li>
 							</c:when>
 							<c:when test="${ status.last }">
 								<li class="current">${ obj.name }</li>
@@ -37,7 +37,7 @@
 					<h3>해당 정보로 조회한 결과 맞는 아이디가 없습니다.</h3><br><br>
 				</c:if> --%>
                 <ul class="loginBt">
-            		<li><span class="titTx" style="width:120px;">회원이 아니신 경우</span> <a href="${ contextPath }/joinProvision.do"><img src="../assets/images/member/btn_join_off.gif" alt="회원가입" class="rollimg"></a></li>
+            		<li><span class="titTx" style="width:120px;">회원이 아니신 경우</span> <a href="${ contextPath }/joinProvision.do"><img src="${ contextPath }/assets/images/member/btn_join_off.gif" alt="회원가입" class="rollimg"></a></li>
             	</ul>
                 
             	<span class="bg1"></span><span class="bg2"></span><span class="bg3"></span><span class="bg4"></span>
