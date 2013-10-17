@@ -34,8 +34,8 @@
                	  	<li><label for="userId"><img src="../assets/images/member/login_txId.gif" alt="아이디"></label><input name="id" id="userId" type="text" class="input"></li>
        	  	  	  	<li><label for="userPw"><img src="../assets/images/member/login_txPw.gif" alt="비밀번호"></label><input name="pwd" id="userPw" type="password" class="input"></li>
        	  	  	  	<li class="saveTx">
-                    	<input name="" id="userSave1" type="checkbox" value=""> <label for="userSave1">ID 저장</label>
-                        <input name="" id="userSave2" type="checkbox" value=""> <label for="userSave2">PW 저장</label>
+                    	<input name="userSaveId" id="userSave1" type="checkbox"> <label for="userSave1">ID 저장</label>
+                        <input name="userSavePw" id="userSave2" type="checkbox"> <label for="userSave2">PW 저장</label>
                     </li>
                 </ul>
                 <p class="btLogin"><a href="#"><img src="../assets/images/member/btn_login_off.gif" alt="login" class="rollimg"></a></p>
@@ -65,18 +65,19 @@
 		}).submit();
 	});
 	
-	$("#userSave1").change(function(){
-		if($("#userSave1").is(":checked") == true){
-			$("#userId").val("${ cookie.userIdCookie.value }");
-		}else {
-			$("#userId").val("");
-		}
-	});
-	$("#userSave2").change(function(){
-		if($("#userSave2").is(":checked") == true){
-			$("#userPw").val("${ cookie.userPwdCookie.value }");
-		}else {
-			$("#userPw").val("");
-		}
-	});
+	var idCheck = "${ cookie.userIdCheck.value }";
+	var pwdCheck = "${ cookie.userPwdCheck.value }";
+
+	if(idCheck == "on"){
+		$("#userSave1").attr("checked", true);	
+		$("#userId").val("${ cookie.userIdCookie.value }");
+	}else {
+		$("#userSave1").attr("checked", false);	
+	}
+	if(pwdCheck == "on"){
+		$("#userSave2").attr("checked", true);	
+		$("#userPw").val("${ cookie.userPwdCookie.value }");
+	}else {
+		$("#userSave2").attr("checked", false);	
+	}
 </script>
