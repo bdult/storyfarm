@@ -3,7 +3,7 @@
 
 <div class="row">
 	<div class="col-lg-12 text-left">
-		안녕하세요 ${ login_session.MEMBER_ID } 님
+		안녕하세요 ${ userInfoSession.MEMBER_ID } 님
 	</div>
 </div>
 <div class="row">

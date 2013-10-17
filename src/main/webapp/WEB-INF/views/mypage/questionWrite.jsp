@@ -11,7 +11,7 @@
 	<form class="form-horizontal" method="post" action="${ contextPath }/mypage/boardCreate.do">
 		<div class="well">
 			<input type="hidden" name="board_id" value="${ board_id }">
-			<input type="hidden" name="member_id" value="${ login_session.MEMBER_ID }">
+			<input type="hidden" name="member_id" value="${ userInfoSession.MEMBER_ID }">
 			<div class="form-group">
 				<label class="col-lg-2 control-label">제목 : </label>
 				<div class="col-lg-10">
@@ -21,7 +21,7 @@
 			<div class="form-group">
 				<label class="col-lg-2 control-label">작성자 : </label>
 				<div class="col-lg-10">
-					<input type="text" name="member_id" class="form-control" value="${ login_session.MEMBER_ID }" disabled="disabled">
+					<input type="text" name="member_id" class="form-control" value="${ userInfoSession.MEMBER_ID }" disabled="disabled">
 				</div>
 			</div>
 			<div class="form-group">

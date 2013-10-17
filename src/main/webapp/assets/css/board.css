@@ -1,0 +1,9 @@
+@charset "utf-8";
+
+table.joinTbl{width:100%; border-collapse:separate; *border-collapse:collapse; border-spacing:0px; clear:both;}
+table.joinTbl tbody th{ padding:8px 0 0 10px; text-align:left; vertical-align:top;}
+table.joinTbl tbody td{ padding:4px 0 4px 0; text-align:left; vertical-align:top;}
+table.joinTbl .brdB th,table.joinTbl .brdB td{ border-bottom:#ececec 1px solid; padding-bottom:15px;}
+
+#buggedTable{ table-layout: fixed; border-collapse: collapse; width:100%;}
+#buggedTable thead td,#buggedTable thead th{ overflow: hidden; white-space: nowrap;}
