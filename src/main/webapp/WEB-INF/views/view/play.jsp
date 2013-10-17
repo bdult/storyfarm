@@ -19,7 +19,6 @@
 					mozallowfullscreen allowfullscreen></iframe>
 			</c:when>
 			<c:otherwise>
-				
 				<div class="row">
 					<div class="col-lg-12">
 						<video id="player" width="850" height="500" controls poster="http://115.71.237.215/ozworld/${contents.IMG_PATH}">

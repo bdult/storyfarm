@@ -48,10 +48,10 @@ public class ChildrenController {
 		return mav;
 	}
 	
-	@RequestMapping(value = "player.do", method = RequestMethod.GET)
-	public ModelAndView player(Model model, @RequestParam Map<String, Object> paramMap) {
+	@RequestMapping(value = "play.do", method = RequestMethod.GET)
+	public ModelAndView play(Model model, @RequestParam Map<String, Object> paramMap) {
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("children/player");
+		mav.setViewName("children/play");
 		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(
 				StoryfarmConstants.BREADCRUMB_HOME, 
 				StoryfarmConstants.BREADCRUMB_CHILDREN_ROOM,

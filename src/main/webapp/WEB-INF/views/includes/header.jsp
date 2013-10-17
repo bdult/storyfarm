@@ -26,3 +26,37 @@
         <div id="gnbWrap"><img src="../assets/images/common/gnb.jpg" alt=""></div>
     </div>
     <!-- //header -->
+    
+    <!-- 
+	GNB경로
+	<a href="${ contextPath }/category.do?cate_id=78" class="btn btn-default">한글</a>
+	<a href="${ contextPath }/category.do?cate_id=32" class="btn btn-default">영어</a>
+	<a href="${ contextPath }/category.do?cate_id=38" class="btn btn-default">수학</a>
+	<a href="${ contextPath }/category.do?cate_id=41" class="btn btn-default">과학</a>
+	<a href="${ contextPath }/category.do?cate_id=46" class="btn btn-default">창의</a>
+	<a href="${ contextPath }/category.do?cate_id=54" class="btn btn-default">동요</a>
+	<a href="${ contextPath }/category.do?cate_id=79" class="btn btn-default">동화</a>
+	<a href="${ contextPath }/category.do?cate_id=68" class="btn btn-default">생활</a>
+	<a href="${ contextPath }/worksheet.do" class="btn btn-default">프린트 학습</a>
+	 -->
+	 		 
+    <!-- breadcrumb/ -->
+	<!-- 
+	<div class="row">
+		<div class="col-md-12">
+			<ol class="breadcrumb">
+				<c:forEach items="${ breadcrumbs }" var="obj" varStatus="status">
+					<c:choose>
+						<c:when test="${ status.last }">
+						  <li class="active">${ obj.name }</li>
+						</c:when>
+						<c:otherwise>
+						  <li><a href="${ contextPath }${ obj.url }">${ obj.name }</a></li>
+						</c:otherwise>
+					</c:choose>
+				</c:forEach>
+			</ol>
+		</div>
+	</div>
+	 -->
+	<!-- /breadcrumb -->
