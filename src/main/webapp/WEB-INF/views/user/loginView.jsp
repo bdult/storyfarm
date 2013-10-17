@@ -65,6 +65,14 @@
 		}).submit();
 	});
 	
+	$("#userSave2").change(function(){
+		if($("#userSave2").is(":checked") == true){
+			$("#userSave1").attr("checked", true);	
+			$("#userSave2").attr("checked", true);	
+		}
+		
+	});
+	
 	var idCheck = "${ cookie.userIdCheck.value }";
 	var pwdCheck = "${ cookie.userPwdCheck.value }";
 
