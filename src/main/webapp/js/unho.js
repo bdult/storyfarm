@@ -20,7 +20,7 @@ function combineEmail()
 
 function combineCel()
 {
-	$("#member_cel").attr({
+	$("member_cel").attr({
 		value: $("#cel1").val() + "-" + $("#cel2").val() + "-" + $("#cel3").val()
 	});
 }
