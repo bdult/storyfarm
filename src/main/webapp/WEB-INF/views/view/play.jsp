@@ -6,11 +6,10 @@
 
 <script type="text/javascript">
 	$(function(){
+		/*
 		
 		var contentsList = "${contentsList}";
 		contentsList = JSON.parse(contentsList);
-		
-		alert(contentsList.length);
 		
 		var $player = document.getElementById("player");
 		var $status = document.getElementById("status");
@@ -18,12 +17,11 @@
 		var $time = document.getElementById("time");
 		
 		$player.addEventListener("timeupdate", function(){
-		   $time.innerHTML = Math.floor($player.currentTime) + "/" + Math.floor($player.duration) + " (초)"
+		   $time.innerHTML = Math.floor($player.currentTime) + "/" + Math.floor($player.duration) + " (초)";
 		   }, false);
 	
 		$player.addEventListener("play", function(){
 			$status.innerHTML = "재생진입";
-			alert("재생시작");
 		   }, false);
 	
 		$player.addEventListener("playing", function(){
@@ -42,6 +40,8 @@
 		$player.addEventListener("load", function(){
 			$load.innerHTML = "데이터 다운로드완료";
 			}, false);
+		
+		*/
 	});
 
 </script>
@@ -59,11 +59,13 @@
 					mozallowfullscreen allowfullscreen></iframe>
 			</c:when>
 			<c:otherwise>
-				
 				<div class="row">
 					<div class="col-lg-12">
 						<video id="player" width="850" height="500" controls poster="http://115.71.237.215/ozworld/${contents.IMG_PATH}">
+						<!-- 
 						  <source src="http://115.71.237.215/ozworld/${contents.SRC_PATH}" type="video/mp4">
+						 -->
+						  <source src="http://115.71.237.215/ozworld/source/movie/85/61.mp4" type="video/mp4">
 							video 요소를 지원하지 않는 브라우저입니다.
 						</video>
 						<!-- 

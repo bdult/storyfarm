@@ -1,11 +1,15 @@
 package com.bgg.storyfarm.controller;
 
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
+import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.bgg.storyfarm.common.BreadcrumbUtil;
@@ -189,8 +194,46 @@ public class ViewController {
 		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME));
 		
 		mav.addObject("contents", contentsService.detail(paramMap));
+		
+		// 다중 동영상 테스트
+//		List<HashMap<String, String>> contentsList = new ArrayList<HashMap<String, String>>();
+//		for(int x=0;x<4;x++){
+//			HashMap<String, String> contentsInfo = new HashMap<String, String>();
+//			contentsInfo.put("contents", "source/movie/85/1"+x+".mp4");
+//			contentsList.add(contentsInfo);
+//		}
+//		mav.addObject("contentsList", contentsList);
+		
+		
 		return mav;
 	}
+	
+	@RequestMapping(value = "stream.do", method = RequestMethod.GET)
+	public @ResponseBody byte[] StreamingTest( @RequestParam Map<String,Object> paramMap ) {
+		String testFilePath = "/var/lib/tomcat6/webapps/storyfarm/source/movie/33/01.mp4";
+		try {
+			BufferedReader in = new BufferedReader(new FileReader(testFilePath));
+			return IOUtils.toByteArray(in);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+		
+	}
+	
+	@RequestMapping(value = "streamString.do", method = RequestMethod.GET)
+	public @ResponseBody String StreamingToStringTest( @RequestParam Map<String,Object> paramMap ) {
+		String testFilePath = "/var/lib/tomcat6/webapps/storyfarm/source/movie/33/01.mp4";
+		try {
+			BufferedReader in = new BufferedReader(new FileReader(testFilePath));
+			return IOUtils.toString(in);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+		
+	}
+	
 	
 	// UNDER CODE IS TEST_CODE
 	@RequestMapping(value = "cropTest.do", method = RequestMethod.GET)
@@ -216,6 +259,19 @@ public class ViewController {
 		paramsMap.put(PageUtil.ROWNUM_KEY, (pageNum - 1) * PageUtil.PER_PAGE);
 		paramsMap.put(PageUtil.PER_KEY, PageUtil.PER_PAGE);
 		return pageNum;
+	}
+	
+	public static void main(String[] ar){
+		
+		// 파일 읽기
+		String testFilePath = "/var/lib/tomcat6/webapps/storyfarm/source/movie/33/01.mp4";
+		try {
+			BufferedReader in = new BufferedReader(new FileReader(testFilePath));
+			System.out.println(IOUtils.toString(in));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 	}
 	
 }
