@@ -21,18 +21,23 @@
 								<li><a href="${ contextPath }${ obj.url }">${ obj.name }</a></li>
 							</c:otherwise>
 						</c:choose>
-          			</c:forEach>
+          			</c:forEach>${ findUserData }
         		</ul>
       		</div>
       		<!-- //location -->
             
             <div class="box01 findResult">
-            	<c:if test="${ findUserData != null }">
+            	<c:choose>
+            		<c:when test="${ not empty findUserData }">
 	                <p class="tx01">등록하신 아이디는 아래와 같습니다.</p>
 					<c:forEach items="${ findUserData }" var="obj">
 	                	<p class="tx02">아이디 : ${ obj.MEMBER_ID }</p>
 	                </c:forEach>
-                </c:if>
+            		</c:when>
+            		<c:otherwise>
+            			<p class="tx03">해당 정보로 조회한 결과 맞는 아이디가 없습니다.</p>
+            		</c:otherwise>
+            	</c:choose>
                 <ul class="loginBt">
                 	<li><span class="titTx">비밀번호를 모르시는 경우</span> <a href="${ contextPath }/findPwdView.do"><img src="${ contextPath }/assets/images/member/btn_pwFind_off.gif" alt="비밀번호 찾기" class="rollimg"></a></li>
             		<li><span class="titTx">회원이 아니신 경우</span> <a href="${ contextPath }/joinProvision.do"><img src="${ contextPath }/assets/images/member/btn_join_off.gif" alt="회원가입" class="rollimg"></a></li>
