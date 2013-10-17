@@ -2,7 +2,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
 
 <!DOCTYPE HTML>
-<html lang="ko">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
@@ -10,7 +9,7 @@
 
 <!-- JQUERY 1.10 -->
 <script src="${ contextPath }/assets/js/jquery.min.js"></script>
-<script src="${ contextPath }/js/unho.js"></script>
+<script src="${ contextPath }/assets/js/unho.js"></script>
 <!-- BOOTSTRAP 3.0 -->
 <script src="${ contextPath }/assets/js/bootstrap.min.js"></script>
 
