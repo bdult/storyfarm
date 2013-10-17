@@ -153,7 +153,7 @@ public class CscenterController {
 		String fLocation = paramsMap.get("fLocation").toString();
 		String sLocation = paramsMap.get("sLocation").toString();
 		
-		if(session.getAttribute("login_session") == null){
+		if(session.getAttribute("userInfoSession") == null){
 			mav.addObject("msg", "login_fail");
 			return "redirect:/" + fLocation + "/" + sLocation + ".do?contentsId="+paramsMap.get("contents_id");
 		}
@@ -209,7 +209,7 @@ public class CscenterController {
 				StoryfarmConstants.BREADCRUMB_CSCENTER, 
 				StoryfarmConstants.BREADCRUMB_CSCENTER_ASK));
 		
-		if( session.getAttribute("login_session") != null){
+		if( session.getAttribute("userInfoSession") != null){
 			mav.setViewName("side-mypage/question");
 			return "redirect:/mypage/question.do";
 		}else{

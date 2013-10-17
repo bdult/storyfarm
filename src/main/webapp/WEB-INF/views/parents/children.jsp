@@ -2,7 +2,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <div class="row">
-  <div class="col-lg-12">
-  	<div class="well">회사소개</div>
+  <div class="col-md-12">
+  	<div class="well">자녀 A 정보</div>
+  	<div class="well">자녀 B 정보</div>
   </div>
 </div>

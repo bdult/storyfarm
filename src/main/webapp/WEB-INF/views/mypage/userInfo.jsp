@@ -112,15 +112,17 @@
 							<option>일</option>
 						</select>
 					</div>
-			</div>
-			<div class="col-lg-12 text-center">
-				<a class="btn btn-default" id="delete_btn" href="${ contextPath }/mypage/leave.do">회원탈퇴</a>
-			</div>
-			<div class="col-lg-12 text-center">
-				<button class="btn btn-default" id="update_btn">회원정보 수정</button>
-			</div>
-			<div class="col-lg-12 text-center">
-				<a class="btn btn-default" href="${ contextPath }/dashboard.do">메인으로</a>
+			</div><br><br>
+			<div class="row">
+				<div class="col-lg-4 text-left">
+					<a class="btn btn-default" id="delete_btn" href="${ contextPath }/mypage/leave.do">회원탈퇴</a>
+				</div>
+				<div class="col-lg-4 text-center">
+					<button class="btn btn-default" id="update_btn">회원정보 수정</button>
+				</div>
+				<div class="col-lg-4 text-right">
+					<a class="btn btn-default" href="${ contextPath }/mypage/info.do">취소</a>
+				</div>
 			</div>
 		</form>
 	</div>

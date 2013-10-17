@@ -44,7 +44,7 @@
 			MEMBER_NM = #{ member_nm }
 		<choose>
 			<when test="member_tel != null and member_tel != ''">
-				AND MEMBER_TEL = #{ member_tel }
+				AND MEMBER_TEL = #{ member_cel }
 			</when>
 			<when test="member_email != null and member_email != ''">
 				AND MEMBER_EMAIL = #{ member_email }

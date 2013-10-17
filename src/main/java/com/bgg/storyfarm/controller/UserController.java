@@ -3,7 +3,9 @@ package com.bgg.storyfarm.controller;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.json.simple.JSONArray;
@@ -57,7 +59,7 @@ public class UserController {
 	 * @return
 	 */
 	@RequestMapping(value = "loginResult.do", method = RequestMethod.POST)
-	public String loginResult(Model model, @RequestParam Map<String, Object> paramMap, HttpServletRequest request, HttpSession session) {
+	public String loginResult(Model model, @RequestParam Map<String, Object> paramMap, HttpServletResponse response, HttpSession session) {
 		model.addAttribute(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_LOGIN));
 		
 		HashMap<String, String> sessionMap = (HashMap<String, String>) userService.detail(paramMap);
@@ -65,13 +67,24 @@ public class UserController {
 		if(sessionMap == null) {
 			model.addAttribute("msg", "login_fail");
 			return "user/loginView";
+		} else {
+			if(session.getAttribute("userInfoSession") == null){
+				session.setAttribute("userInfoSession", sessionMap);
+				response.addCookie(new Cookie("userIdCookie", paramMap.get("id").toString()));
+				response.addCookie(new Cookie("userPwdCookie", paramMap.get("pwd").toString()));
+				if(paramMap.get("userSaveId") != null){
+					response.addCookie(new Cookie("userIdCheck", paramMap.get("userSaveId").toString()));
+				}else{
+					response.addCookie(new Cookie("userIdCheck", ""));
+				}
+				if(paramMap.get("userSavePw") != null){
+					response.addCookie(new Cookie("userPwdCheck", paramMap.get("userSavePw").toString()));
+				}else {
+					response.addCookie(new Cookie("userPwdCheck", ""));
+				}
+			}
+			return "user/loginResult";
 		}
-		
-		if(session.getAttribute("login_session") == null){
-			session.setAttribute("login_session", sessionMap);
-		}
-		
-		return "user/loginResult";
 		
 	}
 	
