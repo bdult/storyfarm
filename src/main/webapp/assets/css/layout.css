@@ -1,7 +1,7 @@
 @charset "utf-8";
 
-body{ background:#9dccf8 url(../images/common/bg.gif) 0 0 repeat-x;}
-#divWrapper{ margin:0; padding:0; position:relative; height:100%; background:url(../images/common/bg_container.jpg) 50% 285px no-repeat; min-width:1134px;}
+body{ background:#9dccf8 url(/ozworld/assets/images/common/bg.gif) 0 0 repeat-x;}
+#divWrapper{ margin:0; padding:0; position:relative; height:100%; background:url(/ozworld/assets/images/common/bg_container.jpg) 50% 285px no-repeat; min-width:1134px;}
 /*#divWrapper:after{ content:".";display:block;height:0;clear:both;visibility:hidden}*/
 
 /* divHeader */
@@ -9,11 +9,11 @@ body{ background:#9dccf8 url(../images/common/bg.gif) 0 0 repeat-x;}
 #header:after{ content:".";display:block;height:0;clear:both;visibility:hidden;}
 #header .divUtill{ width:1134px; height:45px; margin:0 auto; position:relative;}
 #header .divUtill ul{ position:absolute; top:10px; right:305px;}
-#header .divUtill li{ float:left; padding:0 7px 0 8px; background:url(../images/common/blt_var.gif) 0 6px no-repeat; height:28px;}
+#header .divUtill li{ float:left; padding:0 7px 0 8px; background:url(/ozworld/assets/images/common/blt_var.gif) 0 6px no-repeat; height:28px;}
 #header .divUtill li.fir{ background:none; padding-left:0;}
 #header .headSearch{ padding:0 0 15px 0; position:absolute; top:8px; right:90px;}
 #header .headSearch .input{ width:147px; height:24px; border:none; vertical-align:middle;}
-#header .headSearch .placeholder{ background:url(../images/common/bg_search.gif) 0 50% no-repeat; padding:0 0 0 1px;}
+#header .headSearch .placeholder{ background:url(/ozworld/assets/images/common/bg_search.gif) 0 50% no-repeat; padding:0 0 0 1px;}
 #header #gnbWrap{ width:1134px; margin:0 auto;}
 
 /* container */
@@ -23,7 +23,7 @@ body{ background:#9dccf8 url(../images/common/bg.gif) 0 0 repeat-x;}
 /* divLocation */
 #divLocation{ padding:0; color:#b9c0c6; z-index:3; position:absolute; top:10px; right:74px; text-align:right; line-height:16px;}
 #divLocation .location{ padding:0; color:#4db2dc;}
-#divLocation .location li{ float:left; padding:0 6px 0 10px; background:url(../images/common/blt_loc.gif) 0 3px no-repeat; height:16px; line-height:16px;}
+#divLocation .location li{ float:left; padding:0 6px 0 10px; background:url(/ozworld/assets/images/common/blt_loc.gif) 0 3px no-repeat; height:16px; line-height:16px;}
 #divLocation .location li a{ color:#706f6f; font-size:11px; vertical-align:middle; display:block; height:16px;}
 #divLocation .location li img{ vertical-align:top;}
 #divLocation .location li a:hover{ color:#000; text-decoration:underline;}
@@ -35,8 +35,8 @@ body{ background:#9dccf8 url(../images/common/bg.gif) 0 0 repeat-x;}
 #footer{ width:1060px; margin:0 auto; background:#5388ba; padding:20px 0; position:relative; min-height:75px;}
 #footer .footerLogo{ position:absolute; top:30px; left:40px;}
 #footer .footerWrap{ margin:0 0 0 260px;}
-#footer .footerMn{ background:#3d6c98 url(../images/common/footer_box.gif) 0 0 no-repeat; height:22px; padding-left:26px;}
-#footer .footerMn li{ float:left; background:url(../images/common/blt_var2.gif) 0 6px no-repeat; line-height:22px; padding:0 24px 0 25px;}
+#footer .footerMn{ background:#3d6c98 url(/ozworld/assets/images/common/footer_box.gif) 0 0 no-repeat; height:22px; padding-left:26px;}
+#footer .footerMn li{ float:left; background:url(/ozworld/assets/images/common/blt_var2.gif) 0 6px no-repeat; line-height:22px; padding:0 24px 0 25px;}
 #footer .footerMn li.fir{ padding-left:0; background:none;}
 #footer .footerMn li a{ line-height:22px; color:#fff;}
 #footer address{ margin:10px 0 0 0; color:#fff;}

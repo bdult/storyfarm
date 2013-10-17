@@ -7,6 +7,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
 <title>Oz world</title>
 
+<c:set var="contextPath" value="${pageContext.request.contextPath}" scope="request"/>
+
 <!-- JQUERY 1.10 -->
 <script src="${ contextPath }/assets/js/jquery.min.js"></script>
 <script src="${ contextPath }/assets/js/unho.js"></script>
