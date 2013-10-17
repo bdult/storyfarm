@@ -22,6 +22,12 @@
 <link rel="stylesheet" href="${ contextPath }/assets/css/bootstrap.min.css">
 <link rel="stylesheet" href="${ contextPath }/assets/css/common.css">
 
+<style>
+div.container {
+	max-width: 1037px;
+	padding: 10px 0;
+}
+</style>
 </head>
 <body>
 
