@@ -7,7 +7,7 @@
     	<div class="divUtill">
        	  	<ul>
 				<c:choose>
-					<c:when test="${ login_session == null }">
+					<c:when test="${ userInfoSession == null }">
            	  			<li class="fir"><a href="${ contextPath }/loginView.do"><img src="../assets/images/common/utill_mn1.gif" alt="로그인"></a></li>
 					</c:when>
 					<c:otherwise>

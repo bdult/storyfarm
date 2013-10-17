@@ -64,4 +64,19 @@
 			action: '${ contextPath }/loginResult.do'
 		}).submit();
 	});
+	
+	$("#userSave1").change(function(){
+		if($("#userSave1").is(":checked") == true){
+			$("#userId").val("${ cookie.userIdCookie.value }");
+		}else {
+			$("#userId").val("");
+		}
+	});
+	$("#userSave2").change(function(){
+		if($("#userSave2").is(":checked") == true){
+			$("#userPw").val("${ cookie.userPwdCookie.value }");
+		}else {
+			$("#userPw").val("");
+		}
+	});
 </script>

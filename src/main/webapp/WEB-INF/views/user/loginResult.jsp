@@ -10,7 +10,7 @@
 		<div class="row">
 			<div class="col-lg-4">
 				<div class="well">
-					${ login_session.MEMBER_ID } 님<br>
+					${ userInfoSession.MEMBER_ID } 님<br>
 					<a class="btn btn-default">정보수정</a><br>
 					<a class="btn btn-default">학습설정</a>
 				</div>

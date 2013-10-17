@@ -22,7 +22,7 @@
 			<c:forEach var="comment" items="${ detailComments }">
 			
 				<li class="panel panel-info panel-body commentList">
-					<c:if test="${ comment.MEMBER_ID == login_session.MEMBER_ID }">
+					<c:if test="${ comment.MEMBER_ID == userInfoSession.MEMBER_ID }">
 						<dl>
 							<dt class="pull-right">
 								<a class="btn btn-default commentModify">수정</a>
@@ -49,13 +49,13 @@
 		</ul>
 		
 		<c:choose>
-			<c:when test="${ login_session.MEMBER_ID != null }">
+			<c:when test="${ userInfoSession.MEMBER_ID != null }">
 				<form method="post" action="${ contextPath }/cscenter/commentCreate.do">
 					<div class="panel panel-info">
 						<input type="hidden" name="fLocation" value="cscenter">
 						<input type="hidden" name="sLocation" value="eventView">
 						<input type="hidden" name="contents_id" value="${contentsId}">
-						<input type="hidden" name="member_id" value="${login_session.MEMBER_ID}">
+						<input type="hidden" name="member_id" value="${userInfoSession.MEMBER_ID}">
 						<textarea class="form-control" rows="3" name="comment"></textarea>
 						<button class="btn btn-default pull-right">덧글입력</button>
 					</div>

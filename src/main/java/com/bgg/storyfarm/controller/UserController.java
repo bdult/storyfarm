@@ -3,7 +3,9 @@ package com.bgg.storyfarm.controller;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.json.simple.JSONArray;
@@ -57,7 +59,7 @@ public class UserController {
 	 * @return
 	 */
 	@RequestMapping(value = "loginResult.do", method = RequestMethod.POST)
-	public String loginResult(Model model, @RequestParam Map<String, Object> paramMap, HttpServletRequest request, HttpSession session) {
+	public String loginResult(Model model, @RequestParam Map<String, Object> paramMap, HttpServletResponse response, HttpSession session) {
 		model.addAttribute(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_LOGIN));
 		
 		HashMap<String, String> sessionMap = (HashMap<String, String>) userService.detail(paramMap);
@@ -68,6 +70,8 @@ public class UserController {
 		} else {
 			if(session.getAttribute("userInfoSession") == null){
 				session.setAttribute("userInfoSession", sessionMap);
+				response.addCookie(new Cookie("userIdCookie", paramMap.get("id").toString()));
+				response.addCookie(new Cookie("userPwdCookie", paramMap.get("pwd").toString()));
 			}
 			return "user/loginResult";
 		}

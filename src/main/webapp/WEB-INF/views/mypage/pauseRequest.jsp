@@ -3,11 +3,11 @@
 
 <div class="row">
 	<div class="col-lg-12 text-center">
-		<c:if test="${ login_session.MEMBER_STATUS == 0 }">
+		<c:if test="${ userInfoSession.MEMBER_STATUS == 0 }">
 			<h3>현재 고객님은 현재 서비스 <a href="#">이용중</a>입니다<br>
 			이용정지를 신청하시려면 아래 정보를 입력해주세요</h3>
 		</c:if>
-		<c:if test="${ login_session.MEMBER_STATUS == 1 }">
+		<c:if test="${ userInfoSession.MEMBER_STATUS == 1 }">
 			<h3>현재 고객님은 서비스 일시중지중 입니다<br>
 			다시 이용하시려면 아래 정보를 입력해주세요</h3>
 		</c:if>
@@ -36,10 +36,10 @@
 					</div>
 				</td>
 				<td>
-					<c:if test="${ login_session.MEMBER_STATUS == 0 }">
+					<c:if test="${ userInfoSession.MEMBER_STATUS == 0 }">
 						<button class="btn btn-default">일시중지 신청</button>
 					</c:if>
-					<c:if test="${ login_session.MEMBER_STATUS == 1 }">
+					<c:if test="${ userInfoSession.MEMBER_STATUS == 1 }">
 						<button class="btn btn-default">일시중지 해지</button>
 					</c:if>
 				</td>
