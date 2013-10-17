@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -40,7 +41,8 @@ public class ViewController {
 	private MessageSource messageSource;
 	
 	@RequestMapping(value = "dashboard.do", method = RequestMethod.GET)
-	public ModelAndView main(Model model, Locale locale) {
+	public ModelAndView main(Model model, Locale locale,
+			@RequestHeader(value="Accept-Language", required=false, defaultValue="ko") String accLang) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("view/dashboard");
 		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME));
