@@ -9,9 +9,19 @@
             <!-- location -->
       		<div id="divLocation">
         		<ul class="location">
-          			<li class="first"><a href="#" class="home"><img src="../assets/images/common/blt_home.gif" alt="home"></a></li>
-          			<li><a href="#">로그인</a></li>
-          			<li class="current">아이디찾기</li>
+					<c:forEach items="${ breadcrumbs }" var="obj" varStatus="status">
+						<c:choose>
+							<c:when test="${ status.first }">
+          						<li class="first"><a href="/" class="home"><img src="../assets/images/common/blt_home.gif" alt="home"></a></li>
+							</c:when>
+							<c:when test="${ status.last }">
+								<li class="current">${ obj.name }</li>
+							</c:when>
+							<c:otherwise>
+								<li><a href="${ contextPath }${ obj.url }">${ obj.name }</a></li>
+							</c:otherwise>
+						</c:choose>
+          			</c:forEach>
         		</ul>
       		</div>
       		<!-- //location -->
@@ -23,12 +33,13 @@
                     <p class="tx01">오즈월드에 등록한 정보로 아이디를 찾으실 수 있습니다.</p>
                     <div class="formFind">
                     	<div class="divChk">
-                        	<label for="userChk01"><input name="optionsRadios" id="userChk01" type="radio" value="option1"> 휴대폰</label>
-                        	<label for="userChk02" class="mgl10"><input name="optionsRadios" id="userChk02" type="radio" value="option2"> 이메일</label>
-                        	<label for="userChk03" class="mgl10"><input name="optionsRadios" id="userChk03" type="radio" value="option3"> 생년월일</label>
+                        	<label for="userChk01"><input name="optionsRadios" id="phone_radio" type="radio" value="option1" checked> 휴대폰</label>
+                        	<label for="userChk02" class="mgl10"><input name="optionsRadios" id="email_radio" type="radio" value="option2"> 이메일</label>
+                        	<label for="userChk03" class="mgl10"><input name="optionsRadios" id="birth_radio" type="radio" value="option3"> 생년월일</label>
                         </div>
                         <div class="divForm" id="changeTextArea">
-                        	<ul id="changeI">
+                        	<form id="memberFind-tel">
+                        	<ul>
                     			<li>
                             		<label for="userName">이름</label>
                                 	<input name="member_nm" id="userName" type="text" class="input" style="width:240px;">
@@ -37,42 +48,41 @@
                            	  		<label for="userHp">휴대폰</label>
 									<input type="hidden" id="member_cel" name="member_cel">
                             		<select id="cel1" class="select" style="width:85px;">
-	                            	  	<option>010</option>
+	                            	  	<option>선택</option>
 	                            	  	<option>011</option>
-                            		</select>
+                            		</select> - 
                                 	<input id="cel2" class="input" type="text" style="width:144px;">
                             	</li>
                     		</ul>
-                            <!-- 이메일 선택 
-                            <ul id="changeM">
+                    		</form>
+                    		<form id="memberFind-email" style="display: none;">
+                            <ul>
                     			<li>
                             		<label for="userName">이름</label>
-                                	<input name="" id="member_nm" type="text" class="input" style="width:240px;">
+                                	<input name="member_nm" type="text" class="input" style="width:240px;">
                             	</li>
                           		<li>
                            	  		<label for="userMail">이메일</label>
-                            		<input name="" id="member_email" type="text" class="input" style="width:240px;">
+                            		<input name="member_email" id="member_email" type="text" class="input" style="width:240px;">
                             	</li>
-                    		</ul>-->
-                            <!-- 생년월일 선택 
-                            <ul id="changeY">
+                    		</ul>
+                    		</form>
+                    		<form id="memberFind-birth" style="display: none;">
+                            <ul>
                     			<li>
                             		<label for="userName">이름</label>
-                                	<input name="" id="member_nm" type="text" class="input" style="width:240px;">
+                                	<input name="member_nm" type="text" class="input" style="width:240px;">
                             	</li>
                           		<li>
                            	  		<label for="userMail">생년월일</label>
-                            		<select id="yearBox" class="select" style="width:73px;">
+                            		<select name="member_year" id="yearBox" class="select" style="width:73px;">
                             	  	<option>년도</option>
-                            	  	<option>011</option>
                             		</select> -
-                                    <select id="monthBox" class="select" style="width:73px;">
+                                    <select name="member_month" id="monthBox" class="select" style="width:73px;">
                             	  	<option>월</option>
-                            	  	<option>011</option>
                             		</select> -
-                                    <select id="dayBox" class="select" style="width:73px;">
+                                    <select name="member_day" id="dayBox" class="select" style="width:73px;">
                             	  	<option>일</option>
-                            	  	<option>011</option>
                             		</select>
                             	</li>
                                 <li>
@@ -80,12 +90,13 @@
                                     <input name="member_gender" type="radio" value="남"> 남
                                     <input name="member_gender" type="radio" value="여" class="mgl10"> 여
                                 </li>
-                    		</ul>-->
+                    		</ul>
+                    		</form>
                         </div>
                     </div>
                     
                     <div class="btnSc">
-                        <a href="#"><img src="../assets/images/common/btn_confirm_off.gif" alt="확인" class="rollimg"></a>
+                        <a href="#" id="submit_btn"><img src="../assets/images/common/btn_confirm_off.gif" alt="확인" class="rollimg"></a>
                     </div>
                     
                     <span class="bg1"></span><span class="bg2"></span><span class="bg3"></span><span class="bg4"></span>
@@ -132,6 +143,7 @@
 	birth.call();
 
 	$("#phone_radio").change(function(){
+		console.info();
 		$("#memberFind-tel").show();
 		$("#memberFind-email").css("display", "none");
 		$("#memberFind-birth").css("display", "none");
@@ -140,23 +152,33 @@
 		$("#memberFind-email").show();
 		$("#memberFind-tel").css("display", "none");
 		$("#memberFind-birth").css("display", "none");
-	});;
+	});
 	$("#birth_radio").change(function(){
 		$("#memberFind-birth").show();
 		$("#memberFind-tel").css("display", "none");
 		$("#memberFind-email").css("display", "none");
 	});
-
 	
-	$("#submit_tel_btn").click(function(){
+	$("#submit_btn").click(function(){
 		
-		$("[name=member_cel]").attr({
-			value: $("#cel1").val() + "-" + $("#cel2").val() + "-" + $("#cel3").val()
-		});
-		
-		$("#memberFind-tel").attr({
-			method: 'post',
-			action: '${ contextPath }/findIdResult.do'
-		}).submit();
+		if($("#phone_radio").is(":checked") == true){
+			$("#member_cel").attr({
+				value: $("#cel1").val() + "-" + $("#cel2").val()
+			});
+			$("#memberFind-tel").attr({
+				method: 'post',
+				action: '${ contextPath }/findIdResult.do'
+			}).submit();
+		}else if($("#email_radio").is(":checked") == true){
+			$("#memberFind-email").attr({
+				method: 'post',
+				action: '${ contextPath }/findIdResult.do'
+			}).submit();
+		}else if($("#birth_radio").is(":checked") == true){
+			$("#memberFind-birth").attr({
+				method: 'post',
+				action: '${ contextPath }/findIdResult.do'
+			}).submit();
+		}
 	});
 </script>

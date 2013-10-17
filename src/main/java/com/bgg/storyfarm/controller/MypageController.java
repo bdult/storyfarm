@@ -273,7 +273,7 @@ public class MypageController {
 
 	private Map<String, Object> getSessionId(HttpSession session) {
 		@SuppressWarnings("unchecked")
-		Map<String, Object> sessionMap = (Map<String, Object>)session.getAttribute("login_session");
+		Map<String, Object> sessionMap = (Map<String, Object>)session.getAttribute("userInfoSession");
 
 		Map<String, Object> boardMap = new HashMap<String, Object>();
 		boardMap.put(StoryfarmConstants.BOARD_ID, QUESTION_BOARD_ID);

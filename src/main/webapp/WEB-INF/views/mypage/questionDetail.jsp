@@ -4,7 +4,7 @@
 <div class="row">
 	<div class="col-lg-12">
 		<ul>
-			<li><a href="#">${ login_session.MEMBER_ID }</a>님의 1:1 문의내역 입니다.</li>
+			<li><a href="#">${ userInfoSession.MEMBER_ID }</a>님의 1:1 문의내역 입니다.</li>
 		</ul>
 	</div>
 </div>

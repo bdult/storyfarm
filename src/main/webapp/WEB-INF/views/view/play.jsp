@@ -4,6 +4,8 @@
 
 <script src="js/flowplayer/flowplayer.min.js"></script>
 
+
+
 <h3>${ contents.CONTENTS_NM }</h3>
 
 <hr />
@@ -12,22 +14,26 @@
 	<div class="col-md-9">
 		<c:choose>
 			<c:when test="${contents.PLAYER_TYPE == 'vimeo'}">
-				<iframe src="${ contents.SRC_PATH }?color=ffffff"
+				<iframe src="http://115.71.237.215/ozworld/${ contents.SRC_PATH }?color=ffffff"
 					width="720" height="405" frameborder="0" webkitallowfullscreen
 					mozallowfullscreen allowfullscreen></iframe>
 			</c:when>
 			<c:otherwise>
-				<video width="100%" height="100%" controls poster="${contents.IMG_PATH}">
-				  <source src="${contents.SRC_PATH}" type="video/mp4">
-					video 요소를 지원하지 않는 브라우저입니다.
-				</video>
-				<!-- 
-				<div id="01" class="flowplayer" data-swf="player/flowplayer.swf" >
-					<video>
-						<source type="video/mp4" src="${contents.SRC_PATH}">
-					</video>
+				<div class="row">
+					<div class="col-lg-12">
+						<video id="player" width="850" height="500" controls poster="http://115.71.237.215/ozworld/${contents.IMG_PATH}">
+						  <source src="http://115.71.237.215/ozworld/${contents.SRC_PATH}" type="video/mp4">
+							video 요소를 지원하지 않는 브라우저입니다.
+						</video>
+						<!-- 
+						<div id="01" class="flowplayer" data-swf="player/flowplayer.swf" >
+							<video>
+								<source type="video/mp4" src="${contents.SRC_PATH}">
+							</video>
+						</div>
+						 -->
+					</div>			
 				</div>
-				 -->
 			</c:otherwise>
 		</c:choose>
 	</div>

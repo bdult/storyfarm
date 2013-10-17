@@ -8,12 +8,24 @@
             <!-- location -->
       		<div id="divLocation">
         		<ul class="location">
-          			<li class="first"><a href="#" class="home"><img src="../assets/images/common/blt_home.gif" alt="home"></a></li>
-          			<li class="current">로그인</li>
+					<c:forEach items="${ breadcrumbs }" var="obj" varStatus="status">
+						<c:choose>
+							<c:when test="${ status.first }">
+          						<li class="first"><a href="/" class="home"><img src="../assets/images/common/blt_home.gif" alt="home"></a></li>
+							</c:when>
+							<c:when test="${ status.last }">
+								<li class="current">${ obj.name }</li>
+							</c:when>
+							<c:otherwise>
+								<li><a href="${ contextPath }${ obj.url }">${ obj.name }</a></li>
+							</c:otherwise>
+						</c:choose>
+          			</c:forEach>
         		</ul>
       		</div>
       		<!-- //location -->
-            <form>
+      		
+            <form id="login">
             <div class="box01 loginBox">
             	<p class="txt01"><img src="../assets/images/member/login_tx01.gif" alt="아이디와 패스워드를 입력하세요."></p>
                 <fieldset>
@@ -22,8 +34,8 @@
                	  	<li><label for="userId"><img src="../assets/images/member/login_txId.gif" alt="아이디"></label><input name="id" id="userId" type="text" class="input"></li>
        	  	  	  	<li><label for="userPw"><img src="../assets/images/member/login_txPw.gif" alt="비밀번호"></label><input name="pwd" id="userPw" type="password" class="input"></li>
        	  	  	  	<li class="saveTx">
-                    	<input name="" id="userSave1" type="checkbox" value=""> <label for="userSave1">ID 저장</label>
-                        <input name="" id="userSave2" type="checkbox" value=""> <label for="userSave2">PW 저장</label>
+                    	<input name="userSaveId" id="userSave1" type="checkbox"> <label for="userSave1">ID 저장</label>
+                        <input name="userSavePw" id="userSave2" type="checkbox"> <label for="userSave2">PW 저장</label>
                     </li>
                 </ul>
                 <p class="btLogin"><a href="#"><img src="../assets/images/member/btn_login_off.gif" alt="login" class="rollimg"></a></p>
@@ -43,3 +55,29 @@
         </div>
     </div>
     <!-- //container -->
+    
+    
+<script type="text/javascript">
+	$(".btLogin").click(function(){
+		$("#login").attr({
+			method: 'post',
+			action: '${ contextPath }/loginResult.do'
+		}).submit();
+	});
+	
+	var idCheck = "${ cookie.userIdCheck.value }";
+	var pwdCheck = "${ cookie.userPwdCheck.value }";
+
+	if(idCheck == "on"){
+		$("#userSave1").attr("checked", true);	
+		$("#userId").val("${ cookie.userIdCookie.value }");
+	}else {
+		$("#userSave1").attr("checked", false);	
+	}
+	if(pwdCheck == "on"){
+		$("#userSave2").attr("checked", true);	
+		$("#userPw").val("${ cookie.userPwdCookie.value }");
+	}else {
+		$("#userSave2").attr("checked", false);	
+	}
+</script>
