@@ -23,7 +23,19 @@
            		<div class="placeholder"><label class="placeholderTx">Search</label><input name="" type="text" class="input"><a href="#"><img src="${ contextPath }/assets/images/common/btn_search.gif" alt="검색"></a></div>
             </div>
       	</div>
-        <div id="gnbWrap"><img src="${ contextPath }/assets/images/common/gnb.jpg" alt=""></div>
+        <div id="gnbWrap"><img src="${ contextPath }/assets/images/common/gnb.png" alt="" usemap="gnbMap" ></div>
+        
+        <!-- 임시 gnb 이미지맵 -->
+        <map name="gnbMap">
+		    <area shape="rect" coords="88,11,334,158" href="${ contextPath }" target="" alt="" />
+		    <area shape="rect" coords="351,101,464,195" href="${ contextPath }/category.do?cate_id=78" target="" alt="" />
+		    <area shape="rect" coords="470,95,580,200" href="${ contextPath }/category.do?cate_id=32" target="" alt="" />
+		    <area shape="rect" coords="584,105,694,197" href="${ contextPath }/category.do?cate_id=38" target="" alt="" />
+		    <area shape="rect" coords="698,114,812,195" href="${ contextPath }/category.do?cate_id=54" target="" alt="" />
+		    <area shape="rect" coords="815,93,928,196" href="${ contextPath }/category.do?cate_id=79" target="" alt="" />
+		    <area shape="rect" coords="930,105,1042,196" href="${ contextPath }/worksheet.do" target="" alt="" />
+		</map>
+		
     </div>
     <!-- //header -->
     
