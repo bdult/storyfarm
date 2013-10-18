@@ -9,7 +9,7 @@
 					<c:forEach items="${ breadcrumbs }" var="obj" varStatus="status">
 						<c:choose>
 							<c:when test="${ status.first }">
-          						<li class="first"><a href="/" class="home"><img src="${ contextPath }/assets/images/common/blt_home.gif" alt="home"></a></li>
+          						<li class="first"><a href="${ contextPath }" class="home"><img src="${ contextPath }/assets/images/common/blt_home.gif" alt="home"></a></li>
 							</c:when>
 							<c:when test="${ status.last }">
 								<li class="current">${ obj.name }</li>

@@ -33,7 +33,7 @@ public class BreadcrumbUtil {
 				this.setBreadcrumbMap("홈", "/");
 				break;
 			case StoryfarmConstants.BREADCRUMB_LOGIN:
-				this.setBreadcrumbMap("로그인", "/login.do");
+				this.setBreadcrumbMap("로그인", "/loginView.do");
 				break;
 			case StoryfarmConstants.BREADCRUMB_FINDIDVIEW:
 				this.setBreadcrumbMap("아이디 찾기", "/findIdView.do");
