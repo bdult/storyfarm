@@ -8,13 +8,15 @@
 </head>
 <body>
 
-	<tiles:insertAttribute name="header" />
-
-	<div class="container">
-		<tiles:insertAttribute name="content" />
+	<div id="divWrapper">
+		<tiles:insertAttribute name="header" />
+	
+		<div id="container">
+			<tiles:insertAttribute name="content" />
+		</div>
+	
+		<tiles:insertAttribute name="footer" />
 	</div>
-
-	<tiles:insertAttribute name="footer" />
 
 </body>
 </html>

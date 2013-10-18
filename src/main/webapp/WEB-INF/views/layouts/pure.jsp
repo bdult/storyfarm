@@ -9,8 +9,10 @@
 </head>
 <body>
 
-	<div class="container contents">
-		<tiles:insertAttribute name="content" />
+	<div id="divWrapper">
+		<div id="container">
+			<tiles:insertAttribute name="content" />
+		</div>
 	</div>
 
 </body>
