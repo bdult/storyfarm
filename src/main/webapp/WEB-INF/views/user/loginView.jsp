@@ -1,8 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-    <!-- container -->
-  	<div id="container">
    		<div id="content">
         	<h2 class="divTit"><img src="${ contextPath }/assets/images/member/title_login.gif" alt="로그인"></h2>
             <!-- location -->
@@ -53,8 +51,6 @@
             <p class="loginBanner"><a href="${ contextPath }/joinProvision.do"><img src="${ contextPath }/assets/images/member/login_join.jpg" alt="무료회원가입 오즈월드 신규회원 가입하시면 다양한 혜택과 서비스를 제공 받으실 수 있습니다." ></a></p>
             
         </div>
-    </div>
-    <!-- //container -->
     
     
 <script type="text/javascript">

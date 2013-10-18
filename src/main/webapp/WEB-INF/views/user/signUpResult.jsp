@@ -2,8 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
     
-    <!-- container -->
-  	<div id="container">
    		<div id="content">
         
         	<h2 class="divTit"><img src="${ contextPath }/assets/images/member/title_join03.gif" alt="회원가입  회원가입완료"></h2>
@@ -43,5 +41,3 @@
             </div>
             
         </div>
-    </div>
-    <!-- //container -->

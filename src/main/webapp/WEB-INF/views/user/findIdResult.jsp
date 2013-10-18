@@ -1,8 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-    <!-- container -->
-  	<div id="container">
    		<div id="content">
         
         	<h2 class="divTit"><img src="${ contextPath }/assets/images/member/title_idFind_result.gif" alt="아이디찾기 결과"></h2>
@@ -21,7 +19,7 @@
 								<li><a href="${ contextPath }${ obj.url }">${ obj.name }</a></li>
 							</c:otherwise>
 						</c:choose>
-          			</c:forEach>${ findUserData }
+          			</c:forEach>
         		</ul>
       		</div>
       		<!-- //location -->
@@ -55,5 +53,3 @@
             </div>
             
         </div>
-    </div>
-    <!-- //container -->
