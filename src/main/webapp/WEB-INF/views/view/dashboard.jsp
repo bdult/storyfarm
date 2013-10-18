@@ -37,9 +37,6 @@ section#noti .well-half {
     }
 }
 
-.tmp a {
-	margin-bottom: 10px;
-}
 </style>
 
 <div id="content">
