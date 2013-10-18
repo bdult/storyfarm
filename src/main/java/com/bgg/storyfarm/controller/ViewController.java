@@ -208,24 +208,12 @@ public class ViewController {
 		return mav;
 	}
 	
-	@RequestMapping(value = "stream.do", method = RequestMethod.GET)
-	public @ResponseBody byte[] StreamingTest( @RequestParam Map<String,Object> paramMap ) {
-		String testFilePath = "/var/lib/tomcat6/webapps/storyfarm/source/movie/33/01.mp4";
-		try {
-			BufferedReader in = new BufferedReader(new FileReader(testFilePath));
-			return IOUtils.toByteArray(in);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return null;
+	@RequestMapping(value = "streaming.do", method = RequestMethod.GET)
+	public String StreamingTest( @RequestParam String contents_id ) {
+		String redirectUrl = contentsService.movieUrlByContentsId(contents_id);
+		return "redirect:"+redirectUrl;
 		
 	}
-	
-	@RequestMapping(value = "streamString.do", method = RequestMethod.GET)
-	public String StreamingToStringTest( @RequestParam Map<String,Object> paramMap ) {
-		return "redirect:http://115.71.237.215/ozworld-movie/movie/39/lmh1m7.mp4";
-	}
-	
 	
 	// UNDER CODE IS TEST_CODE
 	@RequestMapping(value = "cropTest.do", method = RequestMethod.GET)
@@ -251,19 +239,6 @@ public class ViewController {
 		paramsMap.put(PageUtil.ROWNUM_KEY, (pageNum - 1) * PageUtil.PER_PAGE);
 		paramsMap.put(PageUtil.PER_KEY, PageUtil.PER_PAGE);
 		return pageNum;
-	}
-	
-	public static void main(String[] ar){
-		
-		// 파일 읽기
-		String testFilePath = "/var/lib/tomcat6/webapps/storyfarm/source/movie/33/01.mp4";
-		try {
-			BufferedReader in = new BufferedReader(new FileReader(testFilePath));
-			System.out.println(IOUtils.toString(in));
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
 	}
 	
 }

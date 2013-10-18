@@ -111,5 +111,9 @@ public class ContentsService {
 		return contentsDao.cateList(paramMap);
 	}
 
+	public String movieUrlByContentsId(String contentsId) {
+		return contentsDao.movieUrlByContentsId(contentsId);
+	}
+
 	
 }
