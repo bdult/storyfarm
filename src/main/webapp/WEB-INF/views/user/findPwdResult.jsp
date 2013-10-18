@@ -28,14 +28,17 @@
             
             <div class="box01 findResult">
             	
-				<c:if test="${ findUserData.MEMBER_EMAIL != null }">
-	                <p class="tx01">임시 비밀번호가 아래의 등록하신 이메일 계정으로 발송되었습니다.<br>
-	                임시 비밀번호로 로그인 후 꼭 비밀번호를 변경하여 주시기 바랍니다.</p>
-	                <p class="tx02">${ findUserData.MEMBER_EMAIL }</p>
-                </c:if>
-				<%-- <c:if test="${ findUserData.MEMBER_EMAIL == null }">
-					<h3>해당 정보로 조회한 결과 맞는 아이디가 없습니다.</h3><br><br>
-				</c:if> --%>
+            	<c:choose>
+            		<c:when test="${ not empty findUserData.MEMBER_EMAIL }">
+		                <p class="tx01">임시 비밀번호가 아래의 등록하신 이메일 계정으로 발송되었습니다.<br>
+		                임시 비밀번호로 로그인 후 꼭 비밀번호를 변경하여 주시기 바랍니다.</p>
+		                <p class="tx02">${ findUserData.MEMBER_EMAIL }</p>
+            		</c:when>
+            		<c:otherwise>
+            			<p class="tx03">해당 정보로 조회한 결과 맞는 아이디가 없습니다.</p>
+            		</c:otherwise>
+            	</c:choose>
+            	
                 <ul class="loginBt">
             		<li><span class="titTx" style="width:120px;">회원이 아니신 경우</span> <a href="${ contextPath }/joinProvision.do"><img src="${ contextPath }/assets/images/member/btn_join_off.gif" alt="회원가입" class="rollimg"></a></li>
             	</ul>
