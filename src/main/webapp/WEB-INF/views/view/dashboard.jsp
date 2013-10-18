@@ -37,6 +37,9 @@ section#noti .well-half {
     }
 }
 
+.tmp a {
+	margin-bottom: 10px;
+}
 </style>
 
 <div id="content">
@@ -82,12 +85,12 @@ section#noti .well-half {
 	</section>
 	
 	<section id="brand">
-	  <div class="row fivecolumns">
+	  <div class="row fivecolumns tmp">
 	  		<c:forEach items="${ brandList }" var="obj" varStatus="status">
 	  			<c:if test="${ status.count le 12 }">
 					<div class="col-sm-2 text-center" style="font-size: 12px;">
 						<a href="${ contextPath }/brand.do?brand_id=${ obj.BRAND_ID }" class="thumbnail">
-							<img src="http://115.71.237.215/${ obj.IMG_PATH }" style="width: 100%; height: 130px;" alt="${ obj.BRAND_NM }">
+							<img src="${ obj.IMG_PATH }" style="width: 100%; height: 130px;" alt="${ obj.BRAND_NM }">
 							${ obj.BRAND_NM }
 						</a>
 					</div>
