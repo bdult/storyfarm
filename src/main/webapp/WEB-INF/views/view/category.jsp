@@ -22,7 +22,7 @@
        	<ul>
   		<c:forEach items="${ contentListByCate }" var="obj" varStatus="status">
 			<li>
-            	<p class="photo"><img src="http://115.71.237.215/${ obj.IMG_PATH }" width="155" height="115" alt=""></p>
+            	<p class="photo"><a href="${contextPath }/play.do?contents_id=${obj.CONTENTS_ID}"><img src="http://115.71.237.215/${ obj.IMG_PATH }" width="155" height="115" alt=""></a></p>
                 <p class="divChk"><label><input name="contentId" type="checkbox" value="${ obj.CONTENTS_ID }"> ${ fn:substring(obj.CONTENTS_NM, 0, 15) }</label></p>
                 <span class="bg1"></span><span class="bg2"></span><span class="bg3"></span><span class="bg4"></span>
             </li>

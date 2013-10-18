@@ -22,7 +22,7 @@
     	<h3><span>${ contents.CONTENTS_NM }</span></h3>
         <div class="conMov">
         	<video id="player" width="720px" height="458px" controls poster="http://115.71.237.215/${contents.IMG_PATH}">
-			<source src="http://115.71.237.215/${contents.SRC_PATH}" type="video/mp4">
+			<source src="${contextPath}/streaming.do?contents_id=${contents.CONTENTS_ID}">
 				video 요소를 지원하지 않는 브라우저입니다.
 			</video>
            </div>
