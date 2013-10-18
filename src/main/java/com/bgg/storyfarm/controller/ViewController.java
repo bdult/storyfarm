@@ -222,16 +222,8 @@ public class ViewController {
 	}
 	
 	@RequestMapping(value = "streamString.do", method = RequestMethod.GET)
-	public @ResponseBody String StreamingToStringTest( @RequestParam Map<String,Object> paramMap ) {
-		String testFilePath = "/var/lib/tomcat6/webapps/storyfarm/source/movie/33/01.mp4";
-		try {
-			BufferedReader in = new BufferedReader(new FileReader(testFilePath));
-			return IOUtils.toString(in);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return null;
-		
+	public String StreamingToStringTest( @RequestParam Map<String,Object> paramMap ) {
+		return "redirect:http://115.71.237.215/ozworld-movie/movie/39/lmh1m7.mp4";
 	}
 	
 	

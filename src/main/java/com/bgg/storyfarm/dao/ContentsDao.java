@@ -131,6 +131,10 @@ public class ContentsDao extends SqlSessionDaoSupport {
 		return getSqlSession().selectList("contentsQuery.contentsListByCate", paramMap);
 	}
 
+	public String movieUrlByContentsId(String contentsId) {
+		return (String)getSqlSession().selectOne("contentsQuery.movieUrlByContentsId", contentsId);
+	}
+
 	
 
 }
