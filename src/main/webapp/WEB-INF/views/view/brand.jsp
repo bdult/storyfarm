@@ -30,7 +30,7 @@
 	<section id="brand">
 		<div class="row">
 			<div class="col-md-12 text-center">
-				<img src="" alt="브랜드 이미지" style="width: 100%; height: 150px;"/>
+				<img src="" alt="출판사 이미지" style="width: 100%; height: 150px;"/>
 			</div>
 			<hr>
 		</div>
