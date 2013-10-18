@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
 <div id="content">
         
@@ -9,8 +10,8 @@
 	<div id="divLocation">
 	<ul class="location">
  			<li class="first"><a href="#" class="home"><img src="${ contextPath }/assets/images/common/blt_home.gif" alt="home"></a></li>
-           <li><a href="#">과목별 카테고리 (대)</a></li>
- 			<li class="current">과목별 카테고리 (소) </li>
+           <li><a href="#">한글</a></li>
+ 			<li class="current">${ contents.CONTENTS_NM }</li>
 	</ul>
 	</div>
 	<!-- //location -->
@@ -30,7 +31,7 @@
            	<div class="box04 leftWrap">
                	<h4>동화설명</h4>
                    <div class="txt">
-                   	${ contents.CONTENTS_DESC }
+                   	${ fn:substring(contents.CONTENTS_DESC, 0, 100) }...
                 </div>
                 <p class="btMore"><a href="#"><img src="${ contextPath }/assets/images/common/btn_more_off.png" alt="더보기" class="rollimg"></a></p>
                 <span class="bg1"></span><span class="bg2"></span><span class="bg3"></span><span class="bg4"></span>
@@ -38,7 +39,7 @@
             <div class="box04 rightWrap">
             	<h4>학습지도</h4>
                 <div class="txt">
-                	${ contents.LEARNING_DESC }              
+					${ fn:substring(contents.LEARNING_DESC, 0, 100) }...
                 </div>
                 <p class="btMore"><a href="#"><img src="${ contextPath }/assets/images/common/btn_more_off.png" alt="더보기" class="rollimg"></a></p>
                 <span class="bg1"></span><span class="bg2"></span><span class="bg3"></span><span class="bg4"></span>
