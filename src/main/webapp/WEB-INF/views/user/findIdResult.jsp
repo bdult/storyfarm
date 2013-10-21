@@ -1,8 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-    <!-- container -->
-  	<div id="container">
    		<div id="content">
         
         	<h2 class="divTit"><img src="${ contextPath }/assets/images/member/title_idFind_result.gif" alt="아이디찾기 결과"></h2>
@@ -12,7 +10,7 @@
 					<c:forEach items="${ breadcrumbs }" var="obj" varStatus="status">
 						<c:choose>
 							<c:when test="${ status.first }">
-          						<li class="first"><a href="/" class="home"><img src="${ contextPath }/assets/images/common/blt_home.gif" alt="home"></a></li>
+          						<li class="first"><a href="${ contextPath }" class="home"><img src="${ contextPath }/assets/images/common/blt_home.gif" alt="home"></a></li>
 							</c:when>
 							<c:when test="${ status.last }">
 								<li class="current">${ obj.name }</li>
@@ -21,7 +19,7 @@
 								<li><a href="${ contextPath }${ obj.url }">${ obj.name }</a></li>
 							</c:otherwise>
 						</c:choose>
-          			</c:forEach>${ findUserData }
+          			</c:forEach>
         		</ul>
       		</div>
       		<!-- //location -->
@@ -55,5 +53,3 @@
             </div>
             
         </div>
-    </div>
-    <!-- //container -->

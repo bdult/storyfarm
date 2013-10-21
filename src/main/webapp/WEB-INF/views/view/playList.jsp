@@ -34,7 +34,7 @@
 	        		
 	        	</tbody>
 	        </table>
-        	<button id="repeatBtn" class="btn btn-info" type="button">리스트 반복 듣기</button>
+        	<button id="repeatBtn" class="btn btn-info" type="button">반복 듣기 off</button>
         	<button id="listBackBtn" class="btn btn-primary" type="button">목록으로</button>
         </div>
 	</div>
@@ -79,8 +79,9 @@
 		});
 		
 		$("#player").bind('ended',function() {
-			if(nextMovie+1 < movieListSize){
-				moviePlay(nextMovie+1);
+			nextMovie=nextMovie+1;
+			if(nextMovie < movieListSize){
+				moviePlay(nextMovie);
 			}else{
 				if(isRepeat){
 					nextMovie=0;
@@ -93,8 +94,10 @@
 			if(isRepeat){
 				isRepeat = false;
 				$("#repeatBtn").removeClass("btn-success").addClass("btn-info");
+				$("#repeatBtn").text("반복 듣기 off");
 			}else{
 				$("#repeatBtn").removeClass("btn-info").addClass("btn-success");
+				$("#repeatBtn").text("반복 듣기 on");
 				isRepeat = true;
 			}
 		});
@@ -105,6 +108,7 @@
 	});
 	
 	function moviePlay(index){
+		console.info("moviePlay="+index);
 		var contentsId = $(".movieList").get(index).value;
 		$("#palyerSource").attr("src", "streaming.do?contents_id="+contentsId);
 		$("#contents_nm").text($(".movieListName").get(index).value);

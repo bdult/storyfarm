@@ -19,3 +19,9 @@
 
 <link rel="stylesheet" href="${ contextPath }/assets/css/bootstrap.min.css">
 <link rel="stylesheet" href="${ contextPath }/assets/css/common.css">
+
+<style>
+.tmp a {
+	margin-bottom: 10px;
+}
+</style>

@@ -10,8 +10,8 @@
 	<!-- location -->
 	<div id="divLocation">
 		<ul class="location">
-  			<li class="first"><a href="#" class="home"><img src="${ contextPath }/assets/images/common/blt_home.gif" alt="home"></a></li>
-  			<li class="current">과목별 카테고리 (대)</li>
+  			<li class="first"><a href="${ contextPath }" class="home"><img src="${ contextPath }/assets/images/common/blt_home.gif" alt="home"></a></li>
+  			<li class="current">한글</li>
 		</ul>
 	</div>
 	<!-- //location -->
