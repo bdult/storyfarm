@@ -4,7 +4,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
 <div id="content">
-        
+
+<form id="playListForm" action="playList.do" method="post">        
 	<h2 class="divTit"><img src="${ contextPath }/assets/images/content/title_hangul.gif" alt="오즈월드 한글"></h2>
 	<!-- location -->
 	<div id="divLocation">
@@ -53,7 +54,7 @@
 	<!--//paginate -->
 	
 	<div class="btnSc aright">
-    	<a href="#"><img src="${ contextPath }/assets/images/common/btn_viewSel_off.png" alt="선택보기" class="rollimg"></a>
+    	<a href="javascript:listPlay();"><img src="${ contextPath }/assets/images/common/btn_viewSel_off.png" alt="선택보기" class="rollimg"></a>
     	<a href="#"><img src="${ contextPath }/assets/images/common/btn_repeat_off.png" alt="반복보기" class="rollimg"></a>
     	<a href="#"><img src="${ contextPath }/assets/images/common/btn_close_off.png" alt="닫기" class="rollimg"></a>
     </div>
@@ -62,3 +63,14 @@
 	<!-- conLst -->
     
 </div>
+
+
+
+<script tyep="text/javascript">
+	function listPlay(){
+		$("#playListForm").submit();
+	}
+</script>
+
+
+</form>

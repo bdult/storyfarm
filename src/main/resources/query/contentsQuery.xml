@@ -181,4 +181,14 @@
 		AND A.CONTENTS_SERIES_ID = B.CONTENTS_SERIES_ID 
     </select>
     
+    <select id="listByArr" resultType="map">
+		SELECT /* contentsQuery.seriesListByCategory */ 
+			*
+		FROM BG_CONTENTS
+		WHERE CONTENTS_ID IN 
+			<foreach collection="list" item="contentsId" index="index" open="(" close=")" separator=",">
+					#{contentsId}				
+			</foreach>
+    </select>
+    
 </mapper>

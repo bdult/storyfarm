@@ -135,6 +135,10 @@ public class ContentsDao extends SqlSessionDaoSupport {
 		return (String)getSqlSession().selectOne("contentsQuery.movieUrlByContentsId", contentsId);
 	}
 
+	public List<Map<String, Object>> listByArr(List<String> contentsId) {
+		return getSqlSession().selectList("contentsQuery.listByArr", contentsId);
+	}
+
 	
 
 }

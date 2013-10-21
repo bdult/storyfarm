@@ -115,5 +115,9 @@ public class ContentsService {
 		return contentsDao.movieUrlByContentsId(contentsId);
 	}
 
+	public List<Map<String, Object>> listByArr(List<String> contentsId) {
+		return contentsDao.listByArr(contentsId);
+	}
+
 	
 }

@@ -9,6 +9,9 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -32,6 +35,8 @@ import com.bgg.storyfarm.service.ContentsService;
 public class ViewController {
 	
 	private Logger logger = LoggerFactory.getLogger(ViewController.class);
+	
+	private final String BACK_URL = "backUrl";
 	
 	@Autowired
 	private BreadcrumbUtil breadcrumbUtil;
@@ -97,7 +102,11 @@ public class ViewController {
 	 * @return
 	 */
 	@RequestMapping(value = "category.do", method = RequestMethod.GET)
-	public ModelAndView category( @RequestParam Map<String,Object> paramMap ) {
+	public ModelAndView category( @RequestParam Map<String,Object> paramMap, HttpServletRequest request ) {
+		
+		request.getSession().setAttribute(BACK_URL, request.getContextPath()+request.getServletPath()+"?"+request.getQueryString());
+		
+		
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("view/category");
 		
@@ -109,7 +118,6 @@ public class ViewController {
 		int totalCnt = contentsService.contentsCountByCate(paramMap);
 		int pageNum = setPage(paramMap);
 		mav.addObject("pageLink", pageUtil.getPageLinkMap(totalCnt, pageNum));
-		
 		mav.addObject("contentListByCate", contentsService.contentsListByCate(paramMap));
 		return mav;
 	}
@@ -194,17 +202,17 @@ public class ViewController {
 		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME));
 		
 		mav.addObject("contents", contentsService.detail(paramMap));
-		
-		// 다중 동영상 테스트
-//		List<HashMap<String, String>> contentsList = new ArrayList<HashMap<String, String>>();
-//		for(int x=0;x<4;x++){
-//			HashMap<String, String> contentsInfo = new HashMap<String, String>();
-//			contentsInfo.put("contents", "source/movie/85/1"+x+".mp4");
-//			contentsList.add(contentsInfo);
-//		}
-//		mav.addObject("contentsList", contentsList);
-		
-		
+		return mav;
+	}
+	
+	@RequestMapping(value = "playList.do", method = RequestMethod.POST)
+	public ModelAndView playList( @RequestParam List<String> contentId, HttpSession session) {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("view/playList");
+		logger.info("contentsArr.size() {}", contentId.size());
+		List<Map<String, Object>> playList = contentsService.listByArr(contentId);
+		mav.addObject("playList", playList);
+		mav.addObject(BACK_URL, session.getAttribute(BACK_URL));
 		return mav;
 	}
 	
