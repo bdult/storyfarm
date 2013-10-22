@@ -27,7 +27,7 @@
             <li><a href="${ contextPath }/introduce.do"><img src="${ contextPath }/assets/images/common/utill_mn4.gif" alt="오즈월드 소개"></a></li>
         </ul>
         <div class="headSearch">
-       		<div class="placeholder"><label class="placeholderTx">Search</label><input name="" type="text" class="input"><a href="#"><img src="${ contextPath }/assets/images/common/btn_search.gif" alt="검색"></a></div>
+       		<div class="placeholder"><label class="placeholderTx">Search</label><input name="" type="text" class="input"><a href="#"><img class="bt" src="${ contextPath }/assets/images/common/btn_search.gif" alt="검색"></a></div>
         </div>
   	</div>
 	<div id="gnbWrap"><img src="${ contextPath }/assets/images/common/gnb.jpg" alt="" usemap="gnbMap" ></div>
