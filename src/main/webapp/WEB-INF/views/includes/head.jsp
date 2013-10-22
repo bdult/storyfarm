@@ -9,16 +9,16 @@
 
 <!-- JQUERY 1.10 -->
 <script src="${ contextPath }/assets/js/jquery.min.js"></script>
-<script src="${ contextPath }/assets/js/unho.js"></script>
-<!-- BOOTSTRAP 3.0 -->
-<script src="${ contextPath }/assets/js/bootstrap.min.js"></script>
 
-<script src="${ contextPath }/assets/js/Publish.js"></script>
 <!-- AWESOME FONT 3.2.1 -->
 <link href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
 
-<link rel="stylesheet" href="${ contextPath }/assets/css/bootstrap.min.css">
+<!-- PUBLISHING -->
+<script src="${ contextPath }/assets/js/Publish.js"></script>
 <link rel="stylesheet" href="${ contextPath }/assets/css/common.css">
+
+<!-- DEV TEAM -->
+<script src="${ contextPath }/assets/js/unho.js"></script>
 
 <style>
 .tmp a {

@@ -30,7 +30,15 @@ public class CscenterController {
 	
 	private Logger logger = LoggerFactory.getLogger(CscenterController.class);
 	
-	//게시판 TODO : 상수처리?
+	//고객센터 사이드바 활성화 좌표
+	private final String LM_SEQ = "lmSeq";
+	private final int LNB_NOTI = 0; //공지사항
+	private final int LNB_EVENT = 1; //이벤트
+	private final int LNB_FAQ = 2; //자주하는 질문
+	private final int LNB_QUESTION = 3; //문의하기
+	
+	
+	//게시판 아이디
 	private final int NOTI_BOARD_ID = 1; //공지사항
 	private final int EVENT_BOARD_ID = 2; //이벤트
 	private final int WINNER_BOARD_ID = 4; //당첨자발표
@@ -53,6 +61,7 @@ public class CscenterController {
 	public ModelAndView notice(@RequestParam Map<String, Object> paramsMap) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("side-cscenter/notice");
+		mav.addObject(LM_SEQ, LNB_NOTI);
 		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(
 				StoryfarmConstants.BREADCRUMB_HOME, 
 				StoryfarmConstants.BREADCRUMB_CSCENTER, 
@@ -79,6 +88,7 @@ public class CscenterController {
 	public ModelAndView noticeView(@RequestParam Map<String, Object> paramsMap) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("side-cscenter/noticeView");
+		mav.addObject(LM_SEQ, LNB_NOTI);
 		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(
 				StoryfarmConstants.BREADCRUMB_HOME, 
 				StoryfarmConstants.BREADCRUMB_CSCENTER, 
@@ -96,6 +106,7 @@ public class CscenterController {
 	public ModelAndView faq(Model model) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("side-cscenter/faq");
+		mav.addObject(LM_SEQ, LNB_FAQ);
 		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(
 				StoryfarmConstants.BREADCRUMB_HOME, 
 				StoryfarmConstants.BREADCRUMB_CSCENTER, 
@@ -107,6 +118,7 @@ public class CscenterController {
 	public ModelAndView event(@RequestParam Map<String, Object> paramsMap) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("side-cscenter/event");
+		mav.addObject(LM_SEQ, LNB_EVENT);
 		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(
 				StoryfarmConstants.BREADCRUMB_HOME, 
 				StoryfarmConstants.BREADCRUMB_CSCENTER, 
@@ -130,6 +142,7 @@ public class CscenterController {
 	public ModelAndView eventView(@RequestParam Map<String, Object> paramsMap) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("side-cscenter/eventView");
+		mav.addObject(LM_SEQ, LNB_EVENT);
 		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(
 				StoryfarmConstants.BREADCRUMB_HOME, 
 				StoryfarmConstants.BREADCRUMB_CSCENTER, 
@@ -189,6 +202,7 @@ public class CscenterController {
 	public ModelAndView ask(Model model) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("side-cscenter/ask");
+		mav.addObject(LM_SEQ, LNB_QUESTION);
 		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(
 				StoryfarmConstants.BREADCRUMB_HOME, 
 				StoryfarmConstants.BREADCRUMB_CSCENTER, 
@@ -204,6 +218,7 @@ public class CscenterController {
 	public String email(Model model, HttpServletRequest request, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("side-cscenter/email");
+		mav.addObject(LM_SEQ, LNB_QUESTION);
 		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(
 				StoryfarmConstants.BREADCRUMB_HOME, 
 				StoryfarmConstants.BREADCRUMB_CSCENTER, 

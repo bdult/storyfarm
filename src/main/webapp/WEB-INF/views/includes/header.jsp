@@ -14,15 +14,15 @@
  	<div class="divUtill">
    	  	<ul>
 			<c:choose>
-				<c:when test="${ userInfoSession == null }">
+				<c:when test="${ empty sessionScope.userInfoSession }">
        	  			<li class="fir"><a href="${ contextPath }/loginView.do"><img src="${ contextPath }/assets/images/common/utill_mn1.gif" alt="로그인"></a></li>
+		            <li><a href="${ contextPath }/joinProvision.do"><img src="${ contextPath }/assets/images/common/utill_mn2.gif" alt="회원가입"></a></li>
 				</c:when>
 				<c:otherwise>
             		<li class="fir"><a href="${ contextPath }/mypage/info.do"><img src="" alt="마이페이지"></a></li>
             		<li><a href="${ contextPath }/logout.do"><img src="" alt="로그아웃"></a></li>
 				</c:otherwise>
 			</c:choose>
-            <li><a href="${ contextPath }/joinProvision.do"><img src="${ contextPath }/assets/images/common/utill_mn2.gif" alt="회원가입"></a></li>
             <li><a href="${ contextPath }/cscenter/notice.do"><img src="${ contextPath }/assets/images/common/utill_mn3.gif" alt="고객센터"></a></li>
             <li><a href="${ contextPath }/introduce.do"><img src="${ contextPath }/assets/images/common/utill_mn4.gif" alt="오즈월드 소개"></a></li>
         </ul>

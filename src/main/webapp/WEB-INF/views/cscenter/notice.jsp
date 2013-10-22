@@ -2,12 +2,12 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
-<h2 class="divTit"><img src="../assets/images/customer/title_notice.gif" alt="공지사항"></h2>
+<h2 class="divTit"><img src="${ contextPath }/assets/images/customer/title_notice.gif" alt="공지사항"></h2>
               	
 <!-- location -->
 <div id="divLocation">
     <ul class="location">
-        <li class="first"><a href="#" class="home"><img src="../assets/images/common/blt_home.gif" alt="home"></a></li>
+        <li class="first"><a href="#" class="home"><img src="${ contextPath }/assets/images/common/blt_home.gif" alt="home"></a></li>
         <li><a href="#">고객센터</a></li>
         <li class="current">공지사항</li>
     </ul>
@@ -15,7 +15,7 @@
 <!-- //location -->
  
 <div class="tblHeadSch">
-	<input name="" type="text" class="input"><a href="#"><img src="../assets/images/common/btn_search2.gif" alt="검색" class="bt"></a>
+	<input name="" type="text" class="input"><a href="#"><img src="${ contextPath }/assets/images/common/btn_search2.gif" alt="검색" class="bt"></a>
 </div>
 <table class="list mgt10">
 	<colgroup>
@@ -48,7 +48,7 @@
 <div class="paginate_complex">
 	<c:if test="${ not empty pageLink }">
 		<c:if test="${ not empty pageLink.pagePrev }">
-		<a class="direction prev" href="${ contextPath }/cscenter/notice.do?pageNum=${ pageLink.pagePrev }${ empty search.search? '' : search.search }"><img src="../assets/images/common/btn_pagingPre_off.gif"  alt="이전 페이지 이동"  class="rollimg"></a>
+		<a class="direction prev" href="${ contextPath }/cscenter/notice.do?pageNum=${ pageLink.pagePrev }${ empty search.search? '' : search.search }"><img src="${ contextPath }/assets/images/common/btn_pagingPre_off.gif"  alt="이전 페이지 이동"  class="rollimg"></a>
 		</c:if>
 		<c:forEach items="${ pageLink.pageList }" var="page">
 			<c:choose>
@@ -61,7 +61,7 @@
 			</c:choose>
 		</c:forEach>
 		<c:if test="${ not empty pageLink.pageNext }">
-		<a class="direction next" href="${ contextPath }/cscenter/notice.do?pageNum=${ pageLink.pageNext }${ empty search.search? '' : search.search }"><img src="../assets/images/common/btn_pagingNext_off.gif" alt="다음 페이지 이동"  class="rollimg"></a>
+		<a class="direction next" href="${ contextPath }/cscenter/notice.do?pageNum=${ pageLink.pageNext }${ empty search.search? '' : search.search }"><img src="${ contextPath }/assets/images/common/btn_pagingNext_off.gif" alt="다음 페이지 이동"  class="rollimg"></a>
 		</c:if>
 	</c:if>
 </div>

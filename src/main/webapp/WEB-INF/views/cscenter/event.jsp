@@ -2,38 +2,38 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
-<div class="alert alert-success">이벤트</div>
+<h2 class="divTit"><img src="${ contextPath }/assets/images/customer/title_event.gif" alt="이벤트"></h2>
+<!-- location -->
+<div id="divLocation">
+    <ul class="location">
+        <li class="first"><a href="#" class="home"><img src="${ contextPath }/assets/images/common/blt_home.gif" alt="home"></a></li>
+        <li><a href="#">고객센터</a></li>
+        <li class="current">이벤트</li>
+    </ul>
+</div>
+<!-- //location -->
 
-<div class="row">
-	<c:forEach items="${ list }" var="obj">
-		<div class="col-md-6">
-			<div class="row">
-				<div class="col-md-8">
-					<span class="label label-info">오즈월드 오픈 기념 이벤트</span>
-				</div>
-				<div class="col-md-2 col-md-offset-2 text-right">
+<div class="eventBrn"><img src="${ contextPath }/assets/images/customer/event_banner.jpg" alt=""></div>
+<div class="eventWr mgt10">
+	<ul>
+		<c:forEach items="${ list }" var="obj">
+    	<li>
+        	<div class="eveHd">
+            	<p class="tit"><img src="${ contextPath }/assets/images/customer/event_tx01.gif" alt="오즈월드 오픈기념 이벤트"></p>
+                <p class="blt">
 					<c:choose>
-						<c:when test="${ obj.STATUS == 0 }">
-							<span class="label label-danger">진행중</span>
-						</c:when>
-						<c:when test="${ obj.STATUS == 1 }">
-							<span class="label label-default">종료</span>
+						<c:when test="${ obj.STATUS eq 0 }">
+							<img src="${ contextPath }/assets/images/customer/icon_ing.gif" alt="진행중">
 						</c:when>
 						<c:otherwise>
-							<a>오류</a>
+							<img src="${ contextPath }/assets/images/customer/icon_end.gif" alt="종료">
 						</c:otherwise>
 					</c:choose>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-12">
-						<a href="${ contextPath }/cscenter/eventView.do?contentsId=${ obj.CONTENTS_ID }" class="thumbnail">
-							<img src="http://115.71.237.215/${ contextPath }/${ obj.IMG_PATH }" style="width: 100%; height: 200px;" alt="${ obj.TITLE }">
-							${ obj.TITLE }
-						</a>
-				</div>
-			</div>
-		<br><br><br>
-		</div>
-	</c:forEach>
+                </p>
+            </div>
+            <div class="thum"><a href="${ contextPath }/cscenter/eventView.do?contentsId=${ obj.CONTENTS_ID }"><img src="${ contextPath }/assets/images/customer/thum.jpg" width="307" height="120" alt=""></a></div>
+            <div class="eventTx"><a href="${ contextPath }/cscenter/eventView.do?contentsId=${ obj.CONTENTS_ID }">${ obj.TITLE }</a></div>
+        </li>
+        </c:forEach>
+    </ul>
 </div>

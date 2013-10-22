@@ -12,19 +12,18 @@
 		<tiles:insertAttribute name="header" />
 	
 		<div id="container">
-			
-			<!-- leftMenu -->
-			<div id="leftMenu">
-				<div class="col-md-2"><tiles:insertAttribute name="sidebar" /></div>
+			<div id="content">
+				<!-- leftMenu -->
+				<div id="leftMenu">
+					<tiles:insertAttribute name="sidebar" />
+				</div>
+				<!-- //leftMenu -->
+				<!-- divContent -->
+	            <div id="divContent">
+					<tiles:insertAttribute name="content" />
+				</div>			
+				<!-- divContent -->
 			</div>
-			<!-- //leftMenu -->
-			
-			<!-- divContent -->
-            <div id="divContent">
-				<div class="col-md-10"><tiles:insertAttribute name="content" /></div>
-			</div>			
-			<!-- divContent -->
-			
 		</div>
 	
 		<tiles:insertAttribute name="footer" />
