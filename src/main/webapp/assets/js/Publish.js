@@ -1,3 +1,30 @@
+// faq   
+$(function(){
+		//리스트 on & off ==========================
+		$(".fa").css("cursor","pointer");
+ 
+		$(".fa").click(function(){
+			var num = $(".fa").index(this);
+ 
+			if($(this).attr("id") == "out"){
+				$(".fa").each(function(i, e){
+					if(i == num){
+						$(this).attr("id","on");
+						$("#dpno"+i).show();
+					}else{
+						$(this).attr("id","out");
+						$("#dpno"+i).hide();
+					}
+				});
+			}else{
+				$(".fa").eq(num).attr("id","out");
+				$("#dpno"+num).hide();
+			}
+		});
+		//리스트 on & off ==========================
+	});
+//
+
 // roll over
  $(function() {
    $("img.rollimg").mouseover(function() {

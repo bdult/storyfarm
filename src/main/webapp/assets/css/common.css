@@ -12,25 +12,42 @@
 
 /* box */
 .box01{ border:#dcddde 6px solid; position:relative;}
-.box01 .bg1{ position:absolute; display:block; background:url(/ozworld/assets/images/common/bg_corner.gif) 0 0 no-repeat; width:20px; height:20px; top:-6px; left:-6px; z-index:99;}
-.box01 .bg2{ position:absolute; display:block; background:url(/ozworld/assets/images/common/bg_corner.gif) -20px 0 no-repeat; width:20px; height:20px; top:-6px; right:-6px; z-index:99;}
-.box01 .bg3{ position:absolute; display:block; background:url(/ozworld/assets/images/common/bg_corner.gif) 0 -20px no-repeat; width:20px; height:20px; bottom:-6px; left:-6px; z-index:99;}
-.box01 .bg4{ position:absolute; display:block; background:url(/ozworld/assets/images/common/bg_corner.gif) -20px -20px no-repeat; width:20px; height:20px; bottom:-6px; right:-6px; z-index:99;}
+.box01 .bg1{ position:absolute; display:block; background:url(../images/common/bg_corner.gif) 0 0 no-repeat; width:20px; height:20px; top:-6px; left:-6px; z-index:99;}
+.box01 .bg2{ position:absolute; display:block; background:url(../images/common/bg_corner.gif) -20px 0 no-repeat; width:20px; height:20px; top:-6px; right:-6px; z-index:99;}
+.box01 .bg3{ position:absolute; display:block; background:url(../images/common/bg_corner.gif) 0 -20px no-repeat; width:20px; height:20px; bottom:-6px; left:-6px; z-index:99;}
+.box01 .bg4{ position:absolute; display:block; background:url(../images/common/bg_corner.gif) -20px -20px no-repeat; width:20px; height:20px; bottom:-6px; right:-6px; z-index:99;}
 .box02{ border:#e5e5e5 1px solid; position:relative; padding:18px 20px;}
 .box03{ padding:25px 30px; position:relative; background:#fcfcfc; }
-.box03 .bg1{ position:absolute; display:block; background:url(/ozworld/assets/images/common/bg_corner2.gif) 0 0 no-repeat; width:10px; height:10px; top:0; left:0; z-index:99;}
-.box03 .bg2{ position:absolute; display:block; background:url(/ozworld/assets/images/common/bg_corner2.gif) -10px 0 no-repeat; width:10px; height:10px; top:0; right:0; z-index:99;}
-.box03 .bg3{ position:absolute; display:block; background:url(/ozworld/assets/images/common/bg_corner2.gif) 0 -10px no-repeat; width:10px; height:10px; bottom:0; left:0; z-index:99;}
-.box03 .bg4{ position:absolute; display:block; background:url(/ozworld/assets/images/common/bg_corner2.gif) -10px -20px no-repeat; width:10px; height:10px; bottom0; right:0x; z-index:99;}
+.box03 .bg1{ position:absolute; display:block; background:url(../images/common/bg_corner2.gif) 0 0 no-repeat; width:10px; height:10px; top:0; left:0; z-index:99;}
+.box03 .bg2{ position:absolute; display:block; background:url(../images/common/bg_corner2.gif) -10px 0 no-repeat; width:10px; height:10px; top:0; right:0; z-index:99;}
+.box03 .bg3{ position:absolute; display:block; background:url(../images/common/bg_corner2.gif) 0 -10px no-repeat; width:10px; height:10px; bottom:0; left:0; z-index:99;}
+.box03 .bg4{ position:absolute; display:block; background:url(../images/common/bg_corner2.gif) -10px -10px no-repeat; width:10px; height:10px; bottom:0; right:0; z-index:99;}
+.box04{ border:#f6f6f6 1px solid; position:relative; }
+.box04 .bg1{ position:absolute; display:block; background:url(../images/common/bg_corner4.gif) 0 0 no-repeat; width:10px; height:10px; top:-1px; left:-1px; z-index:99;}
+.box04 .bg2{ position:absolute; display:block; background:url(../images/common/bg_corner4.gif) -10px 0 no-repeat; width:10px; height:10px; top:-1px; right:-1px; z-index:99;}
+.box04 .bg3{ position:absolute; display:block; background:url(../images/common/bg_corner4.gif) 0 -10px no-repeat; width:10px; height:10px; bottom:-1px; left:-1px; z-index:99;}
+.box04 .bg4{ position:absolute; display:block; background:url(../images/common/bg_corner4.gif) -10px -20px no-repeat; width:10px; height:10px; bottom:-1px; right:-1px; z-index:99;}
+
+.commentBox{ background:url(../images/common/coment_box.gif) 0 0 no-repeat; width:690px; height:129px; margin:24px auto;}
+.commentBox ul{ padding:30px 0 0 198px;}
 
 .scrollBx{ border:#e5e5e5 1px solid; overflow-y:auto; padding:20px; color:#000;}
 .noBrd{ border:none !important;}
 
 /* ul list */
 ul.ulLst01{ overflow:hidden;}
-ul.ulLst01 li{ margin:4px 0; padding-left:8px; background:url(/ozworld/assets/images/common/blt_dot.gif) 0 6px no-repeat;}
+ul.ulLst01 li{ margin:4px 0; padding-left:8px; background:url(../images/common/blt_dot.gif) 0 6px no-repeat;}
 ul.ulLst02{ overflow:hidden;}
-ul.ulLst02 li{ margin:4px 0; padding-left:10px; background:url(/ozworld/assets/images/common/blt_dot1.gif) 0 6px no-repeat;}
+ul.ulLst02 li{ margin:4px 0; padding-left:10px; background:url(../images/common/blt_dot1.gif) 0 6px no-repeat;}
+
+/* tab */
+.divTab{ overflow:hidden;}
+.divTab .tab01{ overflow:hidden; height:38px;}
+.divTab .tab01 li{ float:left; display:table; height:38px;vertical-align:middle; margin:0 3px 0 0;}
+.divTab .tab01 li a{ width:110px; text-align:center; background:url(../images/common/bg_tab.gif) -110px 0 no-repeat; vertical-align:middle;  height:30px; display:table;color:#fff; padding:0 0 8px 0; }
+.divTab .tab01 li a span{display:table-cell; color:#fff; font-weight:bold; line-height:1.2em;vertical-align:middle;}
+.divTab .tab01 li a.on,
+.divTab .tab01 li a:hover{background:url(../images/common/bg_tab.gif) 0 0 no-repeat; padding:0; height:38px;}
 
 /* member */
 .loginBox{ width:536px; *width:456px; margin:0 auto; padding:30px 40px 20px 40px;}
@@ -39,14 +56,14 @@ ul.ulLst02 li{ margin:4px 0; padding-left:10px; background:url(/ozworld/assets/i
 .loginBox ul li{ margin:11px 0;}
 .loginBox ul li img{ vertical-align:middle;}
 .loginBox ul li label{ display:inline-block; width:62px;}
-.loginBox ul li .input{ width:250px; *width:240px; height:40px; border:none; background:transparent url(/ozworld/assets/images/member/bg_inp.gif) 0 0 no-repeat; padding:0 0 0 10px; line-height:40px;}
+.loginBox ul li .input{ width:250px; *width:240px; height:40px; border:none; background:transparent url(../images/member/bg_inp.gif) 0 0 no-repeat; padding:0 0 0 10px; line-height:40px;}
 .loginBox ul li.saveTx{ margin:10px 0 0 0; padding:0 0 0 62px;}
 .loginBox ul li.saveTx input{ margin-top:-3px;}
 .loginBox .btLogin{ position:absolute; top:85px; right:36px;}
 .loginBt{ width:490px; margin:15px auto 45px; position:relative;}
 .loginBt li{ margin:2px 0;}
 .loginBt li img{ vertical-align:middle;}
-.loginBt li span{ background:url(/ozworld/assets/images/common/blt_dot.gif) 0 6px no-repeat; padding-left:10px; width:155px; display:inline-block;}
+.loginBt li span{ background:url(../images/common/blt_dot.gif) 0 6px no-repeat; padding-left:10px; width:155px; display:inline-block;}
 .loginBt li.btPay{ position:absolute; top:0; right:0; margin:0;}
 .loginBanner{ text-align:center;}
 
@@ -61,12 +78,12 @@ ul.ulLst02 li{ margin:4px 0; padding-left:10px; background:url(/ozworld/assets/i
 .idFindBox ul li{ margin:5px 0;}
 .idFindBox ul li label{ width:54px; display:inline-block;}
 
-.findResult{ width:757px; margin:0 auto; padding:35px 100px;}
+.findResult{ width:557px; margin:0 auto; padding:35px 100px;}
 .findResult .tx01{ text-align:center; color:#58595b; font-size:16px; font-weight:bold; padding:0 0 25px 0;}
 .findResult .tx02{ text-align:center; color:#0054de; font-size:12px; font-weight:bold; background:#fcfcfc; margin:0; line-height:80px;}
 .findResult .tx03{text-align:center; color:#58595b; font-size:16px; font-weight:bold; padding:0; line-height:130px;}
 .findResult .loginBt{ width:285px; margin:30px auto 0;}
-.findResultLst{ background:url(/ozworld/assets/images/member/result_box.gif) 0 0 no-repeat; width:757px; height:129px; margin:24px auto;}
+.findResultLst{ background:url(../images/member/result_box.gif) 0 0 no-repeat; width:757px; height:129px; margin:24px auto;}
 .findResultLst ul{ padding:30px 0 0 240px;}
 
 .join01_hd{ text-align:center;}
@@ -75,3 +92,52 @@ ul.ulLst02 li{ margin:4px 0; padding-left:10px; background:url(/ozworld/assets/i
 .joinWrap .brdB{border-bottom:#f6f6f6 1px solid; padding-bottom:20px;}
 .join03Bt{ width:100%; text-align:center; padding:25px 0 0 0;}
 .join03Bt li{ display:inline; margin:0 5px;}
+
+
+/* 카테고리 */
+.conLst{ overflow:hidden; clear:both; margin:0; padding:0; background:url(../images/content/bg_box.gif) 0 0 no-repeat; height:675px;}
+.conLst ul{ padding:40px 20px 0 34px; overflow:hidden;}
+.conLst li{ float:left; border:#f1f2f2 2px solid; position:relative; width:155px; height:148px; margin:6px;}
+.conLst li .photo,.conLst li .photo img{ width:155px; height:115px;}
+.conLst li .divChk{ padding:6px 8px;}
+.conLst li .divChk input{ vertical-align:middle;}
+.conLst li span.bg1{ display:block; position:absolute; top:-2px; left:-2px; background:url(../images/common/bg_corner3.png) 0 0 no-repeat; z-index:10; width:10px; height:10px;}
+.conLst li span.bg2{ display:block; position:absolute; top:-2px; right:-2px; background:url(../images/common/bg_corner3.png) 100% 0 no-repeat; z-index:10; width:10px; height:10px;}
+.conLst li span.bg3{ display:block; position:absolute; bottom:-2px; left:-2px; background:url(../images/common/bg_corner3.png) 0 100% no-repeat; z-index:10; width:10px; height:10px;}
+.conLst li span.bg4{ display:block; position:absolute; bottom:-2px; right:-2px; background:url(../images/common/bg_corner3.png) 100% 100% no-repeat; z-index:10; width:10px; height:10px;}
+.conLst .paginate_complex{ height:55px;}
+.conLst .btnSc{ padding:0 35px;}
+
+.conVew{ overflow:hidden; background:url(../images/content/bg_box2.gif) 0 0 no-repeat; height:825px; padding:44px 50px 0 50px;}
+.conVew h3{ background:url(../images/common/blt_line.gif) 0 100% repeat-x; padding:0 0 10px 0; margin:0 0 20px 0;}
+.conVew h3 span{ background:url(../images/common/blt_dot2.gif) 0 0 no-repeat; padding:0 0 0 40px; color:#58595b; font-size:15px; font-weight:bold; display:inline-block; height:26px; line-height:26px;}
+.conVew .conMov{ text-align:center; width:740px; height:469px; margin:0 auto; background:url(../images/content/bg_box2_1.gif) 0 0 no-repeat; padding:9px 0 0 0;}
+.movState{ width:740px; margin:22px auto 0; height:156px;}
+.movState .box04{ width:330px; height:90px; padding:15px;}
+.movState .leftWrap{ float:left;}
+.movState .rightWrap{ float:right;}
+.movState .box04 h4{ background:url(../images/common/blt_dot3.gif) 0 4px no-repeat; padding-left:10px; margin:0 0 8px 0; color:#868686; font-weight:bold; font-size:13px;}
+.movState .box04 .txt{ padding:10px; background:url(../images/common/blt_line.gif) 0 0 repeat-x;}
+.movState .box04 .btMore{ position:absolute; top:15px; right:15px;}
+.conVew .btnSc{ padding:0 35px;}
+
+/* 고객센터 */
+.eventWr{ overflow:hidden;}
+.eventWr ul{ margin:0 0 0 -30px; overflow:hidden; background:url(../images/common/blt_line2.gif) 375px 0 repeat-y;}
+.eventWr li{ float:left; width:330px; padding:20px 0 20px 30px; background:url(../images/common/blt_line.gif) 0 100% repeat-x;}
+.eventWr li .eveHd{ position:relative; height:21px;}
+.eventWr li .eveHd .blt{ position:absolute; top:0; right:0;}
+.eventWr li .thum{ background:url(../images/customer/event_bg.gif) 0 0 no-repeat; height:131px; padding:6px 0 0 12px;}
+.eventWr li .eventTx{ padding:0 0 0 10px; margin:5px 0 0 0;}
+.eventWr li .eventTx a{ background:url(../images/common/blt_dot.gif) 0 6px no-repeat; display:block; padding-left:8px; }
+
+.faqLst{ overflow:hidden; border-top:#c2c2c2 2px solid;}
+.faqLst li{ border-bottom:#e3e3e3 1px solid;}
+.faqLst li .fa{ position:relative; padding:7px 10px 6px 110px;}
+.faqLst li .divA{ position:relative; padding:7px 10px 30px 110px; background:#fdfdfd url(../images/common/blt_aw.gif) 663px 100% no-repeat;}
+.faqLst li .bltQ{ position:absolute; top:0; left:0; width:80px; text-align:center; background:url(../images/common/blt_var4.gif) 100% 50% no-repeat; height:30px; line-height:30px;}
+.faqLst li .bltA{ position:absolute; top:0; left:0; width:80px; text-align:center; background:url(../images/common/blt_var4.gif) 100% 50% no-repeat; height:30px; line-height:30px; color:#fb7c00; font-weight:bold;}
+.faqLst li .fa#on{color:#fb7c00; border-bottom:#e3e3e3 1px solid;}
+.faqLst li .fa#on .bltQ{ color:#fb7c00; font-weight:bold;}
+
+

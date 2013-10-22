@@ -22,7 +22,7 @@ a.brown:link, a.brown:visited, a.brown:hover, a.brown:active{color:#9f5f00; text
 a.green:link, a.green:visited, a.green:hover, a.green:active{color:#1d806e; text-decoration:underline;}
 /* //텍스트 내 식별 어려운 링크 스타일 */
 
-html, body, div, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, address, dl, dt, dd, ol, ul, li, fieldset, form, legend, table, caption, tbody, tfoot, thead, tr, th, td, input,select, textarea{margin:0; padding:0;}
+html, body, div, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, address, dl, dt, dd, ol, ul, li, fieldset, form, legend, table, caption, tbody, tfoot, thead, tr, th, td, input,select, textarea{margin:0; padding:0; font-family:'Nanum Gothic', 'nanumgothic';}
 ul, ol, li {list-style:none;}
 legend,hr{display:none;}
 p{text-align:justify;}
@@ -74,8 +74,9 @@ label.radio{ display:inline-block; margin-right:10px;}
 .mgt5{ margin-top:5px !important;}
 .mgt10{ margin-top:10px !important;}
 .mgt20{ margin-top:20px !important;}
+.mgt30{ margin-top:30px !important;}
 
-.btnSc{position:relative;clear:both;margin:20px 0 0 0;text-align:center;}
+.btnSc{position:relative;clear:both; margin:20px 0 0 0; text-align:center;}
 .btnSc .left{position:absolute;left:0;top:0;}
 .btnSc .right{position:absolute;right:0; top:0;}
 .btnSc.aleft{text-align:left;}
