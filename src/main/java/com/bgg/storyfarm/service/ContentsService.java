@@ -111,5 +111,13 @@ public class ContentsService {
 		return contentsDao.cateList(paramMap);
 	}
 
+	public String movieUrlByContentsId(String contentsId) {
+		return contentsDao.movieUrlByContentsId(contentsId);
+	}
+
+	public List<Map<String, Object>> listByArr(List<String> contentsId) {
+		return contentsDao.listByArr(contentsId);
+	}
+
 	
 }

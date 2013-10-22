@@ -86,6 +86,14 @@
 	        AND BCCR.CATE_ID = #{ cate_id } 
 	    ) TBL
     </select>
+    
+    <select id="movieUrlByContentsId" resultType="String">
+        SELECT
+            CONCAT(PREFIX_URL, SRC_PATH)
+        FROM BG_CONTENTS
+        WHERE 1=1
+        AND CONTENTS_ID = #{contentsId}
+    </select>
 
     <select id="detail" resultType="map">
         SELECT /* contentsQuery.detail */
@@ -171,6 +179,16 @@
 		AND A.CATE_ID = #{ cate_id }
 		AND A.USE_YN = 'Y'
 		AND A.CONTENTS_SERIES_ID = B.CONTENTS_SERIES_ID 
+    </select>
+    
+    <select id="listByArr" resultType="map">
+		SELECT /* contentsQuery.seriesListByCategory */ 
+			*
+		FROM BG_CONTENTS
+		WHERE CONTENTS_ID IN 
+			<foreach collection="list" item="contentsId" index="index" open="(" close=")" separator=",">
+					#{contentsId}				
+			</foreach>
     </select>
     
 </mapper>

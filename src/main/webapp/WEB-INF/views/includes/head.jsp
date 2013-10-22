@@ -1,8 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
 
-<!DOCTYPE HTML>
-<head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
 <title>Oz world</title>
@@ -23,19 +21,7 @@
 <link rel="stylesheet" href="${ contextPath }/assets/css/common.css">
 
 <style>
-div.container {
-	max-width: 1037px;
-	padding: 10px 0;
+.tmp a {
+	margin-bottom: 10px;
 }
 </style>
-</head>
-<body>
-
-<!-- divAccessibility -->
-<div id="divAccessibility">
-    <a href="#gnb">메뉴 바로가기</a>
-    <a href="#divContents">본문 바로가기(skip to content)</a>    
-</div>
-<!-- //divAccessibility -->
-
-<div id="divWrapper">

@@ -1,11 +1,18 @@
 package com.bgg.storyfarm.controller;
 
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.bgg.storyfarm.common.BreadcrumbUtil;
@@ -27,6 +35,8 @@ import com.bgg.storyfarm.service.ContentsService;
 public class ViewController {
 	
 	private Logger logger = LoggerFactory.getLogger(ViewController.class);
+	
+	private final String BACK_URL = "backUrl";
 	
 	@Autowired
 	private BreadcrumbUtil breadcrumbUtil;
@@ -92,7 +102,11 @@ public class ViewController {
 	 * @return
 	 */
 	@RequestMapping(value = "category.do", method = RequestMethod.GET)
-	public ModelAndView category( @RequestParam Map<String,Object> paramMap ) {
+	public ModelAndView category( @RequestParam Map<String,Object> paramMap, HttpServletRequest request ) {
+		
+		request.getSession().setAttribute(BACK_URL, request.getContextPath()+request.getServletPath()+"?"+request.getQueryString());
+		
+		
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("view/category");
 		
@@ -104,7 +118,6 @@ public class ViewController {
 		int totalCnt = contentsService.contentsCountByCate(paramMap);
 		int pageNum = setPage(paramMap);
 		mav.addObject("pageLink", pageUtil.getPageLinkMap(totalCnt, pageNum));
-		
 		mav.addObject("contentListByCate", contentsService.contentsListByCate(paramMap));
 		return mav;
 	}
@@ -190,6 +203,24 @@ public class ViewController {
 		
 		mav.addObject("contents", contentsService.detail(paramMap));
 		return mav;
+	}
+	
+	@RequestMapping(value = "playList.do", method = RequestMethod.POST)
+	public ModelAndView playList( @RequestParam List<String> contentId, HttpSession session) {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("view/playList");
+		logger.info("contentsArr.size() {}", contentId.size());
+		List<Map<String, Object>> playList = contentsService.listByArr(contentId);
+		mav.addObject("playList", playList);
+		mav.addObject(BACK_URL, session.getAttribute(BACK_URL));
+		return mav;
+	}
+	
+	@RequestMapping(value = "streaming.do", method = RequestMethod.GET)
+	public String StreamingTest( @RequestParam String contents_id ) {
+		String redirectUrl = contentsService.movieUrlByContentsId(contents_id);
+		return "redirect:"+redirectUrl;
+		
 	}
 	
 	// UNDER CODE IS TEST_CODE

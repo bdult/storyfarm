@@ -36,7 +36,7 @@ public class ContentsDaoTest {
 	@Autowired
 	private PageUtil pageUtil;
 	
-	//브랜드 아이디로 콘텐츠 목록 조회 테스트
+	//출판사 아이디로 콘텐츠 목록 조회 테스트
 	@Test
 	public void testListByBrand() {
 		HashMap<String, Object> paramMap = new HashMap<String, Object>();
@@ -140,7 +140,7 @@ public class ContentsDaoTest {
 		assertNotNull(series);
 	}
 	
-	//브랜드 목록 조회 테스트
+	//출판사 목록 조회 테스트
 	@Test
 	public void testBrandList() {
 		HashMap<String, Object> paramMap = new HashMap<String, Object>();
@@ -163,7 +163,7 @@ public class ContentsDaoTest {
 		assertThat(contents.size(), is(not(0)));
 		
 	}
-	//브랜드 아이디로 시리즈 목록 조회 테스트
+	//출판사 아이디로 시리즈 목록 조회 테스트
 	@Test
 	public void testSeriesListByBrand() {
 		HashMap<String, Object> paramMap = new HashMap<String, Object>();

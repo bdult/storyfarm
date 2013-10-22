@@ -1,8 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-    <!-- container -->
-  	<div id="container">
    		<div id="content">
         
         	<h2 class="divTit"><img src="${ contextPath }/assets/images/member/title_idFind_result.gif" alt="아이디찾기 결과"></h2>
@@ -12,7 +10,7 @@
 					<c:forEach items="${ breadcrumbs }" var="obj" varStatus="status">
 						<c:choose>
 							<c:when test="${ status.first }">
-          						<li class="first"><a href="/" class="home"><img src="${ contextPath }/assets/images/common/blt_home.gif" alt="home"></a></li>
+          						<li class="first"><a href="${ contextPath }" class="home"><img src="${ contextPath }/assets/images/common/blt_home.gif" alt="home"></a></li>
 							</c:when>
 							<c:when test="${ status.last }">
 								<li class="current">${ obj.name }</li>
@@ -27,12 +25,17 @@
       		<!-- //location -->
             
             <div class="box01 findResult">
-            	<c:if test="${ findUserData != null }">
-	                <p class="tx01">등록하신 아이디는 아래와 같습니다.</p>
-					<c:forEach items="${ findUserData }" var="obj">
-	                	<p class="tx02">아이디 : ${ obj.MEMBER_ID }</p>
-	                </c:forEach>
-                </c:if>
+            	<c:choose>
+            		<c:when test="${ not empty findUserData }">
+		                <p class="tx01">등록하신 아이디는 아래와 같습니다.</p>
+						<c:forEach items="${ findUserData }" var="obj">
+		                	<p class="tx02">아이디 : ${ obj.MEMBER_ID }</p>
+		                </c:forEach>
+            		</c:when>
+            		<c:otherwise>
+            			<p class="tx03">해당 정보로 조회한 결과 맞는 아이디가 없습니다.</p>
+            		</c:otherwise>
+            	</c:choose>
                 <ul class="loginBt">
                 	<li><span class="titTx">비밀번호를 모르시는 경우</span> <a href="${ contextPath }/findPwdView.do"><img src="${ contextPath }/assets/images/member/btn_pwFind_off.gif" alt="비밀번호 찾기" class="rollimg"></a></li>
             		<li><span class="titTx">회원이 아니신 경우</span> <a href="${ contextPath }/joinProvision.do"><img src="${ contextPath }/assets/images/member/btn_join_off.gif" alt="회원가입" class="rollimg"></a></li>
@@ -50,5 +53,3 @@
             </div>
             
         </div>
-    </div>
-    <!-- //container -->

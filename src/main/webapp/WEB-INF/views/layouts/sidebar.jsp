@@ -8,16 +8,27 @@
 </head>
 <body>
 
-	<tiles:insertAttribute name="header" />
-
-	<div class="container">
-		<div class="row">
-			<div class="col-md-2"><tiles:insertAttribute name="sidebar" /></div>
-			<div class="col-md-10"><tiles:insertAttribute name="content" /></div>
+	<div id="divWrapper">
+		<tiles:insertAttribute name="header" />
+	
+		<div id="container">
+			
+			<!-- leftMenu -->
+			<div id="leftMenu">
+				<div class="col-md-2"><tiles:insertAttribute name="sidebar" /></div>
+			</div>
+			<!-- //leftMenu -->
+			
+			<!-- divContent -->
+            <div id="divContent">
+				<div class="col-md-10"><tiles:insertAttribute name="content" /></div>
+			</div>			
+			<!-- divContent -->
+			
 		</div>
+	
+		<tiles:insertAttribute name="footer" />
 	</div>
-
-	<tiles:insertAttribute name="footer" />
 
 </body>
 </html>
