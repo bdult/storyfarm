@@ -21,6 +21,11 @@ table.write tbody th{ color:#fff; font-weight:bold; border-bottom:#e3e3e3 1px so
 table.write tbody td{ border-bottom:#e3e3e3 1px solid; padding:4px 0 3px 10px;}
 table.write tbody td.writeTd{ background:#fdfdfd; padding:10px;}
 
+table.data{width:100%; border-collapse:separate; *border-collapse:collapse; border-spacing:0px; clear:both; border-top:#dbdbdb 2px solid;  border-bottom:#dbdbdb 1px solid;}
+table.data thead th{ background:#e0f6f7 url(../images/common/blt_dot5.gif) 20px 50% no-repeat; padding:6px 0 6px 32px; color:#333; text-align:left;  border-bottom:#dbdbdb 1px solid; }
+table.data tbody th{ background:#fbfbfb; padding:6px 0 6px 15px; font-weight:normal; color:#333; text-align:left; border-bottom:#dbdbdb 1px solid; }
+table.data tbody td{ padding:6px 0 6px 15px; text-align:left; border-bottom:#dbdbdb 1px solid;  border-left:#dbdbdb 2px solid; }
+
 
 table.joinTbl{width:100%; border-collapse:separate; *border-collapse:collapse; border-spacing:0px; clear:both;}
 table.joinTbl tbody th{ padding:8px 0 0 10px; text-align:left; vertical-align:top;}

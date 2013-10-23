@@ -26,6 +26,9 @@ body{ background:#9dccf8 url(../images/common/bg.gif) 0 0 repeat-x;}
 
 #lm{ padding:20px 0 0 0;}
 #lm li a{ display:block; height:29px; text-indent:-9999px;}
+#lm li li a{display:block; height:24px; text-indent:-9999px;}
+#lm li ul{ border-bottom:#e6e6e6 1px solid;}
+
 #lm li a.lm0201{ background:url(../images/common/lm_customer.gif) -182px 0 no-repeat;}
 #lm li a.lm0202{ background:url(../images/common/lm_customer.gif) -182px -29px no-repeat;}
 #lm li a.lm0203{ background:url(../images/common/lm_customer.gif) -182px -58px no-repeat;}
@@ -34,6 +37,34 @@ body{ background:#9dccf8 url(../images/common/bg.gif) 0 0 repeat-x;}
 #lm li a.lm0202:hover,#lm li a.lm0202.on{ background:url(../images/common/lm_customer.gif) 0 -29px no-repeat;}
 #lm li a.lm0203:hover,#lm li a.lm0203.on{ background:url(../images/common/lm_customer.gif) 0 -58px no-repeat;}
 #lm li a.lm0204:hover,#lm li a.lm0204.on{ background:url(../images/common/lm_customer.gif) 0 -87px no-repeat;}
+
+#lm li a.lm0501{ background:url(../images/common/lm_mypage.gif) -200px 0 no-repeat;}
+#lm li a.lm0502{ background:url(../images/common/lm_mypage.gif) -200px -29px no-repeat;}
+#lm li a.lm050201{ background:url(../images/common/lm_mypage.gif) 0 -200px no-repeat;}
+#lm li a.lm050202{ background:url(../images/common/lm_mypage.gif) 0 -224px no-repeat;}
+#lm li a.lm0503{ background:url(../images/common/lm_mypage.gif) -200px -58px no-repeat;}
+#lm li a.lm0504{ background:url(../images/common/lm_mypage.gif) -200px -87px no-repeat;}
+#lm li a.lm050401{ background:url(../images/common/lm_mypage.gif) 0 -256px no-repeat;}
+#lm li a.lm050402{ background:url(../images/common/lm_mypage.gif) 0 -280px no-repeat;}
+#lm li a.lm0505{ background:url(../images/common/lm_mypage.gif) -200px -116px no-repeat;}
+#lm li a.lm0506{ background:url(../images/common/lm_mypage.gif) -200px -145px no-repeat;}
+#lm li a.lm0501:hover,#lm li a.lm0501.on{ background:url(../images/common/lm_mypage.gif) 0 0 no-repeat;}
+#lm li a.lm0502:hover,#lm li a.lm0502.on{ background:url(../images/common/lm_mypage.gif) 0 -29px no-repeat;}
+#lm li a.lm050201:hover,#lm li a.lm050201.on{ background:url(../images/common/lm_mypage.gif) -200px -200px no-repeat;}
+#lm li a.lm050202:hover,#lm li a.lm050202.on{ background:url(../images/common/lm_mypage.gif) -200px -224px no-repeat;}
+#lm li a.lm0503:hover,#lm li a.lm0503.on{ background:url(../images/common/lm_mypage.gif) 0 -58px no-repeat;}
+#lm li a.lm0504:hover,#lm li a.lm0504.on{ background:url(../images/common/lm_mypage.gif) 0 -87px no-repeat;}
+#lm li a.lm050401:hover,#lm li a.lm050401.on{ background:url(../images/common/lm_mypage.gif) -200px -256px no-repeat;}
+#lm li a.lm050402:hover,#lm li a.lm050402.on{ background:url(../images/common/lm_mypage.gif) -200px -280px no-repeat;}
+#lm li a.lm0505:hover,#lm li a.lm0505.on{ background:url(../images/common/lm_mypage.gif) 0 -116px no-repeat;}
+#lm li a.lm0506:hover,#lm li a.lm0506.on{ background:url(../images/common/lm_mypage.gif) 0 -145px no-repeat;}
+
+#lm li a.lm0601{ background:url(../images/common/lm_parent.gif) -200px 0 no-repeat;}
+#lm li a.lm0602{ background:url(../images/common/lm_parent.gif) -200px -29px no-repeat;}
+#lm li a.lm0603{ background:url(../images/common/lm_parent.gif) -200px -58px no-repeat;}
+#lm li a.lm0601:hover,#lm li a.lm0601.on{ background:url(../images/common/lm_parent.gif) 0 0 no-repeat;}
+#lm li a.lm0602:hover,#lm li a.lm0602.on{ background:url(../images/common/lm_parent.gif) 0 -29px no-repeat;}
+#lm li a.lm0603:hover,#lm li a.lm0603.on{ background:url(../images/common/lm_parent.gif) 0 -58px no-repeat;}
 
 /* divLocation */
 #divLocation{ padding:0; color:#b9c0c6; z-index:3; position:absolute; top:10px; right:74px; text-align:right; line-height:16px;}
@@ -60,4 +91,5 @@ body{ background:#9dccf8 url(../images/common/bg.gif) 0 0 repeat-x;}
 /* heding */
 h2.divTit{ border-bottom:#f6f6f6 1px solid; padding:0 0 15px 0; margin:0 0 40px 0;}
 h3.divTit{ margin:30px 0 10px; padding:0;}
+h3.divTit2{ margin:0 0 10px; padding:0 0 0 10px; background:url(../images/common/blt_dot4.gif) 0 6px no-repeat; color:#333; font-weight:bold;}
 h4.divTit{ margin:30px 0 5px; padding:0;}

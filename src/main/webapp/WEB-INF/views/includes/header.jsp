@@ -21,6 +21,7 @@
 				<c:otherwise>
             		<li class="fir"><a href="${ contextPath }/mypage/info.do"><img src="" alt="마이페이지"></a></li>
             		<li><a href="${ contextPath }/logout.do"><img src="" alt="로그아웃"></a></li>
+            		<li><a href="${ contextPath }/parents/room.do"><img src="" alt="부모방"></a></li>
 				</c:otherwise>
 			</c:choose>
             <li><a href="${ contextPath }/cscenter/notice.do"><img src="${ contextPath }/assets/images/common/utill_mn3.gif" alt="고객센터"></a></li>

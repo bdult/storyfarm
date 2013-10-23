@@ -19,9 +19,3 @@
 
 <!-- DEV TEAM -->
 <script src="${ contextPath }/assets/js/unho.js"></script>
-
-<style>
-.tmp a {
-	margin-bottom: 10px;
-}
-</style>

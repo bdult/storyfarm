@@ -70,7 +70,9 @@ label.radio{ display:inline-block; margin-right:10px;}
 /* padding, margin */
 .fontRed{ color:#fb2300 !important;}
 .fontRed *{ text-decoration:underline;}
+.fontBlue{ color:#0054de !important;}
 .mgl10{ margin-left:10px !important;}
+.mgl50{ margin-left:50px !important;}
 .mgt5{ margin-top:5px !important;}
 .mgt10{ margin-top:10px !important;}
 .mgt20{ margin-top:20px !important;}

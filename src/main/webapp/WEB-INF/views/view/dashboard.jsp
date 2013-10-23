@@ -1,258 +1,110 @@
 <%@ page contentType="text/html" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<style>
-section {
-	margin-bottom: 20px;
-}
-
-section img {
-	background-color: #dddddd;
-}
-
-section#noti .well {
-	height: 200px;
-}
-
-section#noti .well-half {
-	height: 90px;
-}
-@media (min-width: 768px){
-    .fivecolumns .col-md-2, .fivecolumns .col-sm-2, .fivecolumns .col-lg-2  {
-        width: 20%;
-        *width: 20%;
-    }
-}
-@media (min-width: 1200px) {
-    .fivecolumns .col-md-2, .fivecolumns .col-sm-2, .fivecolumns .col-lg-2 {
-        width: 20%;
-        *width: 20%;
-    }
-}
-@media (min-width: 768px) and (max-width: 979px) {
-    .fivecolumns .col-md-2, .fivecolumns .col-sm-2, .fivecolumns .col-lg-2 {
-        width: 20%;
-        *width: 20%;
-        float: left;
-    }
-}
-
-</style>
-
 <div id="content">
-	<section class="slides">
-		<div id="carousel-example-generic" class="carousel slide">
-		  <!-- Indicators -->
-		  <ol class="carousel-indicators">
-		    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-		    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-		    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-		  </ol>
-		
-		  <!-- Wrapper for slides -->
-		  <div class="carousel-inner">
-		    <div class="item active">
-		      <img src="http://bigstarglobal.com/en/wp-content/uploads/2013/04/peet-and-baba_1.jpg" alt="...">
-		      <div class="carousel-caption">
-		        피트앤바바
-		      </div>
-		    </div>
-		    <div class="item">
-		      <img src="http://bigstarglobal.com/en/wp-content/uploads/2013/03/dinomain.jpg" alt="...">
-		      <div class="carousel-caption">
-		        디노 테일
-		      </div>
-		    </div>
-		    <div class="item">
-		      <img src="http://bigstarglobal.com/en/wp-content/uploads/2013/02/BoomBoom_Banner.png" alt="...">
-		      <div class="carousel-caption">
-		        붐붐
-		      </div>
-		    </div>
-		  </div>
-		
-		  <!-- Controls -->
-		  <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
-		    <span class="icon-chevron-left"></span>
-		  </a>
-		  <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
-		    <span class="icon-chevron-right"></span>
-		  </a>
-		</div>
-	</section>
-	
-	<section id="brand">
-	  <div class="row fivecolumns tmp">
-	  		<c:forEach items="${ brandList }" var="obj" varStatus="status">
-	  			<c:if test="${ status.count le 12 }">
-					<div class="col-sm-2 text-center" style="font-size: 12px;">
-						<a href="${ contextPath }/brand.do?brand_id=${ obj.BRAND_ID }" class="thumbnail">
-							<img src="${ obj.IMG_PATH }" style="width: 100%; height: 130px;" alt="${ obj.BRAND_NM }">
-							${ obj.BRAND_NM }
-						</a>
-					</div>
-	  			</c:if>
-	  		</c:forEach>
-	  </div>
-	</section>
-		
-	<!-- 	
-	<section id="contents">
-		<div class="row">
-			<div class="col-sm-12">
-				<div class="btn-group pull-left">
-				  <button type="button" class="btn btn-default btn-primary">신작</button>
-				  <button type="button" class="btn btn-default">베스트</button>
-				</div>
-				<div class="btn-group pull-right">
-				  <button type="button" class="btn btn-default btn-primary"><i class="icon-th-large"></i></button>
-				  <button type="button" class="btn btn-default"><i class="icon-th-list"></i></button>
-				</div>
-			</div>
-		</div>
-		
-		<br />
-		
-		<div class="row">
-		
-			<c:forEach begin="1" end="6" varStatus="status">
-			  <div class="col-sm-2">
-			  
-			  	<c:forEach begin="1" end="2">
-				  	<div class="row">
-							<div class="col-sm-12">
-						    <div class="thumbnail">
-						      <img style="width: 100%; height: 130px;" alt="콘텐츠 배너 영역 ${ status.count }">
-						      <div class="caption">
-						        <p>설명</p>
-						      </div>
-						    </div>
-							</div>
-						</div>
-						<br />
-			  	</c:forEach>
-			  	
-			  </div>
-			</c:forEach>
-			
-		</div>
-	</section>
-	 -->
-	
-	<!-- 
-	<section id="recommend">
-		<div class="row">
-			<div class="col-sm-12">
-				<button type="button" class="btn btn-default btn-lg btn-primary">1-2세<br /> 추천</button>
-				<button type="button" class="btn btn-default btn-lg">3-4세<br /> 추천</button>
-				<button type="button" class="btn btn-default btn-lg">5-6세<br /> 추천</button>
-			</div>
-		</div>
-		
-		<br />
-		
-		<div class="row">
-		
-			<c:forEach begin="1" end="6" varStatus="status">
-			  <div class="col-sm-2">
-	
-			  	<c:forEach begin="1" end="3">
-				  	<div class="row">
-							<div class="col-sm-12">
-						    <div class="thumbnail">
-						      <img style="width: 100%; height: 130px;" alt="추천 배너 영역 ${ status.count }">
-						      <div class="caption">
-						        <p>설명</p>
-						      </div>
-						    </div>
-							</div>
-						</div>
-						<br />
-			  	</c:forEach>
-			  	
-			  </div>
-			</c:forEach>
-			
-		</div>
-	</section>
-	 -->
-	
-	<section id="noti">
-		<div class="row">
-			<div class="col-sm-4">
-				<div class="well">
-					이벤트 배너영역
-				</div>
-			</div>
-			<div class="col-sm-4">
-				<div class="row">
-					<div class="col-sm-6">
-						<div class="well well-half">
-							부모방
-						</div>
-					</div>
-					<div class="col-sm-6">
-						<div class="well well-half">
-							우리아이
-							<br />
-							공부방법 공유
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-sm-6">
-						<div class="well well-half">
-							유료회원
-							<br />
-							가입하기
-						</div>
-					</div>
-					<div class="col-sm-6">
-						<div class="well well-half">
-							스토리팜
-							<br />
-							소개
-						</div>
-					</div>
-				</div>
-				
-			</div>
-			<div class="col-sm-4">
-				<div class="well">
-					<h4>공지사항</h4>
-					<ul>
-						<li>스토리팜 오픈이벤트</li>
-						<li>신규가입 이벤트 당첨자확인</li>
-						<li>신규동영상 업데이트 확인</li>
-						<li>프로젝트 업데이트</li>
-					</ul>
-				</div>
-			</div>
-		</div>
-	</section>
-</div>
 
-<script>
-	$("#slides").slidesjs({
-		width: 500,
-		height: 300,
-		pagination: {
-		      active: true,
-		        // [boolean] Create pagination items.
-		        // You cannot use your own pagination. Sorry.
-		      effect: "slide"
-		        // [string] Can be either "slide" or "fade".
-		    },
-    navigation: {
-        active: false,
-          // [boolean] Generates next and previous buttons.
-          // You can set to false and use your own buttons.
-          // User defined buttons must have the following:
-          // previous button: class="slidesjs-previous slidesjs-navigation"
-          // next button: class="slidesjs-next slidesjs-navigation"
-        effect: "slide"
-          // [string] Can be either "slide" or "fade".
-      }
-		    
-	});
-</script>
+	<h2 class="divTit">대쉬보드</h2>
+    <!-- location -->
+	<div id="divLocation">
+		<ul class="location">
+  			<li class="current"><img src="${ contextPath }/assets/images/common/blt_home.gif" alt="home"></li>
+		</ul>
+	</div>
+	<!-- //location -->
+    
+    <div class="topBanner"><img src="" alt="오즈월드 메인 이미지"></div>
+    
+    <!-- conLst -->
+    <div class="conLst">
+    	<ul>
+        	<li>
+            	<p class="photo"><img src="${ contextPath }/assets/images/content/thum.jpg" width="155" height="115" alt=""></p>
+                <p class="divChk"><label><input name="" type="checkbox" value=""> 미운아기오리새끼</label></p>
+                <span class="bg1"></span><span class="bg2"></span><span class="bg3"></span><span class="bg4"></span>
+            </li>
+            <li>
+            	<p class="photo"><img src="${ contextPath }/assets/images/content/thum.jpg" width="155" height="115" alt=""></p>
+                <p class="divChk"><label><input name="" type="checkbox" value=""> 미운아기오리새끼</label></p>
+                <span class="bg1"></span><span class="bg2"></span><span class="bg3"></span><span class="bg4"></span>
+            </li>
+            <li>
+            	<p class="photo"><img src="${ contextPath }/assets/images/content/thum.jpg" width="155" height="115" alt=""></p>
+                <p class="divChk"><label><input name="" type="checkbox" value=""> 미운아기오리새끼</label></p>
+                <span class="bg1"></span><span class="bg2"></span><span class="bg3"></span><span class="bg4"></span>
+            </li>
+            <li>
+            	<p class="photo"><img src="${ contextPath }/assets/images/content/thum.jpg" width="155" height="115" alt=""></p>
+                <p class="divChk"><label><input name="" type="checkbox" value=""> 미운아기오리새끼</label></p>
+                <span class="bg1"></span><span class="bg2"></span><span class="bg3"></span><span class="bg4"></span>
+            </li>
+            <li>
+            	<p class="photo"><img src="${ contextPath }/assets/images/content/thum.jpg" width="155" height="115" alt=""></p>
+                <p class="divChk"><label><input name="" type="checkbox" value=""> 미운아기오리새끼</label></p>
+                <span class="bg1"></span><span class="bg2"></span><span class="bg3"></span><span class="bg4"></span>
+            </li>
+            <li>
+            	<p class="photo"><img src="${ contextPath }/assets/images/content/thum.jpg" width="155" height="115" alt=""></p>
+                <p class="divChk"><label><input name="" type="checkbox" value=""> 미운아기오리새끼</label></p>
+                <span class="bg1"></span><span class="bg2"></span><span class="bg3"></span><span class="bg4"></span>
+            </li>
+            <li>
+            	<p class="photo"><img src="${ contextPath }/assets/images/content/thum.jpg" width="155" height="115" alt=""></p>
+                <p class="divChk"><label><input name="" type="checkbox" value=""> 미운아기오리새끼</label></p>
+                <span class="bg1"></span><span class="bg2"></span><span class="bg3"></span><span class="bg4"></span>
+            </li>
+            <li>
+            	<p class="photo"><img src="${ contextPath }/assets/images/content/thum.jpg" width="155" height="115" alt=""></p>
+                <p class="divChk"><label><input name="" type="checkbox" value=""> 미운아기오리새끼</label></p>
+                <span class="bg1"></span><span class="bg2"></span><span class="bg3"></span><span class="bg4"></span>
+            </li>
+            <li>
+            	<p class="photo"><img src="${ contextPath }/assets/images/content/thum.jpg" width="155" height="115" alt=""></p>
+                <p class="divChk"><label><input name="" type="checkbox" value=""> 미운아기오리새끼</label></p>
+                <span class="bg1"></span><span class="bg2"></span><span class="bg3"></span><span class="bg4"></span>
+            </li>
+            <li>
+            	<p class="photo"><img src="${ contextPath }/assets/images/content/thum.jpg" width="155" height="115" alt=""></p>
+                <p class="divChk"><label><input name="" type="checkbox" value=""> 미운아기오리새끼</label></p>
+                <span class="bg1"></span><span class="bg2"></span><span class="bg3"></span><span class="bg4"></span>
+            </li>
+            <li>
+            	<p class="photo"><img src="${ contextPath }/assets/images/content/thum.jpg" width="155" height="115" alt=""></p>
+                <p class="divChk"><label><input name="" type="checkbox" value=""> 미운아기오리새끼</label></p>
+                <span class="bg1"></span><span class="bg2"></span><span class="bg3"></span><span class="bg4"></span>
+            </li>
+            <li>
+            	<p class="photo"><img src="${ contextPath }/assets/images/content/thum.jpg" width="155" height="115" alt=""></p>
+                <p class="divChk"><label><input name="" type="checkbox" value=""> 미운아기오리새끼</label></p>
+                <span class="bg1"></span><span class="bg2"></span><span class="bg3"></span><span class="bg4"></span>
+            </li>
+            <li>
+            	<p class="photo"><img src="${ contextPath }/assets/images/content/thum.jpg" width="155" height="115" alt=""></p>
+                <p class="divChk"><label><input name="" type="checkbox" value=""> 미운아기오리새끼</label></p>
+                <span class="bg1"></span><span class="bg2"></span><span class="bg3"></span><span class="bg4"></span>
+            </li>
+            <li>
+            	<p class="photo"><img src="${ contextPath }/assets/images/content/thum.jpg" width="155" height="115" alt=""></p>
+                <p class="divChk"><label><input name="" type="checkbox" value=""> 미운아기오리새끼</label></p>
+                <span class="bg1"></span><span class="bg2"></span><span class="bg3"></span><span class="bg4"></span>
+            </li>
+            <li>
+            	<p class="photo"><img src="${ contextPath }/assets/images/content/thum.jpg" width="155" height="115" alt=""></p>
+                <p class="divChk"><label><input name="" type="checkbox" value=""> 미운아기오리새끼</label></p>
+                <span class="bg1"></span><span class="bg2"></span><span class="bg3"></span><span class="bg4"></span>
+            </li>
+        </ul>
+        
+        <!--paginate -->
+        <div class="paginate_complex"><a class="direction prev" href="#"><img src="${ contextPath }/assets/images/common/btn_pagingPre_off.gif" alt="이전 페이지 이동" class="rollimg"></a><a href="#" class="first">1</a><a href="#">2</a><a href="#">3</a><a href="#">4</a><strong>5</strong><a href="#">6</a><a href="#">7</a><a href="#">8</a><a href="#">889</a><a class="direction next" href="#"><img src="${ contextPath }/assets/images/common/btn_pagingNext_off.gif" alt="다음 페이지 이동" class="rollimg"></a>
+        </div>
+		<!--//paginate -->
+        
+        <div class="btnSc aright">
+        	<a href="#"><img src="${ contextPath }/assets/images/common/btn_viewSel_off.png" alt="선택보기" class="rollimg"></a>
+        	<a href="#"><img src="${ contextPath }/assets/images/common/btn_repeat_off.png" alt="반복보기" class="rollimg"></a>
+        	<a href="#"><img src="${ contextPath }/assets/images/common/btn_close_off.png" alt="닫기" class="rollimg"></a>
+        </div>
+        
+    </div>
+    <!-- conLst -->
+</div>

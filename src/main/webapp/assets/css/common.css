@@ -27,6 +27,13 @@
 .box04 .bg2{ position:absolute; display:block; background:url(../images/common/bg_corner4.gif) -10px 0 no-repeat; width:10px; height:10px; top:-1px; right:-1px; z-index:99;}
 .box04 .bg3{ position:absolute; display:block; background:url(../images/common/bg_corner4.gif) 0 -10px no-repeat; width:10px; height:10px; bottom:-1px; left:-1px; z-index:99;}
 .box04 .bg4{ position:absolute; display:block; background:url(../images/common/bg_corner4.gif) -10px -20px no-repeat; width:10px; height:10px; bottom:-1px; right:-1px; z-index:99;}
+.box05{ border:#f6f6f6 2px solid; position:relative;}
+.box05 .bg1{ position:absolute; display:block; background:url(../images/common/bg_corner5.gif) 0 0 no-repeat; width:12px; height:12px; top:-2px; left:-2px; z-index:99;}
+.box05 .bg2{ position:absolute; display:block; background:url(../images/common/bg_corner5.gif) -12px 0 no-repeat; width:12px; height:12px; top:-2px; right:-2px; z-index:99;}
+.box05 .bg3{ position:absolute; display:block; background:url(../images/common/bg_corner5.gif) 0 -12px no-repeat; width:12px; height:12px; bottom:-2px; left:-2px; z-index:99;}
+.box05 .bg4{ position:absolute; display:block; background:url(../images/common/bg_corner5.gif) -12px -12px no-repeat; width:12px; height:12px; bottom:-2px; right:-2px; z-index:99;}
+.boxDot{ background:url(../images/common/box_dot.gif) 0 0 no-repeat; padding:10px 0 0 0;}
+.boxDot .inner{ background:url(../images/common/box_dot.gif) 0 100% no-repeat; padding:0 10px 10px 10px;}
 
 .commentBox{ background:url(../images/common/coment_box.gif) 0 0 no-repeat; width:690px; height:129px; margin:24px auto;}
 .commentBox ul{ padding:30px 0 0 198px;}
@@ -36,9 +43,9 @@
 
 /* ul list */
 ul.ulLst01{ overflow:hidden;}
-ul.ulLst01 li{ margin:4px 0; padding-left:8px; background:url(../images/common/blt_dot.gif) 0 6px no-repeat;}
+ul.ulLst01 li{ margin:4px 0; padding-left:12px; background:url(../images/common/blt_dot.gif) 0 6px no-repeat;}
 ul.ulLst02{ overflow:hidden;}
-ul.ulLst02 li{ margin:4px 0; padding-left:10px; background:url(../images/common/blt_dot1.gif) 0 6px no-repeat;}
+ul.ulLst02 li{ margin:4px 0; padding-left:12px; background:url(../images/common/blt_dot1.gif) 0 6px no-repeat;}
 
 /* tab */
 .divTab{ overflow:hidden;}
@@ -48,6 +55,10 @@ ul.ulLst02 li{ margin:4px 0; padding-left:10px; background:url(../images/common/
 .divTab .tab01 li a span{display:table-cell; color:#fff; font-weight:bold; line-height:1.2em;vertical-align:middle;}
 .divTab .tab01 li a.on,
 .divTab .tab01 li a:hover{background:url(../images/common/bg_tab.gif) 0 0 no-repeat; padding:0; height:38px;}
+
+/* titarea */
+.titArea{ position:relative;}
+.titArea .right{ position:absolute; top:0; right:0;}
 
 /* member */
 .loginBox{ width:536px; *width:456px; margin:0 auto; padding:30px 40px 20px 40px;}
@@ -140,4 +151,24 @@ ul.ulLst02 li{ margin:4px 0; padding-left:10px; background:url(../images/common/
 .faqLst li .fa#on{color:#fb7c00; border-bottom:#e3e3e3 1px solid;}
 .faqLst li .fa#on .bltQ{ color:#fb7c00; font-weight:bold;}
 
+
+/* mypage */
+.memExit{ padding:35px 50px;}
+.memExit .tx01{ color:#939598; font-size:14px; font-weight:bold; text-align:center; padding:0 0 25px 0;}
+.exitForm{ position:relative; padding:23px 0 30px 60px;}
+.exitForm li{ margin:10px 0;}
+.exitForm li .input{width:240px; height:40px; border:none; background:transparent url(../images/mypage/bg_inp.gif) 0 0 no-repeat; padding:0 0 0 10px; line-height:40px;}
+.exitForm .btExit{ position:absolute; top:30px; left:386px;}
+
+
+/* 부모방 */
+.parentWr{ background:url(../images/common/blt_line2.gif) 50% 0 repeat-y; overflow:hidden;}
+.parentWr .divRow01{ float:left; width:320px; padding:20px 25px 20px 0; background:url(../images/common/blt_line.gif) 0 100% repeat-x; height:120px;}
+.parentWr .divRow02{ float:right; width:320px; padding:20px 0 20px 25px; background:url(../images/common/blt_line.gif) 0 100% repeat-x; height:120px;}
+.parentWr .divRow02 .box05{ padding:8px 0;}
+.parentWr .divRow03{ float:left; width:320px; padding:20px 25px 20px 0; height:230px;}
+.parentWr .divRow03 ul{ border-top:#dbdbdb 2px solid;border-bottom:#dbdbdb 1px solid;}
+.parentWr .divRow03 ul li{ padding:0 20px; border-bottom:#dbdbdb 1px solid;}
+.parentWr .divRow03 ul li a{ display:block; background: url(../images/common/blt_dot5.gif) 0 14px no-repeat; padding-left:10px; line-height:30px;}
+.parentWr .divRow04{ float:right; width:320px; padding:20px 0 20px 25px; height:230px;}
 

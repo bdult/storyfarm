@@ -1,29 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<div class="row">
-	<div class="col-md-12">
-	  <h4><a href="${ contextPath }/mypage/payment.do">유료서비스</a></h4>
-	  <hr />
-	</div>
-	<div class="col-md-12">
-	  <h4><a href="${ contextPath }/mypage/purchasingInfo.do">구매내역</a></h4>
-	  <hr />
-	</div>
-	<div class="col-md-12">
-	  <h4><a href="${ contextPath }/mypage/coupon.do">쿠폰내역</a></h4>
-	  <hr />
-	</div>
-	<div class="col-md-12">
-	  <h4><a href="${ contextPath }/mypage/pauseRequest.do">일시중지</a></h4>
-	  <hr />
-	</div>
-	<div class="col-md-12">
-	  <h4><a href="${ contextPath }/mypage/question.do">1:1문의</a></h4>
-	  <hr />
-	</div>
-	<div class="col-md-12">
-	  <h4><a href="${ contextPath }/mypage/userInfo.do">회원정보수정</a></h4>
-	  <hr />
-	</div>
-</div>
+<h2><img src="${ contextPath }/assets/images/common/h2_mypage.gif" alt="마이페이지"></h2>
+<ul id="lm">
+	<li><a href="${ contextPath }/mypage/payment.do" class="lm0501">유료서비스 결제</a></li>
+	<li><a href="${ contextPath }/mypage/purchasingInfo.do" class="lm0502">구매내역</a>
+    	<ul>
+        	<li><a href="#" class="lm050201">현재이용내역</a></li>
+            <li><a href="#" class="lm050202">과거이용내역</a></li>
+        </ul>
+    </li>
+	<li><a href="${ contextPath }/mypage/coupon.do" class="lm0503">쿠폰내역</a></li>
+	<li><a href="${ contextPath }/mypage/pauseRequest.do" class="lm0504">일시중지</a>
+    	<ul>
+        	<li><a href="#" class="lm050401">일시중지 신청</a></li>
+            <li><a href="#" class="lm050402">일시중지 해지</a></li>
+        </ul>
+    </li>
+	<li><a href="${ contextPath }/mypage/question.do" class="lm0505">1:1문의</a></li>
+	<li><a href="${ contextPath }/mypage/userInfo.do" class="lm0506">회원정보수정</a></li>
+</ul>

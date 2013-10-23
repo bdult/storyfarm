@@ -1,11 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<div class="row">
-	<div class="col-lg-12 text-left">
-		안녕하세요 ${ userInfoSession.MEMBER_ID } 님
-	</div>
-</div>
+<p>안녕하세요 ${ userInfoSession.MEMBER_ID } 님</p>
+
 <div class="row">
 	<div class="col-lg-6">
 		<div class="well">
