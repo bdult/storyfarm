@@ -15,7 +15,9 @@
 <!-- //location -->
  
 <div class="tblHeadSch">
-	<input id="queryStr" name="search" type="text" class="input" value="${ paramsMap.search }"><a class="searchBtn" href=""><img src="${ contextPath }/assets/images/common/btn_search2.gif" alt="검색" class="bt"></a>
+	<form id="searchForm" action="${ contextPath }/cscenter/notice.do" method="GET">
+		<input id="queryStr" name="search" type="text" class="input" value="${ paramsMap.search }"><a class="searchBtn" href=""><img src="${ contextPath }/assets/images/common/btn_search2.gif" alt="검색" class="bt"></a>
+	</form>
 </div>
 <table class="list mgt10">
 	<colgroup>
@@ -83,6 +85,7 @@ $(function(){
 	$("a.searchBtn").click(function(){
 		event.preventDefault();
 		search();
+		
 	});
 	
 	$('#queryStr').keyup(function(e) {
@@ -94,7 +97,7 @@ $(function(){
 
 //공지사항 검색 함수
 var search = function( ){
-	window.location.href = "${ contextPath }/cscenter/notice.do?search=" + $("#queryStr").val();
+	$("#searchForm").submit();
 };
 
 </script>

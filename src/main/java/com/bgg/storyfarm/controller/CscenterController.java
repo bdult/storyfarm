@@ -60,7 +60,7 @@ public class CscenterController {
 	@Autowired
 	private PageUtil pageUtil;
 	
-	@RequestMapping(value = "notice.do", method = RequestMethod.GET)
+	@RequestMapping(value = "notice.do")//, method = RequestMethod.GET)
 	public ModelAndView notice(@RequestParam Map<String, Object> paramsMap) throws UnsupportedEncodingException {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("side-cscenter/notice");
@@ -73,25 +73,6 @@ public class CscenterController {
 		Map<String, Object> boardMap = new HashMap<String, Object>();
 		boardMap.put(StoryfarmConstants.BOARD_ID, NOTI_BOARD_ID);
 		boardMap.put("search", paramsMap.get("search"));
-		
-		try {
-			logger.info("search : {}", paramsMap.get("search"));
-			byte[] b = paramsMap.get("search").toString().getBytes("iso-8859-1");
-			
-			logger.info("search euc : {}", new String(b, "euc-kr"));
-			logger.info("search utf : {}", new String(b, "UTF-8"));
-			
-			String isoname = URLEncoder.encode(paramsMap.get("search").toString(),"iso-8859-1");
-			logger.info("isoname  : {}", isoname);
-			logger.info("isoname  : {}", URLDecoder.decode(isoname));
-			boardMap.put("search", new String(b, "UTF-8"));
-			
-		} catch (NullPointerException e) {
-			//do nothing
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
 		
 		//페이징 로직
 		int totalCnt = boardService.totalCount(boardMap);
