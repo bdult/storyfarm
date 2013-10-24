@@ -4,9 +4,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.bgg.storyfarm.common.StoryfarmConstants;
 import com.bgg.storyfarm.dao.UserDao;
 
 @Service
@@ -63,4 +66,5 @@ public class UserService {
 	public Map<String, Object> duplicationUser(Map<String, Object> paramMap) {
 		return userDao.duplicationUser(paramMap);
 	}
+
 }

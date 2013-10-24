@@ -139,6 +139,10 @@ public class ContentsDao extends SqlSessionDaoSupport {
 		return getSqlSession().selectList("contentsQuery.listByArr", contentsId);
 	}
 
+	public int addPlayLog(Map paramMap) {
+		return getSqlSession().insert("contentsQuery.addPlayLog", paramMap);
+	}
+
 	
 
 }

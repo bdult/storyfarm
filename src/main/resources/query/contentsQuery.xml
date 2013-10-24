@@ -191,4 +191,23 @@
 			</foreach>
     </select>
     
+    <insert id="addPlayLog">
+        INSERT BG_PLAY_LOG 
+        	(
+    	    	MEMBER_IDX
+    	    	, CONTENTS_ID
+    	    	, YEAR
+    	    	, MONTH
+    	    	, DAY
+	        )
+        VALUES
+	        (
+	        	#{member_idx}
+	        	, #{contents_id}
+	       		, (select year(now()))
+	       		, (select month(now()))
+	       		, (select day(now()))
+	      	)
+    </insert>
+    
 </mapper>

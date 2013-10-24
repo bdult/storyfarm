@@ -1,9 +1,6 @@
 package com.bgg.storyfarm.controller;
 
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -12,7 +9,6 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,13 +19,13 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.bgg.storyfarm.common.BreadcrumbUtil;
 import com.bgg.storyfarm.common.PageUtil;
 import com.bgg.storyfarm.common.StoryfarmConstants;
 import com.bgg.storyfarm.service.ContentsService;
+import com.bgg.storyfarm.service.UserService;
 
 @Controller
 public class ViewController {
@@ -49,6 +45,9 @@ public class ViewController {
 	
 	@Autowired
 	private MessageSource messageSource;
+	
+	@Autowired
+	private UserService userService;
 	
 	@RequestMapping(value = "dashboard.do", method = RequestMethod.GET)
 	public ModelAndView main(Model model, Locale locale,
@@ -217,12 +216,23 @@ public class ViewController {
 	}
 	
 	@RequestMapping(value = "streaming.do", method = RequestMethod.GET)
-	public String StreamingTest( @RequestParam String contents_id ) {
+	public String streaming( @RequestParam String contents_id, HttpSession session ) {
+		
+		// 인증 체크
+//		if(authTrue(session)){
+//			String redirectUrl = contentsService.movieUrlByContentsId(contents_id);
+//			return "redirect:"+redirectUrl;
+//		}else{
+//			return null;
+//		}
 		String redirectUrl = contentsService.movieUrlByContentsId(contents_id);
 		return "redirect:"+redirectUrl;
-		
 	}
 	
+	private boolean authTrue(HttpSession session) {
+		return false;
+	}
+
 	// UNDER CODE IS TEST_CODE
 	@RequestMapping(value = "cropTest.do", method = RequestMethod.GET)
 	public String cropTest(Model model) {

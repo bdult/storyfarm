@@ -7,6 +7,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.bgg.storyfarm.common.StoryfarmConstants;
 import com.bgg.storyfarm.dao.ContentsDao;
 
 @Service
@@ -117,6 +118,13 @@ public class ContentsService {
 
 	public List<Map<String, Object>> listByArr(List<String> contentsId) {
 		return contentsDao.listByArr(contentsId);
+	}
+
+	public void addPlayLog(Long memberIdx, String contents_id) {
+		Map playInfo = new HashMap();
+		playInfo.put(StoryfarmConstants.MEMBER_IDX, memberIdx);
+		playInfo.put(StoryfarmConstants.CONTENTS_ID, contents_id);
+		contentsDao.addPlayLog(playInfo);
 	}
 
 	

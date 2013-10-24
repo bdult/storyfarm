@@ -24,6 +24,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.bgg.storyfarm.common.BreadcrumbUtil;
 import com.bgg.storyfarm.common.StoryfarmConstants;
+import com.bgg.storyfarm.service.ContentsService;
 import com.bgg.storyfarm.service.UserService;
 
 @SuppressWarnings("unchecked")
@@ -35,6 +36,9 @@ public class UserController {
 
 	@Autowired
 	private BreadcrumbUtil breadcrumbUtil;
+	
+	@Autowired
+	private ContentsService contentsService;
 
 	private Logger logger = LoggerFactory.getLogger(UserController.class);
 	
@@ -227,5 +231,23 @@ public class UserController {
 		model.addAttribute("findUserData", userService.findPwd(paramMap));
 		
 		return mav;
+	}
+	
+	@RequestMapping(value = "addPlayLog.ajax", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	public @ResponseBody String addPlayLog(@RequestParam String contents_id, HttpSession session) {
+
+		Map memberInfo = (Map)session.getAttribute(StoryfarmConstants.MEMBER_SESSION);
+		contentsService.addPlayLog((Long)memberInfo.get("IDX"), contents_id);
+		return null;
+	}
+	@RequestMapping(value = "playLoginCheck.ajax", produces = "application/json;charset=UTF-8")
+	public @ResponseBody String playLoginCheck(HttpSession session) {
+		
+		Map memberInfo = (Map)session.getAttribute(StoryfarmConstants.MEMBER_SESSION);
+		if(memberInfo == null){
+			return "200";
+		}else{
+			return "404";
+		}
 	}
 }
