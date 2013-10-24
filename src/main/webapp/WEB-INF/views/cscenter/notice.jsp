@@ -15,7 +15,7 @@
 <!-- //location -->
  
 <div class="tblHeadSch">
-	<form id="searchForm" action="${ contextPath }/cscenter/notice.do" method="GET">
+	<form id="searchForm" action="${ contextPath }/cscenter/notice.do" method="POST">
 		<input id="queryStr" name="search" type="text" class="input" value="${ paramsMap.search }"><a class="searchBtn" href=""><img src="${ contextPath }/assets/images/common/btn_search2.gif" alt="검색" class="bt"></a>
 	</form>
 </div>
