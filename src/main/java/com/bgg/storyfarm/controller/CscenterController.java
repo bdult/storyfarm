@@ -1,5 +1,7 @@
 package com.bgg.storyfarm.controller;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -58,7 +60,7 @@ public class CscenterController {
 	private PageUtil pageUtil;
 	
 	@RequestMapping(value = "notice.do", method = RequestMethod.GET)
-	public ModelAndView notice(@RequestParam Map<String, Object> paramsMap) {
+	public ModelAndView notice(@RequestParam Map<String, Object> paramsMap) throws UnsupportedEncodingException {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("side-cscenter/notice");
 		mav.addObject(LM_SEQ, LNB_NOTI);
@@ -72,6 +74,14 @@ public class CscenterController {
 		boardMap.put("search", paramsMap.get("search"));
 		
 		logger.info("search : {}", paramsMap.get("search"));
+		byte[] b = paramsMap.get("search").toString().getBytes("iso-8859-1");
+
+		logger.info("search : {}", new String(b, "euc-kr"));
+		logger.info("search : {}", new String(b, "UTF-8"));
+		
+		String isoname = URLEncoder.encode(paramsMap.get("search").toString(),"iso-8859-1");
+		
+		
 		//페이징 로직
 		int totalCnt = boardService.totalCount(boardMap);
 		int pageNum = setPage(paramsMap, boardMap);
