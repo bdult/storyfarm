@@ -71,6 +71,7 @@ public class CscenterController {
 		boardMap.put(StoryfarmConstants.BOARD_ID, NOTI_BOARD_ID);
 		boardMap.put("search", paramsMap.get("search"));
 		
+		logger.info("search : {}", paramsMap.get("search"));
 		//페이징 로직
 		int totalCnt = boardService.totalCount(boardMap);
 		int pageNum = setPage(paramsMap, boardMap);
