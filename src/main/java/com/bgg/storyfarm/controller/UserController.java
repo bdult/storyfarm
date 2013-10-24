@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.lang.StringUtils;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.slf4j.Logger;
@@ -68,8 +69,8 @@ public class UserController {
 			model.addAttribute("msg", "login_fail");
 			return "user/loginView";
 		} else {
-			if(session.getAttribute("userInfoSession") == null){
-				session.setAttribute("userInfoSession", sessionMap);
+			if(session.getAttribute(StoryfarmConstants.MEMBER_SESSION) == null){
+				session.setAttribute(StoryfarmConstants.MEMBER_SESSION, sessionMap);
 				response.addCookie(new Cookie("userIdCookie", paramMap.get("id").toString()));
 				response.addCookie(new Cookie("userPwdCookie", paramMap.get("pwd").toString()));
 				if(paramMap.get("userSaveId") != null){
@@ -83,7 +84,20 @@ public class UserController {
 					response.addCookie(new Cookie("userPwdCheck", ""));
 				}
 			}
-			return "user/loginResult";
+			
+			// callbackUrl 유무 체크
+			String callBackUrl = (String)session.getAttribute(StoryfarmConstants.CALL_BACK_URL);
+			
+			if(StringUtils.isEmpty(callBackUrl)){
+				return "user/loginResult";
+			}else{
+				try {
+					response.sendRedirect(callBackUrl);
+				} catch (Exception e) {
+					// TODO: handle exception
+				}
+				return null;
+			}
 		}
 		
 	}

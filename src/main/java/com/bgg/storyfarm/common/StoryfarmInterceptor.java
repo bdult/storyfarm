@@ -2,6 +2,7 @@ package com.bgg.storyfarm.common;
 
 import java.util.Enumeration;
 import java.util.HashMap;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -29,35 +30,28 @@ public class StoryfarmInterceptor extends HandlerInterceptorAdapter {
 
 			printRequestLog(request);
 			
-			if( loginCheckOff ) {
-				return true;
-			}
-			
 			if(	
-				//세션 체크 예외 URL 리스트
-				! request.getServletPath().contains( "/index.do" ) &&
-				! request.getServletPath().contains( "/login.do" ) &&
-				! request.getServletPath().contains( "/join.do" ) &&
-				! request.getServletPath().contains( "/getUser.ajax" ) &&
-				! request.getServletPath().contains( "/joinAction.do" )
-				
+				request.getServletPath().contains( "play.do" ) ||
+				request.getServletPath().contains( "streaming.do" )
 			){
 				
 				HttpSession session = request.getSession(false);
 				
-				if ( session == null || session.getAttribute("user") == null){
-					response.sendRedirect("/index.do?result=6");
+				String callBackUrl = request.getContextPath()+request.getServletPath()+"?"+request.getQueryString();
+				if ( session == null || session.getAttribute(StoryfarmConstants.MEMBER_SESSION) == null){
+					request.getSession().setAttribute(StoryfarmConstants.CALL_BACK_URL, callBackUrl);
+					response.sendRedirect(request.getContextPath()+"/loginView.do");
 					return false;
 				} else {
 					
 //					 ROLE처리 로직 구현 예정
 //					 자격 없을시 "접근권한이 없음" 문구 알림
-					@SuppressWarnings("unchecked")
-					HashMap<String, Object> map = (HashMap<String, Object>) session.getAttribute("user");
-					if(map.get("level_cd").equals("2")) {
-						response.sendRedirect("/index.do?result=5");
-						return false;
-					}
+//					@SuppressWarnings("unchecked")
+//					HashMap<String, Object> map = (HashMap<String, Object>) session.getAttribute("user");
+//					if(map.get("level_cd").equals("2")) {
+//						response.sendRedirect("/index.do?result=5");
+//						return false;
+//					}
 				}
 			}
 				 
