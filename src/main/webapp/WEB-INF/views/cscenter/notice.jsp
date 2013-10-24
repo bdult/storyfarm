@@ -15,7 +15,7 @@
 <!-- //location -->
  
 <div class="tblHeadSch">
-	<input name="" type="text" class="input"><a href="#"><img src="${ contextPath }/assets/images/common/btn_search2.gif" alt="검색" class="bt"></a>
+	<input id="queryStr" name="search" type="text" class="input" value="${ paramsMap.search }"><a class="searchBtn" href=""><img src="${ contextPath }/assets/images/common/btn_search2.gif" alt="검색" class="bt"></a>
 </div>
 <table class="list mgt10">
 	<colgroup>
@@ -76,3 +76,25 @@
     </ul>
 </div>
 
+<script>
+
+$(function(){
+	
+	$("a.searchBtn").click(function(){
+		event.preventDefault();
+		search();
+	});
+	
+	$('#queryStr').keyup(function(e) {
+		if(e.keyCode == 13) {
+			search();
+		}
+	});
+});
+
+//공지사항 검색 함수
+var search = function( ){
+	window.location.href = "${ contextPath }/cscenter/notice.do?search=" + $("#queryStr").val();
+};
+
+</script>

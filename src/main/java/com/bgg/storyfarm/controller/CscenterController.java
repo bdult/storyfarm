@@ -76,7 +76,7 @@ public class CscenterController {
 		int pageNum = setPage(paramsMap, boardMap);
 		mav.addObject("pageLink", pageUtil.getPageLinkMap(totalCnt, pageNum));
 		//페이징 로직
-		mav.addObject("searchList", paramsMap);
+		mav.addObject("paramsMap", paramsMap);
 		
 		mav.addObject("list", boardService.list(boardMap));
 		

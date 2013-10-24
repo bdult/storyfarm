@@ -33,8 +33,6 @@ public class BoardService {
 	 */
 	public List<Map<String, Object>> list(Map<String, Object> boardMap) {
 		
-		//TODO 페이징 로직 추가해야함
-		
 		return boardDao.list(boardMap);
 	}
 	

@@ -32,6 +32,7 @@ public class BoardDao extends SqlSessionDaoSupport {
 	 * @return
 	 */
 	public List<Map<String, Object>> list(Map<String, Object> boardMap) {
+		
 		return getSqlSession().selectList("boardQuery.list", boardMap);
 	}
 
