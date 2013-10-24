@@ -1,6 +1,7 @@
 package com.bgg.storyfarm.controller;
 
 import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
@@ -73,13 +74,22 @@ public class CscenterController {
 		boardMap.put(StoryfarmConstants.BOARD_ID, NOTI_BOARD_ID);
 		boardMap.put("search", paramsMap.get("search"));
 		
-		logger.info("search : {}", paramsMap.get("search"));
-		byte[] b = paramsMap.get("search").toString().getBytes("iso-8859-1");
-
-		logger.info("search : {}", new String(b, "euc-kr"));
-		logger.info("search : {}", new String(b, "UTF-8"));
-		
-		String isoname = URLEncoder.encode(paramsMap.get("search").toString(),"iso-8859-1");
+		try {
+			logger.info("search : {}", paramsMap.get("search"));
+			byte[] b = paramsMap.get("search").toString().getBytes("iso-8859-1");
+			
+			logger.info("search euc : {}", new String(b, "euc-kr"));
+			logger.info("search utf : {}", new String(b, "UTF-8"));
+			
+			String isoname = URLEncoder.encode(paramsMap.get("search").toString(),"iso-8859-1");
+			logger.info("isoname  : {}", isoname);
+			logger.info("isoname  : {}", URLDecoder.decode(isoname));
+			
+		} catch (NullPointerException e) {
+			//do nothing
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 		
 		//페이징 로직
