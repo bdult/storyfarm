@@ -84,6 +84,7 @@ public class CscenterController {
 			String isoname = URLEncoder.encode(paramsMap.get("search").toString(),"iso-8859-1");
 			logger.info("isoname  : {}", isoname);
 			logger.info("isoname  : {}", URLDecoder.decode(isoname));
+			boardMap.put("search", new String(b, "UTF-8"));
 			
 		} catch (NullPointerException e) {
 			//do nothing
