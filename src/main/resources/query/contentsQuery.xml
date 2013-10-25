@@ -191,6 +191,8 @@
 			</foreach>
     </select>
     
+    
+    <!-- Play Log  -->
     <insert id="addPlayLog">
         INSERT BG_PLAY_LOG 
         	(
@@ -209,5 +211,12 @@
 	       		, (select day(now()))
 	      	)
     </insert>
+    
+    <select id="duplicatePlayLogCount" resultType="int">
+        SELECT COUNT(*) FROM BG_PLAY_LOG
+        WHERE 1=1 
+        AND CONTENTS_ID = #{contents_id}
+        AND MEMBER_IDX = #{member_idx}
+    </select>
     
 </mapper>

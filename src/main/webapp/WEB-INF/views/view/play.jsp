@@ -67,77 +67,36 @@
 <script>
 $(function(){
 	
+	// 차후 결제 기능 구현히 결제 체크 구현
+
+	
 	// play event
-	var isAlreadySendLog = false;
-	var authTrue=false;
-	$("#player").bind('playing',function() {
-		$("#player").get(0).pause();
-		
+	var contentsId = "${contents.CONTENTS_ID}";
+	$("#player").bind('play',function() {
 		if(loginMember()){
-			if(authMember()){
-				$("#player").get(0).play();
-				addPlayLog(isAlreadySendLog);
-			}
-			// not auth member
-			else{
-				if(confirm("결제가 이루어 지지 않았습니다. \n 결제 하시겠습니까?")){
-					
-				}else{
-					
-				}
-			}
+			addPlayLog(contentsId);
+			$("#player").get(0).play();
 		}
 		// not log-in user
 		else{
-			if(confirm("로그인 되어 있지 않습니다.")){
+			$("#player").get(0).pause();
+			if(confirm("로그인 되어 있지 않습니다. \n 로그인 하시겠습니까?")){
 				
 			}else{
 				
 			}
 		}
-		
-		
     });
-	
-	// error event
-	$("#player").bind('error',function(e,ui) {
-        switch (e.target.error.code) {
-         case e.target.error.MEDIA_ERR_ABORTED:
-           alert('You aborted the video playback.');
-           break;
-         case e.target.error.MEDIA_ERR_NETWORK:
-           alert('A network error caused the video download to fail part-way.');
-           break;
-         case e.target.error.MEDIA_ERR_DECODE:
-           alert('The video playback was aborted due to a corruption problem or because the video used features your browser did not support.');
-           break;
-         case e.target.error.MEDIA_ERR_SRC_NOT_SUPPORTED:
-           alert('The video could not be loaded, either because the server or network failed or because the format is not supported.');
-           break;
-         default:
-           alert('An unknown error occurred.');
-           break;
-       }
-        //alert("Error Code : "+event.target.error.code);
-    });
-
 
 });
 
 	function loginMember(){
-		var returnValue=false;
-		$.ajax({
-			url: "playLoginCheck.ajax",
-			type: "GET",
-			success: function(response){
-				console.log(response);
-				returnValue = true;
-			},
-			error: function(xhr, status, error){
-				returnValue = false;
-			}
-		});
-		return returnValue;
+		var loginResult = "${loginYn}";
+		if(loginResult == "Y"){
+			return true;
+		}else{
+			return false;
+		}
 	}
 	
 	function authMember(){
@@ -145,24 +104,19 @@ $(function(){
 		return true;
 	}
 
-	function addPlayLog(isAlreadySendLog){
-		// AddPlayLog
-		if(isAlreadySendLog){
-			// Skip
-		}else{
-			$.ajax({
-				url: "addPlayLog.ajax",
-				data: "contents_id=${contents.CONTENTS_ID}",
-				type: "POST",
-				success: function(response){
-					// success
-					isAlreadySendLog = true;
-				},
-				error: function(xhr, status, error){
-					// error
-				}
-			});
-		}
+	function addPlayLog(contentsId){
+		$.ajax({
+			url: "addPlayLog.ajax",
+			data: "contents_id="+contentsId,
+			type: "POST",
+			success: function(response){
+				// success
+				isAlreadySendLog = true;
+			},
+			error: function(xhr, status, error){
+				// error
+			}
+		});
 	}
 
 </script>

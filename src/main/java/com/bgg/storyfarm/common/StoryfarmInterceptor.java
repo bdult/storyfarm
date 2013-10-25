@@ -32,6 +32,7 @@ public class StoryfarmInterceptor extends HandlerInterceptorAdapter {
 			
 			if(	
 				request.getServletPath().contains( "play.do" ) ||
+				request.getServletPath().contains( "playList.do" ) ||
 				request.getServletPath().contains( "streaming.do" )
 			){
 				

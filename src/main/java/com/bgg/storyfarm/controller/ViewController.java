@@ -195,12 +195,20 @@ public class ViewController {
 	}
 	
 	@RequestMapping(value = "play.do", method = RequestMethod.GET)
-	public ModelAndView play( @RequestParam Map<String,Object> paramMap ) {
+	public ModelAndView play( @RequestParam Map<String,Object> paramMap, HttpSession session ) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("view/play");
 		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME));
 		
+		Map memberInfo = (Map)session.getAttribute(StoryfarmConstants.MEMBER_SESSION);
+		if(memberInfo == null){
+			mav.addObject("loginYn", "N");
+		}else{
+			mav.addObject("loginYn", "Y");
+		}
 		mav.addObject("contents", contentsService.detail(paramMap));
+		
+		
 		return mav;
 	}
 	
@@ -208,30 +216,32 @@ public class ViewController {
 	public ModelAndView playList( @RequestParam List<String> contentId, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("view/playList");
-		logger.info("contentsArr.size() {}", contentId.size());
 		List<Map<String, Object>> playList = contentsService.listByArr(contentId);
 		mav.addObject("playList", playList);
-		mav.addObject(BACK_URL, session.getAttribute(BACK_URL));
+		
+		Map memberInfo = (Map)session.getAttribute(StoryfarmConstants.MEMBER_SESSION);
+		if(memberInfo == null){
+			mav.addObject("loginYn", "N");
+		}else{
+			mav.addObject("loginYn", "Y");
+		}
+		
 		return mav;
 	}
 	
 	@RequestMapping(value = "streaming.do", method = RequestMethod.GET)
 	public String streaming( @RequestParam String contents_id, HttpSession session ) {
-		
-		// 인증 체크
-//		if(authTrue(session)){
-//			String redirectUrl = contentsService.movieUrlByContentsId(contents_id);
-//			return "redirect:"+redirectUrl;
-//		}else{
-//			return null;
-//		}
-		String redirectUrl = contentsService.movieUrlByContentsId(contents_id);
-		return "redirect:"+redirectUrl;
+		// play.do(상품상세) 에서 로그인 체크를 하지만 
+		// 이중체크를 위해 추가 video tag src 속성에 empty 값으로 세팅 한다.
+		Map memberInfo = (Map)session.getAttribute(StoryfarmConstants.MEMBER_SESSION);
+		if(memberInfo == null){
+			return "";
+		}else{
+			String redirectUrl = contentsService.movieUrlByContentsId(contents_id);
+			return "redirect:"+redirectUrl;
+		}
 	}
 	
-	private boolean authTrue(HttpSession session) {
-		return false;
-	}
 
 	// UNDER CODE IS TEST_CODE
 	@RequestMapping(value = "cropTest.do", method = RequestMethod.GET)

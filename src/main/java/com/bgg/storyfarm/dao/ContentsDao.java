@@ -143,6 +143,10 @@ public class ContentsDao extends SqlSessionDaoSupport {
 		return getSqlSession().insert("contentsQuery.addPlayLog", paramMap);
 	}
 
+	public int duplicatePlayLogCount(Map playInfo) {
+		return (Integer)getSqlSession().selectOne("contentsQuery.duplicatePlayLogCount", playInfo);
+	}
+
 	
 
 }

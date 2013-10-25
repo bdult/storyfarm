@@ -121,10 +121,27 @@ public class ContentsService {
 	}
 
 	public void addPlayLog(Long memberIdx, String contents_id) {
+		
+		
 		Map playInfo = new HashMap();
 		playInfo.put(StoryfarmConstants.MEMBER_IDX, memberIdx);
 		playInfo.put(StoryfarmConstants.CONTENTS_ID, contents_id);
-		contentsDao.addPlayLog(playInfo);
+		
+		// log data 중복 체크
+		if(alreadyLog(playInfo)){
+			// Skip
+		}else{
+			contentsDao.addPlayLog(playInfo);
+		}
+	}
+
+	private boolean alreadyLog(Map playInfo) {
+		int checkCount = contentsDao.duplicatePlayLogCount(playInfo);
+		if(checkCount > 0){
+			return true;
+		}else{
+			return false;
+		}
 	}
 
 	
