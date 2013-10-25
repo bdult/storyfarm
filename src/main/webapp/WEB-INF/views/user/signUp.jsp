@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
     
@@ -48,9 +47,9 @@
                     </tr>
                     <tr class="brdB">
                     	<th scope="row">비밀번호</th>
-                        <td><input name="member_pw" type="password" class="input" style="width:205px;"><p class="mgt5"><strong class="fontRed">* 패스워드는 6-10자리 숫자 영문 조합입니다.</strong></p></td>
+                        <td><input name="member_pw" id="member_pw" type="password" class="input" style="width:205px;"><p class="mgt5"><strong class="fontRed">* 패스워드는 6-10자리 숫자 영문 조합입니다.</strong></p></td>
                    	  	<th scope="row">비밀번호 재입력</th>
-                      	<td><input type="password" class="input" style="width:205px;"></td>
+                      	<td><input name="member_pw_again" type="password" class="input" style="width:205px;"></td>
                     </tr>
                     </tbody>
                     </table>
@@ -71,12 +70,12 @@
                     <tr>
                     	<th scope="row">휴대번호</th>
                         <td colspan="3">
-							<input class="hidden" id="member_cel" name="member_cel">
-                        	<select name="cel1" class="select" style="width:95px;">
+							<input type="hidden" id="member_cel" name="member_cel">
+                        	<select id="signUpCel1" class="select" style="width:95px;">
                         	  <option>010</option>
                         	</select> -
-                        	<input name="cel2" type="text" class="input" style="width:95px;" > -
-                        	<input name="cel3" type="text" class="input" style="width:95px;" >
+                        	<input name="signUpCel2" id="signUpCel2" type="text" class="input" style="width:95px;" > -
+                        	<input name="signUpCel2" id="signUpCel3" type="text" class="input" style="width:95px;" >
                       </td>
                     </tr>
                     <tr>
@@ -125,6 +124,13 @@
     
 <script type="text/javascript">
 
+	//validate 초기화
+	setValid();
+	signUpValidateCall();
+	signUpCelFunc();
+
+	birth();
+	
 $("#member_id").keyup(function(event){
 	if($("#member_id").val() == null || $("#member_id").val() == ''){
 		alert("한글자 이상 입력해 주세요");
@@ -148,8 +154,6 @@ $("#member_id").keyup(function(event){
 	    });
 	}
 });
-
-	birth.call();
 	
 	$("#submit-btn").click(function(){
 		combineCel.call();

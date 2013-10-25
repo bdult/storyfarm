@@ -5,11 +5,21 @@
 
 <!-- location -->
 <div id="divLocation">
-    <ul class="location">
-        <li class="first"><a href="#" class="home"><img src="../assets/images/common/blt_home.gif" alt="home"></a></li>
-        <li><a href="#">고객센터</a></li>
-        <li class="current">FAQ</li>
-    </ul>
+	<ul class="location">
+		<c:forEach items="${ breadcrumbs }" var="obj" varStatus="status">
+			<c:choose>
+				<c:when test="${ status.first }">
+					<li class="first"><a href="${ contextPath }" class="home"><img src="${ contextPath }/assets/images/common/blt_home.gif" alt="home"></a></li>
+				</c:when>
+				<c:when test="${ status.last }">
+					<li class="current">${ obj.name }</li>
+				</c:when>
+				<c:otherwise>
+					<li><a href="${ contextPath }${ obj.url }">${ obj.name }</a></li>
+				</c:otherwise>
+			</c:choose>
+		</c:forEach>
+	</ul>
 </div>
 <!-- //location -->
 
