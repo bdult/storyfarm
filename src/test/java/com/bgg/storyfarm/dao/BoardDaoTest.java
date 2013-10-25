@@ -101,6 +101,23 @@ public class BoardDaoTest {
 		assertThat(boardList.size(), is(not(0)));
 	}
 	
+	//게시판 글목록 제한적 가져오기
+	@Test
+	public void testListLimit() {
+		
+		//given
+		Map<String, Object> boardMap = new HashMap<String, Object>();
+		boardMap.put(StoryfarmConstants.BOARD_ID, StoryfarmConstants.NOTI_BOARD_ID);
+		boardMap.put(StoryfarmConstants.BOARD_LIMIT_COUNT, 6);
+		
+		//when
+		List<Map<String, Object>> boardList = boardDao.listLimit(boardMap);
+		
+		//than
+		logger.info("{}", boardMap);
+		assertThat(boardList.size(), is(not(0)));
+	}
+	
 	//게시판 글목록 가져오기
 	@Test
 	public void testCount() {

@@ -36,6 +36,15 @@ public class BoardDao extends SqlSessionDaoSupport {
 		return getSqlSession().selectList("boardQuery.list", boardMap);
 	}
 
+	/** 게시판 글 목록 제한적 조회
+	 * @boardMap에 board_id, limit_cnt필요
+	 * @return
+	 */
+	public List<Map<String, Object>> listLimit(Map<String, Object> boardMap) {
+		
+		return getSqlSession().selectList("boardQuery.listLimit", boardMap);
+	}
+
 	public List<Map<String, Object>> listTop5(Map<String, Object> boardMap){
 		return getSqlSession().selectList("boardQuery.listTop5", boardMap);
 	}

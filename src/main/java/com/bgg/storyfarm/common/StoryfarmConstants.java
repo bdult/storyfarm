@@ -74,12 +74,21 @@ public class StoryfarmConstants {
 	public final static int BREADCRUMB_CSCENTER_ASK = 906;
 	
 	//BOARD
+	public final static int NOTI_BOARD_ID = 1; //공지사항
+	public final static int EVENT_BOARD_ID = 2; //이벤트
+	public final static int WINNER_BOARD_ID = 4; //당첨자발표
+	public final static int FAQ_USER_BOARD_ID = 26; //자주하는질문 회원/가입안내
+	public final static int FAQ_PAYMENT_BOARD_ID = 27; //자주하는질문 결제안내
+	public final static int FAQ_SERVICE_BOARD_ID = 28; //자주하는질문 서비스안내
+	public final static int FAQ_ERROR_BOARD_ID = 29; //자주하는질문 이용장애안내
+		
 	public final static String BOARD_ID = "board_id";
 	public final static String BOARD_CONTENTS_ID = "contents_id";
 	public final static String BOARD_MEMBER_ID = "member_id";
 	public final static String BOARD_DEL_YN = "del_yn";
 	public final static String BOARD_TITLE = "title";
 	public final static String BOARD_CONTENTS = "contents";
+	public final static String BOARD_LIMIT_COUNT = "limit_count";
 	
 	//COMMENTS
 	public final static String COMMENT_ID = "comment_id";

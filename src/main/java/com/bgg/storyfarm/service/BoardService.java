@@ -36,6 +36,15 @@ public class BoardService {
 		return boardDao.list(boardMap);
 	}
 	
+	/** 게시판 글 목록 제한적 조회
+	 * @param boardMap { StoryfarmConstants.BOARD_ID, StoryfarmConstants.BOARD_LIMIT_COUNT 필수 }
+	 * @return List
+	 */
+	public List<Map<String, Object>> listLimit(Map<String, Object> boardMap) {
+		
+		return boardDao.listLimit(boardMap);
+	}
+	
 	/** 게시판 전체 글 갯수 조회
 	 * @param boardMap { StoryfarmConstants.BOARD_ID 필수 }
 	 * @return List

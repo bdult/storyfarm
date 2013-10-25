@@ -7,7 +7,7 @@
     <!-- location -->
 	<div id="divLocation">
 		<ul class="location">
-  			<li class="current"><img src="${ contextPath }/assets/images/common/blt_home.gif" alt="home"></li>
+  			<li class="first"><img src="${ contextPath }/assets/images/common/blt_home.gif" alt="home"></li>
 		</ul>
 	</div>
 	<!-- //location -->
