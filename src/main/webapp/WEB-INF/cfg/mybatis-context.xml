@@ -7,13 +7,6 @@
     http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
     ">
     
-    <bean id="propertyPlaceholderConfigurer"
-        class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-        <property name="locations">
-            <value>/WEB-INF/cfg/jdbc.properties</value>
-        </property> 
-    </bean>
-    
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
       destroy-method="close">
       <!-- <property name="driverClassName" value="${jdbc.driverClassName}" />

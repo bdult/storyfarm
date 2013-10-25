@@ -67,7 +67,7 @@ public class BoardDaoTest {
 		
 		//given
 		Map<String, Object> boardMap = new HashMap<String, Object>();
-		boardMap.put(StoryfarmConstants.BOARD_ID, "11");
+		boardMap.put(StoryfarmConstants.BOARD_ID, "1");
 		boardMap.put("member_id", "test");
 		//페이징 처리시 파라미터 추가
 		//boardMap.put(StoryfarmConstants.BOARD_PAGE, "1");
@@ -86,7 +86,10 @@ public class BoardDaoTest {
 		
 		//given
 		Map<String, Object> boardMap = new HashMap<String, Object>();
-		boardMap.put(StoryfarmConstants.BOARD_ID, "11");
+		boardMap.put(StoryfarmConstants.BOARD_ID, "1");
+		boardMap.put("search", "사항");
+		boardMap.put("rownum", 0);
+		boardMap.put("perpage", 10);
 		//페이징 처리시 파라미터 추가
 		//boardMap.put(StoryfarmConstants.BOARD_PAGE, "1");
 		

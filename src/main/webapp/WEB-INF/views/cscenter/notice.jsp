@@ -25,8 +25,8 @@
 <!-- //location -->
 
 <div class="tblHeadSch">
-	<form id="searchForm">
-		<input name="search" type="text" class="input"><a href="#" id="searchSubmit"><img src="${ contextPath }/assets/images/common/btn_search2.gif" alt="검색" class="bt"></a>
+	<form id="searchForm" action="${ contextPath }/cscenter/notice.do" method="GET">
+		<input id="queryStr" name="search" type="text" class="input" value="${ paramsMap.search }"><a class="searchBtn" href=""><img src="${ contextPath }/assets/images/common/btn_search2.gif" alt="검색" class="bt"></a>
 	</form>
 </div>
 <table class="list mgt10">
@@ -88,13 +88,26 @@
     </ul>
 </div>
 
-<script type="text/javascript">
+<script>
 
-	$("#searchSubmit").click(function(){
-		$("#searchForm").attr({
-			method: 'get',
-			action: '${ contextPath }/cscenter/notice.do'
-		}).submit();
+$(function(){
+	
+	$("a.searchBtn").click(function(){
+		event.preventDefault();
+		search();
+		
 	});
-</script>
+	
+	$('#queryStr').keyup(function(e) {
+		if(e.keyCode == 13) {
+			search();
+		}
+	});
+});
 
+//공지사항 검색 함수
+var search = function( ){
+	$("#searchForm").submit();
+};
+
+</script>

@@ -12,7 +12,7 @@
 	</div>
 	<!-- //location -->
     
-    <div class="topBanner"><img src="" alt="오즈월드 메인 이미지"></div>
+    <div class="topBanner"><img src="" alt="오즈월드 메인 이미지 dev"></div>
     
     <!-- conLst -->
     <div class="conLst">
