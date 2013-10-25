@@ -148,7 +148,10 @@
 
 <script type="text/javascript">
 
-	birth.call();
+	//validate 초기화
+	setValid();
+	findValidateCall();
+	findIdCel2Func();
 
 	$("#phone_radio").change(function(){
 		console.info();
@@ -162,6 +165,7 @@
 		$("#memberFind-birth").css("display", "none");
 	});
 	$("#birth_radio").change(function(){
+		birth.call();
 		$("#memberFind-birth").show();
 		$("#memberFind-tel").css("display", "none");
 		$("#memberFind-email").css("display", "none");

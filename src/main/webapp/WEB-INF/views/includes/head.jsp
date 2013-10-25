@@ -18,4 +18,4 @@
 <link rel="stylesheet" href="${ contextPath }/assets/css/common.css">
 
 <!-- DEV TEAM -->
-<script src="${ contextPath }/assets/js/unho.js"></script>
+<script src="${ contextPath }/assets/js/jquery.validate.js"></script>

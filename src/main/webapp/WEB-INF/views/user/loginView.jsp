@@ -55,11 +55,15 @@
     
 <script>
 
+	//validate 초기화
+	setValid();
+	loginValidateCall();
+
 $(function(){
 	
 	//테스트 아이디&비번
-	$("#userId").val( "test" );
-	$("#userPw").val( "123" );
+	//$("#userId").val( "test" );
+	//$("#userPw").val( "123" );
 	
 });
 
