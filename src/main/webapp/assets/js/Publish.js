@@ -1,5 +1,5 @@
 //validation init
-var setValid = function(){
+function setValid(){
 	$.validator.setDefaults({
 		onkeyup:false,
 		onclick:false,
