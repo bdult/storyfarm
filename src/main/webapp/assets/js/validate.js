@@ -16,6 +16,11 @@ function setValid(){
     }, "");
     
     $.validator.addMethod("specialLetter", function(value, element){
+    	return this.optional(element) || !/[^a-z0-9ㄱ-ㅎ가-힣]/i.test(value);
+    	
+    }, "");
+    
+    $.validator.addMethod("numberAndAlphabet", function(value, element){
     	return this.optional(element) || !/[^a-z0-9]/i.test(value);
     	
     }, "");
@@ -55,14 +60,14 @@ function loginValidateCall(){
 		rules: {
 			id: {
 				required: true,
-				specialLetter: true
+				numberAndAlphabet: true
 			},
 			pwd: "required"
 		},
 		messages: {
 			id: {
 				required: "아이디를 입력하세요.",
-				specialLetter: "특수문자는 입력 불가합니다."
+				numberAndAlphabet: "영문 및 숫자만 입력해 주세요."
 			},
 			pwd: "비밀번호를 입력하세요."
 		}
@@ -75,7 +80,7 @@ function findValidateCall(){
 		rules: {
 			member_id: {
 				required: true,
-				specialLetter: true
+				numberAndAlphabet: true
 			},
 			member_nm: {
 				required: true,
@@ -91,11 +96,11 @@ function findValidateCall(){
 		messages: {
 			member_id: {
 				required: "아이디를 입력하세요.",
-				specialLetter: "특수문자는 입력 불가합니다."
+				numberAndAlphabet: "영문 및 숫자만 입력해 주세요."
 			},
 			member_nm: {
 				required: "이름를 입력하세요.",
-				specialLetter: "특수문자는 입력 불가합니다."
+				specialLetter: "특수문자는 입력불가 합니다."
 			},
 			cel1: { valueNotEquals: "휴대폰 번호를 선택해 주세요" },
 			cel2: {
@@ -110,7 +115,7 @@ function findValidateCall(){
 		rules: {
 			member_id: {
 				required: true,
-				specialLetter: true
+				numberAndAlphabet: true
 			},
 			member_nm: {
 				required: true,
@@ -124,11 +129,11 @@ function findValidateCall(){
 		messages: {
 			member_id: {
 				required: "아이디를 입력하세요.",
-				specialLetter: "특수문자는 입력 불가합니다."
+				numberAndAlphabet: "영문 및 숫자만 입력해 주세요."
 			},
 			member_nm: {
 				required: "이름를 입력하세요.",
-				specialLetter: "특수문자는 입력 불가합니다."
+				specialLetter: "특수문자는 입력불가 합니다."
 			},
 			member_email: {
 				required: "이메일 주소를 입력해 주세요",
@@ -141,7 +146,7 @@ function findValidateCall(){
 		rules: {
 			member_id: {
 				required: true,
-				specialLetter: true
+				numberAndAlphabet: true
 			},
 			member_nm: {
 				required: true,
@@ -155,11 +160,11 @@ function findValidateCall(){
 		messages: {
 			member_id: {
 				required: "아이디를 입력하세요.",
-				specialLetter: "특수문자는 입력 불가합니다."
+				numberAndAlphabet: "영문 및 숫자만 입력해 주세요."
 			},
 			member_nm: {
 				required: "이름를 입력하세요.",
-				specialLetter: "특수문자는 입력 불가합니다."
+				specialLetter: "특수문자는 입력불가 합니다."
 			},
 			member_year: { valueNotEquals: "년도를 선택해 주세요." },
 			member_month: { valueNotEquals: "월을 선택해 주세요." },
@@ -210,7 +215,7 @@ function signUpValidateCall(){
 		messages: {
 			member_id: {
 				required: "아이디를 입력하세요.",
-				specialLetter: "특수문자는 입력 불가합니다."
+				specialLetter: "특수문자는 입력불가 합니다."
 			},
 			member_nm: "이름을 입력해 주세요.",
 			member_pw: {
