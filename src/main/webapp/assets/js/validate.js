@@ -41,7 +41,7 @@ function combineEmail()
 function combineCel()
 {
 	$("#member_cel").attr({
-		value: $("#member_cel1").val() + "-" + $("#member_cel2").val() + "-" + $("#member_cel3").val()
+		value: $("#cel1").val() + "-" + $("#cel2").val() + "-" + $("#cel3").val()
 	});
 };
 
@@ -65,10 +65,22 @@ function findValidateCall(){
 		rules: {
 			member_id: "required",
 			member_nm: "required",
+			cel1: { valueNotEquals: "선택" },
+			cel2: {
+				required: true,
+				maxlength: 8,
+			    number: true
+			}
 		},
 		messages: {
 			member_id: "아이디를 입력하세요.",
 			member_nm: "이름를 입력하세요.",
+			cel1: { valueNotEquals: "휴대폰 번호를 선택해 주세요" },
+			cel2: {
+				required: "휴대폰 번호를 입력해 주세요",
+				maxlength: "8자리 이하로 입력해 주세요",
+				number: "숫자만 입력해 주세요"
+			}
 		}
 	});
 	
@@ -128,12 +140,13 @@ function signUpValidateCall(){
 				required: true,
 				email: true
 			},
-			member_cel2: {
+			cel1: { valueNotEquals: "선택" },
+			cel2: {
 				required: true,
 				maxlength: 4,
 			    number: true
 			},
-			member_cel3: {
+			cel3: {
 				required: true,
 				maxlength: 4,
 			    number: true
@@ -154,12 +167,13 @@ function signUpValidateCall(){
 			},
 			member_pw_again: "비밀번호가 서로 다릅니다.",
 			email: "이메일 주소를 정확히 입력해 주세요",
-			member_cel2: {
+			cel1: { valueNotEquals: "휴대폰 번호를 선택해 주세요" },
+			cel2: {
 				required: "휴대폰 앞자리 번호를 입력해 주세요",
 				maxlength: "4자리 이하로 입력해 주세요",
 				number: "숫자만 입력해 주세요"
 			},
-			member_cel3: {
+			cel3: {
 				required: "휴대폰 뒷자리 번호를 입력해 주세요",
 				maxlength: "4자리 이하로 입력해 주세요",
 				number: "숫자만 입력해 주세요"
@@ -170,20 +184,6 @@ function signUpValidateCall(){
 			member_year: { valueNotEquals: "년도를 선택해 주세요." },
 			member_month: { valueNotEquals: "월을 선택해 주세요." },
 			member_day: { valueNotEquals: "일을 선택해 주세요." }
-		}
-	});
-};
-
-function findIdCel2Func(){
-
-	$("#cel2").rules("add",{
-		required: true,
-		maxlength: 8,
-	    number: true,
-		messages: { 
-			required: "휴대폰 번호를 입력해 주세요",
-			maxlength: "8자리 이하로 입력해 주세요",
-			number: "숫자만 입력해 주세요"
 		}
 	});
 };
