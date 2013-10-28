@@ -71,11 +71,11 @@
                     	<th scope="row">휴대번호</th>
                         <td colspan="3">
 							<input type="hidden" id="member_cel" name="member_cel">
-                        	<select id="signUpCel1" class="select" style="width:95px;">
+                        	<select id="member_cel1" class="select" style="width:95px;">
                         	  <option>010</option>
                         	</select> -
-                        	<input name="signUpCel2" id="signUpCel2" type="text" class="input" style="width:95px;" > -
-                        	<input name="signUpCel2" id="signUpCel3" type="text" class="input" style="width:95px;" >
+                        	<input name="member_cel2" id="member_cel2" type="text" class="input" style="width:95px;" > -
+                        	<input name="member_cel3" id="member_cel3" type="text" class="input" style="width:95px;" >
                       </td>
                     </tr>
                     <tr>

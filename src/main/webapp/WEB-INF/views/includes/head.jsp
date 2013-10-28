@@ -15,6 +15,7 @@
 
 <!-- PUBLISHING -->
 <script src="${ contextPath }/assets/js/Publish.js"></script>
+<script src="${ contextPath }/assets/js/validate.js"></script>
 <link rel="stylesheet" href="${ contextPath }/assets/css/common.css">
 
 <!-- DEV TEAM -->
