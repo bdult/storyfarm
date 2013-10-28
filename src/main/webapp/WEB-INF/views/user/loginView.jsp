@@ -59,14 +59,6 @@
 	setValid();
 	loginValidateCall();
 
-$(function(){
-	
-	//테스트 아이디&비번
-	//$("#userId").val( "test" );
-	//$("#userPw").val( "123" );
-	
-});
-
 $(".btLogin").click(function(){
 	$("#login").attr({
 		method: 'post',
