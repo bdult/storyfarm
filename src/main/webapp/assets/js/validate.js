@@ -128,6 +128,16 @@ function signUpValidateCall(){
 				required: true,
 				email: true
 			},
+			member_cel2: {
+				required: true,
+				maxlength: 4,
+			    number: true
+			},
+			member_cel3: {
+				required: true,
+				maxlength: 4,
+			    number: true
+			},
 			member_addr_1: "required",
 			member_addr_2: "required",
 			member_gender: "required",
@@ -144,6 +154,16 @@ function signUpValidateCall(){
 			},
 			member_pw_again: "비밀번호가 서로 다릅니다.",
 			email: "이메일 주소를 정확히 입력해 주세요",
+			member_cel2: {
+				required: "휴대폰 앞자리 번호를 입력해 주세요",
+				maxlength: "4자리 이하로 입력해 주세요",
+				number: "숫자만 입력해 주세요"
+			},
+			member_cel3: {
+				required: "휴대폰 뒷자리 번호를 입력해 주세요",
+				maxlength: "4자리 이하로 입력해 주세요",
+				number: "숫자만 입력해 주세요"
+			},
 			member_addr_1: "주소를 입력해 주세요",
 			member_addr_2: "상세주소를 입력해 주세요",
 			member_gender: "성별을 입력하세요.",
@@ -163,29 +183,6 @@ function findIdCel2Func(){
 		messages: { 
 			required: "휴대폰 번호를 입력해 주세요",
 			maxlength: "8자리 이하로 입력해 주세요",
-			number: "숫자만 입력해 주세요"
-		}
-	});
-};
-
-function signUpCelFunc(){
-	$("#member_cel2").rules("add",{
-		required: true,
-		maxlength: 4,
-	    number: true,
-		messages: { 
-			required: "휴대폰 앞자리 번호를 입력해 주세요",
-			maxlength: "4자리 이하로 입력해 주세요",
-			number: "숫자만 입력해 주세요"
-		}
-	});
-	$("#member_cel3").rules("add",{
-		required: true,
-		maxlength: 4,
-	    number: true,
-		messages: { 
-			required: "휴대폰 뒷자리 번호를 입력해 주세요",
-			maxlength: "4자리 이하로 입력해 주세요",
 			number: "숫자만 입력해 주세요"
 		}
 	});
