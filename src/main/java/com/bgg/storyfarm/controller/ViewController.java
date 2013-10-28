@@ -201,16 +201,23 @@ public class ViewController {
 		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME));
 		
 		Map memberInfo = (Map)session.getAttribute(StoryfarmConstants.MEMBER_SESSION);
-		if(memberInfo == null){
-			mav.addObject("loginYn", "N");
+		if(isLogin(memberInfo)){
+			mav.addObject(StoryfarmConstants.LOGIN_YN, "Y");
+			boolean isPaymentUser = contentsService.isPaymentMember(memberInfo, paramMap);
+			if(isPaymentUser){
+				mav.addObject(StoryfarmConstants.PAYMENT_YN, "Y");
+			}else{
+				mav.addObject(StoryfarmConstants.PAYMENT_YN, "N");
+			}
 		}else{
-			mav.addObject("loginYn", "Y");
+			mav.addObject(StoryfarmConstants.LOGIN_YN, "N");
+			mav.addObject(StoryfarmConstants.PAYMENT_YN, "N");
 		}
-		mav.addObject("contents", contentsService.detail(paramMap));
-		
-		
+		mav.addObject(StoryfarmConstants.CONTENTS, contentsService.detail(paramMap));
 		return mav;
 	}
+
+
 	
 	@RequestMapping(value = "playList.do", method = RequestMethod.POST)
 	public ModelAndView playList( @RequestParam List<String> contentId, HttpSession session) {
@@ -220,10 +227,10 @@ public class ViewController {
 		mav.addObject("playList", playList);
 		
 		Map memberInfo = (Map)session.getAttribute(StoryfarmConstants.MEMBER_SESSION);
-		if(memberInfo == null){
-			mav.addObject("loginYn", "N");
-		}else{
+		if(isLogin(memberInfo)){
 			mav.addObject("loginYn", "Y");
+		}else{
+			mav.addObject("loginYn", "N");
 		}
 		
 		return mav;
@@ -233,12 +240,13 @@ public class ViewController {
 	public String streaming( @RequestParam String contents_id, HttpSession session ) {
 		// play.do(상품상세) 에서 로그인 체크를 하지만 
 		// 이중체크를 위해 추가 video tag src 속성에 empty 값으로 세팅 한다.
+		// 또한 결제를 하지 않은 사용자의 경우도 src 값이 empty 가 된다.
 		Map memberInfo = (Map)session.getAttribute(StoryfarmConstants.MEMBER_SESSION);
-		if(memberInfo == null){
-			return "";
-		}else{
+		if(isLogin(memberInfo)){
 			String redirectUrl = contentsService.movieUrlByContentsId(contents_id);
 			return "redirect:"+redirectUrl;
+		}else{
+			return "";
 		}
 	}
 	
@@ -267,6 +275,14 @@ public class ViewController {
 		paramsMap.put(PageUtil.ROWNUM_KEY, (pageNum - 1) * PageUtil.PER_PAGE);
 		paramsMap.put(PageUtil.PER_KEY, PageUtil.PER_PAGE);
 		return pageNum;
+	}
+	
+	private boolean isLogin(Map memberInfo) {
+		if(memberInfo == null){
+			return false;
+		}else{
+			return true;
+		}
 	}
 	
 }

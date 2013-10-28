@@ -74,8 +74,18 @@ $(function(){
 	var contentsId = "${contents.CONTENTS_ID}";
 	$("#player").bind('play',function() {
 		if(loginMember()){
-			addPlayLog(contentsId);
-			$("#player").get(0).play();
+			if(paymentMember()){
+				addPlayLog(contentsId);
+				$("#player").get(0).play();
+			}else{
+				$("#player").get(0).pause();
+				if(confirm("시청 가능한 상품이 아닙니다. \n 결제 하시겠습니까?")){
+					
+				}else{
+					
+				}
+			}
+			
 		}
 		// not log-in user
 		else{
@@ -93,6 +103,16 @@ $(function(){
 	function loginMember(){
 		var loginResult = "${loginYn}";
 		if(loginResult == "Y"){
+			return true;
+		}else{
+			return false;
+		}
+	}
+
+	function paymentMember(){
+		var paymentResult = "${paymentYn}";
+		console.log(paymentResult);
+		if(paymentResult == "Y"){
 			return true;
 		}else{
 			return false;

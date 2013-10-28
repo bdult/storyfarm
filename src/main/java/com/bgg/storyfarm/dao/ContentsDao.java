@@ -147,6 +147,11 @@ public class ContentsDao extends SqlSessionDaoSupport {
 		return (Integer)getSqlSession().selectOne("contentsQuery.duplicatePlayLogCount", playInfo);
 	}
 
+	public int paymentCheck(Map paymentInfo) {
+		//(Integer)getSqlSession().selectOne("contentsQuery.paymentCheck", paymentInfo)
+		return 1;
+	}
+
 	
 
 }

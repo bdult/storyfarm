@@ -144,5 +144,18 @@ public class ContentsService {
 		}
 	}
 
+	public boolean isPaymentMember(Map memberInfo,
+			Map<String, Object> paramMap) {
+		Map paymentInfo = new HashMap();
+		paymentInfo.put(StoryfarmConstants.MEMBER_ID, memberInfo.get(StoryfarmConstants.MEMBER_ID));
+		paymentInfo.put(StoryfarmConstants.CONTENTS_ID, paramMap.get(StoryfarmConstants.CONTENTS_ID));
+		int checkCount = contentsDao.paymentCheck(paymentInfo);
+		if(checkCount > 0){
+			return true;
+		}else{
+			return false;
+		}
+	}
+
 	
 }
