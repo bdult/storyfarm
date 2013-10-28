@@ -15,6 +15,10 @@ function setValid(){
         return arg != value;
     }, "");
     
+    $.validator.addMethod("specialLetter", function(value, element){
+    	return this.optional(element) || !/[^a-z0-9]/i.test(value);
+    	
+    }, "");
 };
 
 
@@ -49,11 +53,17 @@ function loginValidateCall(){
 	//로그인 validate 체크
 	$("#login").validate({
 		rules: {
-			id: "required", 
+			id: {
+				required: true,
+				specialLetter: true
+			},
 			pwd: "required"
 		},
 		messages: {
-			id: "아이디를 입력하세요.",
+			id: {
+				required: "아이디를 입력하세요.",
+				specialLetter: "특수문자는 입력 불가합니다."
+			},
 			pwd: "비밀번호를 입력하세요."
 		}
 	});
@@ -63,8 +73,14 @@ function findValidateCall(){
 	//아이디 / 비밀번호 찾기 validate 체크
 	$("#memberFind-tel").validate({
 		rules: {
-			member_id: "required",
-			member_nm: "required",
+			member_id: {
+				required: true,
+				specialLetter: true
+			},
+			member_nm: {
+				required: true,
+				specialLetter: true
+			},
 			cel1: { valueNotEquals: "선택" },
 			cel2: {
 				required: true,
@@ -73,8 +89,14 @@ function findValidateCall(){
 			}
 		},
 		messages: {
-			member_id: "아이디를 입력하세요.",
-			member_nm: "이름를 입력하세요.",
+			member_id: {
+				required: "아이디를 입력하세요.",
+				specialLetter: "특수문자는 입력 불가합니다."
+			},
+			member_nm: {
+				required: "이름를 입력하세요.",
+				specialLetter: "특수문자는 입력 불가합니다."
+			},
 			cel1: { valueNotEquals: "휴대폰 번호를 선택해 주세요" },
 			cel2: {
 				required: "휴대폰 번호를 입력해 주세요",
@@ -86,16 +108,28 @@ function findValidateCall(){
 	
 	$("#memberFind-email").validate({
 		rules: {
-			member_id: "required",
-			member_nm: "required",
+			member_id: {
+				required: true,
+				specialLetter: true
+			},
+			member_nm: {
+				required: true,
+				specialLetter: true
+			},
 			member_email: {
 				required: true,
 				email: true
 			}
 		},
 		messages: {
-			member_id: "아이디를 입력하세요.",
-			member_nm: "이름를 입력하세요.",
+			member_id: {
+				required: "아이디를 입력하세요.",
+				specialLetter: "특수문자는 입력 불가합니다."
+			},
+			member_nm: {
+				required: "이름를 입력하세요.",
+				specialLetter: "특수문자는 입력 불가합니다."
+			},
 			member_email: {
 				required: "이메일 주소를 입력해 주세요",
 				email: "이메일 주소를 정확이 입력해 주세요"
@@ -105,16 +139,28 @@ function findValidateCall(){
 
 	$("#memberFind-birth").validate({
 		rules: {
-			member_id: "required",
-			member_nm: "required",
+			member_id: {
+				required: true,
+				specialLetter: true
+			},
+			member_nm: {
+				required: true,
+				specialLetter: true
+			},
 			member_year: { valueNotEquals: "년도" },
 			member_month: { valueNotEquals: "월" },
 			member_day: { valueNotEquals: "일" },
 			member_gender: "required"
 		},
 		messages: {
-			member_id: "아이디를 입력하세요.",
-			member_nm: "이름를 입력하세요.",
+			member_id: {
+				required: "아이디를 입력하세요.",
+				specialLetter: "특수문자는 입력 불가합니다."
+			},
+			member_nm: {
+				required: "이름를 입력하세요.",
+				specialLetter: "특수문자는 입력 불가합니다."
+			},
 			member_year: { valueNotEquals: "년도를 선택해 주세요." },
 			member_month: { valueNotEquals: "월을 선택해 주세요." },
 			member_day: { valueNotEquals: "일을 선택해 주세요." },
@@ -127,7 +173,10 @@ function signUpValidateCall(){
 	//회원가입 validate 체크
 	$("#joinForm").validate({
 		rules: {
-			member_id: "required",
+			member_id: {
+				required: true,
+				specialLetter: true
+			},
 			member_nm: "required",
 		    member_pw: {
 		    	required: true,
@@ -159,7 +208,10 @@ function signUpValidateCall(){
 			member_day: { valueNotEquals: "일" }
 		},
 		messages: {
-			member_id: "아이디를 입력해 주세요.",
+			member_id: {
+				required: "아이디를 입력하세요.",
+				specialLetter: "특수문자는 입력 불가합니다."
+			},
 			member_nm: "이름을 입력해 주세요.",
 			member_pw: {
 				required: "비밀번호를 입력해 주세요.",
