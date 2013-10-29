@@ -59,6 +59,10 @@
 	setValid();
 	loginValidateCall();
 
+if("${ msg }" == 'login_fail'){
+	alert("회원정보가 일치하지 않습니다.");
+}
+
 $(".btLogin").click(function(){
 	$("#login").attr({
 		method: 'post',

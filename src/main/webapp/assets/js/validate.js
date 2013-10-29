@@ -105,7 +105,7 @@ function findValidateCall(){
 			cel1: { valueNotEquals: "휴대폰 번호를 선택해 주세요" },
 			cel2: {
 				required: "휴대폰 번호를 입력해 주세요",
-				maxlength: "8자리 이하로 입력해 주세요",
+				maxlength: "휴대폰 번호 8자리 이하로 입력해 주세요",
 				number: "숫자만 입력해 주세요"
 			}
 		}
@@ -180,7 +180,8 @@ function signUpValidateCall(){
 		rules: {
 			member_id: {
 				required: true,
-				specialLetter: true
+				specialLetter: true,
+				rangelength: [4, 15]
 			},
 			member_nm: "required",
 		    member_pw: {
@@ -215,12 +216,13 @@ function signUpValidateCall(){
 		messages: {
 			member_id: {
 				required: "아이디를 입력하세요.",
-				specialLetter: "특수문자는 입력불가 합니다."
+				specialLetter: "특수문자는 입력불가 합니다.",
+				rangelength: "아이디를 4자리 이상 15자리 이하로 입력해 주세요."
 			},
 			member_nm: "이름을 입력해 주세요.",
 			member_pw: {
 				required: "비밀번호를 입력해 주세요.",
-				rangelength: "6-10자리를 입력해 주세요."
+				rangelength: "비밀번호 6-10자리를 입력해 주세요."
 			},
 			member_pw_again: "비밀번호가 서로 다릅니다.",
 			email: "이메일 주소를 정확히 입력해 주세요",
