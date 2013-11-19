@@ -49,11 +49,11 @@
                           		<li>
                            	  		<label for="userHp">휴대폰</label>
 									<input type="hidden" id="member_cel" name="member_cel">
-                            		<select id="cel1" class="select" style="width:85px;">
+                            		<select name="cel1" id="cel1" class="select" style="width:85px;">
 	                            	  	<option>선택</option>
 	                            	  	<option>011</option>
                             		</select> - 
-                                	<input id="cel2" class="input" type="text" style="width:144px;">
+                                	<input name="cel2" id="cel2" class="input" type="text" style="width:144px;">
                             	</li>
                     		</ul>
                     		</form>
@@ -148,7 +148,9 @@
 
 <script type="text/javascript">
 
-	birth.call();
+	//validate 초기화
+	setValid();
+	findValidateCall();
 
 	$("#phone_radio").change(function(){
 		console.info();
@@ -162,6 +164,7 @@
 		$("#memberFind-birth").css("display", "none");
 	});
 	$("#birth_radio").change(function(){
+		birth.call();
 		$("#memberFind-birth").show();
 		$("#memberFind-tel").css("display", "none");
 		$("#memberFind-email").css("display", "none");

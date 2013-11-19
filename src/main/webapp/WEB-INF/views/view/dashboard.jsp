@@ -7,12 +7,12 @@
     <!-- location -->
 	<div id="divLocation">
 		<ul class="location">
-  			<li class="current"><img src="${ contextPath }/assets/images/common/blt_home.gif" alt="home"></li>
+  			<li class="first"><img src="${ contextPath }/assets/images/common/blt_home.gif" alt="home"></li>
 		</ul>
 	</div>
 	<!-- //location -->
     
-    <div class="topBanner"><img src="" alt="오즈월드 메인 이미지"></div>
+    <div class="topBanner"><img src="" alt="오즈월드 메인 이미지 dev"></div>
     
     <!-- conLst -->
     <div class="conLst">

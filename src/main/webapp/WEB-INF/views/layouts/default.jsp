@@ -18,6 +18,7 @@
 		<tiles:insertAttribute name="footer" />
 	</div>
 
+	<tiles:insertAttribute name="analytics" />
 </body>
 </html>
 

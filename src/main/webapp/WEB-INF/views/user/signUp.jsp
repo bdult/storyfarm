@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
     
@@ -44,13 +43,13 @@
                     <tbody>
                     <tr>
                     	<th scope="row">아이디</th>
-                        <td colspan="3"><input id="member_id" name="member_id" type="text" class="input" style="width:205px;"></td>
+                        <td colspan="3"><input id="member_id" name="member_id" type="text" class="input" style="width:205px;">&nbsp;&nbsp;<strong class="fontRed" id="duplication_text"></strong></td>
                     </tr>
                     <tr class="brdB">
                     	<th scope="row">비밀번호</th>
-                        <td><input name="member_pw" type="password" class="input" style="width:205px;"><p class="mgt5"><strong class="fontRed">* 패스워드는 6-10자리 숫자 영문 조합입니다.</strong></p></td>
+                        <td><input name="member_pw" id="member_pw" type="password" class="input" style="width:205px;"><p class="mgt5"><strong class="fontRed">* 패스워드는 6-10자리 숫자 영문 조합입니다.</strong></p></td>
                    	  	<th scope="row">비밀번호 재입력</th>
-                      	<td><input type="password" class="input" style="width:205px;"></td>
+                      	<td><input name="member_pw_again" type="password" class="input" style="width:205px;"><p class="mgt5"><strong class="fontRed" id="duplication_pw"></strong></p></td>
                     </tr>
                     </tbody>
                     </table>
@@ -71,12 +70,12 @@
                     <tr>
                     	<th scope="row">휴대번호</th>
                         <td colspan="3">
-							<input class="hidden" id="member_cel" name="member_cel">
-                        	<select name="cel1" class="select" style="width:95px;">
+							<input type="hidden" id="member_cel" name="member_cel">
+                        	<select name="cel1" id="cel1" class="select" style="width:95px;">
                         	  <option>010</option>
                         	</select> -
-                        	<input name="cel2" type="text" class="input" style="width:95px;" > -
-                        	<input name="cel3" type="text" class="input" style="width:95px;" >
+                        	<input name="cel2" id="cel2" type="text" class="input" style="width:95px;" > -
+                        	<input name="cel3" id="cel3" type="text" class="input" style="width:95px;" >
                       </td>
                     </tr>
                     <tr>
@@ -125,31 +124,51 @@
     
 <script type="text/javascript">
 
-$("#member_id").keyup(function(event){
-	if($("#member_id").val() == null || $("#member_id").val() == ''){
-		alert("한글자 이상 입력해 주세요");
-	}else{
-		$("#duplication_text").empty();
-		$.ajax({
-		    type: "POST",
-		    url: "${ contextPath }/duplication.ajax",
-		    data: {
-		    	member_id : $('#member_id').val()
-		    }
-		}).done(function(data){
-	    	console.info("code : " + data.code);
-	    	if(data.code == 200) {
-	    		$("#duplication_text").text("사용가능한 아이디 입니다.");
-	    	} else {
-	    		$("#duplication_text").text("이미 사용중인 아이디 입니다.");
-	    	}
-	    }).fail(function(data){
-	    	alert( "서버에러 죄송합니다.");
-	    });
+	//validate 초기화
+	setValid();
+	signUpValidateCall();
+
+	birth();
+	
+$("input[name=member_pw_again]").focusout(function(event){
+	if($("input[name=member_pw]").val().length >= 6 && $("input[name=member_pw_again]").val().length <= 10){
+		if($("input[name=member_pw]").val() == $("input[name=member_pw_again]").val()){
+			$("#duplication_pw").text("비밀번호가 일치합니다.");
+		}else {
+			$("#duplication_pw").text("비밀번호가 일치하지 않습니다.");
+		}
+	}else {
+		$("#duplication_pw").text("");
 	}
 });
 
-	birth.call();
+$("#member_id").keyup(function(event){
+	$("#duplication_text").empty();
+	if($("#member_id").val().length >= 4 && $("#member_id").val().length <= 15){
+		if($("#member_id").val().match(/[^a-z0-9]/)){
+			$("#duplication_text").text("영문 및 숫자만 입력해 주세요.");
+		}else{
+			$.ajax({
+			    type: "POST",
+			    url: "${ contextPath }/duplication.ajax",
+			    data: {
+			    	member_id : $('#member_id').val()
+			    }
+			}).done(function(data){
+		    	console.info("code : " + data.code);
+		    	if(data.code == 200) {
+		    		$("#duplication_text").text("사용가능한 아이디 입니다.");
+		    	} else {
+		    		$("#duplication_text").text("사용 불가한 아이디 입니다.");
+		    	}
+		    }).fail(function(data){
+		    	alert( "서버에러 죄송합니다.");
+		    });	
+		}	
+	}else {
+		$("#duplication_text").text("아이디를 4자리 이상 15자리 이하로 입력해 주세요.");
+	}
+});
 	
 	$("#submit-btn").click(function(){
 		combineCel.call();

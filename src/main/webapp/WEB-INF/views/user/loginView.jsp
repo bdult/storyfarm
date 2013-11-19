@@ -55,13 +55,13 @@
     
 <script>
 
-$(function(){
-	
-	//테스트 아이디&비번
-	$("#userId").val( "test" );
-	$("#userPw").val( "123" );
-	
-});
+	//validate 초기화
+	setValid();
+	loginValidateCall();
+
+if("${ msg }" == 'login_fail'){
+	alert("회원정보가 일치하지 않습니다.");
+}
 
 $(".btLogin").click(function(){
 	$("#login").attr({

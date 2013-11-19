@@ -111,5 +111,3 @@ function showHide(layer){
         });
     });
 })(window.jQuery);
-
-

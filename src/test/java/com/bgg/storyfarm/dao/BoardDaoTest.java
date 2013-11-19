@@ -67,7 +67,7 @@ public class BoardDaoTest {
 		
 		//given
 		Map<String, Object> boardMap = new HashMap<String, Object>();
-		boardMap.put(StoryfarmConstants.BOARD_ID, "11");
+		boardMap.put(StoryfarmConstants.BOARD_ID, "1");
 		boardMap.put("member_id", "test");
 		//페이징 처리시 파라미터 추가
 		//boardMap.put(StoryfarmConstants.BOARD_PAGE, "1");
@@ -86,12 +86,32 @@ public class BoardDaoTest {
 		
 		//given
 		Map<String, Object> boardMap = new HashMap<String, Object>();
-		boardMap.put(StoryfarmConstants.BOARD_ID, "11");
+		boardMap.put(StoryfarmConstants.BOARD_ID, "1");
+		boardMap.put("search", "사항");
+		boardMap.put("rownum", 0);
+		boardMap.put("perpage", 10);
 		//페이징 처리시 파라미터 추가
 		//boardMap.put(StoryfarmConstants.BOARD_PAGE, "1");
 		
 		//when
 		List<Map<String, Object>> boardList = boardDao.list(boardMap);
+		
+		//than
+		logger.info("{}", boardMap);
+		assertThat(boardList.size(), is(not(0)));
+	}
+	
+	//게시판 글목록 제한적 가져오기
+	@Test
+	public void testListLimit() {
+		
+		//given
+		Map<String, Object> boardMap = new HashMap<String, Object>();
+		boardMap.put(StoryfarmConstants.BOARD_ID, StoryfarmConstants.NOTI_BOARD_ID);
+		boardMap.put(StoryfarmConstants.BOARD_LIMIT_COUNT, 6);
+		
+		//when
+		List<Map<String, Object>> boardList = boardDao.listLimit(boardMap);
 		
 		//than
 		logger.info("{}", boardMap);

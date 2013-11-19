@@ -29,7 +29,7 @@
     </select>
     
     <select id="boardList" resultType="hashmap" parameterType="hashmap">
-    SELECT
+    SELECT /* boardQuery.boardList */
         BG_BOARD_CONTENTS.*
     FROM
         BG_BOARD_CONTENTS, BG_BOARD_MASTER
@@ -44,7 +44,7 @@
     </select>
     
     <select id="questionList" resultType="hashmap" parameterType="hashmap">
-    SELECT
+    SELECT /* boardQuery.questionList */
         BG_BOARD_CONTENTS.*, @RNUM:=@RNUM + 1 AS ROWNUM
     FROM
         BG_BOARD_CONTENTS, BG_BOARD_MASTER, ( SELECT @RNUM := 0 ) R
@@ -59,17 +59,29 @@
     </select>
     
     <select id="list" resultType="hashmap" parameterType="hashmap">
-    SELECT
+    SELECT /* boardQuery.list */
         BG_BOARD_CONTENTS.*
     FROM
         BG_BOARD_CONTENTS, BG_BOARD_MASTER
     WHERE 1 = 1
     AND BG_BOARD_MASTER.board_id = #{ board_id }
     AND BG_BOARD_MASTER.board_id = BG_BOARD_CONTENTS.board_id
-	<if test="search != null and search != ''">
-		AND BG_BOARD_CONTENTS.title LIKE CONCAT('%', #{ search }, '%')
+	<if test="search != null">
+		AND BG_BOARD_CONTENTS.title LIKE '%${ search }%'
 	</if>
     LIMIT #{ rownum }, #{ perpage }
+    </select>
+    
+    <select id="listLimit" resultType="hashmap" parameterType="hashmap">
+    SELECT /* boardQuery.listLimit */
+        BG_BOARD_CONTENTS.*
+    FROM
+        BG_BOARD_CONTENTS, BG_BOARD_MASTER
+    WHERE 1 = 1
+    AND BG_BOARD_MASTER.board_id = #{ board_id }
+    AND BG_BOARD_MASTER.board_id = BG_BOARD_CONTENTS.board_id
+    ORDER BY CONTENTS_ID DESC
+    LIMIT 0, #{ limit_count }
     </select>
     
     <select id="count" resultType="int" parameterType="hashmap">

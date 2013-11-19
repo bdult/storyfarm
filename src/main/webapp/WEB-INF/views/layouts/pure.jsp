@@ -15,6 +15,7 @@
 		</div>
 	</div>
 
+	<tiles:insertAttribute name="analytics" />
 </body>
 </html>
 

@@ -48,7 +48,7 @@
                 <label><input name="" type="radio" value=""> 홍길순</label>
             </div>
             <div class="btnSc mgt10">
-            	<a href="#"><img src="${ contextPath }/assets/images/parent/btn_studyEdit_off.gif" alt="학습자 변경" class="rollimg"></a>
+            	<a href="${ contextPath }/parents/children.do"><img src="${ contextPath }/assets/images/parent/btn_studyEdit_off.gif" alt="학습자 변경" class="rollimg"></a>
             </div>
         	<span class="bg1"></span><span class="bg2"></span><span class="bg3"></span><span class="bg4"></span>
         </div>
@@ -57,15 +57,14 @@
     <div class="divRow03">
    	  	<div class="titArea">
        		<h3 class="divTit2">오즈월드 공지사항</h3>
-          	<p class="right"><a href="#"><img src="${ contextPath }/assets/images/common/btn_detailVew_off.gif" alt="자세히보기" class="rollimg"></a></p>
+          	<p class="right"><a href="${ contextPath }/cscenter/notice.do"><img src="${ contextPath }/assets/images/common/btn_detailVew_off.gif" alt="자세히보기" class="rollimg"></a></p>
         </div>
         <ul>
-        	<li><a href="#">결제가 안되는 경우에는</a></li>
-        	<li><a href="#">카드 무이자 안내</a></li>
-        	<li><a href="#">9월 이벤트 당첨자 발표</a></li>
-        	<li><a href="#">9월 이벤트 당첨자 발표
-        	</a></li><li><a href="#">9월 이벤트 당첨자 발표</a></li>
-        	<li><a href="#">10월 컨텐츠 업데이트 예정</a></li>
+        	<c:forEach items="${ noticeList }" var="obj">
+			<li>
+		      	<a href="${ contextPath }/cscenter/noticeView.do?contentsId=${ obj.CONTENTS_ID }">${ obj.TITLE }</a>
+			</li>
+			</c:forEach>
         </ul>
     </div>
     
