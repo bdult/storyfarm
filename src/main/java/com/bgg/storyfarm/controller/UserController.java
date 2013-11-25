@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.bgg.storyfarm.common.BreadcrumbUtil;
+import com.bgg.storyfarm.common.MailUtil;
 import com.bgg.storyfarm.common.StoryfarmConstants;
 import com.bgg.storyfarm.service.UserService;
 
@@ -35,6 +36,9 @@ public class UserController {
 	@Autowired
 	private BreadcrumbUtil breadcrumbUtil;
 
+	@Autowired
+	private MailUtil mailUtil;
+	
 	private Logger logger = LoggerFactory.getLogger(UserController.class);
 	
 	/**
@@ -211,6 +215,18 @@ public class UserController {
 		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_LOGIN, StoryfarmConstants.BREADCRUMB_FINDPWD_RESULT));
 
 		model.addAttribute("findUserData", userService.findPwd(paramMap));
+
+		String pw = org.apache.commons.lang.RandomStringUtils.random(12, true, true);
+		String id = (String) paramMap.get("member_id");
+
+		Map<String, Object> userData = new HashMap<String, Object>();
+		userData.put("member_id", id);
+		userData.put("member_pw", pw);
+		
+		userService.updateRandomPw(userData);
+		
+		String receive = (String) paramMap.get("member_email");
+		mailUtil.sendMail(receive, pw);
 		
 		return mav;
 	}

@@ -53,6 +53,10 @@ public class UserDao extends SqlSessionDaoSupport {
 		getSqlSession().update("userQuery.updateUser", userListMap);
 	}
 	
+	public void updaeRandomPw(Map<String, Object> userListMap) {
+		getSqlSession().update("userQuery.updateRandomPw", userListMap);
+	}
+	
 	public void deleteUser(Map<String, Object> userListMap) {
 		getSqlSession().update("userQuery.deleteUser", userListMap);
 	}

@@ -143,6 +143,15 @@
 		WHERE MEMBER_ID = #{ member_id }
 	</update>
 	
+	<!-- UPDATE USER RANDOM PASSWD -->
+	<update id="updateRandomPw" parameterType="hashmap">
+		UPDATE BG_MEMBER
+		<set>
+			MEMBER_PW = password(#{ member_pw })
+		</set>
+		WHERE MEMBER_ID = #{ member_id }
+	</update>
+	
 	<!-- delete user -->
 	<update id="deleteUser" parameterType="hashmap">
 		UPDATE BG_MEMBER

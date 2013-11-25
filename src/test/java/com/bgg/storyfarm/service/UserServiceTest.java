@@ -170,5 +170,26 @@ public class UserServiceTest {
 		assertNotNull(userIdMap);
 		logger.info("{}", userIdMap);
 	}
+	
+	@Test
+	public void alphaRandomTest(){
+		logger.info("패스워드 랜덤 12자 생성 테스트 입니다.");
+		
+		//given
+		String pw = org.apache.commons.lang.RandomStringUtils.random(12, true, true);
+		logger.info(pw);
+
+		String nm = "q";
+		Map<String, Object> userData = new HashMap<String, Object>();
+		userData.put("member_id", nm);
+		userData.put("member_pw", pw);
+		
+		//when
+		userService.updateRandomPw(userData);
+
+		//than
+		assertNotNull(userData);
+		logger.info("{}", userData);
+	}
 }
 	
