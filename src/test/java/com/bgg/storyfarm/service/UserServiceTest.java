@@ -177,9 +177,9 @@ public class UserServiceTest {
 		
 		//given
 		String pw = org.apache.commons.lang.RandomStringUtils.random(12, true, true);
+		String nm = "q";
 		logger.info(pw);
 
-		String nm = "q";
 		Map<String, Object> userData = new HashMap<String, Object>();
 		userData.put("member_id", nm);
 		userData.put("member_pw", pw);
