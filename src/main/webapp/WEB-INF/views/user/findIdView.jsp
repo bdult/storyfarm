@@ -105,8 +105,8 @@
                     <p class="tx01">실명이 확인된 아이디는 아이핀 또는 본인 명의의 휴대폰으로 찾을 수 있습니다.</p>
                     <div class="formFind">
                     	<div class="divChk">
-                        	<label for="userChk011"><input name="" id="userChk011" type="radio" value=""> 아이핀</label>
-                        	<label for="userChk022" class="mgl10"><input name="" id="userChk022" type="radio" value=""> 휴대폰</label>
+                        	<label for="userChk011"><input name="rightRadioBtn" id="userChk011" type="radio" value="" checked> 아이핀</label>
+                        	<label for="userChk022" class="mgl10"><input name="rightRadioBtn" id="userChk022" type="radio" value=""> 휴대폰</label>
                         </div>
                         <div class="divForm" id="changeTextArea2">
                         	<div class="changeP">
@@ -116,10 +116,9 @@
                         			<a href="#"><img src="${ contextPath }/assets/images/member/btn_ipin_off.gif" alt="아이핀 발급받기" class="rollimg"></a>
                     			</div>
                         	</div>
-                            <!-- 휴대폰 선택
-                            <div class="changeH">
+                            <div class="changeH" style="display: none;">
                         		본의 명의의 휴대폰으로 아이디를 찾으려면 아래의 <strong class="fontRed"><span>[확인]</span></strong> 버튼을 클릭하세요.
-                        	</div>--> 
+                        	</div> 
                         </div>
                     </div>
                     
@@ -139,6 +138,15 @@
 	//validate 초기화
 	setValid();
 	findValidateCall();
+	
+	$("#userChk011").change(function(){
+		$(".changeP").show();
+		$(".changeH").css("display", "none");
+	});
+	$("#userChk022").change(function(){
+		$(".changeP").css("display", "none");
+		$(".changeH").show();
+	});
 	
 	$("#phone_radio").change(function(){
 		$("#memberFind-tel").show();
