@@ -18,10 +18,10 @@
 
 	<table class="list">
 		<colgroup>
-			<col width="105">
-			<col width="190">
-			<col width="190">
+			<col width="50">
 			<col width="*">
+			<col width="100">
+			<col width="100">
 		</colgroup>
 		<thead>
 			<tr>

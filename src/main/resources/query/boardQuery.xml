@@ -121,11 +121,7 @@
 
 	<select id="detailComments" resultType="hashmap" parameterType="hashmap">
 	SELECT
-		CONTENTS_ID,
-		COMMENT_ID,
-		MEMBER_ID,
-		COMMENT,
-		MOD_DT
+		*
 	FROM
 		BG_BOARD_COMMENTS
 	WHERE

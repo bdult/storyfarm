@@ -20,3 +20,16 @@
 	<li><a href="${ contextPath }/mypage/question.do" class="lm0505">1:1문의</a></li>
 	<li><a href="${ contextPath }/mypage/userInfo.do" class="lm0506">회원정보수정</a></li>
 </ul>
+
+<script>
+$("#lm").find("a").each(function(){
+	var $this = $(this);
+	if( $this.attr("href") == window.location.pathname ) {
+		$this.addClass("on");
+
+		if( '${ contextPath }/mypage/purchasingInfoPast.do' == window.location.pathname ) {
+			$("a.lm0502").addClass("on");
+		}
+	}
+});
+</script>

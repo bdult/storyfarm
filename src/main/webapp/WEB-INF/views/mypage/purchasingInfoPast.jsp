@@ -8,8 +8,8 @@
 	<!-- location -->
 	<div id="divLocation">
 		<ul class="location">
-			<li class="first"><a href="#" class="home"><img src="${ contextPath }/assets/images/common/blt_home.gif" alt="home"></a></li>
-			<li><a href="#">구매내역</a></li>
+			<li class="first"><a href="${ contextPath }/" class="home"><img src="${ contextPath }/assets/images/common/blt_home.gif" alt="home"></a></li>
+			<li><a href="${ contextPath }/mypage/purchasingInfo.do">구매내역</a></li>
 			<li class="current">과거이용내역</li>
 		</ul>
 	</div>
@@ -17,8 +17,8 @@
 
 	<div class="divTab">
 		<ul class="tab01">
-			<li><a href="#"><span>현재 이용내역</span></a></li>
-			<li><a href="#" class="on"><span>과거 이용내역</span></a></li>
+			<li><a href="${ contextPath }/mypage/purchasingInfo.do"><span>현재 이용내역</span></a></li>
+			<li><a href="${ contextPath }/mypage/purchasingInfoPast.do" class="on"><span>과거 이용내역</span></a></li>
 		</ul>
 	</div>
 
