@@ -64,6 +64,10 @@
 	var nextMovie=0;
 	var movieListSize = $(".movieList").size();
 	var isRepeat = false;
+	var isAlreadySendLog = false;
+	var playedList = {
+			
+	}
 	$(function(){
 		
 		// movie start
@@ -103,18 +107,34 @@
 		});
 		
 		$("#listBackBtn").click(function(){
-			window.location.href="${backUrl}";
+			history.back();
 		});
 	});
 	
 	function moviePlay(index){
-		console.info("moviePlay="+index);
 		var contentsId = $(".movieList").get(index).value;
 		$("#palyerSource").attr("src", "streaming.do?contents_id="+contentsId);
 		$("#contents_nm").text($(".movieListName").get(index).value);
 		$("#player").attr("poster", "");
 		$("#player")[0].load();
 		$("#player").get(0).play();
+		addPlayLog(contentsId);
+	}
+	
+	
+	function addPlayLog(contentsId){
+		$.ajax({
+			url: "addPlayLog.ajax",
+			data: "contents_id="+contentsId,
+			type: "POST",
+			success: function(response){
+				// success
+				isAlreadySendLog = true;
+			},
+			error: function(xhr, status, error){
+				// error
+			}
+		});
 	}
 	
 </script>

@@ -139,6 +139,19 @@ public class ContentsDao extends SqlSessionDaoSupport {
 		return getSqlSession().selectList("contentsQuery.listByArr", contentsId);
 	}
 
+	public int addPlayLog(Map paramMap) {
+		return getSqlSession().insert("contentsQuery.addPlayLog", paramMap);
+	}
+
+	public int duplicatePlayLogCount(Map playInfo) {
+		return (Integer)getSqlSession().selectOne("contentsQuery.duplicatePlayLogCount", playInfo);
+	}
+
+	public int paymentCheck(Map paymentInfo) {
+		//(Integer)getSqlSession().selectOne("contentsQuery.paymentCheck", paymentInfo)
+		return 1;
+	}
+
 	
 
 }
