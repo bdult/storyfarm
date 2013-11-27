@@ -161,7 +161,6 @@
 	});
 	
 	$("#phone_radio").change(function(){
-		console.info();
 		$("#memberFind-tel").show();
 		$("#memberFind-email").css("display", "none");
 		$("#memberFind-birth").css("display", "none");
@@ -172,7 +171,7 @@
 		$("#memberFind-birth").css("display", "none");
 	});
 	$("#birth_radio").change(function(){
-		birth.call();
+		birth();
 		$("#memberFind-birth").show();
 		$("#memberFind-tel").css("display", "none");
 		$("#memberFind-email").css("display", "none");
