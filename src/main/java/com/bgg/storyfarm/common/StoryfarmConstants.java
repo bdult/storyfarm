@@ -92,7 +92,6 @@ public class StoryfarmConstants {
 	
 	//COMMENTS
 	public final static String COMMENT_ID = "comment_id";
-	public final static String MEMBER_ID = "member_id";
 	public final static String COMMENT = "comment";
 	
 	//CONTENTS
@@ -100,5 +99,19 @@ public class StoryfarmConstants {
 	public final static String CONTENTS_ID = "contents_id";
 	public final static String CONTENTS_SERIES_ID = "contents_series_id";
 	public final static String CATE_ID = "cate_id";
+	public final static String CONTENTS = "contents";
+	
+	//MEMBER
+	public final static String MEMBER_ID = "member_id";
+	public final static String MEMBER_IDX = "member_idx";
+	public final static String LOGIN_YN = "loginYn";
+	public final static String PAYMENT_YN = "paymentYn";
+	
+	
+	//SESSION
+	public final static String MEMBER_SESSION = "userInfoSession";
+	public final static String CALL_BACK_URL = "callBackUrl";
+	
+	
 	
 }

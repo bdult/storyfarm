@@ -12,7 +12,10 @@
 	
 	<select id="detail" resultType="hashmap" parameterType="hashmap">
 		SELECT /* userQuery.detail */
-		MEMBER_ROLE, MEMBER_ID, MEMBER_STATUS
+			MEMBER_ROLE, 
+			MEMBER_ID, 
+			MEMBER_STATUS,
+			IDX
 		FROM BG_MEMBER
 		WHERE 
 		MEMBER_ID = #{ id } and MEMBER_PW = password(#{ pwd })
