@@ -1,27 +1,28 @@
-<%@ page contentType="text/html" pageEncoding="UTF-8" %>
+<%@ page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<h4>오즈월드 소개</h4>
+<div id="content">
 
-<div class="row">
-  <div class="col-md-12">
-  	<div class="well text-center">오즈월드란?</div>
-	<pre>
- 	눈을 채워나간다는 것은 경험을 채워나간다는 것이고 
-	경험을 채워나간다는 것은 곧 삶의 지혜를 채워나가는 것이라고 합니다.
-	
-	오즈월드는 아이들에게 조금 더 큰 세상을 보여주고 싶습니다.
-	
-	각각의 아이마다 아이의 공간을 만들 수 있어요.
-	우리 아이 어디까지 공부했나 확인할 수 있는 부모만의 메뉴가 있어요
-	즐겨보는 컨텐츠만 따로 모아 자녀방을 구성하면 자녀들이 손쉽게 나만의 컨텐츠를 즐길 수 있어요
-	유료 결제 시 더 많은 컨텐츠와 프리미엄 서비스를 즐기실 수 있어요
-	PC와 스마트폰, 그리고 태블릿에서도 언제든지 만나실 수 있어요.
-	
-	이제 책이 없어도 언제 어디서나 아이들에게 애니메이션과 
-	음향효과로 더욱 풍성한 감동과 책마다 볼 수 있는 학습지로 의미 있는 배움까지!
-	
-	이제 오즈월드의 세계를 여행해 보세요!
-	</pre>
-  </div>
+	<h2 class="divTit">
+		<img src="${ contextPath }/assets/images/intro/title_ozWorld.gif" alt="오즈월드 소개">
+	</h2>
+	<!-- location -->
+	<div id="divLocation">
+		<ul class="location">
+			<li class="first"><a href="#" class="home"><img src="${ contextPath }/assets/images/common/blt_home.gif" alt="home"></a></li>
+			<li><a href="#">서비스 소개</a></li>
+			<li class="current">오즈월드 소개</li>
+		</ul>
+	</div>
+	<!-- //location -->
+
+	<div class="topBanner">
+		<img src="${ contextPath }/assets/images/intro/intro_tImg.jpg" alt="오즈월드란?">
+	</div>
+
+	<div>
+		<img src="${ contextPath }/assets/images/intro/intro_tx01.jpg" alt="">
+	</div>
+
 </div>
+

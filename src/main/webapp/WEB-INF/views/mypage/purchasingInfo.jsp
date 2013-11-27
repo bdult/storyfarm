@@ -1,63 +1,66 @@
 <%@ page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<div class="row">
-	<div class="col-lg-12">
-		<h4>현재 이용내역</h4><br>
-		<a href="${ contextPath }/mypage/purchasingInfoPast.do" class="btn btn-default">과거이용내역</a>
-	</div>
-</div>
-
-<div class="row">
-	<div class="col-lg-12">
-		<a href="#" class="btn btn-primary">서비스 이용현황</a>
-		<a href="#" class="btn btn-default">이용정지</a>
-		<span class="pull-right">결제내역: cha3345 님의 정액제 결제 내역입니다.</span>
-	</div>
-</div>
-<div class="row">
-	<div class="col-lg-12">
-		<table class="table table-hover table-striped">
-			<thead>
-				<tr>
-					<th>구매날짜</th>
-					<th>요금제</th>
-					<th>가격</th>
-					<th>결제방법</th>
-					<th>현재상태</th>
-					<th>사용개시</th>
-					<th>만료예정</th>
-					<th>잔여기간</th>
-				</tr>
-			</thead>
-			<tbody>
-				<c:forEach begin="1" end="15" varStatus="status">
-					<tr>
-						<td>${ status.count }</td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-					</tr>
-				</c:forEach>
-			</tbody>
-		</table>
-	</div>
-</div>
-
-<div class="row">
-	<div class="col-lg-12 text-center">
-		<ul class="pagination">
-		  <li><a href="#">&laquo;</a></li>
-		  <li class="active"><a href="#">1</a></li>
-		  <li><a href="#">2</a></li>
-		  <li><a href="#">3</a></li>
-		  <li><a href="#">4</a></li>
-		  <li><a href="#">5</a></li>
-		  <li><a href="#">&raquo;</a></li>
+<div id="divContent">
+	<h2 class="divTit">
+		<img src="${ contextPath }/assets/images/mypage/title_buy.gif" alt="구매내역">
+	</h2>
+	<!-- location -->
+	<div id="divLocation">
+		<ul class="location">
+			<li class="first"><a href="#" class="home"><img src="${ contextPath }/assets/images/common/blt_home.gif" alt="home"></a></li>
+			<li><a href="#">구매내역</a></li>
+			<li class="current">현재이용내역</li>
 		</ul>
 	</div>
+	<!-- //location -->
+
+	<div class="divTab">
+		<ul class="tab01">
+			<li><a href="#" class="on"><span>현재 이용내역</span></a></li>
+			<li><a href="#"><span>과거 이용내역</span></a></li>
+		</ul>
+	</div>
+
+	<div class="mypageTx01 mgt20">
+		<span class="fontOrange">현재 유료로 이용중인 서비스내역은 아래와 같습니다!</span>
+	</div>
+
+	<table class="data mgt20">
+		<colgroup>
+			<col width="25%">
+			<col width="*">
+		</colgroup>
+		<tbody>
+			<tr>
+				<th><strong>구매일자</strong></th>
+				<td class="fontBlue">2013-09-28</td>
+			</tr>
+			<tr>
+				<th><strong>이용 요금제</strong></th>
+				<td class="fontBlue">프리미엄 요금제</td>
+			</tr>
+			<tr>
+				<th><strong>서비스 이용기간</strong></th>
+				<td class="fontBlue">2013년 9월 1일 -2013년 10월 1일</td>
+			</tr>
+			<tr>
+				<th><strong>서비스 요금</strong></th>
+				<td class="fontBlue">9,900 원</td>
+			</tr>
+			<tr>
+				<th><strong>결제방법</strong></th>
+				<td class="fontBlue">신용카드</td>
+			</tr>
+			<tr>
+				<th><strong>잔여기간</strong></th>
+				<td class="fontBlue">30일</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<div class="btnSc aright">
+		<a href="#"><img src="${ contextPath }/assets/images/common/btn_receipt_off.gif" alt="영수증발급" class="rollimg"></a>
+	</div>
+
 </div>

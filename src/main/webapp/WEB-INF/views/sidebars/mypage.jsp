@@ -6,8 +6,8 @@
 	<li><a href="${ contextPath }/mypage/payment.do" class="lm0501">유료서비스 결제</a></li>
 	<li><a href="${ contextPath }/mypage/purchasingInfo.do" class="lm0502">구매내역</a>
     	<ul>
-        	<li><a href="#" class="lm050201">현재이용내역</a></li>
-            <li><a href="#" class="lm050202">과거이용내역</a></li>
+        	<li><a href="${ contextPath }/mypage/purchasingInfo.do" class="lm050201">현재이용내역</a></li>
+            <li><a href="${ contextPath }/mypage/purchasingInfoPast.do" class="lm050202">과거이용내역</a></li>
         </ul>
     </li>
 	<li><a href="${ contextPath }/mypage/coupon.do" class="lm0503">쿠폰내역</a></li>
