@@ -87,7 +87,7 @@ public class UserController {
 					response.addCookie(new Cookie("userPwdCheck", ""));
 				}
 			}
-			return "user/loginResult";
+			return "redirect:mypage/info.do";
 		}
 		
 	}
