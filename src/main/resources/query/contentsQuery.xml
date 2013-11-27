@@ -63,10 +63,13 @@
 
     <select id="contentsListByCate" resultType="map">
         SELECT /* contentsQuery.contentsListByCate */
-            BC.*
-        FROM BG_CONTENTS BC, BG_CATE_CONTENTS_RELATIONSHIPS BCCR
+        	BC.IMG_PATH
+            , BCD.*
+        FROM BG_CONTENTS BC, BG_CATE_CONTENTS_RELATIONSHIPS BCCR, BG_CONTENTS_DETAIL BCD
         WHERE 1=1
-        AND BC.CONTENTS_ID = BCCR.CONTENTS_ID
+        AND BC.CONTENTS_ID = BCD.CONTENTS_ID
+        AND BCD.IDX = BCCR.CONTENTS_DETAIL_IDX
+        AND BCD.LOCATION_CODE = 'LOC001'
         AND BCCR.CATE_ID = #{ cate_id } 
         ORDER BY REG_DT
         <if test="rownum != null">
@@ -77,14 +80,12 @@
     <select id="contentsCountByCate" resultType="int">
 	    SELECT /* contentsQuery.contentsCountByCate */
 	    	COUNT(*)
-	    FROM (
-	        SELECT
-	            BC.*
-	        FROM BG_CONTENTS BC, BG_CATE_CONTENTS_RELATIONSHIPS BCCR
-	        WHERE 1=1
-	        AND BC.CONTENTS_ID = BCCR.CONTENTS_ID
-	        AND BCCR.CATE_ID = #{ cate_id } 
-	    ) TBL
+	    FROM BG_CONTENTS BC, BG_CATE_CONTENTS_RELATIONSHIPS BCCR, BG_CONTENTS_DETAIL BCD
+        WHERE 1=1
+        AND BC.CONTENTS_ID = BCD.CONTENTS_ID
+        AND BCD.IDX = BCCR.CONTENTS_DETAIL_IDX
+        AND BCD.LOCATION_CODE = 'LOC001'
+        AND BCCR.CATE_ID = #{ cate_id }
     </select>
     
     <select id="movieUrlByContentsId" resultType="String">
@@ -97,14 +98,15 @@
 
     <select id="detail" resultType="map">
         SELECT /* contentsQuery.detail */
-            *
-        FROM BG_CONTENTS
-        <if test="contents_id == null">
-        WHERE contents_id = 5
-        </if>
-        <if test="contents_id != null">
-        WHERE contents_id = #{ contents_id }
-        </if>
+            BC.IMG_PATH
+            , BC.SRC_PATH
+            , BC.PREFIX_URL
+            , BCD.*
+        FROM BG_CONTENTS BC, BG_CONTENTS_DETAIL BCD        
+        WHERE 1=1
+        AND BC.CONTENTS_ID = BCD.CONTENTS_ID
+        AND BCD.LOCATION_CODE = 'LOC001'
+        AND BC.CONTENTS_ID = #{ contents_id }
     </select>
     
     <select id="contentsCount" resultType="int" parameterType="hashmap">
