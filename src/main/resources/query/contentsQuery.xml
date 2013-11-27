@@ -63,12 +63,25 @@
 
     <select id="contentsListByCate" resultType="map">
         SELECT /* contentsQuery.contentsListByCate */
-            BC.*
-        FROM BG_CONTENTS BC, BG_CATE_CONTENTS_RELATIONSHIPS BCCR
+            BC.CONTENTS_ID
+            , BC.CONTENTS_SERIES_ID
+            , BC.SRC_PATH
+            , BC.IMG_PATH
+            , BC.PREFIX_URL
+            , BC.MOVIE_SIZE
+            , BC.MOVIE_RESOLUTION
+            , BC.MOVIE_WIDTH
+            , BC.MOVIE_HEIGHT
+            , BCD.CONTENTS_NM
+            , BCD.CONTENTS_DESC
+            , BCD.LOCATION_CODE
+            , BCD.REG_DT
+        FROM BG_CONTENTS BC, BG_CATE_CONTENTS_RELATIONSHIPS BCCR, BG_CONTENTS_DETAIL BCD
         WHERE 1=1
-        AND BC.CONTENTS_ID = BCCR.CONTENTS_ID
+        AND BC.CONTENTS_ID = BCD.CONTENTS_ID
+        AND BCD.IDX = BCCR.CONTENTS_DETAIL_IDX 
         AND BCCR.CATE_ID = #{ cate_id } 
-        ORDER BY REG_DT
+        ORDER BY BC.REG_DT
         <if test="rownum != null">
         LIMIT #{ rownum }, #{ perpage }
         </if>
@@ -79,10 +92,23 @@
 	    	COUNT(*)
 	    FROM (
 	        SELECT
-	            BC.*
-	        FROM BG_CONTENTS BC, BG_CATE_CONTENTS_RELATIONSHIPS BCCR
+	            BC.CONTENTS_ID
+	            , BC.CONTENTS_SERIES_ID
+	            , BC.SRC_PATH
+	            , BC.IMG_PATH
+	            , BC.PREFIX_URL
+	            , BC.MOVIE_SIZE
+	            , BC.MOVIE_RESOLUTION
+	            , BC.MOVIE_WIDTH
+	            , BC.MOVIE_HEIGHT
+	            , BCD.CONTENTS_NM
+	            , BCD.CONTENTS_DESC
+	            , BCD.LOCATION_CODE
+	            , BCD.REG_DT
+	        FROM BG_CONTENTS BC, BG_CATE_CONTENTS_RELATIONSHIPS BCCR, BG_CONTENTS_DETAIL BCD
 	        WHERE 1=1
-	        AND BC.CONTENTS_ID = BCCR.CONTENTS_ID
+	        AND BC.CONTENTS_ID = BCD.CONTENTS_ID
+	        AND BCD.IDX = BCCR.CONTENTS_DETAIL_IDX 
 	        AND BCCR.CATE_ID = #{ cate_id } 
 	    ) TBL
     </select>
@@ -189,6 +215,34 @@
 			<foreach collection="list" item="contentsId" index="index" open="(" close=")" separator=",">
 					#{contentsId}				
 			</foreach>
+    </select>
+    
+    
+    <!-- Play Log  -->
+    <insert id="addPlayLog">
+        INSERT BG_PLAY_LOG 
+        	(
+    	    	MEMBER_IDX
+    	    	, CONTENTS_ID
+    	    	, YEAR
+    	    	, MONTH
+    	    	, DAY
+	        )
+        VALUES
+	        (
+	        	#{member_idx}
+	        	, #{contents_id}
+	       		, (select year(now()))
+	       		, (select month(now()))
+	       		, (select day(now()))
+	      	)
+    </insert>
+    
+    <select id="duplicatePlayLogCount" resultType="int">
+        SELECT COUNT(*) FROM BG_PLAY_LOG
+        WHERE 1=1 
+        AND CONTENTS_ID = #{contents_id}
+        AND MEMBER_IDX = #{member_idx}
     </select>
     
 </mapper>

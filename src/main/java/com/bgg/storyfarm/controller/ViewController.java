@@ -1,9 +1,6 @@
 package com.bgg.storyfarm.controller;
 
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -12,7 +9,6 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,13 +19,13 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.bgg.storyfarm.common.BreadcrumbUtil;
 import com.bgg.storyfarm.common.PageUtil;
 import com.bgg.storyfarm.common.StoryfarmConstants;
 import com.bgg.storyfarm.service.ContentsService;
+import com.bgg.storyfarm.service.UserService;
 
 @Controller
 public class ViewController {
@@ -49,6 +45,9 @@ public class ViewController {
 	
 	@Autowired
 	private MessageSource messageSource;
+	
+	@Autowired
+	private UserService userService;
 	
 	@RequestMapping(value = "dashboard.do", method = RequestMethod.GET)
 	public ModelAndView main(Model model, Locale locale,
@@ -196,33 +195,62 @@ public class ViewController {
 	}
 	
 	@RequestMapping(value = "play.do", method = RequestMethod.GET)
-	public ModelAndView play( @RequestParam Map<String,Object> paramMap ) {
+	public ModelAndView play( @RequestParam Map<String,Object> paramMap, HttpSession session ) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("view/play");
 		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME));
 		
-		mav.addObject("contents", contentsService.detail(paramMap));
+		Map memberInfo = (Map)session.getAttribute(StoryfarmConstants.MEMBER_SESSION);
+		if(isLogin(memberInfo)){
+			mav.addObject(StoryfarmConstants.LOGIN_YN, "Y");
+			boolean isPaymentUser = contentsService.isPaymentMember(memberInfo, paramMap);
+			if(isPaymentUser){
+				mav.addObject(StoryfarmConstants.PAYMENT_YN, "Y");
+			}else{
+				mav.addObject(StoryfarmConstants.PAYMENT_YN, "N");
+			}
+		}else{
+			mav.addObject(StoryfarmConstants.LOGIN_YN, "N");
+			mav.addObject(StoryfarmConstants.PAYMENT_YN, "N");
+		}
+		mav.addObject(StoryfarmConstants.CONTENTS, contentsService.detail(paramMap));
 		return mav;
 	}
+
+
 	
 	@RequestMapping(value = "playList.do", method = RequestMethod.POST)
 	public ModelAndView playList( @RequestParam List<String> contentId, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("view/playList");
-		logger.info("contentsArr.size() {}", contentId.size());
 		List<Map<String, Object>> playList = contentsService.listByArr(contentId);
 		mav.addObject("playList", playList);
-		mav.addObject(BACK_URL, session.getAttribute(BACK_URL));
+		
+		Map memberInfo = (Map)session.getAttribute(StoryfarmConstants.MEMBER_SESSION);
+		if(isLogin(memberInfo)){
+			mav.addObject("loginYn", "Y");
+		}else{
+			mav.addObject("loginYn", "N");
+		}
+		
 		return mav;
 	}
 	
 	@RequestMapping(value = "streaming.do", method = RequestMethod.GET)
-	public String StreamingTest( @RequestParam String contents_id ) {
-		String redirectUrl = contentsService.movieUrlByContentsId(contents_id);
-		return "redirect:"+redirectUrl;
-		
+	public String streaming( @RequestParam String contents_id, HttpSession session ) {
+		// play.do(상품상세) 에서 로그인 체크를 하지만 
+		// 이중체크를 위해 추가 video tag src 속성에 empty 값으로 세팅 한다.
+		// 또한 결제를 하지 않은 사용자의 경우도 src 값이 empty 가 된다.
+		Map memberInfo = (Map)session.getAttribute(StoryfarmConstants.MEMBER_SESSION);
+		if(isLogin(memberInfo)){
+			String redirectUrl = contentsService.movieUrlByContentsId(contents_id);
+			return "redirect:"+redirectUrl;
+		}else{
+			return "";
+		}
 	}
 	
+
 	// UNDER CODE IS TEST_CODE
 	@RequestMapping(value = "cropTest.do", method = RequestMethod.GET)
 	public String cropTest(Model model) {
@@ -247,6 +275,14 @@ public class ViewController {
 		paramsMap.put(PageUtil.ROWNUM_KEY, (pageNum - 1) * PageUtil.PER_PAGE);
 		paramsMap.put(PageUtil.PER_KEY, PageUtil.PER_PAGE);
 		return pageNum;
+	}
+	
+	private boolean isLogin(Map memberInfo) {
+		if(memberInfo == null){
+			return false;
+		}else{
+			return true;
+		}
 	}
 	
 }

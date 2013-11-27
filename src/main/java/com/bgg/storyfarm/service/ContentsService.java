@@ -7,6 +7,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.bgg.storyfarm.common.StoryfarmConstants;
 import com.bgg.storyfarm.dao.ContentsDao;
 
 @Service
@@ -117,6 +118,43 @@ public class ContentsService {
 
 	public List<Map<String, Object>> listByArr(List<String> contentsId) {
 		return contentsDao.listByArr(contentsId);
+	}
+
+	public void addPlayLog(Long memberIdx, String contents_id) {
+		
+		
+		Map playInfo = new HashMap();
+		playInfo.put(StoryfarmConstants.MEMBER_IDX, memberIdx);
+		playInfo.put(StoryfarmConstants.CONTENTS_ID, contents_id);
+		
+		// log data 중복 체크
+		if(alreadyLog(playInfo)){
+			// Skip
+		}else{
+			contentsDao.addPlayLog(playInfo);
+		}
+	}
+
+	private boolean alreadyLog(Map playInfo) {
+		int checkCount = contentsDao.duplicatePlayLogCount(playInfo);
+		if(checkCount > 0){
+			return true;
+		}else{
+			return false;
+		}
+	}
+
+	public boolean isPaymentMember(Map memberInfo,
+			Map<String, Object> paramMap) {
+		Map paymentInfo = new HashMap();
+		paymentInfo.put(StoryfarmConstants.MEMBER_ID, memberInfo.get(StoryfarmConstants.MEMBER_ID));
+		paymentInfo.put(StoryfarmConstants.CONTENTS_ID, paramMap.get(StoryfarmConstants.CONTENTS_ID));
+		int checkCount = contentsDao.paymentCheck(paymentInfo);
+		if(checkCount > 0){
+			return true;
+		}else{
+			return false;
+		}
 	}
 
 	

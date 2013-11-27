@@ -62,3 +62,81 @@
     <!-- conVew -->
     
 </div>
+
+
+<script>
+$(function(){
+	
+	// 차후 결제 기능 구현히 결제 체크 구현
+
+	
+	// play event
+	var contentsId = "${contents.CONTENTS_ID}";
+	$("#player").bind('play',function() {
+		if(loginMember()){
+			if(paymentMember()){
+				addPlayLog(contentsId);
+				$("#player").get(0).play();
+			}else{
+				$("#player").get(0).pause();
+				if(confirm("시청 가능한 상품이 아닙니다. \n 결제 하시겠습니까?")){
+					
+				}else{
+					
+				}
+			}
+			
+		}
+		// not log-in user
+		else{
+			$("#player").get(0).pause();
+			if(confirm("로그인 되어 있지 않습니다. \n 로그인 하시겠습니까?")){
+				
+			}else{
+				
+			}
+		}
+    });
+
+});
+
+	function loginMember(){
+		var loginResult = "${loginYn}";
+		if(loginResult == "Y"){
+			return true;
+		}else{
+			return false;
+		}
+	}
+
+	function paymentMember(){
+		var paymentResult = "${paymentYn}";
+		console.log(paymentResult);
+		if(paymentResult == "Y"){
+			return true;
+		}else{
+			return false;
+		}
+	}
+	
+	function authMember(){
+		// 향후 개발
+		return true;
+	}
+
+	function addPlayLog(contentsId){
+		$.ajax({
+			url: "addPlayLog.ajax",
+			data: "contents_id="+contentsId,
+			type: "POST",
+			success: function(response){
+				// success
+				isAlreadySendLog = true;
+			},
+			error: function(xhr, status, error){
+				// error
+			}
+		});
+	}
+
+</script>

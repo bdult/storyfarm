@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.lang.StringUtils;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.slf4j.Logger;
@@ -24,6 +25,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.bgg.storyfarm.common.BreadcrumbUtil;
 import com.bgg.storyfarm.common.MailUtil;
 import com.bgg.storyfarm.common.StoryfarmConstants;
+import com.bgg.storyfarm.service.ContentsService;
 import com.bgg.storyfarm.service.UserService;
 
 @SuppressWarnings("unchecked")
@@ -35,6 +37,9 @@ public class UserController {
 
 	@Autowired
 	private BreadcrumbUtil breadcrumbUtil;
+	
+	@Autowired
+	private ContentsService contentsService;
 
 	@Autowired
 	private MailUtil mailUtil;
@@ -72,8 +77,8 @@ public class UserController {
 			model.addAttribute("msg", "login_fail");
 			return "user/loginView";
 		} else {
-			if(session.getAttribute("userInfoSession") == null){
-				session.setAttribute("userInfoSession", sessionMap);
+			if(session.getAttribute(StoryfarmConstants.MEMBER_SESSION) == null){
+				session.setAttribute(StoryfarmConstants.MEMBER_SESSION, sessionMap);
 				response.addCookie(new Cookie("userIdCookie", paramMap.get("id").toString()));
 				response.addCookie(new Cookie("userPwdCookie", paramMap.get("pwd").toString()));
 				if(paramMap.get("userSaveId") != null){
@@ -87,7 +92,20 @@ public class UserController {
 					response.addCookie(new Cookie("userPwdCheck", ""));
 				}
 			}
-			return "user/loginResult";
+			
+			// callbackUrl 유무 체크
+			String callBackUrl = (String)session.getAttribute(StoryfarmConstants.CALL_BACK_URL);
+			
+			if(StringUtils.isEmpty(callBackUrl)){
+				return "user/loginResult";
+			}else{
+				try {
+					response.sendRedirect(callBackUrl);
+				} catch (Exception e) {
+					// TODO: handle exception
+				}
+				return null;
+			}
 		}
 		
 	}
@@ -229,5 +247,23 @@ public class UserController {
 		mailUtil.sendMail(receive, pw);
 		
 		return mav;
+	}
+	
+	@RequestMapping(value = "addPlayLog.ajax", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	public @ResponseBody String addPlayLog(@RequestParam String contents_id, HttpSession session) {
+
+		Map memberInfo = (Map)session.getAttribute(StoryfarmConstants.MEMBER_SESSION);
+		contentsService.addPlayLog((Long)memberInfo.get("IDX"), contents_id);
+		return null;
+	}
+	@RequestMapping(value = "playLoginCheck.ajax", produces = "application/json;charset=UTF-8")
+	public @ResponseBody String playLoginCheck(HttpSession session) {
+		
+		Map memberInfo = (Map)session.getAttribute(StoryfarmConstants.MEMBER_SESSION);
+		if(memberInfo == null){
+			return "200";
+		}else{
+			return "404";
+		}
 	}
 }
