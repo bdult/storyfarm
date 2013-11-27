@@ -24,6 +24,7 @@
                 </div>
                 
    	  	  	  	<h3 class="divTit3 mgt30">선택하신 요금제 및 상세 내역</h3>
+   	  	  	  	<form id="paymentSelectInfo">
                 <table class="data">
                	<colgroup>
                 <col width="20%">
@@ -40,7 +41,7 @@
                 </tr>
                 <tr>
                 	<th><strong class="fontGreen">서비스 요금</strong></th>
-                    <td></td>
+                    <td>${ paymentInfo }</td>
                 </tr>
                 </tbody>
                 </table>
@@ -64,11 +65,11 @@
                 </tr>
                 <tr>
                 	<th><strong class="fontGreen">할인금액</strong></th>
-                    <td>0</td>
+                    <td></td>
                 </tr>
                 <tr>
                 	<th><strong class="fontGreen">최종결제금액</strong></th>
-                    <td>9,900 원</td>
+                    <td id="finalPayInfo">${ paymentInfo }</td>
                 </tr>
                 <tr>
                   	<th><strong class="fontGreen">결제방식</strong></th>
@@ -181,9 +182,10 @@
                 </tbody>
                 
                 </table>
+                </form>
                 
                 <div class="btnSc">
-                	<a href="${ contextPath }/mypage/paymentResult.do"><img src="../assets/images/common/btn_pay2_off.gif" alt="결제하기" class="rollimg"></a>
+                	<a id="submit"><img src="../assets/images/common/btn_pay2_off.gif" alt="결제하기" class="rollimg"></a>
                 	<a href="#"><img src="../assets/images/common/btn_cancel2_off.gif" alt="취소하기" class="rollimg"></a>
                 </div>
                 
@@ -203,6 +205,15 @@
 <script type="text/javascript">
 	$(".lm0501").addClass("on");
 
+	$("#submit").click(function(){
+		var input = $("<input>").attr("type", "hidden").attr("name", "pay").val($("#finalPayInfo").text());
+		$('#paymentSelectInfo').append($(input));
+		$("#paymentSelectInfo").attr({
+			method: 'post',
+			action: '${ contextPath }/mypage/paymentResult.do'
+		}).submit();
+	});
+	
 	$("#card").change(function(){
 		$("#cardForm").show();
 		$("#transferForm").css("display", "none");

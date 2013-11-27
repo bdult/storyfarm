@@ -42,7 +42,7 @@
                             </tr>
                             <tr>
                             	<th><strong>서비스 요금</strong></th>
-                                <td class="fontBlue">9,900 원</td>
+                                <td class="fontBlue">${ paymentInfo } 원</td>
                             </tr>
                             </tbody>
                             </table>
