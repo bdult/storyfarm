@@ -92,65 +92,58 @@
                 </tr>
                 <tr>
                 	<th><strong class="fontGreen">한글</strong></th>
-                    <td><label><input name="" type="radio" value=""> 8,000원</label></td>
+                    <td><label><input name="subjKorean" type="radio" value="8000"> 8,000원</label></td>
                     <td class="brdL"></td>
-                    <td class="brdL"><label><input name="" type="radio" value=""> 38,000원</label></td>
-                    <td class="brdL"><label><input name="" type="radio" value=""> 49,000원</label></td>
+                    <td class="brdL"><label><input name="subjKorean" type="radio" value="38000"> 38,000원</label></td>
+                    <td class="brdL"><label><input name="subjKorean" type="radio" value="49000"> 49,000원</label></td>
                 </tr>
                 <tr>
                 	<th><strong class="fontGreen">영어</strong></th>
-                    <td><label><input name="" type="radio" value="">
-                    6,000원</label></td>
-                    <td class="brdL"><label><input name="" type="radio" value=""> 12,000원</label></td>
+                    <td><label><input name="subjEnglish" type="radio" value="6000"> 6,000원</label></td>
+                    <td class="brdL"><label><input name="subjEnglish" type="radio" value="12000"> 12,000원</label></td>
                     <td class="brdL">&nbsp;</td>
                     <td class="brdL">&nbsp;</td>
                 </tr>
                 <tr>
                 	<th><strong class="fontGreen">수학</strong></th>
-                    <td><label><input name="" type="radio" value=""> 
-                    9,000원</label></td>
+                    <td><label><input name="subjMath" type="radio" value="9000"> 9,000원</label></td>
                     <td class="brdL">&nbsp;</td>
-                    <td class="brdL"><label><input name="" type="radio" value=""> 39,000원</label></td>
+                    <td class="brdL"><label><input name="subjMath" type="radio" value="39000"> 39,000원</label></td>
                     <td class="brdL">&nbsp;</td>
                 </tr>
                 <tr>
                   <th><strong class="fontGreen">과학</strong></th>
-                  <td><label><input name="" type="radio" value=""> 
-                  12,000원</label></td>
+                  <td><label><input name="subjScience" type="radio" value="12000">12,000원</label></td>
                   <td class="brdL">&nbsp;</td>
-                  <td class="brdL"><label><input name="" type="radio" value=""> 42,000원</label></td>
+                  <td class="brdL"><label><input name="subjScience" type="radio" value="42000"> 42,000원</label></td>
                   <td class="brdL">&nbsp;</td>
                 </tr>
                 <tr>
                   <th><strong class="fontGreen">창의</strong></th>
-                  <td><label><input name="" type="radio" value=""> 8,000원</label></td>
-                  <td class="brdL"><label><input name="" type="radio" value=""> 12,000원</label></td>
-                  <td class="brdL"><label><input name="" type="radio" value=""> 38,000원</label></td>
-                  <td class="brdL"><label><input name="" type="radio" value=""> 49,000원</label></td>
+                  <td><label><input name="subjCreative" type="radio" value="8000"> 8,000원</label></td>
+                  <td class="brdL"><label><input name="subjCreative" type="radio" value="12000"> 12,000원</label></td>
+                  <td class="brdL"><label><input name="subjCreative" type="radio" value="38000"> 38,000원</label></td>
+                  <td class="brdL"><label><input name="subjCreative" type="radio" value="49000"> 49,000원</label></td>
                 </tr>
                 <tr>
                   <th><strong class="fontGreen">동요</strong></th>
-                  <td><label><input name="" type="radio" value=""> 
-                  6,000원</label></td>
+                  <td><label><input name="subjSong" type="radio" value="6000"> 6,000원</label></td>
                   <td class="brdL">&nbsp;</td>
                   <td class="brdL">&nbsp;</td>
                   <td class="brdL">&nbsp;</td>
                 </tr>
                 <tr>
                   <th><strong class="fontGreen">동화</strong></th>
-                  <td><label><input name="" type="radio" value=""> 
-                  9,000원</label></td>
+                  <td><label><input name="subjStory" type="radio" value="9000"> 9,000원</label></td>
                   <td class="brdL">&nbsp;</td>
-                  <td class="brdL"><label><input name="" type="radio" value=""> 
-                  39,000원</label></td>
+                  <td class="brdL"><label><input name="subjStory" type="radio" value="39000"> 39,000원</label></td>
                   <td class="brdL">&nbsp;</td>
                 </tr>
                 <tr>
                   <th><strong class="fontGreen">생활</strong></th>
-                  <td><label><input name="" type="radio" value=""> 
-                  12,000원</label></td>
+                  <td><label><input name="subjLife" type="radio" value="12000"> 12,000원</label></td>
                   <td class="brdL">&nbsp;</td>
-                  <td class="brdL"><label><input name="" type="radio" value=""> 42,000원</label></td>
+                  <td class="brdL"><label><input name="subjLife" type="radio" value="42000"> 42,000원</label></td>
                   <td class="brdL">&nbsp;</td>
                 </tr>
                 </tbody>
@@ -158,7 +151,7 @@
                 
                 <div class="btPayDiv">
                 	<ul>
-                   	  <li class="typ2">합계금액 <input name="" type="text" style="width:250px;" class="mgl20"> 원 <a href="#"><img src="../assets/images/mypage/bt_pay05_off.gif" alt="과목별 요금제 신청" class="rollimg aln_middle"></a></li>
+                   	  <li class="typ2">합계금액 <input id="subjTotal" name="" type="text" style="width:250px;" class="mgl20" readonly> 원 <a href="#"><img src="../assets/images/mypage/bt_pay05_off.gif" alt="과목별 요금제 신청" class="rollimg aln_middle"></a></li>
                     </ul>
                 </div>
                 
@@ -248,7 +241,7 @@
                 
                 <div class="btPayDiv">
                 	<ul>
-                    	<li class="typ2">합계금액 <input name="" type="text" style="width:250px;" class="mgl20"> 원 <a href="#"><img src="../assets/images/mypage/bt_pay06_off.gif" alt="전집별 요금제 신청" class="rollimg aln_middle"></a></li>
+                    	<li class="typ2">합계금액 <input name="" type="text" style="width:250px;" class="mgl20" readonly> 원 <a href="#"><img src="../assets/images/mypage/bt_pay06_off.gif" alt="전집별 요금제 신청" class="rollimg aln_middle"></a></li>
                   	</ul>
               	</div>
                 
@@ -267,6 +260,17 @@
             <!-- //divContent -->
 
 <script type="text/javascript">
+
+	$(".lm0501").addClass("on");
+
+	$("[type=radio]").click(function(){
+		var $this = $(this);
+		console.info($this.is(":checked"));
+		if($("[type=radio]").is(":checked") == $this.is(":checked")){
+			alert("test");
+		}
+		
+	});
 	$("[type=radio]").click(function(){
 		
 		var total = parseInt($('[name=korean]:checked').val()) + parseInt($('[name=english]:checked').val()) + parseInt($('[name=math]:checked').val()) + parseInt($('[name=science]:checked').val()) + parseInt($('[name=creative]:checked').val()) + parseInt($('[name=song]:checked').val()) + parseInt($('[name=story]:checked').val()) + parseInt($('[name=life]:checked').val());
