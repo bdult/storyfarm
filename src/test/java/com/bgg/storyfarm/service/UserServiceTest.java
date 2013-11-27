@@ -173,7 +173,7 @@ public class UserServiceTest {
 	
 	@Test
 	public void alphaRandomTest(){
-		logger.info("패스워드 랜덤 12자 생성 테스트 입니다.");
+		logger.info("패스워드 랜덤 12자 변경 테스트 입니다.");
 		
 		//given
 		String pw = org.apache.commons.lang.RandomStringUtils.random(12, true, true);

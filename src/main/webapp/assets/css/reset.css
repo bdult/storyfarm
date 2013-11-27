@@ -71,12 +71,18 @@ label.radio{ display:inline-block; margin-right:10px;}
 .fontRed{ color:#fb2300 !important;}
 .fontRed *{ text-decoration:underline;}
 .fontBlue{ color:#0054de !important;}
+.fontGreen{ color:#21a7ad !important;}
+.fontOrange{ color:#eb7f00 !important;}
 .mgl10{ margin-left:10px !important;}
+.mgl20{ margin-left:20px !important;}
 .mgl50{ margin-left:50px !important;}
+.mgt0{ margin-top:0 !important;}
 .mgt5{ margin-top:5px !important;}
 .mgt10{ margin-top:10px !important;}
 .mgt20{ margin-top:20px !important;}
 .mgt30{ margin-top:30px !important;}
+.mgt40{ margin-top:40px !important;}
+.mgt50{ margin-top:50px !important;}
 
 .btnSc{position:relative;clear:both; margin:20px 0 0 0; text-align:center;}
 .btnSc .left{position:absolute;left:0;top:0;}
