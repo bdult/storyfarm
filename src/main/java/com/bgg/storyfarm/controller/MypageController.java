@@ -5,6 +5,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
+import org.json.simple.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.bgg.storyfarm.common.BreadcrumbUtil;
@@ -116,13 +118,16 @@ public class MypageController {
 		return mav;
 	}
 	
-	@RequestMapping(value = "addCoupon.do", method = RequestMethod.GET)
-	public ModelAndView addCoupon(Model model) {
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("pure-mypage/addCoupon");
-		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_MYPAGE_INFO, StoryfarmConstants.BREADCRUMB_MYPAGE_COUPON, StoryfarmConstants.BREADCRUMB_MYPAGE_ADD_COUPON));
-		return mav;
+	/** 입력받은 쿠폰번호를 등록.
+	 * @param paramMap
+	 * @return JSON
+	 */
+	@RequestMapping(value = "addCoupon.ajax", produces = "application/json;charset=UTF-8")
+	public @ResponseBody String addCoupon(@RequestParam Map<String, Object> paramMap) {
+
+		return userService.addCoupon(paramMap);
 	}
+	
 	
 	@RequestMapping(value = "pauseRequest.do", method = RequestMethod.GET)
 	public ModelAndView pauseRequest(Model model) {
