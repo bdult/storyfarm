@@ -1,82 +1,68 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<div class="row">
-	<div class="col-lg-12 text-center">
-		<h3>1:1 문의 상세</h3>
-	</div>
-</div>
 
-<div class="row">
-	<div class="col-lg-12">
-		
-		<div class="panel panel-info">
-		  <div class="panel-heading">
-		  	${ writing.TITLE } 
-		  	<div class="pull-right">${ writing.REG_DT }</div>
-	  	</div>
-		  <div class="panel-body">${ writing.CONTENTS }</div>
-		</div>
-		
-		<ul class="list-unstyled">
-			<c:forEach var="comment" items="${ detailComments }">
-			
-				<li class="panel panel-info panel-body commentList">
-					<c:if test="${ comment.MEMBER_ID == userInfoSession.MEMBER_ID }">
-						<dl>
-							<dt class="pull-right">
-								<a class="btn btn-default commentModify">수정</a>
-								<a class="btn btn-default commentDelete">삭제</a>
-							</dt>
-						</dl>
-					</c:if>
-					<dl>
-						<dt class="member_id">${ comment.MEMBER_ID }</dt>
-					</dl>
-					<dl>
-						<dt class="comment">${ comment.COMMENT }</dt>
-					</dl>
-					<form class="commentCreate" method="post" action="${ contextPath }/cscenter/commentModify.do" style="display:none;">
-						<input type="hidden" name="fLocation" value="cscenter">
-						<input type="hidden" name="sLocation" value="eventView">
-						<input type="hidden" name="contents_id" value="${ comment.CONTENTS_ID }">
-						<input type="hidden" name="comment_id" value="${ comment.COMMENT_ID }">
-						<textarea name="comment" class="form-control" rows="3">${ comment.COMMENT }</textarea>
-						<button class="btn btn-default">덧글입력</button>
-					</form>
-				</li>
-			</c:forEach>
-		</ul>
-		
-		<c:choose>
-			<c:when test="${ userInfoSession.MEMBER_ID != null }">
-				<form method="post" action="${ contextPath }/cscenter/commentCreate.do">
-					<div class="panel panel-info">
-						<input type="hidden" name="fLocation" value="cscenter">
-						<input type="hidden" name="sLocation" value="eventView">
-						<input type="hidden" name="contents_id" value="${contentsId}">
-						<input type="hidden" name="member_id" value="${userInfoSession.MEMBER_ID}">
-						<textarea class="form-control" rows="3" name="comment"></textarea>
-						<button class="btn btn-default pull-right">덧글입력</button>
-					</div>
-				</form>
-			</c:when>
-			<c:otherwise>
-				<div class="panel panel-info">
-					로그인한 사람에게만 덧글쓰기를 허용하고 있습니다. <a href="${ contextPath }/loginView.do">로그인</a> 후 이용해 주세요
+            <!-- divContent -->
+            <div id="divContent">
+                <h2 class="divTit"><img src="" alt="이벤트상세"></h2>
+				<!-- location -->
+				<div id="divLocation">
+					<ul class="location">
+						<c:forEach items="${ breadcrumbs }" var="obj" varStatus="status">
+							<c:choose>
+								<c:when test="${ status.first }">
+									<li class="first"><a href="${ contextPath }" class="home"><img src="${ contextPath }/assets/images/common/blt_home.gif" alt="home"></a></li>
+								</c:when>
+								<c:when test="${ status.last }">
+									<li class="current">${ obj.name }</li>
+								</c:when>
+								<c:otherwise>
+									<li><a href="${ contextPath }${ obj.url }">${ obj.name }</a></li>
+								</c:otherwise>
+							</c:choose>
+						</c:forEach>
+					</ul>
 				</div>
-			</c:otherwise>
-		</c:choose>
-		
-		<a href="javascript:history.back();" class="btn btn-default">뒤로</a>
-		
-	</div>
-</div>
-<!--/row-fluid-->
+				<!-- //location -->
+                
+              	<table class="view">
+                <colgroup>
+                <col width="98">
+                <col width="*">
+                </colgroup>
+                <tbody>
+                <tr>
+               	  <th>제목</th>
+                  <td colspan="3">${ writing.TITLE }</td>
+                </tr>
+                <tr>
+                	<th scope="row">작성자</th>
+                    <td>관리자</td>
+                	<th scope="row">작성일</th>
+                    <td>${ writing.REG_DT }</td>
+                </tr>
+                <tr>
+                	<th>내용</th>
+                  	<td class="vewTd" colspan="3">
+                    	${ writing.CONTENTS } 
+                  	</td>
+                </tr>
+                </tbody>
+              </table>
+                
+                <div class="btnSc">
+                	<a href="javascript:history.back();"><img src="../assets/images/common/btn_list_off.png" alt="목록" class="rollimg"></a> 
+                </div>
+                
+            </div>
+            <!-- //divContent -->
 
 <script type="text/javascript">
 
-	$(".commentModify").each(function(index){
+	$(".lm0202").addClass("on");
+	$(".lm020201").addClass("on");
+
+/* 	$(".commentModify").each(function(index){
 		var $this = $(this);
 		
 		$this.click(function(){
@@ -115,7 +101,7 @@
 				});
 			}
 		});
-	});
+	}); */
 	
 	
 </script>

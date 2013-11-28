@@ -285,4 +285,36 @@ public class BoardDaoTest {
 		assertThat(result, is(not(0)));
 		
 	}
+	
+	//faq 조회 테스트 입니다.
+	@Test
+	public void faqListTest() {
+		
+		//given
+		Map<String, Object> contents_code = new HashMap<String, Object>();
+		contents_code.put("contents_code", "BOT003");
+		
+		//when
+		List<Map<String, Object>> faqList = boardDao.faqList(contents_code);
+		
+		//than
+		logger.info("{}", faqList);
+		assertThat(faqList.size(), is(not(0)));
+		
+	}
+	
+	//code 조회 테스트 입니다.
+	@Test
+	public void codeListTest() {
+		
+		//given
+		
+		
+		//when
+		List<Map<String, Object>> codeList = boardDao.codeList();
+
+		//than
+		logger.info("{}", codeList);
+		assertThat(codeList.size(), is(not(0)));
+	}
 }

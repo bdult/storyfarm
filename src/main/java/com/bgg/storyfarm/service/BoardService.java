@@ -74,6 +74,14 @@ public class BoardService {
 		return boardDao.detail(contentsId);
 	}
 	
+	public List<Map<String, Object>> faqList(Map<String, Object> faqListMap) {
+		return boardDao.faqList(faqListMap);
+	}
+	
+	public List<Map<String, Object>> codeList() {
+		return boardDao.codeList();
+	}
+	
 	/** 게시판 덧글 생성
 	 * @param boardMap
 	 * @return
