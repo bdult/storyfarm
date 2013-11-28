@@ -13,9 +13,9 @@
             <li><a href="${ contextPath }/cscenter/notice.do">CS 센터</a></li>
         </ul>
         <address>
-        	(주)빅스타 그로벌 l 대표이사 l 서울시 금천구 가산동 371-50 에이스하이엔드 1407호 l 대표전화 02-843-8403
+					(주)알앤티에스미디어 | 대표 반디에펀로저피터 | 서울시 서초구 강남대로 275 강남메인타워 12층 | 대표전화 02 3474-7881
         </address>
-        <p class="copyright">Copyright ⓒ 2013 BIGSTAR GLOBAL CO.,LTD All right reserved.</p>
+        <p class="copyright">Copyright © 2013 RNTS MEDIA CO.,LTD All right reserved.</p>
     </div>
 </div>
 <!-- //footer -->

@@ -1,15 +1,14 @@
 package com.bgg.storyfarm.controller;
 
 import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
-import java.net.URLEncoder;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.json.simple.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,13 +17,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.bgg.storyfarm.common.BreadcrumbUtil;
 import com.bgg.storyfarm.common.PageUtil;
 import com.bgg.storyfarm.common.StoryfarmConstants;
 import com.bgg.storyfarm.service.BoardService;
+import com.bgg.storyfarm.service.CodeService;
 
 
 @Controller
@@ -45,6 +44,9 @@ public class CscenterController {
 
 	@Autowired
 	private BoardService boardService;
+	
+	@Autowired
+	private CodeService codeService;
 
 	@Autowired
 	private PageUtil pageUtil;
@@ -104,7 +106,21 @@ public class CscenterController {
 				StoryfarmConstants.BREADCRUMB_CSCENTER, 
 				StoryfarmConstants.BREADCRUMB_CSCENTER_FAQ));
 		
-		mav.addObject("faqList", boardService.faqList(paramsMap));
+		String _parentCode = String.valueOf(paramsMap.get("parent_code"));
+		if( _parentCode == null || _parentCode.equals("null") ){
+			paramsMap.put("parent_code", "BOT");
+		}
+		
+		List<Map<String, Object>> faqCodeList = codeService.listByParent(paramsMap);
+		mav.addObject("faqCodeList", faqCodeList);
+
+		List subList = new ArrayList();
+		mav.addObject("subList", subList);
+		for(Map<String, Object> map : faqCodeList) {
+			Map<String, Object> contents_code = new HashMap<String, Object>();
+			contents_code.put("contents_code", map.get("CODE"));
+			subList.add(boardService.faqList(contents_code));
+		}
 		
 		return mav;
 	}
