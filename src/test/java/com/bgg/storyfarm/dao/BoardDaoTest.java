@@ -19,7 +19,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.bgg.storyfarm.common.ConsoleUtil;
 import com.bgg.storyfarm.common.StoryfarmConstants;
-import com.bgg.storyfarm.dao.BoardDao;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations={"classpath:servlet-contextForTest.xml"})
@@ -32,6 +31,9 @@ public class BoardDaoTest {
 	
 	@Autowired
 	public ConsoleUtil consoleUtil;
+	
+	@Autowired
+	public CodeDao codeDao;
 	
 	@Test
 	public void testBoards() {
@@ -288,33 +290,31 @@ public class BoardDaoTest {
 	
 	//faq 조회 테스트 입니다.
 	@Test
-	public void faqListTest() {
+	public void testFaqList() {
 		
 		//given
-		Map<String, Object> contents_code = new HashMap<String, Object>();
-		contents_code.put("contents_code", "BOT003");
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("parent_code", "BOT");
 		
 		//when
-		List<Map<String, Object>> faqList = boardDao.faqList(contents_code);
-		
+		List<Map<String, Object>> faqCodeList = codeDao.listByParent(paramMap);
+		assertThat(faqCodeList.size(), is(not(0)));
+		for(Map<String, Object> map : faqCodeList) {
+			logger.info(map.toString());
+			Map<String, Object> contents_code = new HashMap<String, Object>();
+			contents_code.put("contents_code", map.get("CODE"));
+			
+			//when
+			List<Map<String, Object>> faqList = boardDao.faqList(contents_code);
+			
+			//than
+			logger.info("{}", faqList);
+			assertThat(faqList.size(), is(not(0)));
+			
+		}
+
 		//than
-		logger.info("{}", faqList);
-		assertThat(faqList.size(), is(not(0)));
 		
 	}
 	
-	//code 조회 테스트 입니다.
-	@Test
-	public void codeListTest() {
-		
-		//given
-		
-		
-		//when
-		List<Map<String, Object>> codeList = boardDao.codeList();
-
-		//than
-		logger.info("{}", codeList);
-		assertThat(codeList.size(), is(not(0)));
-	}
 }
