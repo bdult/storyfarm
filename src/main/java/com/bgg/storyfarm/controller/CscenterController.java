@@ -104,7 +104,6 @@ public class CscenterController {
 				StoryfarmConstants.BREADCRUMB_CSCENTER, 
 				StoryfarmConstants.BREADCRUMB_CSCENTER_FAQ));
 		
-		mav.addObject("codeList", boardService.codeList());
 		mav.addObject("faqList", boardService.faqList(paramsMap));
 		
 		return mav;
