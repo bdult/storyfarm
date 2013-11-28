@@ -1,5 +1,6 @@
 // faq   
 $(function(){
+	/* faq.jsp에서 따로 사용
 		//리스트 on & off ==========================
 		$(".fa").css("cursor","pointer");
  
@@ -23,6 +24,7 @@ $(function(){
 		});
 		//리스트 on & off ==========================
 	});
+	 * */
 //
 
 // roll over
