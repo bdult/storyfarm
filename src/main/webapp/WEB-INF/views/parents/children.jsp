@@ -1,8 +1,6 @@
 <%@ page contentType="text/html" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-            <!-- divContent -->
-            <div id="divContent">
                 <h2 class="divTit"><img src="../assets/images/parent/title_control.gif" alt="학습자관리"></h2>
               	<!-- location -->
                 <div id="divLocation">
@@ -88,6 +86,3 @@
                     </div>
                 	<span class="bg1"></span><span class="bg2"></span><span class="bg3"></span><span class="bg4"></span>
                 </div>
-                
-          	</div>
-            <!-- //divContent -->

@@ -3,8 +3,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 
-            <!-- divContent -->
-            <div id="divContent">
                 <h2 class="divTit"><img src="" alt="당첨자발표"></h2>
 				<!-- location -->
 				<div id="divLocation">
@@ -87,9 +85,6 @@
                     </ul>
             	</div>
                 
-            </div>
-            <!-- //divContent -->
-
 <script type="text/javascript">
 	$(".lm0202").addClass("on");
 	$(".lm020202").addClass("on");

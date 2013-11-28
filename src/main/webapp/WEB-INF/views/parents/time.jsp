@@ -1,8 +1,6 @@
 <%@ page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-            <!-- divContent -->
-            <div id="divContent">
                 <h2 class="divTit"><img src="../assets/images/parent/title_time.gif" alt="사용시간설정"></h2>
               	<!-- location -->
                 <div id="divLocation">
@@ -44,6 +42,3 @@
                         <li>로그인을 한 시간을 기준으로 사용시간이 누적되며, 설정된 사용시간이 초과하게 되면 컨텐츠가 실행되지 않습니다.</li>
                     </ul>
             	</div>
-                
-       	  	</div>
-            <!-- //divContent -->
