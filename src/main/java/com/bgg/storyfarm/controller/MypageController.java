@@ -62,19 +62,25 @@ public class MypageController {
 		return mav;
 	}
 	
-	@RequestMapping(value = "paymentSelect.do", method = RequestMethod.GET)
-	public ModelAndView paymentSelect(Model model) {
+	@RequestMapping(value = "paymentSelect.do", method = RequestMethod.POST)
+	public ModelAndView paymentSelect(Model model, @RequestParam Map<String, Object> paramMap) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("side-mypage/paymentSelect");
 		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_MYPAGE_INFO, StoryfarmConstants.BREADCRUMB_MYPAGE_PAYMENT, StoryfarmConstants.BREADCRUMB_MYPAGE_PAYMENT_SELECT ));
+		
+		mav.addObject("paymentInfo", paramMap.get("pay"));
+		
 		return mav;
 	}
 	
-	@RequestMapping(value = "paymentResult.do", method = RequestMethod.GET)
-	public ModelAndView paymentResult(Model model) {
+	@RequestMapping(value = "paymentResult.do", method = RequestMethod.POST)
+	public ModelAndView paymentResult(Model model, @RequestParam Map<String, Object> paramMap) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("side-mypage/paymentResult");
 		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_MYPAGE_INFO, StoryfarmConstants.BREADCRUMB_MYPAGE_PAYMENT, StoryfarmConstants.BREADCRUMB_MYPAGE_PAYMENT_SELECT, StoryfarmConstants.BREADCRUMB_MYPAGE_PAYMENT_RESULT ));
+
+		mav.addObject("paymentInfo", paramMap.get("pay"));
+		
 		return mav;
 	}
 	
