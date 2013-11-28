@@ -45,7 +45,7 @@ public class CscenterController {
 
 	@Autowired
 	private BoardService boardService;
-	
+
 	@Autowired
 	private PageUtil pageUtil;
 	
@@ -95,7 +95,7 @@ public class CscenterController {
 	}
 	
 	@RequestMapping(value = "faq.do", method = RequestMethod.GET)
-	public ModelAndView faq(Model model) {
+	public ModelAndView faq(@RequestParam Map<String, Object> paramsMap) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("side-cscenter/faq");
 		mav.addObject(LM_SEQ, LNB_FAQ);
@@ -103,8 +103,12 @@ public class CscenterController {
 				StoryfarmConstants.BREADCRUMB_HOME, 
 				StoryfarmConstants.BREADCRUMB_CSCENTER, 
 				StoryfarmConstants.BREADCRUMB_CSCENTER_FAQ));
+		
+		mav.addObject("faqList", boardService.faqList(paramsMap));
+		
 		return mav;
 	}
+
 	
 	@RequestMapping(value = "event.do", method = RequestMethod.GET)
 	public ModelAndView event(@RequestParam Map<String, Object> paramsMap) {
@@ -151,56 +155,45 @@ public class CscenterController {
 		return mav;
 	}
 	
-	@RequestMapping(value = "commentCreate.do", method = RequestMethod.POST)
-	public String commentCreate(@RequestParam Map<String, Object> paramsMap, HttpSession session) {
-		ModelAndView mav = new ModelAndView();
-
-		String fLocation = paramsMap.get("fLocation").toString();
-		String sLocation = paramsMap.get("sLocation").toString();
-		
-		if(session.getAttribute("userInfoSession") == null){
-			mav.addObject("msg", "login_fail");
-			return "redirect:/" + fLocation + "/" + sLocation + ".do?contentsId="+paramsMap.get("contents_id");
-		}
-		
-		mav.addObject("commentCreate", boardService.commentCreate(paramsMap));
-		return "redirect:/" + fLocation + "/" + sLocation + ".do?contentsId="+paramsMap.get("contents_id");
-	}
-	
-	@RequestMapping(value = "commentDelete.do", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
-	public @ResponseBody String commentDelete(@RequestParam Map<String, Object> paramsMap) {
-		
-		boardService.commentDelete(paramsMap);
-		
-		JSONObject jsonObj=new JSONObject();
-		jsonObj.put("code", "200");
-		
-		return jsonObj.toJSONString();
-	}
-
-	@RequestMapping(value = "commentModify.do", method = RequestMethod.POST)
-	public String commentModify(@RequestParam Map<String, Object> paramsMap) {
-		ModelAndView mav = new ModelAndView();
-		
-		String fLocation = paramsMap.get("fLocation").toString();
-		String sLocation = paramsMap.get("sLocation").toString();
-
-		mav.addObject("commentModify", boardService.commentModify(paramsMap));
-		
-		return "redirect:/" + fLocation + "/" + sLocation + ".do?contentsId="+paramsMap.get("contents_id") + "&comment_id=" + paramsMap.get("comment_id");
-	}
-	
-	@RequestMapping(value = "ask.do", method = RequestMethod.GET)
-	public ModelAndView ask(Model model) {
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("side-cscenter/ask");
-		mav.addObject(LM_SEQ, LNB_QUESTION);
-		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(
-				StoryfarmConstants.BREADCRUMB_HOME, 
-				StoryfarmConstants.BREADCRUMB_CSCENTER, 
-				StoryfarmConstants.BREADCRUMB_CSCENTER_ASK));
-		return mav;
-	}
+//	@RequestMapping(value = "commentCreate.do", method = RequestMethod.POST)
+//	public String commentCreate(@RequestParam Map<String, Object> paramsMap, HttpSession session) {
+//		ModelAndView mav = new ModelAndView();
+//
+//		String fLocation = paramsMap.get("fLocation").toString();
+//		String sLocation = paramsMap.get("sLocation").toString();
+//		
+//		if(session.getAttribute("userInfoSession") == null){
+//			mav.addObject("msg", "login_fail");
+//			return "redirect:/" + fLocation + "/" + sLocation + ".do?contentsId="+paramsMap.get("contents_id");
+//		}
+//		
+//		mav.addObject("commentCreate", boardService.commentCreate(paramsMap));
+//		return "redirect:/" + fLocation + "/" + sLocation + ".do?contentsId="+paramsMap.get("contents_id");
+//	}
+//	
+//	@RequestMapping(value = "commentDelete.do", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+//	public @ResponseBody String commentDelete(@RequestParam Map<String, Object> paramsMap) {
+//		
+//		boardService.commentDelete(paramsMap);
+//		
+//		JSONObject jsonObj=new JSONObject();
+//		jsonObj.put("code", "200");
+//		
+//		return jsonObj.toJSONString();
+//	}
+//
+//	@RequestMapping(value = "commentModify.do", method = RequestMethod.POST)
+//	public String commentModify(@RequestParam Map<String, Object> paramsMap) {
+//		ModelAndView mav = new ModelAndView();
+//		
+//		String fLocation = paramsMap.get("fLocation").toString();
+//		String sLocation = paramsMap.get("sLocation").toString();
+//
+//		mav.addObject("commentModify", boardService.commentModify(paramsMap));
+//		
+//		return "redirect:/" + fLocation + "/" + sLocation + ".do?contentsId="+paramsMap.get("contents_id") + "&comment_id=" + paramsMap.get("comment_id");
+//	}
+//	
 	
 	/** 문의메일 보내기
 	 * @param model
@@ -258,7 +251,7 @@ public class CscenterController {
 		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(
 				StoryfarmConstants.BREADCRUMB_HOME, 
 				StoryfarmConstants.BREADCRUMB_CSCENTER, 
-				StoryfarmConstants.BREADCRUMB_CSCENTER_NOTI));
+				StoryfarmConstants.BREADCRUMB_CSCENTER_WINNER));
 		
 		String contentId = paramsMap.get("contentsId").toString();
 		boardService.hits(Integer.valueOf(contentId));
