@@ -83,6 +83,19 @@ public class ParentsController {
 		mav.addObject(LM_SEQ, LNB_STUDENT_MANAGE);
 		return mav;
 	}
+
+	//학습자추가
+	@RequestMapping(value = "addChildren.do", method = RequestMethod.GET)
+	public ModelAndView addChildren(Model model) {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("side-parents/addChildren");
+		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(
+				StoryfarmConstants.BREADCRUMB_HOME, 
+				StoryfarmConstants.BREADCRUMB_PARENTS_ROOM,
+				StoryfarmConstants.BREADCRUMB_PARENTS_CHILDREN));
+		mav.addObject(LM_SEQ, LNB_STUDENT_MANAGE);
+		return mav;
+	}
 	
 	//사용시간설정
 	@RequestMapping(value = "time.do", method = RequestMethod.GET)
@@ -94,66 +107,6 @@ public class ParentsController {
 				StoryfarmConstants.BREADCRUMB_PARENTS_ROOM,
 				StoryfarmConstants.BREADCRUMB_PARENTS_TIME));
 		mav.addObject(LM_SEQ, LNB_TIME_SET);
-		return mav;
-	}
-	
-	@RequestMapping(value = "items.do", method = RequestMethod.GET)
-	public ModelAndView items(Model model) {
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("side-parents/items");
-		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(
-				StoryfarmConstants.BREADCRUMB_HOME, 
-				StoryfarmConstants.BREADCRUMB_PARENTS_ROOM,
-				StoryfarmConstants.BREADCRUMB_PARENTS_STUDY,
-				StoryfarmConstants.BREADCRUMB_PARENTS_ITEMS));
-		return mav;
-	}
-	
-	@RequestMapping(value = "series.do", method = RequestMethod.GET)
-	public ModelAndView series(Model model) {
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("side-parents/series");
-		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(
-				StoryfarmConstants.BREADCRUMB_HOME, 
-				StoryfarmConstants.BREADCRUMB_PARENTS_ROOM,
-				StoryfarmConstants.BREADCRUMB_PARENTS_STUDY,
-				StoryfarmConstants.BREADCRUMB_PARENTS_SERIES));
-		return mav;
-	}
-
-	@RequestMapping(value = "period.do", method = RequestMethod.GET)
-	public ModelAndView period(Model model) {
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("side-parents/period");
-		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(
-				StoryfarmConstants.BREADCRUMB_HOME, 
-				StoryfarmConstants.BREADCRUMB_PARENTS_ROOM,
-				StoryfarmConstants.BREADCRUMB_PARENTS_STUDY,
-				StoryfarmConstants.BREADCRUMB_PARENTS_PERIOD));
-		return mav;
-	}
-	
-	@RequestMapping(value = "weekly.do", method = RequestMethod.GET)
-	public ModelAndView weekly(Model model) {
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("side-parents/weekly");
-		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(
-				StoryfarmConstants.BREADCRUMB_HOME, 
-				StoryfarmConstants.BREADCRUMB_PARENTS_ROOM,
-				StoryfarmConstants.BREADCRUMB_PARENTS_PERIOD,
-				StoryfarmConstants.BREADCRUMB_PARENTS_WEEKLY));
-		return mav;
-	}
-	
-	@RequestMapping(value = "monthly.do", method = RequestMethod.GET)
-	public ModelAndView monthly(Model model) {
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("side-parents/monthly");
-		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(
-				StoryfarmConstants.BREADCRUMB_HOME, 
-				StoryfarmConstants.BREADCRUMB_PARENTS_ROOM,
-				StoryfarmConstants.BREADCRUMB_PARENTS_PERIOD,
-				StoryfarmConstants.BREADCRUMB_PARENTS_MONTHLY));
 		return mav;
 	}
 	
