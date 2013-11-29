@@ -49,6 +49,3 @@
 	<a href="javascript:history.back();"><img src="${ contextPath }/assets/images/common/btn_list_off.png" alt="목록" class="rollimg"></a>
 </div>
 
-<script type="text/javascript">
-	$(".lm0201").addClass("on");
-</script>

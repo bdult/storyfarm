@@ -89,8 +89,6 @@
 </div>
 
 <script>
-
-	$(".lm0201").addClass("on");
 $(function(){
 	
 	$("a.searchBtn").click(function(){
