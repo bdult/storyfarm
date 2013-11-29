@@ -129,11 +129,36 @@ public class MypageController {
 	}
 	
 	
-	@RequestMapping(value = "pauseRequest.do", method = RequestMethod.GET)
-	public ModelAndView pauseRequest(Model model) {
+	@RequestMapping(value = "pause.do", method = RequestMethod.GET)
+	public ModelAndView pause(Model model) {
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("side-mypage/pauseRequest");
+		mav.setViewName("side-mypage/pause");
 		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_MYPAGE_INFO, StoryfarmConstants.BREADCRUMB_MYPAGE_PAUSEREQUEST));
+		return mav;
+	}
+	
+	@RequestMapping(value = "pauseRequest.do", method = RequestMethod.POST)
+	public ModelAndView pauseRequest(Model model, @RequestParam Map<String, Object> paramsMap, HttpSession session) {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("side-mypage/pause");
+		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_MYPAGE_INFO, StoryfarmConstants.BREADCRUMB_MYPAGE_PAUSEREQUEST));
+
+		Map<String, Object> sessionMap = getSessionId(session);
+		if(paramsMap.get("member_id").equals(sessionMap.get("MEMBER_ID"))){
+			if(sessionMap.get("status").equals(1)){
+				paramsMap.put("status", 0);
+				mav.addObject("msg", "pauseCancelSuccess");
+			}else {
+				paramsMap.put("status", 1);
+				mav.addObject("msg", "pauseSuccess");
+			}
+			userService.updateUserStatus(paramsMap);
+			mav.setViewName("side-mypage/pause");
+		}else {
+			mav.addObject("msg", "pauseFail");
+			mav.setViewName("side-mypage/pause");
+		}
+		
 		return mav;
 	}
 	
@@ -242,15 +267,12 @@ public class MypageController {
 	public ModelAndView leaveResult(Model model, @RequestParam Map<String, Object> paramsMap, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_MYPAGE_INFO, StoryfarmConstants.BREADCRUMB_MYPAGE_LEAVE, StoryfarmConstants.BREADCRUMB_MYPAGE_LEAVE_RESULT ));
-
-		Map<String, Object> boardMap = getSessionId(session);
 		
-		logger.info("boardMap is : " + boardMap.get("member_id"));
-		logger.info("paramsMap is : " + paramsMap.get("member_id"));
+		Map<String, Object> sessionMap = getSessionId(session);
 		
-		if(paramsMap.get("member_id").equals(boardMap.get("member_id"))){
-			logger.info("paramsMap is : " + paramsMap);
-			userService.deleteUser(paramsMap);
+		if(paramsMap.get("member_id").equals(sessionMap.get("member_id"))){
+			paramsMap.put("status", 2);
+			userService.updateUserStatus(paramsMap);
 			session.invalidate();
 			mav.setViewName("view/dashboard");
 		}else {
@@ -286,10 +308,11 @@ public class MypageController {
 		@SuppressWarnings("unchecked")
 		Map<String, Object> sessionMap = (Map<String, Object>)session.getAttribute("userInfoSession");
 
-		Map<String, Object> boardMap = new HashMap<String, Object>();
-		boardMap.put(StoryfarmConstants.BOARD_ID, QUESTION_BOARD_ID);
-		boardMap.put("member_id", sessionMap.get("MEMBER_ID"));
-		return boardMap;
+		Map<String, Object> getSessionMap = new HashMap<String, Object>();
+		getSessionMap.put(StoryfarmConstants.BOARD_ID, QUESTION_BOARD_ID);
+		getSessionMap.put("member_id", sessionMap.get("MEMBER_ID"));
+		getSessionMap.put("stauts", sessionMap.get("STATUS"));
+		return getSessionMap;
 	}
 	
 }

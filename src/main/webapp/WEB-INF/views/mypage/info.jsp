@@ -61,7 +61,7 @@
 		<ul>
 			<li class="mn01"><a href="javascript:showHide('popCoupon');"><img src="${ contextPath }/assets/images/common/btn_mypage1_off.png" alt="쿠폰등록" class="rollimg"></a></li>
 			<li class="mn02"><a href="${ contextPath }/mypage/userInfo.do"><img src="${ contextPath }/assets/images/common/btn_mypage2_off.png" alt="회원정보수정" class="rollimg"></a></li>
-			<li class="mn03"><a href="${ contextPath }/mypage/pauseRequest.do"><img src="${ contextPath }/assets/images/common/btn_mypage3_off.png" alt="일시중지" class="rollimg"></a></li>
+			<li class="mn03"><a href="${ contextPath }/mypage/pause.do"><img src="${ contextPath }/assets/images/common/btn_mypage3_off.png" alt="일시중지" class="rollimg"></a></li>
 		</ul>
 	</div>
 

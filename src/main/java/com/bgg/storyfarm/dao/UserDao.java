@@ -25,8 +25,8 @@ public class UserDao extends SqlSessionDaoSupport {
 	 * @param UserData
 	 * @return
 	 */
-	public Map<String, String> detail(Map<String, Object> userData){
-		return (Map<String, String>)getSqlSession().selectOne("userQuery.detail", userData);
+	public Map<String, Object> detail(Map<String, Object> userData){
+		return (Map<String, Object>)getSqlSession().selectOne("userQuery.detail", userData);
 	}
 	
 	public Map<String, Object> userDetail(Map<String, Object> userData){
@@ -57,8 +57,8 @@ public class UserDao extends SqlSessionDaoSupport {
 		getSqlSession().update("userQuery.updateRandomPw", userListMap);
 	}
 	
-	public void deleteUser(Map<String, Object> userListMap) {
-		getSqlSession().update("userQuery.deleteUser", userListMap);
+	public void updateUserStatus(Map<String, Object> userListMap) {
+		getSqlSession().update("userQuery.updateUserStatus", userListMap);
 	}
 	
 	public Map<String, Object> duplicationUser(Map<String, Object> userData){

@@ -11,7 +11,7 @@
         </ul>
     </li>
 	<li><a href="${ contextPath }/mypage/coupon.do" class="lm0503">쿠폰내역</a></li>
-	<li><a href="${ contextPath }/mypage/pauseRequest.do" class="lm0504">일시중지</a>
+	<li><a href="${ contextPath }/mypage/pause.do" class="lm0504">일시중지</a>
     	<ul>
         	<li><a href="#" class="lm050401">일시중지 신청</a></li>
             <li><a href="#" class="lm050402">일시중지 해지</a></li>
