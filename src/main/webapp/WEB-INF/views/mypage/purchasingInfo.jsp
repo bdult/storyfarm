@@ -1,5 +1,6 @@
 <%@ page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 <div id="divContent">
 	<h2 class="divTit">
@@ -34,27 +35,27 @@
 		<tbody>
 			<tr>
 				<th><strong>구매일자</strong></th>
-				<td class="fontBlue">2013-09-28</td>
+				<td class="fontBlue"><fmt:formatDate value="${ purchaseInfo.REG_DT }" pattern="yyyy년MM월dd일"/></td>
 			</tr>
 			<tr>
 				<th><strong>이용 요금제</strong></th>
-				<td class="fontBlue">프리미엄 요금제</td>
+				<td class="fontBlue">${ purchaseInfo.PAYMENT_CODE }</td>
 			</tr>
 			<tr>
 				<th><strong>서비스 이용기간</strong></th>
-				<td class="fontBlue">2013년 9월 1일 -2013년 10월 1일</td>
+				<td class="fontBlue"><fmt:formatDate value="${ purchaseInfo.START_DT }" pattern="yyyy년MM월dd일"/> - <fmt:formatDate value="${ purchaseInfo.EXPIRE_DT }" pattern="yyyy년MM월dd일"/></td>
 			</tr>
 			<tr>
 				<th><strong>서비스 요금</strong></th>
-				<td class="fontBlue">9,900 원</td>
+				<td class="fontBlue"><fmt:formatNumber value="${ purchaseInfo.PRICE }" type="currency" currencySymbol="￦"/> 원</td>
 			</tr>
 			<tr>
 				<th><strong>결제방법</strong></th>
-				<td class="fontBlue">신용카드</td>
+				<td class="fontBlue">${ purchaseInfo.PAYMENT_PROCESS }</td>
 			</tr>
 			<tr>
 				<th><strong>잔여기간</strong></th>
-				<td class="fontBlue">30일</td>
+				<td class="fontBlue">${ purchaseInfo.REMAIN_DAYS }</td>
 			</tr>
 		</tbody>
 	</table>

@@ -72,16 +72,4 @@ public class UserService {
 		return userDao.duplicationUser(paramMap);
 	}
 	
-	@SuppressWarnings("unchecked")
-	public String addCoupon(Map<String, Object> paramMap) {
-		
-		//TODO : 쿠폰번호 등록
-		
-		JSONObject json = new JSONObject();
-		json.put("code", 200);
-		json.put("msg", "OK");
-		
-		return json.toJSONString();
-	}
-
 }

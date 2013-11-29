@@ -1,5 +1,6 @@
 <%@ page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 <div id="divContent">
 	<h2 class="divTit">
@@ -17,11 +18,11 @@
 
 	<table class="list">
 		<colgroup>
-			<col width="105">
-			<col width="190">
-			<col width="190">
 			<col width="110">
+			<col width="170">
 			<col width="*">
+			<col width="110">
+			<col width="50">
 		</colgroup>
 		<thead>
 			<tr>
@@ -33,76 +34,15 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr>
-				<td>2013-09-25</td>
-				<td>7532-aser-9632-tgbv</td>
-				<td>8월 이벤트</td>
-				<td>2013-10-30</td>
-				<td>미사용</td>
-			</tr>
-			<tr>
-				<td>2013-09-25</td>
-				<td>7532-aser-9632-tgbv</td>
-				<td>8월 이벤트</td>
-				<td>2013-10-30</td>
-				<td>미사용</td>
-			</tr>
-			<tr>
-				<td>2013-09-25</td>
-				<td>7532-aser-9632-tgbv</td>
-				<td>8월 이벤트</td>
-				<td>2013-10-30</td>
-				<td>미사용</td>
-			</tr>
-			<tr>
-				<td>2013-09-25</td>
-				<td>7532-aser-9632-tgbv</td>
-				<td>8월 이벤트</td>
-				<td>2013-10-30</td>
-				<td>미사용</td>
-			</tr>
-			<tr>
-				<td>2013-09-25</td>
-				<td>7532-aser-9632-tgbv</td>
-				<td>8월 이벤트</td>
-				<td>2013-10-30</td>
-				<td>미사용</td>
-			</tr>
-			<tr>
-				<td>2013-09-25</td>
-				<td>7532-aser-9632-tgbv</td>
-				<td>8월 이벤트</td>
-				<td>2013-10-30</td>
-				<td>미사용</td>
-			</tr>
-			<tr>
-				<td>2013-09-25</td>
-				<td>7532-aser-9632-tgbv</td>
-				<td>8월 이벤트</td>
-				<td>2013-10-30</td>
-				<td>미사용</td>
-			</tr>
-			<tr>
-				<td>2013-09-25</td>
-				<td>7532-aser-9632-tgbv</td>
-				<td>8월 이벤트</td>
-				<td>2013-10-30</td>
-				<td>미사용</td>
-			</tr>
-			<tr>
-				<td>2013-09-25</td>
-				<td>7532-aser-9632-tgbv</td>
-				<td>8월 이벤트</td>
-				<td>2013-10-30</td>
-				<td>미사용</td>
-			</tr>
-			<tr>
-				<td>2013-09-25</td>
-				<td>7532-aser-9632-tgbv</td>
-				<td>8월 이벤트</td>
-				<td>2013-10-30</td>
-				<td>미사용</td>
-			</tr>
+			<c:forEach items="${ couponList }" var="obj">
+				<tr>
+					<td><fmt:formatDate value="${ obj.REG_DT }" pattern="yyyy년MM월dd일"/></td>
+					<td>${ obj.COUPON }</td>
+					<td>${ obj.NAME }</td>
+					<td><fmt:formatDate value="${ obj.EXPIRE_DT }" pattern="yyyy년MM월dd일"/></td>
+					<td>${ obj.STATUS }</td>
+				</tr>
+			</c:forEach>
 		</tbody>
 	</table>
 

@@ -21,6 +21,8 @@ import com.bgg.storyfarm.common.BreadcrumbUtil;
 import com.bgg.storyfarm.common.PageUtil;
 import com.bgg.storyfarm.common.StoryfarmConstants;
 import com.bgg.storyfarm.service.BoardService;
+import com.bgg.storyfarm.service.CouponService;
+import com.bgg.storyfarm.service.PurchaseService;
 import com.bgg.storyfarm.service.UserService;
 
 @Controller
@@ -40,6 +42,12 @@ public class MypageController {
 	
 	@Autowired
 	private PageUtil pageUtil;
+	
+	@Autowired
+	private PurchaseService purchaseService;
+	
+	@Autowired
+	private CouponService couponService;
 	
 	private Logger logger = LoggerFactory.getLogger(UserController.class);
 	
@@ -87,18 +95,24 @@ public class MypageController {
 	}
 	
 	@RequestMapping(value = "purchasingInfo.do", method = RequestMethod.GET)
-	public ModelAndView purchasingInfo(Model model) {
+	public ModelAndView purchasingInfo(Model model, @RequestParam Map<String, Object> paramMap) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("side-mypage/purchasingInfo");
 		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_MYPAGE_INFO, StoryfarmConstants.BREADCRUMB_MYPAGE_PURCHASINGINFO));
+		
+		mav.addObject("purchaseInfo", purchaseService.detail(paramMap));
+		
 		return mav;
 	}
 	
 	@RequestMapping(value = "purchasingInfoPast.do", method = RequestMethod.GET)
-	public ModelAndView purchasingInfoPast(Model model) {
+	public ModelAndView purchasingInfoPast(Model model, @RequestParam Map<String, Object> paramMap) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("side-mypage/purchasingInfoPast");
 		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_MYPAGE_INFO, StoryfarmConstants.BREADCRUMB_MYPAGE_PURCHASINGINFO_PAST));
+		
+		mav.addObject("purchaseList", purchaseService.list(paramMap));
+
 		return mav;
 	}
 	
@@ -111,10 +125,13 @@ public class MypageController {
 	}
 	
 	@RequestMapping(value = "coupon.do", method = RequestMethod.GET)
-	public ModelAndView coupon(Model model) {
+	public ModelAndView coupon(Model model, @RequestParam Map<String, Object> paramMap) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("side-mypage/coupon");
 		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_MYPAGE_INFO, StoryfarmConstants.BREADCRUMB_MYPAGE_COUPON));
+		
+		mav.addObject("couponList", couponService.list(paramMap));
+		
 		return mav;
 	}
 	
@@ -125,7 +142,13 @@ public class MypageController {
 	@RequestMapping(value = "addCoupon.ajax", produces = "application/json;charset=UTF-8")
 	public @ResponseBody String addCoupon(@RequestParam Map<String, Object> paramMap) {
 
-		return userService.addCoupon(paramMap);
+		couponService.add(paramMap);
+
+		JSONObject json = new JSONObject();
+		json.put("code", 200);
+		json.put("msg", "OK");
+		
+		return json.toJSONString();
 	}
 	
 	

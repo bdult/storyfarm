@@ -1,5 +1,6 @@
 <%@ page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 <div id="divContent">
 	<h2 class="divTit">
@@ -28,8 +29,8 @@
 			<col width="88">
 			<col width="88">
 			<col width="88">
-			<col width="88">
-			<col width="88">
+			<col width="100">
+			<col width="100">
 			<col width="*">
 		</colgroup>
 		<thead>
@@ -44,51 +45,17 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr>
-				<td>13년7월25일</td>
-				<td>월정기요금</td>
-				<td>20,000원</td>
-				<td>신용카드</td>
-				<td>7월25일</td>
-				<td>8월25일</td>
-				<td><a href="#" class="fontBlue">[영수증발급]</a></td>
-			</tr>
-			<tr>
-				<td>13년7월25일</td>
-				<td>월정기요금</td>
-				<td>20,000원</td>
-				<td>신용카드</td>
-				<td>7월25일</td>
-				<td>8월25일</td>
-				<td><a href="#" class="fontBlue">[영수증발급]</a></td>
-			</tr>
-			<tr>
-				<td>13년7월25일</td>
-				<td>월정기요금</td>
-				<td>20,000원</td>
-				<td>신용카드</td>
-				<td>7월25일</td>
-				<td>8월25일</td>
-				<td><a href="#" class="fontBlue">[영수증발급]</a></td>
-			</tr>
-			<tr>
-				<td>13년7월25일</td>
-				<td>월정기요금</td>
-				<td>20,000원</td>
-				<td>신용카드</td>
-				<td>7월25일</td>
-				<td>8월25일</td>
-				<td><a href="#" class="fontBlue">[영수증발급]</a></td>
-			</tr>
-			<tr>
-				<td>13년7월25일</td>
-				<td>월정기요금</td>
-				<td>20,000원</td>
-				<td>신용카드</td>
-				<td>7월25일</td>
-				<td>8월25일</td>
-				<td><a href="#" class="fontBlue">[영수증발급]</a></td>
-			</tr>
+			<c:forEach items="${ purchaseList }" var="obj">
+				<tr>
+					<td><fmt:formatDate value="${ obj.REG_DT }" pattern="yyyy년MM월dd일"/></td>
+					<td>${ obj.PAYMENT_CODE }</td>
+					<td><fmt:formatNumber value="${ obj.PRICE }" type="currency" currencySymbol="￦"/> 원</td>
+					<td>${ obj.PAYMENT_PROCESS }</td>
+					<td><fmt:formatDate value="${ obj.START_DT }" pattern="yy년MM월dd일"/></td>
+					<td><fmt:formatDate value="${ obj.EXPIRE_DT }" pattern="yy년MM월dd일"/></td>
+					<td><a href="#" class="fontBlue">[영수증발급]</a></td>
+				</tr>
+			</c:forEach>
 		</tbody>
 	</table>
 
