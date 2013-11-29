@@ -102,7 +102,7 @@ public class BreadcrumbUtil {
 				this.setBreadcrumbMap("쿠폰등록", "/mypage/addcoupon.do");
 				break;
 			case StoryfarmConstants.BREADCRUMB_MYPAGE_PAUSEREQUEST:
-				this.setBreadcrumbMap("일시중지 신청", "/mypage/pauseRequest.do");
+				this.setBreadcrumbMap("일시중지", "/mypage/pauseRequest.do");
 				break;
 			case StoryfarmConstants.BREADCRUMB_MYPAGE_PAUSEREQUEST_RESULT:
 				this.setBreadcrumbMap("일시중지 신청 완료", "/mypage/pauseRequestResult.do");

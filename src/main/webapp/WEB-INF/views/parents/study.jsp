@@ -2,15 +2,25 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
                 <h2 class="divTit"><img src="../assets/images/parent/title_state.gif" alt="학습통계"></h2>
-              	<!-- location -->
-                <div id="divLocation">
-                    <ul class="location">
-                        <li class="first"><a href="#" class="home"><img src="../assets/images/common/blt_home.gif" alt="home"></a></li>
-                        <li><a href="#">부모방</a></li>
-                        <li class="current">학습통계</li>
-                    </ul>
-                </div>
-              	<!-- //location -->
+	            <!-- location -->
+	      		<div id="divLocation">
+	        		<ul class="location">
+						<c:forEach items="${ breadcrumbs }" var="obj" varStatus="status">
+							<c:choose>
+								<c:when test="${ status.first }">
+	          						<li class="first"><a href="${ contextPath }" class="home"><img src="${ contextPath }/assets/images/common/blt_home.gif" alt="home"></a></li>
+								</c:when>
+								<c:when test="${ status.last }">
+									<li class="current">${ obj.name }</li>
+								</c:when>
+								<c:otherwise>
+									<li><a href="${ contextPath }${ obj.url }">${ obj.name }</a></li>
+								</c:otherwise>
+							</c:choose>
+	          			</c:forEach>
+	        		</ul>
+	      		</div>
+	      		<!-- //location -->
                 
                 <div class="box05">
                 	<div class="parentState">
@@ -104,18 +114,3 @@
                 <span class="bg1"></span><span class="bg2"></span><span class="bg3"></span><span class="bg4"></span>
                 </div>
                 
-<h4>학습통계</h4>
-
-<div class="row">
-	<div class="col-lg-12">
-		<div class="well">이용통계 요약 및 최근 이용 컨텐츠 출력. 자녀 선택하여 데이터 전환 가능</div>
-	</div>
-	<div class="col-lg-12">
-		<ul>
-			<li><a href="${ contextPath }/parents/items.do">과목별학습현황</a></li>
-			<li><a href="${ contextPath }/parents/series.do">전집별학습현황</a></li>
-			<li><a href="${ contextPath }/parents/period.do">기간별학습현황</a></li>
-		</ul>
-	</div>
-</div>
-

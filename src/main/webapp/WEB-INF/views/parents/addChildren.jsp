@@ -2,16 +2,25 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
                 <h2 class="divTit"><img src="../assets/images/parent/title_control_reg.gif" alt="학습자등록"></h2>
-              	<!-- location -->
-                <div id="divLocation">
-                    <ul class="location">
-                        <li class="first"><a href="#" class="home"><img src="../assets/images/common/blt_home.gif" alt="home"></a></li>
-                        <li><a href="#">부모방</a></li>
-                        <li><a href="#">학습자관리</a></li>
-                        <li class="current">학습자등록</li>
-                    </ul>
-                </div>
-              	<!-- //location -->
+	            <!-- location -->
+	      		<div id="divLocation">
+	        		<ul class="location">
+						<c:forEach items="${ breadcrumbs }" var="obj" varStatus="status">
+							<c:choose>
+								<c:when test="${ status.first }">
+	          						<li class="first"><a href="${ contextPath }" class="home"><img src="${ contextPath }/assets/images/common/blt_home.gif" alt="home"></a></li>
+								</c:when>
+								<c:when test="${ status.last }">
+									<li class="current">${ obj.name }</li>
+								</c:when>
+								<c:otherwise>
+									<li><a href="${ contextPath }${ obj.url }">${ obj.name }</a></li>
+								</c:otherwise>
+							</c:choose>
+	          			</c:forEach>
+	        		</ul>
+	      		</div>
+	      		<!-- //location -->
                 
                 <div class="mypageTx01">
                 	아래의 정보를 입력해 주세요.

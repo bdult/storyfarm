@@ -164,7 +164,6 @@ public class MypageController {
 	public ModelAndView pauseRequest(Model model, @RequestParam Map<String, Object> paramsMap, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("side-mypage/pause");
-		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_MYPAGE_INFO, StoryfarmConstants.BREADCRUMB_MYPAGE_PAUSEREQUEST));
 
 		Map<String, Object> sessionMap = getSessionId(session);
 		if(paramsMap.get("member_id").equals(sessionMap.get("MEMBER_ID"))){
@@ -258,7 +257,7 @@ public class MypageController {
 	public ModelAndView userInfo(Model model, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("side-mypage/userInfo");
-		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_MYPAGE_INFO, StoryfarmConstants.BREADCRUMB_MYPAGE_USERINFO));
+		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_MYPAGE_INFO, StoryfarmConstants.BREADCRUMB_MYPAGE_USERINFO_UPDATE));
 
 		Map<String, Object> boardMap = getSessionId(session);
 		
@@ -271,7 +270,6 @@ public class MypageController {
 	public ModelAndView userInfoUpdate(Model model, @RequestParam Map<String, Object> paramsMap) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("side-mypage/userInfoUpdate");
-		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_MYPAGE_INFO, StoryfarmConstants.BREADCRUMB_MYPAGE_USERINFO, StoryfarmConstants.BREADCRUMB_MYPAGE_USERINFO_UPDATE));
 		
 		userService.updateUser(paramsMap);
 		return mav;
@@ -289,7 +287,6 @@ public class MypageController {
 	@RequestMapping(value = "leaveResult.do", method = RequestMethod.POST)
 	public ModelAndView leaveResult(Model model, @RequestParam Map<String, Object> paramsMap, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
-		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_MYPAGE_INFO, StoryfarmConstants.BREADCRUMB_MYPAGE_LEAVE, StoryfarmConstants.BREADCRUMB_MYPAGE_LEAVE_RESULT ));
 		
 		Map<String, Object> sessionMap = getSessionId(session);
 		
