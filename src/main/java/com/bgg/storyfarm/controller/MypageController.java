@@ -29,8 +29,6 @@ import com.bgg.storyfarm.service.UserService;
 @RequestMapping(value = "mypage")
 public class MypageController {
 
-	private final int QUESTION_BOARD_ID = 3; //이벤트
-	
 	@Autowired
 	private BreadcrumbUtil breadcrumbUtil;
 	
@@ -190,8 +188,12 @@ public class MypageController {
 		mav.setViewName("side-mypage/question");
 		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_MYPAGE_INFO, StoryfarmConstants.BREADCRUMB_MYPAGE_QUESTION));
 
-		Map<String, Object> boardMap = getSessionId(session);
+		Map<String, Object> sessionMap = getSessionId(session);
 		
+		Map<String, Object> boardMap = new HashMap<String, Object>();
+		boardMap.put(StoryfarmConstants.BOARD_ID, StoryfarmConstants.QUESTION_BOARD_ID);
+		boardMap.put(StoryfarmConstants.MEMBER_ID , sessionMap.get("member_id"));
+
 		//페이징 로직
 		int totalCnt = boardService.totalCount(boardMap);
 		int pageNum = setPage(paramsMap, boardMap);
@@ -227,12 +229,17 @@ public class MypageController {
 		mav.setViewName("side-mypage/questionWrite");
 		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_MYPAGE_INFO, StoryfarmConstants.BREADCRUMB_MYPAGE_QUESTION, StoryfarmConstants.BREADCRUMB_MYPAGE_QUESTION_INSERT));
 		
-		mav.addObject("board_id", paramsMap.get("board_id"));
 		return mav;
 	}
 	
 	@RequestMapping(value = "boardCreate.do", method = RequestMethod.POST)
-	public String boardCreate(Model model, @RequestParam Map<String, Object> paramsMap) {
+	public String boardCreate(Model model, @RequestParam Map<String, Object> paramsMap, HttpSession session) {
+
+		Map<String, Object> sessionMap = getSessionId(session);
+		
+		paramsMap.put(StoryfarmConstants.BOARD_ID, StoryfarmConstants.QUESTION_BOARD_ID);
+		paramsMap.put(StoryfarmConstants.MEMBER_ID , sessionMap.get("member_id"));
+		
 		boardService.boardCreate(paramsMap);
 		return "redirect:question.do";
 	}
@@ -242,13 +249,19 @@ public class MypageController {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("side-mypage/questionUpdate");
 		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_MYPAGE_INFO, StoryfarmConstants.BREADCRUMB_MYPAGE_QUESTION, StoryfarmConstants.BREADCRUMB_MYPAGE_QUESTION_UPDATE));
-
+		
 		mav.addObject("writing", paramsMap);
 		return mav;
 	}
 	
 	@RequestMapping(value = "boardModify.do", method = RequestMethod.POST)
-	public String boardModify(Model model, @RequestParam Map<String, Object> paramsMap) {
+	public String boardModify(Model model, @RequestParam Map<String, Object> paramsMap, HttpSession session) {
+
+		Map<String, Object> sessionMap = getSessionId(session);
+		
+		paramsMap.put(StoryfarmConstants.BOARD_ID, StoryfarmConstants.QUESTION_BOARD_ID);
+		paramsMap.put(StoryfarmConstants.MEMBER_ID , sessionMap.get("member_id"));
+		
 		boardService.modify(paramsMap);
 		return "redirect:question.do";
 	}
@@ -329,7 +342,7 @@ public class MypageController {
 		Map<String, Object> sessionMap = (Map<String, Object>)session.getAttribute("userInfoSession");
 
 		Map<String, Object> getSessionMap = new HashMap<String, Object>();
-		getSessionMap.put(StoryfarmConstants.BOARD_ID, QUESTION_BOARD_ID);
+		getSessionMap.put(StoryfarmConstants.BOARD_ID, StoryfarmConstants.QUESTION_BOARD_ID);
 		getSessionMap.put("member_id", sessionMap.get("MEMBER_ID"));
 		getSessionMap.put("stauts", sessionMap.get("STATUS"));
 		return getSessionMap;

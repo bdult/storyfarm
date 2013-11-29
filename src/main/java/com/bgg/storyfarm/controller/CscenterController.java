@@ -70,7 +70,7 @@ public class CscenterController {
 		int pageNum = setPage(paramsMap, boardMap);
 		mav.addObject("pageLink", pageUtil.getPageLinkMap(totalCnt, pageNum));
 		//페이징 로직
-		mav.addObject("paramsMap", paramsMap);
+		mav.addObject("searchList", paramsMap);
 		
 		mav.addObject("list", boardService.list(boardMap));
 		
@@ -170,46 +170,6 @@ public class CscenterController {
 		
 		return mav;
 	}
-	
-//	@RequestMapping(value = "commentCreate.do", method = RequestMethod.POST)
-//	public String commentCreate(@RequestParam Map<String, Object> paramsMap, HttpSession session) {
-//		ModelAndView mav = new ModelAndView();
-//
-//		String fLocation = paramsMap.get("fLocation").toString();
-//		String sLocation = paramsMap.get("sLocation").toString();
-//		
-//		if(session.getAttribute("userInfoSession") == null){
-//			mav.addObject("msg", "login_fail");
-//			return "redirect:/" + fLocation + "/" + sLocation + ".do?contentsId="+paramsMap.get("contents_id");
-//		}
-//		
-//		mav.addObject("commentCreate", boardService.commentCreate(paramsMap));
-//		return "redirect:/" + fLocation + "/" + sLocation + ".do?contentsId="+paramsMap.get("contents_id");
-//	}
-//	
-//	@RequestMapping(value = "commentDelete.do", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
-//	public @ResponseBody String commentDelete(@RequestParam Map<String, Object> paramsMap) {
-//		
-//		boardService.commentDelete(paramsMap);
-//		
-//		JSONObject jsonObj=new JSONObject();
-//		jsonObj.put("code", "200");
-//		
-//		return jsonObj.toJSONString();
-//	}
-//
-//	@RequestMapping(value = "commentModify.do", method = RequestMethod.POST)
-//	public String commentModify(@RequestParam Map<String, Object> paramsMap) {
-//		ModelAndView mav = new ModelAndView();
-//		
-//		String fLocation = paramsMap.get("fLocation").toString();
-//		String sLocation = paramsMap.get("sLocation").toString();
-//
-//		mav.addObject("commentModify", boardService.commentModify(paramsMap));
-//		
-//		return "redirect:/" + fLocation + "/" + sLocation + ".do?contentsId="+paramsMap.get("contents_id") + "&comment_id=" + paramsMap.get("comment_id");
-//	}
-//	
 	
 	/** 문의메일 보내기
 	 * @param model

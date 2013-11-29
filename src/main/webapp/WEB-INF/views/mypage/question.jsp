@@ -9,9 +9,19 @@
 	<!-- location -->
 	<div id="divLocation">
 		<ul class="location">
-			<li class="first"><a href="${ contextPath }/" class="home"><img src="${ contextPath }/assets/images/common/blt_home.gif" alt="home"></a></li>
-			<li><a href="${ contextPath }/mypage/info.do">마이페이지</a></li>
-			<li class="current">1:1문의</li>
+			<c:forEach items="${ breadcrumbs }" var="obj" varStatus="status">
+				<c:choose>
+					<c:when test="${ status.first }">
+						<li class="first"><a href="${ contextPath }" class="home"><img src="${ contextPath }/assets/images/common/blt_home.gif" alt="home"></a></li>
+					</c:when>
+					<c:when test="${ status.last }">
+						<li class="current">${ obj.name }</li>
+					</c:when>
+					<c:otherwise>
+						<li><a href="${ contextPath }${ obj.url }">${ obj.name }</a></li>
+					</c:otherwise>
+				</c:choose>
+			</c:forEach>
 		</ul>
 	</div>
 	<!-- //location -->
@@ -52,30 +62,28 @@
 		</tbody>
 	</table>
 
-	<!--paginate -->
-  <div class="paginate_complex">
+<div class="btnSc aright">
+	<a class="btn btn-primary pull-right" href="${ contextPath }/mypage/questionInsert.do" id="write">1:1 문의하기</a>	
+</div>
+
+<!--paginate -->
+<div class="paginate_complex">
   
-  	<c:if test="${ not empty pageLink.pagePrev }">
-	  	<a class="direction prev" href="${ contextPath }/mypage/question.do?pageNum=${ pageLink.pagePrev }${ empty search.search? '' : search.search }"><img src="${ contextPath }/assets/images/common/btn_pagingPre_off.gif" alt="이전 페이지 이동" class="rollimg"></a>
-		</c:if>
-		
-		<c:forEach items="${ pageLink.pageList }" var="page">
-			<c:choose>
-				<c:when test="${ page.pageNum eq pageLink.pageNum }"><strong>${ page.pageNum }</strong></c:when>
-				<c:otherwise><a href="${ contextPath }/mypage/question.do?pageNum=${ page.pageNum }">${ page.pageNum }</a></c:otherwise>
-			</c:choose>
-		</c:forEach>
+<c:if test="${ not empty pageLink.pagePrev }">
+  	<a class="direction prev" href="${ contextPath }/mypage/question.do?pageNum=${ pageLink.pagePrev }${ empty search.search? '' : search.search }"><img src="${ contextPath }/assets/images/common/btn_pagingPre_off.gif" alt="이전 페이지 이동" class="rollimg"></a>
+</c:if>
+
+	<c:forEach items="${ pageLink.pageList }" var="page">
+		<c:choose>
+			<c:when test="${ page.pageNum eq pageLink.pageNum }"><strong>${ page.pageNum }</strong></c:when>
+			<c:otherwise><a href="${ contextPath }/mypage/question.do?pageNum=${ page.pageNum }">${ page.pageNum }</a></c:otherwise>
+		</c:choose>
+	</c:forEach>
   	
   	<c:if test="${ not empty pageLink.pageNext }">
   		<a class="direction next" href="${ contextPath }/mypage/question.do?pageNum=${ page.pageNum }${ empty search.search? '' : search.search }"><img src="${ contextPath }/assets/images/common/btn_pagingNext_off.gif" alt="다음 페이지 이동" class="rollimg"></a>
-		</c:if>
-		
-  </div>
-	<!--//paginate -->
-	
-	<div class="btnSc aright">
-		<a class="btn btn-primary pull-right" href="${ contextPath }/mypage/questionInsert.do?board_id=3" id="write">1:1 문의하기</a>	
-	</div>
+	</c:if>
+</div>
+<!--//paginate -->
 
 </div>
-
