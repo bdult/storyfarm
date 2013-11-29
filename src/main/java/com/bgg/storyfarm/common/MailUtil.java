@@ -1,61 +1,73 @@
 package com.bgg.storyfarm.common;
 
-import org.springframework.stereotype.Component;
 import java.util.Date;
 import java.util.Properties;
+
 import javax.mail.Message;
-import javax.mail.MessagingException;
 import javax.mail.Session;
-import javax.mail.Transport;
-import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
 
 @Component
 public class MailUtil {
 
-	public void sendMail(String receive, String content){
-		String content_type = "text/html";
-		String smtp = "115.71.237.215";
-		String character_set = "UTF-8";
+	Logger log = LoggerFactory.getLogger(getClass());
+
+	String CHARSET = "UTF-8";
+	String SMTP = "115.71.237.215";
+	
+	/** Unho legacy by Unho<br />
+	 * - subject(제목)<br />
+	 * - content(내용)<br />
+	 * - receiver(받는사람의 이메일 주소)<br />
+	 */
+	public void sendMail(String subject, String contents, String receiver) {
 		
-		String senderEmail = "admin@rntsmedia.com";
-		String senderName = "admin";
-		String receiver = "hi11218@naver.com";
-		String subject = receive;
-		String contents = content;
+		//setting
+		String senderEmail = "ozworld@rntsmedia.com";
+		String senderName = "오즈월드 관리자";
+
+		this.sendMail(senderName, senderEmail, subject, contents, receiver);
 		
-		try
-		{
+	}
+	
+	/** 파라미터<br />
+	 * - senderName(보내는 사람)<br />
+	 * - senderEmail(보내는 사람의 이메일 주소)<br />
+	 * - subject(제목)<br />
+	 * - content(내용)<br />
+	 * - receiver(받는사람의 이메일 주소)<br />
+	 */
+	public void sendMail(String senderName, String senderEmail, String subject, String contents, String receiver) {
+		
+		try {
 			Properties p = System.getProperties();
-			p.put("mail.smtp.host", smtp);
-			
+			p.put("mail.smtp.host", SMTP);
 			Session session = Session.getDefaultInstance(p, null);
 			MimeMessage msg = new MimeMessage(session);
-	        msg.setFrom();
 			
-	        msg.setSentDate(new Date());
-	        
-	        String sender = senderName + "<" + senderEmail + ">";
-	        InternetAddress from = new InternetAddress(sender);
-	        msg.setFrom(from);
-	        
-			InternetAddress to = new InternetAddress(receiver);        
-			msg.setRecipient(Message.RecipientType.TO, to);
+			msg.setFrom();
+			//보낸날짜
+			msg.setSentDate(new Date());
+			//보낸사람 ( 예 : 관리자<admin@rntsmedia.com> )
+			msg.setFrom(new InternetAddress(senderEmail, senderName, CHARSET));
+			//받는사람
+			msg.setRecipient(Message.RecipientType.TO, new InternetAddress(receiver));
+			//제목
+			msg.setSubject(subject, CHARSET);
+			//내용
+			msg.setText(contents, CHARSET);
+			msg.setHeader("Content-Type", "text/html");
 			
-	        msg.setSubject(subject, character_set);
-	        
-	        msg.setText(contents, character_set);
-	        
-	        msg.setHeader("Content-Type","text/html");
-	        
-	        javax.mail.Transport.send(msg);
+			javax.mail.Transport.send(msg);
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
-		catch(AddressException addr_e){
-			System.out.println(addr_e.getMessage());
-		}
-		catch(MessagingException msg_e){
-			System.out.println(msg_e.getMessage());
-		}
+		
 	}
+	
 }

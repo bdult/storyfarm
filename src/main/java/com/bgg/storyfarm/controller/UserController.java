@@ -227,17 +227,20 @@ public class UserController {
 
 		model.addAttribute("findUserData", userService.findPwd(paramMap));
 
+		//패스워드 변경
 		String pw = org.apache.commons.lang.RandomStringUtils.random(12, true, true);
 		String id = (String) paramMap.get("member_id");
 
 		Map<String, Object> userData = new HashMap<String, Object>();
 		userData.put("member_id", id);
 		userData.put("member_pw", pw);
-		
 		userService.updateRandomPw(userData);
 		
-		String receive = (String) paramMap.get("member_email");
-		mailUtil.sendMail(receive, pw);
+		{//변경된 비밀번호 메일보내기
+			String subject = "오즈월드 비밀번호가 변경되었습니다.";
+			String receiver = (String)paramMap.get("member_email");
+			mailUtil.sendMail(subject, pw, receiver);
+		}
 		
 		return mav;
 	}

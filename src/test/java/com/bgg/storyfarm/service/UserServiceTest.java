@@ -61,12 +61,12 @@ public class UserServiceTest {
 	    userList.put("role", "1");
 	    
 		//when
-	    HashMap<String, String> sessionMap = (HashMap<String, String>)userService.detail(userList);
+	    HashMap<String, Object> sessionMap = (HashMap<String, Object>)userService.detail(userList);
 	    
 	    //than
 	    assertThat(sessionMap, is(notNullValue()));
-		assertThat(sessionMap.get("MEMBER_ID"), is("test"));
-		assertThat(sessionMap.get("MEMBER_PW"), is("123"));
+			assertThat(sessionMap.get("MEMBER_ID").toString(), is("test"));
+			assertThat(sessionMap.get("MEMBER_PW").toString(), is("123"));
 	    
 	}
 	

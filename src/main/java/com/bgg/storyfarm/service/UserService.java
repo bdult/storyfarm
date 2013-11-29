@@ -10,6 +10,7 @@ import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.bgg.storyfarm.common.MailUtil;
 import com.bgg.storyfarm.common.StoryfarmConstants;
 import com.bgg.storyfarm.dao.UserDao;
 
@@ -18,6 +19,9 @@ public class UserService {
 
 	@Autowired
 	private UserDao userDao;
+	
+	@Autowired
+	private MailUtil mailUtil;
 
 	public List<HashMap<String, String>> list() {
 		return userDao.list();
@@ -70,6 +74,24 @@ public class UserService {
 	
 	public Map<String, Object> duplicationUser(Map<String, Object> paramMap) {
 		return userDao.duplicationUser(paramMap);
+	}
+	
+	public boolean sendMail(Map<String, Object> paramMap) {
+		
+		boolean result = false;
+		try {
+			//제목 ( 예 : [가입관련] 가입이 안됩니다. )
+			String _subject = String.format("[%s] %s", paramMap.get("type").toString(), paramMap.get("subject").toString()); 
+			String _contents = paramMap.get("contents").toString(); 
+			String _reciever = paramMap.get("email1").toString() + "@" + paramMap.get("email2").toString() ; 
+			//메일보내기
+			mailUtil.sendMail(_subject, _contents, _reciever);
+			result = true;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return result;
 	}
 	
 }

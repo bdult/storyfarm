@@ -20,10 +20,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.bgg.storyfarm.common.BreadcrumbUtil;
+import com.bgg.storyfarm.common.MailUtil;
 import com.bgg.storyfarm.common.PageUtil;
 import com.bgg.storyfarm.common.StoryfarmConstants;
 import com.bgg.storyfarm.service.BoardService;
 import com.bgg.storyfarm.service.CodeService;
+import com.bgg.storyfarm.service.UserService;
 
 
 @Controller
@@ -50,6 +52,9 @@ public class CscenterController {
 
 	@Autowired
 	private PageUtil pageUtil;
+	
+	@Autowired
+	private UserService userService;
 	
 	@RequestMapping(value = "notice.do")//, method = RequestMethod.GET)
 	public ModelAndView notice(@RequestParam Map<String, Object> paramsMap) throws UnsupportedEncodingException {
@@ -215,23 +220,26 @@ public class CscenterController {
 	 * @param model
 	 * @return
 	 */
-	@RequestMapping(value = "email.do", method = RequestMethod.GET)
-	public String email(Model model, HttpServletRequest request, HttpSession session) {
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("side-cscenter/email");
-		mav.addObject(LM_SEQ, LNB_QUESTION);
-		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(
-				StoryfarmConstants.BREADCRUMB_HOME, 
-				StoryfarmConstants.BREADCRUMB_CSCENTER, 
-				StoryfarmConstants.BREADCRUMB_CSCENTER_ASK));
+	@RequestMapping(value = "question.do", method = RequestMethod.GET)
+	public String question(Model model, HttpServletRequest request, HttpSession session) {
 		
 		if( session.getAttribute("userInfoSession") != null){
-			mav.setViewName("side-mypage/question");
-			return "redirect:/mypage/question.do";
+			//로그인 되어있을시 1:1 문의하기로 이동
+			return "redirect:/mypage/questionInsert.do?board_id=3";
 		}else{
-			mav.setViewName("side-cscenter/email");
-			return "side-cscenter/email";
+			return "side-cscenter/question";
 		}
+	}
+	/** 문의메일 보내기
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping(value = "email.do", method = RequestMethod.POST)
+	public String email(@RequestParam Map<String, Object> paramsMap) {
+
+		boolean result = userService.sendMail(paramsMap);
+		
+		return "redirect:/dashboard.do";
 	}
 
 	@RequestMapping(value = "winner.do", method = RequestMethod.GET)
