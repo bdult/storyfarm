@@ -15,13 +15,14 @@
 </ul>
 
 <script>
-/* $(function(){
-	
-	//CSCENTER LNB HIGHLIGHT
-	var $leftMenu = $("#lm");
-	$leftMenu
-		.find("li").eq( $leftMenu.data("seq") )
-			.find("a").addClass("on");
-	
-}); */
+$("#lm").find("a").each(function(){
+	var $this = $(this);
+	if( $this.attr("href") == window.location.pathname ) {
+		$this.addClass("on");
+
+		if( '${ contextPath }/cscenter/winner.do' == window.location.pathname ) {
+			$("a.lm0202").addClass("on");
+		}
+	}
+});
 </script>

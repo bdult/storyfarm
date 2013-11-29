@@ -83,8 +83,3 @@
 	</c:otherwise>
 </c:choose>
 
-<script type="text/javascript">
-
-	$(".lm0204").addClass("on");
-
-</script>

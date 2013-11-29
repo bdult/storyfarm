@@ -48,7 +48,3 @@
     </ul>
 </div>
 
-<script type="text/javascript">
-	$(".lm0202").addClass("on");
-
-</script>

@@ -29,7 +29,7 @@ public class UserService {
 	 * @param paramMap
 	 * @return
 	 */
-	public Map<String, String> detail(Map<String, Object> paramMap) {
+	public Map<String, Object> detail(Map<String, Object> paramMap) {
 		return userDao.detail(paramMap);
 	}
 	
@@ -63,9 +63,9 @@ public class UserService {
 		userDao.updaeRandomPw(paramMap);
 	}
 	
-	public void deleteUser(Map<String, Object> paramMap){
+	public void updateUserStatus(Map<String, Object> paramMap){
 		
-		userDao.deleteUser(paramMap);
+		userDao.updateUserStatus(paramMap);
 	}
 	
 	public Map<String, Object> duplicationUser(Map<String, Object> paramMap) {

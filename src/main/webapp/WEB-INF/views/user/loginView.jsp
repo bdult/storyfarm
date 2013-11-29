@@ -61,6 +61,8 @@
 
 if("${ msg }" == 'login_fail'){
 	alert("회원정보가 일치하지 않습니다.");
+}else if("${ msg }" == 'requiredUser'){
+	alert("탈퇴된 회원입니다. 관리자에게 문의해 주세요.");
 }
 
 $(".btLogin").click(function(){

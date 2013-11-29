@@ -60,6 +60,7 @@
 
 <script>
 $(function(){
+	$("a.lm0203").addClass("on");
 	$("a.tabGroup").click(function(e){
 		
 		//init

@@ -155,11 +155,11 @@
 		WHERE MEMBER_ID = #{ member_id }
 	</update>
 	
-	<!-- delete user -->
-	<update id="deleteUser" parameterType="hashmap">
+	<!-- update user status -->
+	<update id="updateUserStatus" parameterType="hashmap">
 		UPDATE BG_MEMBER
 		<set>
-			MEMBER_STATUS = 2,
+			MEMBER_STATUS = #{ status },
 			MOD_DT = NOW()
 		</set>
 		WHERE MEMBER_ID = #{ member_id } AND

@@ -71,28 +71,34 @@ public class UserController {
 	public String loginResult(Model model, @RequestParam Map<String, Object> paramMap, HttpServletResponse response, HttpSession session) {
 		model.addAttribute(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_LOGIN));
 		
-		HashMap<String, String> sessionMap = (HashMap<String, String>) userService.detail(paramMap);
+		Map<String, Object> sessionMap = (Map<String, Object>) userService.detail(paramMap);
 
 		if(sessionMap == null) {
 			model.addAttribute("msg", "login_fail");
 			return "user/loginView";
 		} else {
-			if(session.getAttribute(StoryfarmConstants.MEMBER_SESSION) == null){
-				session.setAttribute(StoryfarmConstants.MEMBER_SESSION, sessionMap);
-				response.addCookie(new Cookie("userIdCookie", paramMap.get("id").toString()));
-				response.addCookie(new Cookie("userPwdCookie", paramMap.get("pwd").toString()));
-				if(paramMap.get("userSaveId") != null){
-					response.addCookie(new Cookie("userIdCheck", paramMap.get("userSaveId").toString()));
-				}else{
-					response.addCookie(new Cookie("userIdCheck", ""));
+			logger.info("sessionMap is : " + sessionMap.get("MEMBER_STATUS"));
+			if(sessionMap.get("MEMBER_STATUS").equals(2)){
+				model.addAttribute("msg", "requiredUser");
+				return "user/loginView";
+			}else {
+				if(session.getAttribute(StoryfarmConstants.MEMBER_SESSION) == null){
+					session.setAttribute(StoryfarmConstants.MEMBER_SESSION, sessionMap);
+					response.addCookie(new Cookie("userIdCookie", paramMap.get("id").toString()));
+					response.addCookie(new Cookie("userPwdCookie", paramMap.get("pwd").toString()));
+					if(paramMap.get("userSaveId") != null){
+						response.addCookie(new Cookie("userIdCheck", paramMap.get("userSaveId").toString()));
+					}else{
+						response.addCookie(new Cookie("userIdCheck", ""));
+					}
+					if(paramMap.get("userSavePw") != null){
+						response.addCookie(new Cookie("userPwdCheck", paramMap.get("userSavePw").toString()));
+					}else {
+						response.addCookie(new Cookie("userPwdCheck", ""));
+					}
 				}
-				if(paramMap.get("userSavePw") != null){
-					response.addCookie(new Cookie("userPwdCheck", paramMap.get("userSavePw").toString()));
-				}else {
-					response.addCookie(new Cookie("userPwdCheck", ""));
-				}
+				return "redirect:mypage/info.do";
 			}
-			return "redirect:mypage/info.do";
 		}
 		
 	}
