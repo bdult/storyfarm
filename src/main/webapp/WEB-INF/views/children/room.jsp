@@ -25,7 +25,7 @@
 		<div class="childrenTx01">
 			사랑하는 우리 <strong>홍길동</strong>의 방입니다.
 			<p class="right">
-				<a href="#"><img src="${ contextPath }/assets/images/common/btn_studyEdit_off.gif" alt="학습자변경" class="rollimg"></a>
+				<a href="${ contextPath }/parents/children.do"><img src="${ contextPath }/assets/images/common/btn_studyEdit_off.gif" alt="학습자변경" class="rollimg"></a>
 			</p>
 		</div>
 
