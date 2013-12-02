@@ -286,12 +286,11 @@ public class MypageController {
 	}
 
 	@RequestMapping(value = "userInfoUpdate.do", method = RequestMethod.POST)
-	public ModelAndView userInfoUpdate(Model model, @RequestParam Map<String, Object> paramsMap) {
+	public String userInfoUpdate(Model model, @RequestParam Map<String, Object> paramsMap) {
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("side-mypage/userInfoUpdate");
 		
 		userService.updateUser(paramsMap);
-		return mav;
+		return "redirect:userInfo.do";
 	}
 	
 	@RequestMapping(value = "leave.do", method = RequestMethod.GET)
