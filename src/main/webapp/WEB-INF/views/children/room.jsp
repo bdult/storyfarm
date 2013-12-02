@@ -48,7 +48,7 @@
 				<c:forEach items="${ childRoomInfo.history }" var="obj">
 					<li>
 						<p class="thum">
-							<a href="#"><img src="${ obj.PREFIX_URL }${ obj.IMG_PATH }" alt=""></a>
+							<a href="#"><img src="http://115.71.237.215/${ obj.IMG_PATH }" alt=""></a>
 						</p>
 						<p class="txt">
 							<label><input name="contentsId" type="checkbox" value="${ obj.CONTENTS_ID }"><span class="rnts-name">${ obj.CONTENTS_NM }</span></label>
@@ -71,7 +71,7 @@
 					<c:forEach items="${ childRoomInfo.ozworldRecommend }" var="obj">
 					<li>
 						<p class="thum">
-							<a href="#"><img src="${ obj.PREFIX_URL }${ obj.IMG_PATH }" alt=""></a>
+							<a href="#"><img src="http://115.71.237.215/${ obj.IMG_PATH }" alt=""></a>
 						</p>
 						<p class="txt">
 							<label><input name="contentsId" type="checkbox" value="${ obj.CONTENTS_ID }"><span class="rnts-name">${ obj.CONTENTS_NM }</span></label>
@@ -89,7 +89,7 @@
 					<c:forEach items="${ childRoomInfo.ageBestMovie }" var="obj">
 					<li>
 						<p class="thum">
-							<a href="#"><img src="${ obj.PREFIX_URL }${ obj.IMG_PATH }" alt=""></a>
+							<a href="#"><img src="http://115.71.237.215/${ obj.IMG_PATH }" alt=""></a>
 						</p>
 						<p class="txt">
 							<label><input name="contentsId" type="checkbox" value="${ obj.CONTENTS_ID }"><span class="rnts-name">${ obj.CONTENTS_NM }</span></label>
