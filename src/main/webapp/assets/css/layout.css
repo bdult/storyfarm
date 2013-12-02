@@ -23,6 +23,7 @@ body{ background:#9dccf8 url(../images/common/bg.gif) 0 0 repeat-x;}
 #container #content:after{ content:".";display:block;height:0;clear:both;visibility:hidden;}
 #leftMenu{ float:left; width:181px;}
 #divContent{ float:right; width:690px;}
+#subDiv{ margin:0 35px;}
 
 #lm{ padding:20px 0 0 0;}
 #lm li a{ display:block; height:29px; text-indent:-9999px;}
@@ -89,7 +90,9 @@ body{ background:#9dccf8 url(../images/common/bg.gif) 0 0 repeat-x;}
 #footer .copyright{ margin:2px 0 0 0; color:#fff;}
 
 /* heding */
-h2.divTit{ border-bottom:#f6f6f6 1px solid; padding:0 0 15px 0; margin:0 0 40px 0;}
-h3.divTit{ margin:30px 0 10px; padding:0;}
-h3.divTit2{ margin:0 0 10px; padding:0 0 0 10px; background:url(../images/common/blt_dot4.gif) 0 6px no-repeat; color:#333; font-weight:bold;}
+h2.divTit{ border-bottom:#f6f6f6 1px solid; padding:0 0 15px 0; margin:0 0 40px 0; clear:both;}
+h3.divTit{ margin:30px 0 10px; padding:0; clear:both;}
+h3.divTit2{ margin:0 0 10px; padding:0 0 0 10px; background:url(../images/common/blt_dot4.gif) 0 6px no-repeat; color:#333; font-weight:bold; clear:both;}
+h3.divTit3{ margin:0 0 10px; padding:0 0 0 10px; background:url(../images/common/blt_dot6.gif) 0 6px no-repeat; color:#58595b; font-weight:bold; font-size:14px; clear:both;}
 h4.divTit{ margin:30px 0 5px; padding:0;}
+h4.divTit2{ background: url(../images/common/blt_dot6.gif) 0 6px no-repeat; padding-left:10px; font-size:14px; color:#58595b; margin:30px 0 10px;}

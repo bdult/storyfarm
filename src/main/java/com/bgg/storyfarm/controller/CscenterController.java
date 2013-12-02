@@ -1,15 +1,14 @@
 package com.bgg.storyfarm.controller;
 
 import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
-import java.net.URLEncoder;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.json.simple.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,13 +17,15 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.bgg.storyfarm.common.BreadcrumbUtil;
+import com.bgg.storyfarm.common.MailUtil;
 import com.bgg.storyfarm.common.PageUtil;
 import com.bgg.storyfarm.common.StoryfarmConstants;
 import com.bgg.storyfarm.service.BoardService;
+import com.bgg.storyfarm.service.CodeService;
+import com.bgg.storyfarm.service.UserService;
 
 
 @Controller
@@ -47,7 +48,13 @@ public class CscenterController {
 	private BoardService boardService;
 	
 	@Autowired
+	private CodeService codeService;
+
+	@Autowired
 	private PageUtil pageUtil;
+	
+	@Autowired
+	private UserService userService;
 	
 	@RequestMapping(value = "notice.do")//, method = RequestMethod.GET)
 	public ModelAndView notice(@RequestParam Map<String, Object> paramsMap) throws UnsupportedEncodingException {
@@ -95,7 +102,7 @@ public class CscenterController {
 	}
 	
 	@RequestMapping(value = "faq.do", method = RequestMethod.GET)
-	public ModelAndView faq(Model model) {
+	public ModelAndView faq(@RequestParam Map<String, Object> paramsMap) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("side-cscenter/faq");
 		mav.addObject(LM_SEQ, LNB_FAQ);
@@ -103,8 +110,26 @@ public class CscenterController {
 				StoryfarmConstants.BREADCRUMB_HOME, 
 				StoryfarmConstants.BREADCRUMB_CSCENTER, 
 				StoryfarmConstants.BREADCRUMB_CSCENTER_FAQ));
+		
+		String _parentCode = String.valueOf(paramsMap.get("parent_code"));
+		if( _parentCode == null || _parentCode.equals("null") ){
+			paramsMap.put("parent_code", "BOT");
+		}
+		
+		List<Map<String, Object>> faqCodeList = codeService.listByParent(paramsMap);
+		mav.addObject("faqCodeList", faqCodeList);
+
+		List subList = new ArrayList();
+		mav.addObject("subList", subList);
+		for(Map<String, Object> map : faqCodeList) {
+			Map<String, Object> contents_code = new HashMap<String, Object>();
+			contents_code.put("contents_code", map.get("CODE"));
+			subList.add(boardService.faqList(contents_code));
+		}
+		
 		return mav;
 	}
+
 	
 	@RequestMapping(value = "event.do", method = RequestMethod.GET)
 	public ModelAndView event(@RequestParam Map<String, Object> paramsMap) {
@@ -151,78 +176,70 @@ public class CscenterController {
 		return mav;
 	}
 	
-	@RequestMapping(value = "commentCreate.do", method = RequestMethod.POST)
-	public String commentCreate(@RequestParam Map<String, Object> paramsMap, HttpSession session) {
-		ModelAndView mav = new ModelAndView();
-
-		String fLocation = paramsMap.get("fLocation").toString();
-		String sLocation = paramsMap.get("sLocation").toString();
-		
-		if(session.getAttribute("userInfoSession") == null){
-			mav.addObject("msg", "login_fail");
-			return "redirect:/" + fLocation + "/" + sLocation + ".do?contentsId="+paramsMap.get("contents_id");
-		}
-		
-		mav.addObject("commentCreate", boardService.commentCreate(paramsMap));
-		return "redirect:/" + fLocation + "/" + sLocation + ".do?contentsId="+paramsMap.get("contents_id");
-	}
-	
-	@RequestMapping(value = "commentDelete.do", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
-	public @ResponseBody String commentDelete(@RequestParam Map<String, Object> paramsMap) {
-		
-		boardService.commentDelete(paramsMap);
-		
-		JSONObject jsonObj=new JSONObject();
-		jsonObj.put("code", "200");
-		
-		return jsonObj.toJSONString();
-	}
-
-	@RequestMapping(value = "commentModify.do", method = RequestMethod.POST)
-	public String commentModify(@RequestParam Map<String, Object> paramsMap) {
-		ModelAndView mav = new ModelAndView();
-		
-		String fLocation = paramsMap.get("fLocation").toString();
-		String sLocation = paramsMap.get("sLocation").toString();
-
-		mav.addObject("commentModify", boardService.commentModify(paramsMap));
-		
-		return "redirect:/" + fLocation + "/" + sLocation + ".do?contentsId="+paramsMap.get("contents_id") + "&comment_id=" + paramsMap.get("comment_id");
-	}
-	
-	@RequestMapping(value = "ask.do", method = RequestMethod.GET)
-	public ModelAndView ask(Model model) {
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("side-cscenter/ask");
-		mav.addObject(LM_SEQ, LNB_QUESTION);
-		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(
-				StoryfarmConstants.BREADCRUMB_HOME, 
-				StoryfarmConstants.BREADCRUMB_CSCENTER, 
-				StoryfarmConstants.BREADCRUMB_CSCENTER_ASK));
-		return mav;
-	}
+//	@RequestMapping(value = "commentCreate.do", method = RequestMethod.POST)
+//	public String commentCreate(@RequestParam Map<String, Object> paramsMap, HttpSession session) {
+//		ModelAndView mav = new ModelAndView();
+//
+//		String fLocation = paramsMap.get("fLocation").toString();
+//		String sLocation = paramsMap.get("sLocation").toString();
+//		
+//		if(session.getAttribute("userInfoSession") == null){
+//			mav.addObject("msg", "login_fail");
+//			return "redirect:/" + fLocation + "/" + sLocation + ".do?contentsId="+paramsMap.get("contents_id");
+//		}
+//		
+//		mav.addObject("commentCreate", boardService.commentCreate(paramsMap));
+//		return "redirect:/" + fLocation + "/" + sLocation + ".do?contentsId="+paramsMap.get("contents_id");
+//	}
+//	
+//	@RequestMapping(value = "commentDelete.do", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+//	public @ResponseBody String commentDelete(@RequestParam Map<String, Object> paramsMap) {
+//		
+//		boardService.commentDelete(paramsMap);
+//		
+//		JSONObject jsonObj=new JSONObject();
+//		jsonObj.put("code", "200");
+//		
+//		return jsonObj.toJSONString();
+//	}
+//
+//	@RequestMapping(value = "commentModify.do", method = RequestMethod.POST)
+//	public String commentModify(@RequestParam Map<String, Object> paramsMap) {
+//		ModelAndView mav = new ModelAndView();
+//		
+//		String fLocation = paramsMap.get("fLocation").toString();
+//		String sLocation = paramsMap.get("sLocation").toString();
+//
+//		mav.addObject("commentModify", boardService.commentModify(paramsMap));
+//		
+//		return "redirect:/" + fLocation + "/" + sLocation + ".do?contentsId="+paramsMap.get("contents_id") + "&comment_id=" + paramsMap.get("comment_id");
+//	}
+//	
 	
 	/** 문의메일 보내기
 	 * @param model
 	 * @return
 	 */
-	@RequestMapping(value = "email.do", method = RequestMethod.GET)
-	public String email(Model model, HttpServletRequest request, HttpSession session) {
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("side-cscenter/email");
-		mav.addObject(LM_SEQ, LNB_QUESTION);
-		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(
-				StoryfarmConstants.BREADCRUMB_HOME, 
-				StoryfarmConstants.BREADCRUMB_CSCENTER, 
-				StoryfarmConstants.BREADCRUMB_CSCENTER_ASK));
+	@RequestMapping(value = "question.do", method = RequestMethod.GET)
+	public String question(Model model, HttpServletRequest request, HttpSession session) {
 		
 		if( session.getAttribute("userInfoSession") != null){
-			mav.setViewName("side-mypage/question");
-			return "redirect:/mypage/question.do";
+			//로그인 되어있을시 1:1 문의하기로 이동
+			return "redirect:/mypage/questionInsert.do?board_id=3";
 		}else{
-			mav.setViewName("side-cscenter/email");
-			return "side-cscenter/email";
+			return "side-cscenter/question";
 		}
+	}
+	/** 문의메일 보내기
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping(value = "email.do", method = RequestMethod.POST)
+	public String email(@RequestParam Map<String, Object> paramsMap) {
+
+		boolean result = userService.sendMail(paramsMap);
+		
+		return "redirect:/dashboard.do";
 	}
 
 	@RequestMapping(value = "winner.do", method = RequestMethod.GET)
@@ -258,7 +275,7 @@ public class CscenterController {
 		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(
 				StoryfarmConstants.BREADCRUMB_HOME, 
 				StoryfarmConstants.BREADCRUMB_CSCENTER, 
-				StoryfarmConstants.BREADCRUMB_CSCENTER_NOTI));
+				StoryfarmConstants.BREADCRUMB_CSCENTER_WINNER));
 		
 		String contentId = paramsMap.get("contentsId").toString();
 		boardService.hits(Integer.valueOf(contentId));

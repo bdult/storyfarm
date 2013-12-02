@@ -89,7 +89,6 @@
 </div>
 
 <script>
-
 $(function(){
 	
 	$("a.searchBtn").click(function(){

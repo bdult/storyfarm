@@ -22,6 +22,7 @@
             		<li class="fir"><a href="${ contextPath }/mypage/info.do"><img src="" alt="마이페이지"></a></li>
             		<li><a href="${ contextPath }/logout.do"><img src="" alt="로그아웃"></a></li>
             		<li><a href="${ contextPath }/parents/room.do"><img src="" alt="부모방"></a></li>
+            		<li><a href="${ contextPath }/children/room.do"><img src="" alt="자녀방"></a></li>
 				</c:otherwise>
 			</c:choose>
             <li><a href="${ contextPath }/cscenter/notice.do"><img src="${ contextPath }/assets/images/common/utill_mn3.gif" alt="고객센터"></a></li>
@@ -31,7 +32,7 @@
        		<div class="placeholder"><label class="placeholderTx">Search</label><input name="" type="text" class="input"><a href="#"><img class="bt" src="${ contextPath }/assets/images/common/btn_search.gif" alt="검색"></a></div>
         </div>
   	</div>
-	<div id="gnbWrap"><img src="${ contextPath }/assets/images/common/gnb.jpg" alt="" usemap="gnbMap" ></div>
+	<div id="gnbWrap"><img src="${ contextPath }/assets/images/common/gnb.jpg" alt="" usemap="#gnbMap" ></div>
 	       
 	<!-- 임시 gnb 이미지맵 -->
 	<map name="gnbMap">

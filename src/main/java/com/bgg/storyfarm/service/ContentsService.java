@@ -1,5 +1,6 @@
 package com.bgg.storyfarm.service;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -156,6 +157,56 @@ public class ContentsService {
 			return false;
 		}
 	}
+	
+	/**
+	 * 자녀방
+	 * @param memberInfo
+	 * @return
+	 */
+	public Map childRoom(Map memberInfo){
+		
+		Map childRoomInfo = new HashMap();
+		
+		childRoomInfo.put("history", childMovieHistory(memberInfo));
+		childRoomInfo.put("ozworldRecommend", childMovieHistory(memberInfo));
+		childRoomInfo.put("ageBestMovie", ageBestMovie(memberInfo));
+		
+		return childRoomInfo;
+	}
+	
+	// 아이가 자주 보는 동영상(Mockup)
+	private List<Map<String, Object>> childMovieHistory(Map memberInfo){
+		
+		// memberInfo
+		
+		// dummy
+		Map paramInfo = new HashMap();
+		paramInfo.put("cate_id", "32");
+		paramInfo.put("rownum", 0);
+		paramInfo.put("perpage", 6);
+		return contentsDao.contentsListByCate(paramInfo);
+	}
+	
+	// 오즈월드 추천 동영상(Mockup)
+	private List<Map<String, Object>> recommandationMovies(){
+		// dummy
+		Map paramInfo = new HashMap();
+		paramInfo.put("cate_id", "38");
+		paramInfo.put("rownum", 0);
+		paramInfo.put("perpage", 3);
+		return contentsDao.contentsListByCate(paramInfo);
+	}
+	
+	// 또래가 가장많이 본 동영상
+	private List<Map<String, Object>>  ageBestMovie(Map memberInfo){
+		// dummy
+		Map paramInfo = new HashMap();
+		paramInfo.put("cate_id", "54");
+		paramInfo.put("rownum", 0);
+		paramInfo.put("perpage", 3);
+		return contentsDao.contentsListByCate(paramInfo);
+	}
+	
 
 	
 }

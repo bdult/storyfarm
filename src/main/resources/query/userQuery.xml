@@ -146,11 +146,20 @@
 		WHERE MEMBER_ID = #{ member_id }
 	</update>
 	
-	<!-- delete user -->
-	<update id="deleteUser" parameterType="hashmap">
+	<!-- UPDATE USER RANDOM PASSWD -->
+	<update id="updateRandomPw" parameterType="hashmap">
 		UPDATE BG_MEMBER
 		<set>
-			MEMBER_STATUS = 2,
+			MEMBER_PW = password(#{ member_pw })
+		</set>
+		WHERE MEMBER_ID = #{ member_id }
+	</update>
+	
+	<!-- update user status -->
+	<update id="updateUserStatus" parameterType="hashmap">
+		UPDATE BG_MEMBER
+		<set>
+			MEMBER_STATUS = #{ status },
 			MOD_DT = NOW()
 		</set>
 		WHERE MEMBER_ID = #{ member_id } AND

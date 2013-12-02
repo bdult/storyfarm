@@ -23,7 +23,7 @@
     WHERE
     	BOARD_ID = #{ board_id } AND
     	MEMBER_ID = #{ member_id }
-    ORDER BY CONTENTS_ID DESC
+    ORDER BY CONTENTS_ID ASC
     LIMIT 0, 5
     
     </select>
@@ -121,16 +121,24 @@
 
 	<select id="detailComments" resultType="hashmap" parameterType="hashmap">
 	SELECT
-		CONTENTS_ID,
-		COMMENT_ID,
-		MEMBER_ID,
-		COMMENT,
-		MOD_DT
+		*
 	FROM
 		BG_BOARD_COMMENTS
 	WHERE
 		CONTENTS_ID = #{ contents_id } and
         DEL_YN = 'N'
+	</select>
+
+	<select id="faqList" resultType="hashmap" parameterType="hashmap">
+	SELECT
+		TITLE,
+		CONTENTS,
+		CONTENTS_CODE
+	FROM
+		BG_BOARD_CONTENTS
+	WHERE
+		BOARD_ID = '5' and
+		CONTENTS_CODE = #{ contents_code }
 	</select>
 
     <!-- insert -->

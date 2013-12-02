@@ -61,12 +61,12 @@ public class UserServiceTest {
 	    userList.put("role", "1");
 	    
 		//when
-	    HashMap<String, String> sessionMap = (HashMap<String, String>)userService.detail(userList);
+	    HashMap<String, Object> sessionMap = (HashMap<String, Object>)userService.detail(userList);
 	    
 	    //than
 	    assertThat(sessionMap, is(notNullValue()));
-		assertThat(sessionMap.get("MEMBER_ID"), is("test"));
-		assertThat(sessionMap.get("MEMBER_PW"), is("123"));
+			assertThat(sessionMap.get("MEMBER_ID").toString(), is("test"));
+			assertThat(sessionMap.get("MEMBER_PW").toString(), is("123"));
 	    
 	}
 	
@@ -169,6 +169,27 @@ public class UserServiceTest {
 		//than
 		assertNotNull(userIdMap);
 		logger.info("{}", userIdMap);
+	}
+	
+	@Test
+	public void alphaRandomTest(){
+		logger.info("패스워드 랜덤 12자 변경 테스트 입니다.");
+		
+		//given
+		String pw = org.apache.commons.lang.RandomStringUtils.random(12, true, true);
+		String nm = "q";
+		logger.info(pw);
+
+		Map<String, Object> userData = new HashMap<String, Object>();
+		userData.put("member_id", nm);
+		userData.put("member_pw", pw);
+		
+		//when
+		userService.updateRandomPw(userData);
+
+		//than
+		assertNotNull(userData);
+		logger.info("{}", userData);
 	}
 }
 	

@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.bgg.storyfarm.common.BreadcrumbUtil;
+import com.bgg.storyfarm.common.MailUtil;
 import com.bgg.storyfarm.common.StoryfarmConstants;
 import com.bgg.storyfarm.service.ContentsService;
 import com.bgg.storyfarm.service.UserService;
@@ -40,6 +41,9 @@ public class UserController {
 	@Autowired
 	private ContentsService contentsService;
 
+	@Autowired
+	private MailUtil mailUtil;
+	
 	private Logger logger = LoggerFactory.getLogger(UserController.class);
 	
 	/**
@@ -67,40 +71,33 @@ public class UserController {
 	public String loginResult(Model model, @RequestParam Map<String, Object> paramMap, HttpServletResponse response, HttpSession session) {
 		model.addAttribute(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_LOGIN));
 		
-		HashMap<String, String> sessionMap = (HashMap<String, String>) userService.detail(paramMap);
+		Map<String, Object> sessionMap = (Map<String, Object>) userService.detail(paramMap);
 
 		if(sessionMap == null) {
 			model.addAttribute("msg", "login_fail");
 			return "user/loginView";
 		} else {
-			if(session.getAttribute(StoryfarmConstants.MEMBER_SESSION) == null){
-				session.setAttribute(StoryfarmConstants.MEMBER_SESSION, sessionMap);
-				response.addCookie(new Cookie("userIdCookie", paramMap.get("id").toString()));
-				response.addCookie(new Cookie("userPwdCookie", paramMap.get("pwd").toString()));
-				if(paramMap.get("userSaveId") != null){
-					response.addCookie(new Cookie("userIdCheck", paramMap.get("userSaveId").toString()));
-				}else{
-					response.addCookie(new Cookie("userIdCheck", ""));
+			logger.info("sessionMap is : " + sessionMap.get("MEMBER_STATUS"));
+			if(sessionMap.get("MEMBER_STATUS").equals(2)){
+				model.addAttribute("msg", "requiredUser");
+				return "user/loginView";
+			}else {
+				if(session.getAttribute(StoryfarmConstants.MEMBER_SESSION) == null){
+					session.setAttribute(StoryfarmConstants.MEMBER_SESSION, sessionMap);
+					response.addCookie(new Cookie("userIdCookie", paramMap.get("id").toString()));
+					response.addCookie(new Cookie("userPwdCookie", paramMap.get("pwd").toString()));
+					if(paramMap.get("userSaveId") != null){
+						response.addCookie(new Cookie("userIdCheck", paramMap.get("userSaveId").toString()));
+					}else{
+						response.addCookie(new Cookie("userIdCheck", ""));
+					}
+					if(paramMap.get("userSavePw") != null){
+						response.addCookie(new Cookie("userPwdCheck", paramMap.get("userSavePw").toString()));
+					}else {
+						response.addCookie(new Cookie("userPwdCheck", ""));
+					}
 				}
-				if(paramMap.get("userSavePw") != null){
-					response.addCookie(new Cookie("userPwdCheck", paramMap.get("userSavePw").toString()));
-				}else {
-					response.addCookie(new Cookie("userPwdCheck", ""));
-				}
-			}
-			
-			// callbackUrl 유무 체크
-			String callBackUrl = (String)session.getAttribute(StoryfarmConstants.CALL_BACK_URL);
-			
-			if(StringUtils.isEmpty(callBackUrl)){
-				return "user/loginResult";
-			}else{
-				try {
-					response.sendRedirect(callBackUrl);
-				} catch (Exception e) {
-					// TODO: handle exception
-				}
-				return null;
+				return "redirect:mypage/info.do";
 			}
 		}
 		
@@ -229,6 +226,21 @@ public class UserController {
 		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_LOGIN, StoryfarmConstants.BREADCRUMB_FINDPWD_RESULT));
 
 		model.addAttribute("findUserData", userService.findPwd(paramMap));
+
+		//패스워드 변경
+		String pw = org.apache.commons.lang.RandomStringUtils.random(12, true, true);
+		String id = (String) paramMap.get("member_id");
+
+		Map<String, Object> userData = new HashMap<String, Object>();
+		userData.put("member_id", id);
+		userData.put("member_pw", pw);
+		userService.updateRandomPw(userData);
+		
+		{//변경된 비밀번호 메일보내기
+			String subject = "오즈월드 비밀번호가 변경되었습니다.";
+			String receiver = (String)paramMap.get("member_email");
+			mailUtil.sendMail(subject, pw, receiver);
+		}
 		
 		return mav;
 	}

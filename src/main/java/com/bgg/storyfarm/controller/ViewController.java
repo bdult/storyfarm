@@ -154,6 +154,10 @@ public class ViewController {
 		return mav;
 	}
 	
+	/** 오즈월드소개
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping(value = "introduce.do", method = RequestMethod.GET)
 	public ModelAndView introduce(Model model) {
 		ModelAndView mav = new ModelAndView();
@@ -162,6 +166,18 @@ public class ViewController {
 				StoryfarmConstants.BREADCRUMB_HOME,
 				StoryfarmConstants.BREADCRUMB_INTRODUCE));
 		return mav;
+	}
+	
+	/** 유료서비스소개
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping(value = "introduce2.do", method = RequestMethod.GET)
+	public String introduce2(Model model) {
+		model.addAttribute(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(
+				StoryfarmConstants.BREADCRUMB_HOME,
+				StoryfarmConstants.BREADCRUMB_INTRODUCE));
+		return "view/introduce2";
 	}
 	
 	@RequestMapping(value = "serviceRules.do", method = RequestMethod.GET)
