@@ -77,3 +77,9 @@
     	<!-- <a href="#"><img src="" alt="취소" class="rollimg"></a> --> 
     </div>
 </div>
+
+<script type="text/javascript">
+
+$(".lm0505").addClass("on");
+
+</script>

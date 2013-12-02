@@ -74,6 +74,8 @@
 
 <script type="text/javascript">
 
+$(".lm0505").addClass("on");
+
 tinymce.init({
     selector: "textarea",
     menubar : false
