@@ -259,6 +259,11 @@ public class ViewController {
 		// 또한 결제를 하지 않은 사용자의 경우도 src 값이 empty 가 된다.
 		Map memberInfo = (Map)session.getAttribute(StoryfarmConstants.MEMBER_SESSION);
 		if(isLogin(memberInfo)){
+			
+			// 플레이 히스토리 저장
+			memberInfo.put(StoryfarmConstants.CONTENTS_ID, contents_id);
+			contentsService.savePlayHistory(memberInfo);
+			
 			String redirectUrl = contentsService.movieUrlByContentsId(contents_id);
 			return "redirect:"+redirectUrl;
 		}else{

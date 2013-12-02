@@ -106,11 +106,12 @@ public class StoryfarmConstants {
 	public final static String MEMBER_IDX = "member_idx";
 	public final static String LOGIN_YN = "loginYn";
 	public final static String PAYMENT_YN = "paymentYn";
-	
+	public static final String CHILDREN_IDX = "children_idx";
 	
 	//SESSION
 	public final static String MEMBER_SESSION = "userInfoSession";
 	public final static String CALL_BACK_URL = "callBackUrl";
+	
 	
 	
 	

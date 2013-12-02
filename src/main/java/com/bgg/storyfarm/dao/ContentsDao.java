@@ -152,6 +152,26 @@ public class ContentsDao extends SqlSessionDaoSupport {
 		return 1;
 	}
 
+	public void savePlayHistory(Map contentsInfo) {
+		getSqlSession().insert("contentsQuery.savePlayHistory", contentsInfo);
+	}
+
+	public List<Map> playHistory(Map contentsInfo) {
+		return getSqlSession().selectList("contentsQuery.playHistory", contentsInfo);
+	}
+
+	public List<Map> childPlayCountBySubject(Map memberInfo) {
+		return getSqlSession().selectList("contentsQuery.childPlayCountBySubject", memberInfo);
+	}
+
+	public List<Map> childPlayCountByRegDT(Map memberInfo) {
+		return getSqlSession().selectList("contentsQuery.childPlayCountByRegDT", memberInfo);
+	}
+
+	public List<Map> childPlayCountBySeries(Map memberInfo) {
+		return getSqlSession().selectList("contentsQuery.childPlayCountBySeries", memberInfo);
+	}
+
 	
 
 }
