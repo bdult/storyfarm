@@ -23,7 +23,7 @@
 </div>
 <!-- //location -->
 
-<form id="update_form">
+<form id="joinForm">
 	<table class="joinTbl">
 	<colgroup>
 	<col width="100">
@@ -40,7 +40,7 @@
 	</tr>
 	<tr class="brdB">
 		<th scope="row">비밀번호 재입력</th>
-		<td><input name="" type="password" class="input" style="width:205px;"></td>
+		<td><input name="member_pw_again" type="password" class="input" style="width:205px;"></td>
 	</tr>
 	</tbody>
 	</table>
@@ -56,23 +56,23 @@
 	</tr>
 	<tr>
 		<th scope="row">이메일</th>
-		<td colspan="3"><input type="text" class="input" style="width:290px;" placeholder="exaple@mail.com" id="email1" value="${ userInfo.MEMBER_EMAIL }"></td>
+		<td colspan="3"><input type="text" class="input" style="width:290px;" name="member_email" placeholder="exaple@mail.com" value="${ userInfo.MEMBER_EMAIL }"></td>
 	</tr>
 	<tr>
 		<th scope="row">휴대번호</th>
 		<td colspan="3">
 			<input type="hidden" id="member_cel" name="member_cel">
-			<select  id="cel1" class="select" style="width:95px;">
+			<select  name="cel1" id="cel1" class="select" style="width:95px;">
 				<option>010</option>
 			</select> -
-			<input type="text" class="input" style="width:95px;" id="cel2"> -
-			<input type="text" class="input" style="width:95px;" id="cel3">
+			<input type="text" class="input" style="width:95px;" name="cel2" id="cel2"> -
+			<input type="text" class="input" style="width:95px;" name="cel3" id="cel3">
 	  </td>
 	</tr>
 	<tr>
 		<th scope="row">주소</th>
 		<td colspan="3">
-			<input type="text" class="input" style="width:290px;" placeholder="우편번호" name="member_post" readonly> <a href="javascript:showHide('popAddr');"><img src="${ contextPath }/assets/images/common/btn_find_off.gif" alt="찾아보기" class="rollimg"></a>
+			<input type="text" class="input" style="width:290px;" placeholder="우편번호" name="member_post" value="${ userInfo.MEMBER_POST }" readonly> <a href="javascript:showHide('popAddr');"><img src="${ contextPath }/assets/images/common/btn_find_off.gif" alt="찾아보기" class="rollimg"></a>
 			<div class="mgt5">
 				<input type="text" class="input" style="width:290px;" placeholder="주소 1" name="member_addr_1" value="${ userInfo.MEMBER_ADDR_1 }">
 				<input type="text" class="input" style="width:290px;" placeholder="상세주소 입력" name="member_addr_2" value="${ userInfo.MEMBER_ADDR_2 }">
@@ -161,101 +161,23 @@
 
 <script type="text/javascript">
 $(function(){
+
+	//validate 초기화
+	setValid();
+	signUpValidateCall();
+	
     $('#inner-content-div').slimScroll({
         height: '180px'
     });
 });
 
-$("a.tabGroup").click(function(){
-	var $this = $(this);
-	$("a.tabGroup").removeClass("on");
-	$this.addClass("on");
-	
-	$("#dong, #road, #post").css("display", "none");
-	$("#" + $this.data("target")).show();
-});
-
-
-// addr function
-function addrSearchAjax(seComp, wrdComp){
-	param = {
-			searchSe : seComp,
-			srchwrd : wrdComp
-	};
-	$.ajax({
-		url: "${contextPath}/post/addr.ajax",
-		data: param,
-		dataType: "text",
-		type: 'get',
-	    success: function(res) {
-			var $xml = $(res);
-
-				$("#addrList li").remove();
-				$xml.find("newAddressList").each(function(index){
-					var $this = $(this);
-					var zipno = $this.find("zipNo").text();
-					var lnmadres = $this.find("lnmadres").text();
-					var rnAdres = $this.find("rnAdres").text();
-					if(seComp == 'dong'){
-					$("#addrList").append(
-						"<li>" + rnAdres + "<br>" + lnmadres + "<a data-zipNo='" + zipno + "' data-lnmadres='" + lnmadres + "' class='rollimg addrSelect'>" + "선택" + "</a>" + "</li>" 
-					);
-					}else {
-						$("#addrList").append(
-							"<li>" + lnmadres + "<a data-zipNo='" + zipno + "' data-lnmadres='" + lnmadres + "' class='rollimg addrSelect'>" + "선택" + "</a>" + "</li>" 
-						);	
-					}
-					
-				});
-				$("a.addrSelect").click(function(){
-					var $this = $(this);
-
-					$("input[name='member_post']").val($this.data("zipno"));
-					$("input[name='member_addr_1']").val($this.data("lnmadres"));
-
-					showHide('popAddr');
-				});
-		},
-		error: function(xhr, status, error) {
-			console.log(error);
-			console.log(xhr);
-			console.log(status);
-		}
-	});
-}
-
-$("#road-modify-btn").click(function(){
-	var roadNo = $("#roadNo").val();
-	var buildNo = $("#buildNo").val();
-	var wrdComp = roadNo + " " + buildNo;
-	var seComp = 'road';
-	
-	addrSearchAjax(seComp, wrdComp);
-});
-
-$("#dong-modify-btn").click(function(){
-	var dongNo = $("#dongNo").val();
-	var buildNo = $("#buildNo1").val();
-	var wrdComp = dongNo + " " + buildNo;
-	var seComp = 'dong';
-	
-	addrSearchAjax(seComp, wrdComp);
-});
-
-$("#post-modify-btn").click(function(){
-	var wrdComp = $("#postNo").val();
-	var seComp = 'post';
-	
-	addrSearchAjax(seComp, wrdComp);
-});
-
 	birth.call();
 
-	var memberEmail = "${ userInfo.MEMBER_EMAIL }";
+/* 	var memberEmail = "${ userInfo.MEMBER_EMAIL }";
 	var emailBreak = memberEmail.split("@");
 	
 	$("#email1").attr("value", emailBreak[0]);
-	$("#email2").val(emailBreak[1]);
+	$("#email2").val(emailBreak[1]); */
 	
  	var memberCel = "${ userInfo.MEMBER_CEL }";
  	var memberCelBreak = memberCel.split("-");
@@ -275,11 +197,94 @@ $("#post-modify-btn").click(function(){
 		combineEmail.call();
 		combineCel.call();
 		
-		$("#update_form").attr({
+		$("#joinForm").attr({
 			method: 'post',
 			action: '${ contextPath }/mypage/userInfoUpdate.do'
 		}).submit();
-		alert("회원정보가 수정되었습니다.");
 	});
+	
+
+	// addr function
+	function addrSearchAjax(seComp, wrdComp){
+		param = {
+				searchSe : seComp,
+				srchwrd : wrdComp
+		};
+		$.ajax({
+			url: "${contextPath}/post/addr.ajax",
+			data: param,
+			dataType: "text",
+			type: 'get',
+		    success: function(res) {
+				var $xml = $(res);
+
+					$("#addrList li").remove();
+					$xml.find("newAddressList").each(function(index){
+						var $this = $(this);
+						var zipno = $this.find("zipNo").text();
+						var lnmadres = $this.find("lnmadres").text();
+						var rnAdres = $this.find("rnAdres").text();
+						if(seComp == 'dong'){
+						$("#addrList").append(
+							"<li>" + rnAdres + "<br>" + lnmadres + "<a data-zipNo='" + zipno + "' data-lnmadres='" + lnmadres + "' class='rollimg addrSelect'>" + "선택" + "</a>" + "</li>" 
+						);
+						}else {
+							$("#addrList").append(
+								"<li>" + lnmadres + "<a data-zipNo='" + zipno + "' data-lnmadres='" + lnmadres + "' class='rollimg addrSelect'>" + "선택" + "</a>" + "</li>" 
+							);	
+						}
+						
+					});
+					$("a.addrSelect").click(function(){
+						var $this = $(this);
+
+						$("input[name='member_post']").val($this.data("zipno"));
+						$("input[name='member_addr_1']").val($this.data("lnmadres"));
+
+						showHide('popAddr');
+					});
+			},
+			error: function(xhr, status, error) {
+				console.log(error);
+				console.log(xhr);
+				console.log(status);
+			}
+		});
+	}
+
+	$("#road-modify-btn").click(function(){
+		var roadNo = $("#roadNo").val();
+		var buildNo = $("#buildNo").val();
+		var wrdComp = roadNo + " " + buildNo;
+		var seComp = 'road';
+		
+		addrSearchAjax(seComp, wrdComp);
+	});
+
+	$("#dong-modify-btn").click(function(){
+		var dongNo = $("#dongNo").val();
+		var buildNo = $("#buildNo1").val();
+		var wrdComp = dongNo + " " + buildNo;
+		var seComp = 'dong';
+		
+		addrSearchAjax(seComp, wrdComp);
+	});
+
+	$("#post-modify-btn").click(function(){
+		var wrdComp = $("#postNo").val();
+		var seComp = 'post';
+		
+		addrSearchAjax(seComp, wrdComp);
+	});
+
+	$("a.tabGroup").click(function(){
+		var $this = $(this);
+		$("a.tabGroup").removeClass("on");
+		$this.addClass("on");
+		
+		$("#dong, #road, #post").css("display", "none");
+		$("#" + $this.data("target")).show();
+	});
+
 	
 </script>

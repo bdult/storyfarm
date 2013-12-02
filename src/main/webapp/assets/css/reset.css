@@ -5,7 +5,6 @@
 @import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
 body, th, td, input, select, textarea{margin:0; padding:0; font-family:'Nanum Gothic', 'nanumgothic'; line-height:1.5em; font-size:12px; color:#666; }
 
-
 fieldset, img { border:0; }
 
 /* 기본 링크 스타일 */

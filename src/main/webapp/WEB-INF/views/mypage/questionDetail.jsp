@@ -34,7 +34,7 @@
 		</tr>
 		<tr>
 			<th>내용</th>
-			<td class="vewTd">${ writing.CONTENTS }</td>
+			<td class="resetEditor">${ writing.CONTENTS }</td>
 		</tr>
 	</tbody>
 </table>
