@@ -49,7 +49,7 @@
                 
 <div class="btnSc">
     <div style="float: left;">
-    	<a href="#"><img src="../assets/images/common/btn_list_off.png" alt="목록" class="rollimg"></a> 
+    	<a href="#"><img src="${ contextPath }assets/images/common/btn_list_off.png" alt="목록" class="rollimg"></a> 
     </div>
     <div style="float: right;">
     	<a id="submit"><img src="" alt="등록" class="rollimg"></a>
