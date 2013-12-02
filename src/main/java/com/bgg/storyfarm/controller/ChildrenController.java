@@ -1,7 +1,6 @@
 package com.bgg.storyfarm.controller;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import org.slf4j.Logger;
@@ -12,12 +11,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.bgg.storyfarm.common.BreadcrumbUtil;
-import com.bgg.storyfarm.common.StoryfarmConstants;
-import com.bgg.storyfarm.dao.ContentsDao;
+import com.bgg.storyfarm.service.ContentsService;
 
 
 @Controller
@@ -30,43 +26,27 @@ public class ChildrenController {
 	private BreadcrumbUtil breadcrumbUtil;
 	
 	@Autowired
-	private ContentsDao contentsDao;
+	private ContentsService contentsService;
 	
 	@RequestMapping(value = "room.do", method = RequestMethod.GET)
-	public ModelAndView room(Model model) {
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("children/room");
-		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(
-				StoryfarmConstants.BREADCRUMB_HOME, 
-				StoryfarmConstants.BREADCRUMB_CHILDREN_ROOM));
+	public String room(Model model, @RequestParam Map<String, Object> paramsMap) {
 
-		HashMap<String, Object> paramMap = new HashMap<String, Object>();
-		paramMap.put(StoryfarmConstants.BRAND_ID, 1);
+		//기본 자녀 정보 가져오기
+		Map<String, Object> map = contentsService.childRoom(paramsMap);
 		
-		List<Map<String, Object>> playListContents =  contentsDao.contentsListByBrand(paramMap);
-		mav.addObject("movieList", playListContents);
-		return mav;
+		Map<String, String> childMap = new HashMap<String, String>();
+		childMap.put("NAME", "추사랑");
+		map.put("defaultChild", childMap);
+		
+		//최근이용 컨텐츠, 추천동영상, 인기동영상
+		model.addAttribute("childRoomInfo", map);
+		return "children/room";
 	}
 	
 	@RequestMapping(value = "play.do", method = RequestMethod.GET)
-	public ModelAndView play(Model model, @RequestParam Map<String, Object> paramMap) {
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("children/play");
-		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(
-				StoryfarmConstants.BREADCRUMB_HOME, 
-				StoryfarmConstants.BREADCRUMB_CHILDREN_ROOM,
-				StoryfarmConstants.BREADCRUMB_CHILDREN_PLAYER));
+	public String play(Model model, @RequestParam Map<String, Object> paramMap) {
 		
-		Map<String, Object> contentsMap = contentsDao.detail(paramMap);
-		logger.info("{}", contentsMap);
-		mav.addObject("movie", contentsMap);
-		
-		return mav;
-	}
-	
-	@RequestMapping(value = "stat.do", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
-	public @ResponseBody String stat(@RequestParam Map<String, Object> paramMap) {
-		return "aaaa";
+		return "children/play";
 	}
 	
 }
