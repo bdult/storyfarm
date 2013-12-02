@@ -48,7 +48,7 @@
 				<c:forEach items="${ childRoomInfo.history }" var="obj">
 					<li>
 						<p class="thum">
-							<a href="#"><img src="http://115.71.237.215/${ obj.IMG_PATH }" alt=""></a>
+							<a href="${ contextPath }/children/play.do?contents_id=${ obj.CONTENTS_ID }"><img src="http://115.71.237.215/${ obj.IMG_PATH }" alt=""></a>
 						</p>
 						<p class="txt">
 							<label><input name="contentsId" type="checkbox" value="${ obj.CONTENTS_ID }"><span class="rnts-name">${ obj.CONTENTS_NM }</span></label>
@@ -71,7 +71,7 @@
 					<c:forEach items="${ childRoomInfo.ozworldRecommend }" var="obj">
 					<li>
 						<p class="thum">
-							<a href="#"><img src="http://115.71.237.215/${ obj.IMG_PATH }" alt=""></a>
+							<a href="${ contextPath }/children/play.do?contents_id=${ obj.CONTENTS_ID }"><img src="http://115.71.237.215/${ obj.IMG_PATH }" alt=""></a>
 						</p>
 						<p class="txt">
 							<label><input name="contentsId" type="checkbox" value="${ obj.CONTENTS_ID }"><span class="rnts-name">${ obj.CONTENTS_NM }</span></label>
@@ -89,7 +89,7 @@
 					<c:forEach items="${ childRoomInfo.ageBestMovie }" var="obj">
 					<li>
 						<p class="thum">
-							<a href="#"><img src="http://115.71.237.215/${ obj.IMG_PATH }" alt=""></a>
+							<a href="${ contextPath }/children/play.do?contents_id=${ obj.CONTENTS_ID }"><img src="http://115.71.237.215/${ obj.IMG_PATH }" alt=""></a>
 						</p>
 						<p class="txt">
 							<label><input name="contentsId" type="checkbox" value="${ obj.CONTENTS_ID }"><span class="rnts-name">${ obj.CONTENTS_NM }</span></label>
@@ -104,7 +104,7 @@
 		</div>
 
 		<div class="btnSc aright">
-			<a href="#"><img src="${ contextPath }/assets/images/common/btn_selVew_off.gif" alt="선택보기" class="rollimg"></a>
+			<a href="#" id="playBtn"><img src="${ contextPath }/assets/images/common/btn_selVew_off.gif" alt="선택보기" class="rollimg"></a>
 		</div>
 
 	</div>
@@ -122,5 +122,11 @@ $("span.rnts-name").each(function(){
 	if( hangulLength > 13) {
 		$this.text( $this.text().substring(0,10) + "..." ); 
 	}
+});
+
+$(function(){
+	//event
+	$("#playBtn").click(function(){
+	});
 });
 </script>
