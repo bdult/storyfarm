@@ -1,7 +1,7 @@
 <%@ page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-                <h2 class="divTit"><img src="../assets/images/parent/title_state.gif" alt="학습통계"></h2>
+                <h2 class="divTit"><img src="${ contextPath }/assets/images/parent/title_state.gif" alt="학습통계"></h2>
 	            <!-- location -->
 	      		<div id="divLocation">
 	        		<ul class="location">
@@ -40,23 +40,23 @@
                     	<h3 class="divTit2">최근 이용 컨텐츠</h3>
                       	<ul>
                        	  	<li>
-                           	  	<p class="thum"><a href="#"><img src="../assets/images/content/thum.jpg" alt=""></a></p>
+                           	  	<p class="thum"><a href="#"><img src="${ contextPath }/assets/images/content/thum.jpg" alt=""></a></p>
                                 <p class="txt"><a href="#">Contents title</a></p>
                           	</li>
                        	  	<li>
-                           	  	<p class="thum"><a href="#"><img src="../assets/images/content/thum.jpg" alt=""></a></p>
+                           	  	<p class="thum"><a href="#"><img src="${ contextPath }/assets/images/content/thum.jpg" alt=""></a></p>
                                 <p class="txt"><a href="#">Contents title</a></p>
                           	</li>
                        	  	<li>
-                           	  	<p class="thum"><a href="#"><img src="../assets/images/content/thum.jpg" alt=""></a></p>
+                           	  	<p class="thum"><a href="#"><img src="${ contextPath }/assets/images/content/thum.jpg" alt=""></a></p>
                                 <p class="txt"><a href="#">Contents title</a></p>
                           	</li>
                        	  	<li>
-                           	  	<p class="thum"><a href="#"><img src="../assets/images/content/thum.jpg" alt=""></a></p>
+                           	  	<p class="thum"><a href="#"><img src="${ contextPath }/assets/images/content/thum.jpg" alt=""></a></p>
                                 <p class="txt"><a href="#">Contents title</a></p>
                           	</li>
                        	  	<li>
-                           	  	<p class="thum"><a href="#"><img src="../assets/images/content/thum.jpg" alt=""></a></p>
+                           	  	<p class="thum"><a href="#"><img src="${ contextPath }/assets/images/content/thum.jpg" alt=""></a></p>
                                 <p class="txt"><a href="#">Contents title</a></p>
                           	</li>
                       	</ul>

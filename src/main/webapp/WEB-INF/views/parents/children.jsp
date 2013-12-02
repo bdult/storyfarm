@@ -1,7 +1,7 @@
 <%@ page contentType="text/html" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-                <h2 class="divTit"><img src="../assets/images/parent/title_control.gif" alt="학습자관리"></h2>
+                <h2 class="divTit"><img src="${ contextPath }/assets/images/parent/title_control.gif" alt="학습자관리"></h2>
 	            <!-- location -->
 	      		<div id="divLocation">
 	        		<ul class="location">
@@ -24,14 +24,14 @@
                 
                 <div class="mypageTx01">
                 	현재 등록된 학습자 입니다.
-                    <p class="right"><a href="#"><img src="../assets/images/common/btn_nReg_off.gif" alt="신규등록" class="rollimg"></a></p>
+                    <p class="right"><a href="#"><img src="${ contextPath }/assets/images/common/btn_nReg_off.gif" alt="신규등록" class="rollimg"></a></p>
        	  	  	</div>
                 
                 <div class="box05 mgt20">
                	  	<div class="parentControl">
                     	<h3 class="divTit2">자녀 A 정보</h3>
                         <div class="parentControlBx">
-                        	<p class="photo"><img src="../assets/images/common/photo_bg.gif" alt=""></p>
+                        	<p class="photo"><img src="${ contextPath }/assets/images/common/photo_bg.gif" alt=""></p>
                             <table class="data">
                             <colgroup>
                             <col width="108">
@@ -53,9 +53,9 @@
                             </tbody>
                             </table>
                             <div class="btnSc aright">
-                            	<p class="left"><a href="#"><img src="../assets/images/common/btn_init_off.gif" alt="학습정보초기화" class="rollimg"></a></p>
-                                <a href="#"><img src="../assets/images/common/btn_edit_off.gif" alt="수정" class="rollimg"></a>
-                                <a href="#"><img src="../assets/images/common/btn_del_off.gif" alt="삭제" class="rollimg"></a>
+                            	<p class="left"><a href="#"><img src="${ contextPath }/assets/images/common/btn_init_off.gif" alt="학습정보초기화" class="rollimg"></a></p>
+                                <a href="#"><img src="${ contextPath }/assets/images/common/btn_edit_off.gif" alt="수정" class="rollimg"></a>
+                                <a href="#"><img src="${ contextPath }/assets/images/common/btn_del_off.gif" alt="삭제" class="rollimg"></a>
                             </div>
                       	</div>
                     </div>
@@ -66,7 +66,7 @@
                	  	<div class="parentControl">
                     	<h3 class="divTit2">자녀 B 정보</h3>
                         <div class="parentControlBx">
-                        	<p class="photo"><img src="../assets/images/common/photo_bg.gif" alt=""></p>
+                        	<p class="photo"><img src="${ contextPath }/assets/images/common/photo_bg.gif" alt=""></p>
                             <table class="data">
                             <colgroup>
                             <col width="108">
@@ -88,9 +88,9 @@
                             </tbody>
                             </table>
                             <div class="btnSc aright">
-                            	<p class="left"><a href="#"><img src="../assets/images/common/btn_init_off.gif" alt="학습정보초기화" class="rollimg"></a></p>
-                                <a href="#"><img src="../assets/images/common/btn_edit_off.gif" alt="수정" class="rollimg"></a>
-                                <a href="#"><img src="../assets/images/common/btn_del_off.gif" alt="삭제" class="rollimg"></a>
+                            	<p class="left"><a href="#"><img src="${ contextPath }/assets/images/common/btn_init_off.gif" alt="학습정보초기화" class="rollimg"></a></p>
+                                <a href="#"><img src="${ contextPath }/assets/images/common/btn_edit_off.gif" alt="수정" class="rollimg"></a>
+                                <a href="#"><img src="${ contextPath }/assets/images/common/btn_del_off.gif" alt="삭제" class="rollimg"></a>
                             </div>
                       	</div>
                     </div>

@@ -1,7 +1,7 @@
 <%@ page contentType="text/html" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-                <h2 class="divTit"><img src="../assets/images/parent/title_control_reg.gif" alt="학습자등록"></h2>
+                <h2 class="divTit"><img src="${ contextPath }/assets/images/parent/title_control_reg.gif" alt="학습자등록"></h2>
 	            <!-- location -->
 	      		<div id="divLocation">
 	        		<ul class="location">
@@ -36,7 +36,7 @@
                     	<li>
                         	<span class="titTx">이미지</span>
                             <input name="" type="text" style="width:210px;">
-                            <a href="#"><img src="../assets/images/common/btn_find_off.gif" alt="찾아보기" class="aln_middle rollimg"></a>
+                            <a href="#"><img src="${ contextPath }/assets/images/common/btn_find_off.gif" alt="찾아보기" class="aln_middle rollimg"></a>
                         </li>
                     	<li>
                         	<span class="titTx">성별</span>
@@ -55,6 +55,6 @@
                 </div>
                 
                 <div class="btnSc">
-                	<a href="#"><img src="../assets/images/common/btn_reg_off.gif" alt="등록" class="rollimg"></a>
-                	<a href="#"><img src="../assets/images/common/btn_cancel3_off.gif" alt="취소" class="rollimg"></a>
+                	<a href="#"><img src="${ contextPath }/assets/images/common/btn_reg_off.gif" alt="등록" class="rollimg"></a>
+                	<a href="#"><img src="${ contextPath }/assets/images/common/btn_cancel3_off.gif" alt="취소" class="rollimg"></a>
                 </div>
