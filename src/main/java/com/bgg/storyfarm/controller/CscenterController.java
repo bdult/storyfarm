@@ -160,13 +160,11 @@ public class CscenterController {
 				StoryfarmConstants.BREADCRUMB_CSCENTER, 
 				StoryfarmConstants.BREADCRUMB_CSCENTER_EVENT));
 		
-		String contentId = paramsMap.get("contentsId").toString();
 		Map<String, Object> writing = boardService.detail(paramsMap);
 		mav.addObject("writing", writing);
 
 		//댓글 목록 view
 		mav.addObject("detailComments", boardService.detailComments(paramsMap));
-		mav.addObject("contentsId", contentId);
 		
 		return mav;
 	}

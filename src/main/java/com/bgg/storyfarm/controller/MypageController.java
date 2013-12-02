@@ -214,10 +214,13 @@ public class MypageController {
 		Map<String, Object> sessionMap = getSessionId(session);
 		
 		paramsMap.put(StoryfarmConstants.MEMBER_ID, sessionMap.get("member_id"));
-		
+
 		Map<String, Object> writing = boardService.detail(paramsMap);
 		mav.addObject("writing", writing);
 
+		//댓글 목록 view
+		mav.addObject("detailComments", boardService.detailComments(paramsMap));
+		
 		return mav;
 	}
 	
