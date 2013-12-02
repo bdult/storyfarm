@@ -53,7 +53,7 @@ public class BoardDao extends SqlSessionDaoSupport {
 	 * @param boardMap
 	 * @return HashMap<String, Object>
 	 */
-	public Map<String, Object> detail(int contentsId) {
+	public Map<String, Object> detail(Map<String, Object> contentsId) {
 		return (Map<String, Object>)getSqlSession().selectOne("boardQuery.detail", contentsId);
 	}
 	

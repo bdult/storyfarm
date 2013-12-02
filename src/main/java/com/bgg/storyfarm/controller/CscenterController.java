@@ -90,7 +90,7 @@ public class CscenterController {
 		
 		String contentId = paramsMap.get("contentsId").toString();
 		boardService.hits(Integer.valueOf(contentId));
-		Map<String, Object> writing = boardService.detail(Integer.valueOf(contentId));
+		Map<String, Object> writing = boardService.detail(paramsMap);
 		mav.addObject("writing", writing);
 		
 		return mav;
@@ -161,7 +161,7 @@ public class CscenterController {
 				StoryfarmConstants.BREADCRUMB_CSCENTER_EVENT));
 		
 		String contentId = paramsMap.get("contentsId").toString();
-		Map<String, Object> writing = boardService.detail(Integer.valueOf(contentId));
+		Map<String, Object> writing = boardService.detail(paramsMap);
 		mav.addObject("writing", writing);
 
 		//댓글 목록 view
@@ -231,7 +231,7 @@ public class CscenterController {
 		
 		String contentId = paramsMap.get("contentsId").toString();
 		boardService.hits(Integer.valueOf(contentId));
-		Map<String, Object> writing = boardService.detail(Integer.valueOf(contentId));
+		Map<String, Object> writing = boardService.detail(paramsMap);
 		mav.addObject("writing", writing);
 		
 		return mav;

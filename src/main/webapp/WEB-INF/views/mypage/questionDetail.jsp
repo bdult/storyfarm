@@ -73,9 +73,7 @@
     	<a href="javascript:history.back(-1);"><img src="${ contextPath }/assets/images/common/btn_list_off.png" alt="목록" class="rollimg"></a> 
     </div>
     <div style="float: right;">
-    	<a id="update"><img src="" alt="수정" class="rollimg"></a>
+    	<a id="update" href="${ contextPath }/mypage/questionUpdate.do?contentsId=${ writing.CONTENTS_ID }"><img src="" alt="수정" class="rollimg"></a>
     	<!-- <a href="#"><img src="" alt="취소" class="rollimg"></a> --> 
     </div>
 </div>
-
-
