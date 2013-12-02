@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
+
 <div id="content">
 
 	<h2 class="divTit">
@@ -23,7 +24,7 @@
 	<div class="childrenWr">
 
 		<div class="childrenTx01">
-			사랑하는 우리 <strong>홍길동</strong>의 방입니다.
+			사랑하는 우리 <strong>${ childRoomInfo.defaultChild.NAME }</strong>의 방입니다.
 			<p class="right">
 				<a href="${ contextPath }/parents/children.do"><img src="${ contextPath }/assets/images/common/btn_studyEdit_off.gif" alt="학습자변경" class="rollimg"></a>
 			</p>
@@ -33,60 +34,16 @@
 
 			<h3 class="divTit2">최근 이용 컨텐츠</h3>
 			<ul>
-				<li>
-					<p class="thum">
-						<a href="#"><img src="${ contextPath }/assets/images/content/thum.jpg" alt=""></a>
-					</p>
-					<p class="txt">
-						<label><input name="" type="checkbox" value="">
-							Contents title</label>
-					</p>
-				</li>
-				<li>
-					<p class="thum">
-						<a href="#"><img src="${ contextPath }/assets/images/content/thum.jpg" alt=""></a>
-					</p>
-					<p class="txt">
-						<label><input name="" type="checkbox" value="">
-							Contents title</label>
-					</p>
-				</li>
-				<li>
-					<p class="thum">
-						<a href="#"><img src="${ contextPath }/assets/images/content/thum.jpg" alt=""></a>
-					</p>
-					<p class="txt">
-						<label><input name="" type="checkbox" value="">
-							Contents title</label>
-					</p>
-				</li>
-				<li>
-					<p class="thum">
-						<a href="#"><img src="${ contextPath }/assets/images/content/thum.jpg" alt=""></a>
-					</p>
-					<p class="txt">
-						<label><input name="" type="checkbox" value="">
-							Contents title</label>
-					</p>
-				</li>
-				<li>
-					<p class="thum">
-						<a href="#"><img src="${ contextPath }/assets/images/content/thum.jpg" alt=""></a>
-					</p>
-					<p class="txt">
-						<label><input name="" type="checkbox" value="">
-							Contents title</label>
-					</p>
-				</li>
-				<li>
-					<p class="thum">
-						<a href="#"><img src="${ contextPath }/assets/images/content/thum.jpg" alt=""></a>
-					</p>
-					<p class="txt">
-						<label><input name="" type="checkbox" value="">
-							Contents title</label>
-					</p>
-				</li>
+				<c:forEach items="${ childRoomInfo.history }" var="obj">
+					<li>
+						<p class="thum">
+							<a href="#"><img src="${ obj.PREFIX_URL }${ obj.IMG_PATH }" alt=""></a>
+						</p>
+						<p class="txt">
+							<label><input name="contentsId" type="checkbox" value="${ obj.CONTENTS_ID }"><span class="rnts-name">${ obj.CONTENTS_NM }</span></label>
+						</p>
+					</li>
+				</c:forEach>
 			</ul>
 
 
@@ -100,33 +57,16 @@
 			<div class="box05 childrenLst2">
 				<h3 class="divTit2">오즈월드 추천 동영상</h3>
 				<ul>
+					<c:forEach items="${ childRoomInfo.ozworldRecommend }" var="obj">
 					<li>
 						<p class="thum">
-							<a href="#"><img src="${ contextPath }/assets/images/content/thum.jpg" alt=""></a>
+							<a href="#"><img src="${ obj.PREFIX_URL }${ obj.IMG_PATH }" alt=""></a>
 						</p>
 						<p class="txt">
-							<label><input name="" type="checkbox" value="">
-								Contents title</label>
+							<label><input name="contentsId" type="checkbox" value="${ obj.CONTENTS_ID }"><span class="rnts-name">${ obj.CONTENTS_NM }</span></label>
 						</p>
 					</li>
-					<li>
-						<p class="thum">
-							<a href="#"><img src="${ contextPath }/assets/images/content/thum.jpg" alt=""></a>
-						</p>
-						<p class="txt">
-							<label><input name="" type="checkbox" value="">
-								Contents title</label>
-						</p>
-					</li>
-					<li>
-						<p class="thum">
-							<a href="#"><img src="${ contextPath }/assets/images/content/thum.jpg" alt=""></a>
-						</p>
-						<p class="txt">
-							<label><input name="" type="checkbox" value="">
-								Contents title</label>
-						</p>
-					</li>
+				</c:forEach>
 				</ul>
 
 				<span class="bg1"></span><span class="bg2"></span><span class="bg3"></span><span class="bg4"></span>
@@ -135,33 +75,16 @@
 			<div class="box05 childrenLst3">
 				<h3 class="divTit2">또래가 가장 많이 보는 동영상</h3>
 				<ul>
+					<c:forEach items="${ childRoomInfo.ageBestMovie }" var="obj">
 					<li>
 						<p class="thum">
-							<a href="#"><img src="${ contextPath }/assets/images/content/thum.jpg" alt=""></a>
+							<a href="#"><img src="${ obj.PREFIX_URL }${ obj.IMG_PATH }" alt=""></a>
 						</p>
 						<p class="txt">
-							<label><input name="" type="checkbox" value="">
-								Contents title</label>
+							<label><input name="contentsId" type="checkbox" value="${ obj.CONTENTS_ID }"><span class="rnts-name">${ obj.CONTENTS_NM }</span></label>
 						</p>
 					</li>
-					<li>
-						<p class="thum">
-							<a href="#"><img src="${ contextPath }/assets/images/content/thum.jpg" alt=""></a>
-						</p>
-						<p class="txt">
-							<label><input name="" type="checkbox" value="">
-								Contents title</label>
-						</p>
-					</li>
-					<li>
-						<p class="thum">
-							<a href="#"><img src="${ contextPath }/assets/images/content/thum.jpg" alt=""></a>
-						</p>
-						<p class="txt">
-							<label><input name="" type="checkbox" value="">
-								Contents title</label>
-						</p>
-					</li>
+				</c:forEach>
 				</ul>
 
 				<span class="bg1"></span><span class="bg2"></span><span class="bg3"></span><span class="bg4"></span>
@@ -177,3 +100,16 @@
 	<!-- //childrenWr -->
 
 </div>
+
+<script>
+//init
+$("span.rnts-name").each(function(){
+	var $this = $(this);
+  var han_count = 0;
+  han_count = (escape($this.text())+"%u").match(/%u/g).length - 1;
+	var hangulLength = $this.text().length + han_count;
+	if( hangulLength > 13) {
+		$this.text( $this.text().substring(0,10) + "..." ); 
+	}
+});
+</script>
