@@ -102,7 +102,7 @@ public class BreadcrumbUtil {
 				this.setBreadcrumbMap("쿠폰등록", "/mypage/addcoupon.do");
 				break;
 			case StoryfarmConstants.BREADCRUMB_MYPAGE_PAUSEREQUEST:
-				this.setBreadcrumbMap("일시중지 신청", "/mypage/pauseRequest.do");
+				this.setBreadcrumbMap("일시중지", "/mypage/pauseRequest.do");
 				break;
 			case StoryfarmConstants.BREADCRUMB_MYPAGE_PAUSEREQUEST_RESULT:
 				this.setBreadcrumbMap("일시중지 신청 완료", "/mypage/pauseRequestResult.do");
@@ -120,7 +120,7 @@ public class BreadcrumbUtil {
 				this.setBreadcrumbMap("1:1 문의 상세", "/mypage/questionDetail.do");
 				break;
 			case StoryfarmConstants.BREADCRUMB_MYPAGE_QUESTION_INSERT:
-				this.setBreadcrumbMap("1:1 문의 쓰기", "/mypage/questionInsert.do");
+				this.setBreadcrumbMap("1:1 문의 작성", "/mypage/questionInsert.do");
 				break;
 			case StoryfarmConstants.BREADCRUMB_MYPAGE_QUESTION_UPDATE:
 				this.setBreadcrumbMap("1:1 문의 수정", "/mypage/questionUpdate");

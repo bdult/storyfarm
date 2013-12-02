@@ -29,8 +29,6 @@ import com.bgg.storyfarm.service.UserService;
 @RequestMapping(value = "mypage")
 public class MypageController {
 
-	private final int QUESTION_BOARD_ID = 3; //이벤트
-	
 	@Autowired
 	private BreadcrumbUtil breadcrumbUtil;
 	
@@ -164,7 +162,6 @@ public class MypageController {
 	public ModelAndView pauseRequest(Model model, @RequestParam Map<String, Object> paramsMap, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("side-mypage/pause");
-		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_MYPAGE_INFO, StoryfarmConstants.BREADCRUMB_MYPAGE_PAUSEREQUEST));
 
 		Map<String, Object> sessionMap = getSessionId(session);
 		if(paramsMap.get("member_id").equals(sessionMap.get("MEMBER_ID"))){
@@ -191,8 +188,12 @@ public class MypageController {
 		mav.setViewName("side-mypage/question");
 		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_MYPAGE_INFO, StoryfarmConstants.BREADCRUMB_MYPAGE_QUESTION));
 
-		Map<String, Object> boardMap = getSessionId(session);
+		Map<String, Object> sessionMap = getSessionId(session);
 		
+		Map<String, Object> boardMap = new HashMap<String, Object>();
+		boardMap.put(StoryfarmConstants.BOARD_ID, StoryfarmConstants.QUESTION_BOARD_ID);
+		boardMap.put(StoryfarmConstants.MEMBER_ID , sessionMap.get("member_id"));
+
 		//페이징 로직
 		int totalCnt = boardService.totalCount(boardMap);
 		int pageNum = setPage(paramsMap, boardMap);
@@ -205,20 +206,18 @@ public class MypageController {
 	}
 	
 	@RequestMapping(value = "questionDetail.do", method = RequestMethod.GET)
-	public ModelAndView questionDetail(@RequestParam Map<String, Object> paramsMap) {
+	public ModelAndView questionDetail(@RequestParam Map<String, Object> paramsMap, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("side-mypage/questionDetail");
 		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_MYPAGE_INFO, StoryfarmConstants.BREADCRUMB_MYPAGE_QUESTION, StoryfarmConstants.BREADCRUMB_MYPAGE_QUESTION_DETAIL));
+
+		Map<String, Object> sessionMap = getSessionId(session);
 		
-		String contentId = paramsMap.get("contentsId").toString();
-		Map<String, Object> writing = boardService.detail(Integer.valueOf(contentId));
+		paramsMap.put(StoryfarmConstants.MEMBER_ID, sessionMap.get("member_id"));
+		
+		Map<String, Object> writing = boardService.detail(paramsMap);
 		mav.addObject("writing", writing);
 
-		//댓글 목록 view
-		mav.addObject("detailComments", boardService.detailComments(paramsMap));
-		mav.addObject("contentsId", contentId);
-		mav.addObject("commentsId", paramsMap.get("comment_id"));
-		
 		return mav;
 	}
 	
@@ -228,28 +227,44 @@ public class MypageController {
 		mav.setViewName("side-mypage/questionWrite");
 		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_MYPAGE_INFO, StoryfarmConstants.BREADCRUMB_MYPAGE_QUESTION, StoryfarmConstants.BREADCRUMB_MYPAGE_QUESTION_INSERT));
 		
-		mav.addObject("board_id", paramsMap.get("board_id"));
 		return mav;
 	}
 	
 	@RequestMapping(value = "boardCreate.do", method = RequestMethod.POST)
-	public String boardCreate(Model model, @RequestParam Map<String, Object> paramsMap) {
+	public String boardCreate(Model model, @RequestParam Map<String, Object> paramsMap, HttpSession session) {
+
+		Map<String, Object> sessionMap = getSessionId(session);
+		
+		paramsMap.put(StoryfarmConstants.BOARD_ID, StoryfarmConstants.QUESTION_BOARD_ID);
+		paramsMap.put(StoryfarmConstants.MEMBER_ID , sessionMap.get("member_id"));
+		
 		boardService.boardCreate(paramsMap);
 		return "redirect:question.do";
 	}
 	
-	@RequestMapping(value = "questionUpdate.do", method = RequestMethod.POST)
-	public ModelAndView questionUpdate(Model model, @RequestParam Map<String, Object> paramsMap) {
+	@RequestMapping(value = "questionUpdate.do", method = RequestMethod.GET)
+	public ModelAndView questionUpdate(Model model, @RequestParam Map<String, Object> paramsMap, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("side-mypage/questionUpdate");
 		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_MYPAGE_INFO, StoryfarmConstants.BREADCRUMB_MYPAGE_QUESTION, StoryfarmConstants.BREADCRUMB_MYPAGE_QUESTION_UPDATE));
 
-		mav.addObject("writing", paramsMap);
+		Map<String, Object> sessionMap = getSessionId(session);
+		
+		paramsMap.put(StoryfarmConstants.MEMBER_ID, sessionMap.get("member_id"));
+		
+		Map<String, Object> writing = boardService.detail(paramsMap);
+		mav.addObject("writing", writing);
+		
 		return mav;
 	}
 	
 	@RequestMapping(value = "boardModify.do", method = RequestMethod.POST)
-	public String boardModify(Model model, @RequestParam Map<String, Object> paramsMap) {
+	public String boardModify(Model model, @RequestParam Map<String, Object> paramsMap, HttpSession session) {
+
+		Map<String, Object> sessionMap = getSessionId(session);
+		
+		paramsMap.put(StoryfarmConstants.MEMBER_ID , sessionMap.get("member_id"));
+		
 		boardService.modify(paramsMap);
 		return "redirect:question.do";
 	}
@@ -258,7 +273,7 @@ public class MypageController {
 	public ModelAndView userInfo(Model model, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("side-mypage/userInfo");
-		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_MYPAGE_INFO, StoryfarmConstants.BREADCRUMB_MYPAGE_USERINFO));
+		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_MYPAGE_INFO, StoryfarmConstants.BREADCRUMB_MYPAGE_USERINFO_UPDATE));
 
 		Map<String, Object> boardMap = getSessionId(session);
 		
@@ -271,7 +286,6 @@ public class MypageController {
 	public ModelAndView userInfoUpdate(Model model, @RequestParam Map<String, Object> paramsMap) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("side-mypage/userInfoUpdate");
-		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_MYPAGE_INFO, StoryfarmConstants.BREADCRUMB_MYPAGE_USERINFO, StoryfarmConstants.BREADCRUMB_MYPAGE_USERINFO_UPDATE));
 		
 		userService.updateUser(paramsMap);
 		return mav;
@@ -289,7 +303,6 @@ public class MypageController {
 	@RequestMapping(value = "leaveResult.do", method = RequestMethod.POST)
 	public ModelAndView leaveResult(Model model, @RequestParam Map<String, Object> paramsMap, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
-		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_MYPAGE_INFO, StoryfarmConstants.BREADCRUMB_MYPAGE_LEAVE, StoryfarmConstants.BREADCRUMB_MYPAGE_LEAVE_RESULT ));
 		
 		Map<String, Object> sessionMap = getSessionId(session);
 		
@@ -332,7 +345,7 @@ public class MypageController {
 		Map<String, Object> sessionMap = (Map<String, Object>)session.getAttribute("userInfoSession");
 
 		Map<String, Object> getSessionMap = new HashMap<String, Object>();
-		getSessionMap.put(StoryfarmConstants.BOARD_ID, QUESTION_BOARD_ID);
+		getSessionMap.put(StoryfarmConstants.BOARD_ID, StoryfarmConstants.QUESTION_BOARD_ID);
 		getSessionMap.put("member_id", sessionMap.get("MEMBER_ID"));
 		getSessionMap.put("stauts", sessionMap.get("STATUS"));
 		return getSessionMap;

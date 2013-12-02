@@ -76,6 +76,7 @@ public class StoryfarmConstants {
 	//BOARD
 	public final static int NOTI_BOARD_ID = 1; //공지사항
 	public final static int EVENT_BOARD_ID = 2; //이벤트
+	public final static int QUESTION_BOARD_ID = 3; //1:1문의
 	public final static int WINNER_BOARD_ID = 4; //당첨자발표
 	public final static int FAQ_USER_BOARD_ID = 26; //자주하는질문 회원/가입안내
 	public final static int FAQ_PAYMENT_BOARD_ID = 27; //자주하는질문 결제안내

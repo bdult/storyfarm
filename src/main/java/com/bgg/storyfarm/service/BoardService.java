@@ -70,7 +70,7 @@ public class BoardService {
 	 * @param contentsId
 	 * @return Map
 	 */
-	public Map<String, Object> detail(int contentsId) {
+	public Map<String, Object> detail(Map<String, Object> contentsId) {
 		return boardDao.detail(contentsId);
 	}
 	

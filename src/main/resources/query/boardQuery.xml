@@ -116,7 +116,11 @@
     FROM
         BG_BOARD_CONTENTS
     WHERE
-        contents_id = #{ contents_id }
+        CONTENTS_ID = #{ contentsId }
+	<if test="member_id != null and member_id != ''">
+	AND
+		MEMBER_ID = #{ member_id }
+	</if>
     </select>
 
 	<select id="detailComments" resultType="hashmap" parameterType="hashmap">

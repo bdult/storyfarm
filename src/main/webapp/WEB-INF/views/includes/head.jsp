@@ -21,3 +21,6 @@
 
 <!-- DEV TEAM -->
 <script src="${ contextPath }/assets/js/jquery.validate.js"></script>
+
+
+<script src="${ contextPath }/tinymce/tinymce.min.js"></script>
