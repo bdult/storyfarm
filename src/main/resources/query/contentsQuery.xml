@@ -246,9 +246,9 @@
     		,CONTENTS_ID
     		,CHILDREN_IDX
     	) VALUES(
-    		#{member_id}
+    		#{MEMBER_ID}
     		,#{contents_id}
-    		,(SELECT IDX FROM BG_CHILDREN WHERE 1=1 AND PARENT_MEMBER_ID = #{member_id} AND SELECTED_YN = 'Y' LIMIT 1)
+    		,(SELECT IDX FROM BG_CHILDREN WHERE 1=1 AND PARENT_MEMBER_ID = #{MEMBER_ID} AND SELECTED_YN = 'Y' LIMIT 1)
     	)
     </insert>
     

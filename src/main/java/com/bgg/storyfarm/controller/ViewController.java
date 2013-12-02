@@ -258,6 +258,8 @@ public class ViewController {
 		// 이중체크를 위해 추가 video tag src 속성에 empty 값으로 세팅 한다.
 		// 또한 결제를 하지 않은 사용자의 경우도 src 값이 empty 가 된다.
 		Map memberInfo = (Map)session.getAttribute(StoryfarmConstants.MEMBER_SESSION);
+		
+		
 		if(isLogin(memberInfo)){
 			
 			// 플레이 히스토리 저장
