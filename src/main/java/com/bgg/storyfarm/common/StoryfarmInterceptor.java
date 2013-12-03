@@ -1,7 +1,7 @@
 package com.bgg.storyfarm.common;
 
+import java.util.ArrayList;
 import java.util.Enumeration;
-import java.util.HashMap;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,10 +17,6 @@ public class StoryfarmInterceptor extends HandlerInterceptorAdapter {
 
 	private Logger logger = LoggerFactory.getLogger(StoryfarmInterceptor.class);
 	
-	//로그인 세션 검사
-	//false = ON || true = OFF
-	private boolean loginCheckOff = true;
-
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
 		
@@ -28,13 +24,9 @@ public class StoryfarmInterceptor extends HandlerInterceptorAdapter {
 			long startTime = System.currentTimeMillis();
 			request.setAttribute("startTime", startTime);
 
-			printRequestLog(request);
+			this.printRequestLog(request);
 			
-			if(	
-				request.getServletPath().contains( "play.do" ) ||
-				request.getServletPath().contains( "playList.do" ) ||
-				request.getServletPath().contains( "streaming.do" )
-			){
+			if(	this.isSessionCheck(request.getServletPath()) ){
 				
 				HttpSession session = request.getSession(false);
 				
@@ -121,5 +113,35 @@ public class StoryfarmInterceptor extends HandlerInterceptorAdapter {
 		} catch (Exception e) {
 			logger.error("{}", e);
 		}
+	}
+	
+	private boolean isSessionCheck(String _path) {
+		
+		boolean isCheck = true;
+		
+		ArrayList<String> ignoreList = new ArrayList<String>();
+		ignoreList.add("dashboard.do");
+		ignoreList.add("loginView.do");
+		ignoreList.add("findIdView.do");
+		ignoreList.add("findPwdView.do");
+		ignoreList.add("joinProvision.do");
+		ignoreList.add("introduce.do");
+		ignoreList.add("serviceRules.do");
+		ignoreList.add("privacyRules.do");
+		ignoreList.add("cscenter/");
+		//ignoreList.add("세션 체크 안할 URL");
+		
+		//세션 체크 안할 URL은 ignoreList에 추가해야함.
+		
+		for(String ignorePath : ignoreList){
+			if(_path.contains(ignorePath)){
+				isCheck = false;
+				break;
+			}
+		}
+		
+		logger.info(String.format("isCheck : %s, path : %s", isCheck, _path));
+		return isCheck;
+		
 	}
 }
