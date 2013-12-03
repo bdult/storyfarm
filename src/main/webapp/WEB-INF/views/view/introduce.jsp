@@ -10,7 +10,6 @@
 	<div id="divLocation">
 		<ul class="location">
 			<li class="first"><a href="#" class="home"><img src="${ contextPath }/assets/images/common/blt_home.gif" alt="home"></a></li>
-			<li><a href="#">서비스 소개</a></li>
 			<li class="current">오즈월드 소개</li>
 		</ul>
 	</div>

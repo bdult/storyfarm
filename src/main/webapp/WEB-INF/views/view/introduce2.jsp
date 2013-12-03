@@ -11,7 +11,6 @@
 	<div id="divLocation">
 		<ul class="location">
 			<li class="first"><a href="#" class="home"><img src="${ contextPath }/assets/images/common/blt_home.gif" alt="home"></a></li>
-			<li><a href="#">서비스 소개</a></li>
 			<li class="current">유료서비스 안내</li>
 		</ul>
 	</div>
