@@ -31,9 +31,10 @@ public class StoryfarmInterceptor extends HandlerInterceptorAdapter {
 			printRequestLog(request);
 			
 			if(	
-				request.getServletPath().contains( "play.do" ) ||
-				request.getServletPath().contains( "playList.do" ) ||
-				request.getServletPath().contains( "streaming.do" )
+				request.getServletPath().contains( "play.do" ) 
+				|| request.getServletPath().contains( "playList.do" )
+				|| request.getServletPath().contains( "streaming.do" )
+				|| request.getServletPath().contains( "parents" ) // 부모방 
 			){
 				
 				HttpSession session = request.getSession(false);

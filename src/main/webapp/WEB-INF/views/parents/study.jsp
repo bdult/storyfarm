@@ -16,8 +16,16 @@
                 	<div class="parentState">
                     	<h3 class="divTit2">학습자 선택</h3>
                         <ul class="parentStateSel">
-                        	<li><label><input name="" type="radio" value=""> 홍길동</label></li>
-                        	<li><label><input name="" type="radio" value=""> 홍길순</label></li>
+                        	<c:forEach var="childrenInfo" items="${children}" varStatus="idx">
+                        		<c:choose>
+                        			<c:when test="${children_idx eq childrenInfo.IDX }">
+			                        	<li><label><input class="child-radio-btn" name="child" type="radio" value="${childrenInfo.IDX}" checked="checked"> ${childrenInfo.CHILD_NM}</label></li>
+                        			</c:when>
+	                        		<c:otherwise>
+			                        	<li><label><input class="child-radio-btn" name="child" type="radio" value="${childrenInfo.IDX}"> ${childrenInfo.CHILD_NM}</label></li>
+	                        		</c:otherwise>
+                        		</c:choose>
+                        	</c:forEach>
                         </ul>
                     </div>
                     <span class="bg1"></span><span class="bg2"></span><span class="bg3"></span><span class="bg4"></span>
@@ -28,27 +36,13 @@
                 <div class="box05 mgt20">
                	  	<div class="parentStateLst">
                     	<h3 class="divTit2">최근 이용 컨텐츠</h3>
-                      	<ul>
-                       	  	<li>
-                           	  	<p class="thum"><a href="#"><img src="../assets/images/content/thum.jpg" alt=""></a></p>
-                                <p class="txt"><a href="#">Contents title</a></p>
-                          	</li>
-                       	  	<li>
-                           	  	<p class="thum"><a href="#"><img src="../assets/images/content/thum.jpg" alt=""></a></p>
-                                <p class="txt"><a href="#">Contents title</a></p>
-                          	</li>
-                       	  	<li>
-                           	  	<p class="thum"><a href="#"><img src="../assets/images/content/thum.jpg" alt=""></a></p>
-                                <p class="txt"><a href="#">Contents title</a></p>
-                          	</li>
-                       	  	<li>
-                           	  	<p class="thum"><a href="#"><img src="../assets/images/content/thum.jpg" alt=""></a></p>
-                                <p class="txt"><a href="#">Contents title</a></p>
-                          	</li>
-                       	  	<li>
-                           	  	<p class="thum"><a href="#"><img src="../assets/images/content/thum.jpg" alt=""></a></p>
-                                <p class="txt"><a href="#">Contents title</a></p>
-                          	</li>
+                      	<ul id="view-history">
+                      		<c:forEach var="contentsInfo" items="${history }">
+	                       	  	<li>
+	                           	  	<p class="thum"><a href="${contextPath }/play.do?contents_id=${contentsInfo.CONTENTS_ID}"><img src="${contentsInfo.PREFIX_URL }${contentsInfo.IMG_PATH}" alt=""></a></p>
+	                                <p class="txt"><a href="${contextPath }/play.do?contents_id=${contentsInfo.CONTENTS_ID}">${contentsInfo.CONTENTS_NM}</a></p>
+	                          	</li>
+                      		</c:forEach>
                       	</ul>
                     </div>
                 	<span class="bg1"></span><span class="bg2"></span><span class="bg3"></span><span class="bg4"></span>
@@ -56,16 +50,17 @@
                 
                 <p class="divLine mgt20"></p>
                 
+               <!-- 커리큘럼이 없는 관계로 임시 data로 구성 -->
               <div class="box05 mgt20">
                 	<div class="parentState">
                     	<h3 class="divTit2">학습현황</h3>
                         <ul class="parentStateSel">
-                        	<li><label><input name="" type="radio" value=""> 과목별</label></li>
-                        	<li><label><input name="" type="radio" value=""> 전집별</label></li>
-                        	<li><label><input name="" type="radio" value=""> 기간별</label></li>
+                        	<li><label><input class="state-li" name="status_type" type="radio" value="category" checked="checked"> 과목별</label></li>
+                        	<li><label><input class="state-li" name="status_type" type="radio" value="series"> 전집별</label></li>
+                        	<li><label><input class="state-li" name="status_type" type="radio" value="reg-date"> 기간별</label></li>
                         </ul>
                     </div>
-                    <div class="stateGhp">
+                    <div class="stateGhp" id="category-state">
                     	<ul>
                         	<li class="fir">
                             	<span class="titTx">생활</span>
@@ -101,6 +96,78 @@
                             </li>
                         </ul>
                   </div>
+                  <div class="stateGhp" id="series-state" hidden="true">
+                    	<ul>
+                        	<li class="fir">
+                            	<span class="titTx">붐붐</span>
+                                <p class="bar" style="width:40%;"><span></span></p>
+                            </li>
+                        	<li>
+                            	<span class="titTx">픽쳐북</span>
+                                <p class="bar" style="width:100%;"><span></span></p>
+                            </li>
+                        	<li>
+                            	<span class="titTx">전래동화</span>
+                                <p class="bar" style="width:10%;"><span></span></p>
+                            </li>
+                        	<li>
+                            	<span class="titTx">전래동요</span>
+                                <p class="bar" style="width:50%;"><span></span></p>
+                            </li>
+                        	<li>
+                            	<span class="titTx">이야기</span>
+                                <p class="bar" style="width:40%;"><span></span></p>
+                            </li>
+                        	<li>
+                            	<span class="titTx">알파벳</span>
+                                <p class="bar" style="width:20%;"><span></span></p>
+                            </li>
+                        	<li>
+                            	<span class="titTx">수학나라</span>
+                                <p class="bar" style="width:30%;"><span></span></p>
+                            </li>
+                        	<li class="last">
+                            	<span class="titTx">과학나라</span>
+                                <p class="bar" style="width:80%;"><span></span></p>
+                            </li>
+                        </ul>
+                  </div>
+                  <div class="stateGhp" id="regdt-state" hidden="true">
+                    	<ul>
+                        	<li class="fir">
+                            	<span class="titTx">13.12.10</span>
+                                <p class="bar" style="width:25%;"><span></span></p>
+                            </li>
+                        	<li>
+                            	<span class="titTx">13.12.09</span>
+                                <p class="bar" style="width:60%;"><span></span></p>
+                            </li>
+                        	<li>
+                            	<span class="titTx">13.12.08</span>
+                                <p class="bar" style="width:50%;"><span></span></p>
+                            </li>
+                        	<li>
+                            	<span class="titTx">13.12.07</span>
+                                <p class="bar" style="width:80%;"><span></span></p>
+                            </li>
+                        	<li>
+                            	<span class="titTx">13.12.06</span>
+                                <p class="bar" style="width:10%;"><span></span></p>
+                            </li>
+                        	<li>
+                            	<span class="titTx">13.12.05</span>
+                                <p class="bar" style="width:100%;"><span></span></p>
+                            </li>
+                        	<li>
+                            	<span class="titTx">13.12.04</span>
+                                <p class="bar" style="width:30%;"><span></span></p>
+                            </li>
+                        	<li class="last">
+                            	<span class="titTx">13.12.03</span>
+                                <p class="bar" style="width:20%;"><span></span></p>
+                            </li>
+                        </ul>
+                  </div>
                 <span class="bg1"></span><span class="bg2"></span><span class="bg3"></span><span class="bg4"></span>
                 </div>
                 
@@ -118,4 +185,33 @@
 		</ul>
 	</div>
 </div>
+
+<script>
+	$(function(){
+		
+		$('body').on("click", ".state-li", function(e){
+			var eventValue = e.currentTarget.getAttribute("value");
+			if(eventValue == 'category'){
+				$("#category-state").show();
+				$("#series-state").hide();
+				$("#regdt-state").hide();
+				
+			}else if(eventValue == 'series'){
+				$("#category-state").hide();
+				$("#series-state").show();
+				$("#regdt-state").hide();
+				
+			}else{
+				$("#category-state").hide();
+				$("#series-state").hide();
+				$("#regdt-state").show();
+			}
+		});
+		
+		$('body').on("click", ".child-radio-btn", function(e){
+			location.href = "${contextPath}/parents/study.do?children_idx="+e.currentTarget.getAttribute("value");	
+		});
+	});
+
+</script>
 

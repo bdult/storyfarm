@@ -179,7 +179,6 @@ public class ContentsService {
 		
 		// memberInfo
 		
-		// dummy
 		Map paramInfo = new HashMap();
 		paramInfo.put("cate_id", "32");
 		paramInfo.put("rownum", 0);
@@ -211,33 +210,8 @@ public class ContentsService {
 		contentsDao.savePlayHistory(contentsInfo);
 	}
 
-	public List<Map> playHistory(Map contentsInfo) {
-		return contentsDao.playHistory(contentsInfo);
+	public List<Map> viewHistoryOfChild(Map contentsInfo) {
+		return contentsDao.viewHistoryOfChild(contentsInfo);
 	}
-	
-	public Map childPlayCount(Map memberInfo) {
-		Map playCount = new HashMap();
-		playCount.put("subject", childPlayCountBySubject(memberInfo));
-		playCount.put("series", childPlayCountBySeries(memberInfo));
-		playCount.put("regDt", childPlayCountByRegDT(memberInfo));
-		
-		return playCount;
-	}
-
-	private List<Map> childPlayCountBySubject(Map memberInfo) {
-		return contentsDao.childPlayCountBySubject(memberInfo);
-	}
-
-	private List<Map> childPlayCountByRegDT(Map memberInfo) {
-		return contentsDao.childPlayCountByRegDT(memberInfo);
-	}
-
-	private List<Map> childPlayCountBySeries(Map memberInfo) {
-		return contentsDao.childPlayCountBySeries(memberInfo);
-	}
-
-	
-	
-
 	
 }
