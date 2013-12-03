@@ -301,17 +301,13 @@ public class MypageController {
 		return mav;
 	}
 
-	@RequestMapping(value = "userInfoUpdate.ajax", method = RequestMethod.POST)
-	public @ResponseBody String userInfoUpdate(Model model, @RequestParam Map<String, Object> paramsMap) {
+	@RequestMapping(value = "userInfoUpdate.do", method = RequestMethod.POST)
+	public String userInfoUpdate(Model model, @RequestParam Map<String, Object> paramsMap) {
 		ModelAndView mav = new ModelAndView();
 		
 		userService.updateUser(paramsMap);
-
-		JSONObject json = new JSONObject();
-		json.put("code", 200);
-		json.put("msg", "OK");
 		
-		return json.toJSONString();
+		return "redirect:userInfo.do";
 	}
 	
 	@RequestMapping(value = "leave.do", method = RequestMethod.GET)

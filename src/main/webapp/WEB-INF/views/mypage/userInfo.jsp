@@ -163,7 +163,7 @@
 $(function(){
 
 	//validate 초기화
-	setValid();
+ 	setValid();
 	signUpValidateCall();
 	
     $('#inner-content-div').slimScroll({
@@ -172,7 +172,7 @@ $(function(){
 });
 
 	birth();
-
+	
 /* 	var memberEmail = "${ userInfo.MEMBER_EMAIL }";
 	var emailBreak = memberEmail.split("@");
 	
@@ -196,178 +196,118 @@ $(function(){
 		combineEmail();
 		combineCel();
 		
-		
-		$("#joinForm").validate({
-			roles : {
-				member_pw : {
-					required : true
-				}
+		/* $.ajax({
+			url: '${ contextPath }/mypage/userInfoUpdate.ajax',
+			data: $("#joinForm").serialize(),
+			type: 'post',
+			success: function(res) {
+				alert("회원정보가 수정 되었습니다.");
 			},
-			submitHandler : function(form) {
-				alert("test");
-				 form.submit();
+			error: function(xhr, status, error) {
+				console.log(error);
+				console.log(xhr);
+				console.log(status);
 			}
-		});
-
-		/* $("#joinForm").attr({
+		}); */
+		$("#joinForm").attr({
 			method: 'post',
 			action: '${ contextPath }/mypage/userInfoUpdate.do'
-		}).submit(); */
+		}).submit();
 	});
-
-	/* 		 $.ajax({
-	 url: '${ contextPath }/mypage/userInfoUpdate.ajax',
-	 data: $("#joinForm").serialize(),
-	 type: 'post',
-	 success: function(res) {
-	 alert("회원정보가 수정 되었습니다.");
-	 },
-	 error: function(xhr, status, error) {
-	 console.log(error);
-	 console.log(xhr);
-	 console.log(status);
-	 }
-	 }); */
+	
 
 	// addr function
-	function addrSearchAjax(seComp, wrdComp) {
+	function addrSearchAjax(seComp, wrdComp){
 		param = {
-			searchSe : seComp,
-			srchwrd : wrdComp
+				searchSe : seComp,
+				srchwrd : wrdComp
 		};
-		$
-				.ajax({
-					url : "${contextPath}/post/addr.ajax",
-					data : param,
-					dataType : "text",
-					type : 'get',
-					success : function(res) {
-						var $xml = $(res);
-
-						$xml
-								.find("cmmMsgHeader")
-								.each(
-										function() {
-											var $this = $(this);
-											if ($this.find("returnCode").text() != 0) {
-												$("#addrList li").remove();
-												$("#addrList")
-														.append(
-																"<li>"
-																		+ $this
-																				.find(
-																						"errMsg")
-																				.text()
-																		+ "</li>");
-											} else {
-												$("#addrList li").remove();
-												$xml
-														.find("newAddressList")
-														.each(
-																function() {
-																	var $this = $(this);
-																	var zipno = $this
-																			.find(
-																					"zipNo")
-																			.text();
-																	var lnmadres = $this
-																			.find(
-																					"lnmadres")
-																			.text();
-																	var rnAdres = $this
-																			.find(
-																					"rnAdres")
-																			.text();
-																	if (seComp == 'dong') {
-																		$(
-																				"#addrList")
-																				.append(
-																						"<li>"
-																								+ rnAdres
-																								+ "<br>"
-																								+ lnmadres
-																								+ ' '
-																								+ "<a data-zipNo='" + zipno + "' data-lnmadres='" + lnmadres + "' class='rollimg addrSelect'>"
-																								+ "<img src='${ contextPath }/assets/images/common/btn_confirm_off.gif' alt='검색' class='rollimg' style='vertical-align: middle; width: 45px; height:22px;'>"
-																								+ "</a>"
-																								+ "</li>");
-																	} else {
-																		$(
-																				"#addrList")
-																				.append(
-																						"<li>"
-																								+ lnmadres
-																								+ ' '
-																								+ "<a data-zipNo='" + zipno + "' data-lnmadres='" + lnmadres + "' class='rollimg addrSelect'>"
-																								+ "<img src='${ contextPath }/assets/images/common/btn_confirm_off.gif' alt='검색' class='rollimg' style='vertical-align: middle; width: 45px; height:22px;'>"
-																								+ "</a>"
-																								+ "</li>");
-																	}
-
-																});
-												$("a.addrSelect")
-														.click(
-																function() {
-																	var $this = $(this);
-
-																	$(
-																			"input[name='member_post']")
-																			.val(
-																					$this
-																							.data("zipno"));
-																	$(
-																			"input[name='member_addr_1']")
-																			.val(
-																					$this
-																							.data("lnmadres"));
-
-																	showHide('popAddr');
-																});
-											}
-										});
-
-					},
-					error : function(xhr, status, error) {
-						/* $("#addrList").append("<li>검색결과가 없습니다.</li>") */
-						console.log(error);
-						console.log(xhr);
-						console.log(status);
-					}
-				});
+		$.ajax({
+			url: "${contextPath}/post/addr.ajax",
+			data: param,
+			dataType: "text",
+			type: 'get',
+		    success: function(res) {
+				var $xml = $(res);
+					
+					$xml.find("cmmMsgHeader").each(function(){
+						var $this = $(this);
+						if($this.find("returnCode").text() != 0){
+							$("#addrList li").remove();
+							$("#addrList").append("<li>" + $this.find("errMsg").text() + "</li>");
+						}else {
+							$("#addrList li").remove();
+							$xml.find("newAddressList").each(function(){
+								var $this = $(this);
+								var zipno = $this.find("zipNo").text();
+								var lnmadres = $this.find("lnmadres").text();
+								var rnAdres = $this.find("rnAdres").text();
+								if(seComp == 'dong'){
+								$("#addrList").append(
+									"<li>" + rnAdres + "<br>" + lnmadres + ' ' + "<a data-zipNo='" + zipno + "' data-lnmadres='" + lnmadres + "' class='rollimg addrSelect'>" + "<img src='${ contextPath }/assets/images/common/btn_confirm_off.gif' alt='검색' class='rollimg' style='vertical-align: middle; width: 45px; height:22px;'>" + "</a>" + "</li>" 
+								);
+								}else {
+									$("#addrList").append(
+										"<li>" + lnmadres + ' ' + "<a data-zipNo='" + zipno + "' data-lnmadres='" + lnmadres + "' class='rollimg addrSelect'>" + "<img src='${ contextPath }/assets/images/common/btn_confirm_off.gif' alt='검색' class='rollimg' style='vertical-align: middle; width: 45px; height:22px;'>" + "</a>" + "</li>" 
+									);	
+								}
+								
+							});
+							$("a.addrSelect").click(function(){
+								var $this = $(this);
+		
+								$("input[name='member_post']").val($this.data("zipno"));
+								$("input[name='member_addr_1']").val($this.data("lnmadres"));
+		
+								showHide('popAddr');
+							});
+						}
+					});
+					
+			},
+			error: function(xhr, status, error) {
+				/* $("#addrList").append("<li>검색결과가 없습니다.</li>") */
+				console.log(error);
+				console.log(xhr);
+				console.log(status);
+			}
+		});
 	}
 
-	$("#road-modify-btn").click(function() {
+	$("#road-modify-btn").click(function(){
 		var roadNo = $("#roadNo").val();
 		var buildNo = $("#buildNo").val();
 		var wrdComp = roadNo + " " + buildNo;
 		var seComp = 'road';
-
+		
 		addrSearchAjax(seComp, wrdComp);
 	});
 
-	$("#dong-modify-btn").click(function() {
+	$("#dong-modify-btn").click(function(){
 		var dongNo = $("#dongNo").val();
 		var buildNo = $("#buildNo1").val();
 		var wrdComp = dongNo + " " + buildNo;
 		var seComp = 'dong';
-
+		
 		addrSearchAjax(seComp, wrdComp);
 	});
 
-	$("#post-modify-btn").click(function() {
+	$("#post-modify-btn").click(function(){
 		var wrdComp = $("#postNo").val();
 		var seComp = 'post';
-
+		
 		addrSearchAjax(seComp, wrdComp);
 	});
 
-	$("a.tabGroup").click(function() {
+	$("a.tabGroup").click(function(){
 		$("#addrList li").remove();
 		var $this = $(this);
 		$("a.tabGroup").removeClass("on");
 		$this.addClass("on");
-
+		
 		$("#dong, #road, #post").css("display", "none");
 		$("#" + $this.data("target")).show();
 	});
+
+	
 </script>
