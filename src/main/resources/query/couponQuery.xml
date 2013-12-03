@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="couponQuery">
+
+	
+	<select id="list" resultType="hashmap" parameterType="hashmap">
+		SELECT /* couponQuery.list */
+			*
+		FROM BG_COUPON
+		WHERE MEMBER_ID = #{ member_id }
+	</select>
+
+	<select id="detail" resultType="hashmap" parameterType="hashmap">
+		SELECT /* couponQuery.detail */
+			*
+		FROM BG_COUPON
+		WHERE COUPON = #{ coupon }
+	</select>
+	
+	<!-- UPDATE USER RANDOM PASSWD -->
+	<update id="updateCoupon" parameterType="hashmap">
+		UPDATE BG_COUPON
+		<set>
+			MEMBER_ID = #{ member_id }
+		</set>
+		WHERE COUPON = #{ coupon }
+	</update>
+	
+</mapper>
