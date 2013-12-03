@@ -180,7 +180,7 @@ public class MypageController {
 		mav.setViewName("side-mypage/pause");
 
 		Map<String, Object> sessionMap = getSessionId(session);
-		if(paramsMap.get("member_id").equals(sessionMap.get("MEMBER_ID"))){
+		if(paramsMap.get("member_id").equals(sessionMap.get("member_id"))){
 			if(sessionMap.get("status").equals(1)){
 				paramsMap.put("status", 0);
 				mav.addObject("msg", "pauseCancelSuccess");
@@ -225,7 +225,7 @@ public class MypageController {
 	public ModelAndView questionDetail(@RequestParam Map<String, Object> paramsMap, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("side-mypage/questionDetail");
-		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_MYPAGE_INFO, StoryfarmConstants.BREADCRUMB_MYPAGE_QUESTION, StoryfarmConstants.BREADCRUMB_MYPAGE_QUESTION_DETAIL));
+		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_MYPAGE_INFO, StoryfarmConstants.BREADCRUMB_MYPAGE_QUESTION));
 
 		Map<String, Object> sessionMap = getSessionId(session);
 		
@@ -366,11 +366,10 @@ public class MypageController {
 	private Map<String, Object> getSessionId(HttpSession session) {
 		@SuppressWarnings("unchecked")
 		Map<String, Object> sessionMap = (Map<String, Object>)session.getAttribute("userInfoSession");
-
 		Map<String, Object> getSessionMap = new HashMap<String, Object>();
 		getSessionMap.put(StoryfarmConstants.BOARD_ID, StoryfarmConstants.QUESTION_BOARD_ID);
 		getSessionMap.put("member_id", sessionMap.get("MEMBER_ID"));
-		getSessionMap.put("stauts", sessionMap.get("STATUS"));
+		getSessionMap.put("status", sessionMap.get("MEMBER_STATUS"));
 		return getSessionMap;
 	}
 	

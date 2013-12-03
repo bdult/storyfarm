@@ -27,19 +27,14 @@
 <div class="box01 memExit">
 	
     <div class="tx01">
-    	<c:choose>
-    		<c:when test="${ userInfoSession.MEMBER_STATUS == 0 }">
+		<c:if test="${ userInfoSession.MEMBER_STATUS == 0 }">
 				<h3>현재 고객님은 현재 서비스 <a href="#">이용중</a>입니다<br>
 				이용정지를 신청하시려면 아래 정보를 입력해주세요</h3>
-    		</c:when>
-    		<c:when test="${ userInfoSession.MEMBER_STATUS == 1 }">
+		</c:if>
+		<c:if test="${ userInfoSession.MEMBER_STATUS == 1 }">
 				<h3>현재 고객님은 서비스 일시중지중 입니다<br>
 				다시 이용하시려면 아래 정보를 입력해주세요</h3>
-    		</c:when>
-    		<c:otherwise>
-				<h3>탈퇴된 회원입니다. 관리자에게 문의해주세요.</h3>
-    		</c:otherwise>
-    	</c:choose>
+		</c:if>
     </div>
 	<div class="box03 exitForm">
     
@@ -54,7 +49,7 @@
         </ul>
         </form>
 		<c:if test="${ userInfoSession.MEMBER_STATUS == 0 }">
-	        <p class="btExit"><a id="submit"><img src="${ contextPath }/assets/images/mypage/bt_pause_off2.gif" alt="일시중지 신청" class="rolling"></a></p>
+	        <p class="btExit"><a id="submit"><img src="${ contextPath }/assets/images/mypage/bt_pause2_off.gif" alt="일시중지 신청" class="rolling"></a></p>
 	    </c:if>
 		<c:if test="${ userInfoSession.MEMBER_STATUS == 1 }">
 	        <p class="btExit"><a id="submit"><img src="${ contextPath }/assets/images/mypage/bt_pause_off.gif" alt="일시중지 해지" class="rolling"></a></p>

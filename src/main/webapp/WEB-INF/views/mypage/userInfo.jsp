@@ -111,7 +111,7 @@
 			<a id="delete_btn" href="${ contextPath }/mypage/leave.do"><img src="${ contextPath }/assets/images/mypage/bt_secede_off.gif" alt="탈퇴" class="rollimg"></a>
 		</div>
 		<div style="float: right;">
-			<a id="update_btn"><img src="${ contextPath }/assets/images/common/btn_edit_off2.gif" alt="수정" class="rollimg"></a>
+			<a id="update_btn"><img src="${ contextPath }/assets/images/common/btn_edit_off2.gif" alt="수정" class=""></a>
 			<a href="${ contextPath }/mypage/info.do"><img src="${ contextPath }/assets/images/common/btn_cancel3_off.gif" alt="취소" class="rollimg"></a>
 		</div>
 </div>
@@ -130,19 +130,19 @@
 		</div>
 		<div id="dong" style="margin-top: 10px">
 			<label>동명 : <input id="dongNo" type="text" style="width:90px;"></label>
-			<label>건물번호 : <input id="buildNo1" type="text" style="width:90px;"></label>
-			<a id="dong-modify-btn"><img src="" alt="검색" class="rollimg"></a>
+			<label>번지 : <input id="buildNo1" type="text" style="width:90px;"></label>
+			<a id="dong-modify-btn"><img src="${ contextPath }/assets/images/common/btn_search.gif" alt="검색" class="rollimg"></a>
 		</div>
 		
 		<div id="road" style="margin-top: 10px; display: none;">
 			<label>도로명 : <input id="roadNo" type="text" style="width:90px;"></label>
 			<label>건물번호 : <input id="buildNo" type="text" style="width:90px;"></label>
-			<a id="road-modify-btn"><img src="" alt="검색" class="rollimg"></a>
+			<a id="road-modify-btn"><img src="${ contextPath }/assets/images/common/btn_search.gif" alt="검색" class="rollimg"></a>
 		</div>
 		
 		<div id="post" style="margin-top: 10px; display: none;">
 			우편번호 : <input class="span3" type="text" id="postNo" style="margin: 0;">
-			<a id="post-modify-btn"><img src="" alt="검색" class="rollimg"></a>
+			<a id="post-modify-btn"><img src="${ contextPath }/assets/images/common/btn_search.gif" alt="검색" class="rollimg"></a>
 		</div>
 		
 		<div style="margin-top: 10px">
@@ -231,34 +231,44 @@ $(function(){
 			type: 'get',
 		    success: function(res) {
 				var $xml = $(res);
-
-					$("#addrList li").remove();
-					$xml.find("newAddressList").each(function(index){
+					
+					$xml.find("cmmMsgHeader").each(function(){
 						var $this = $(this);
-						var zipno = $this.find("zipNo").text();
-						var lnmadres = $this.find("lnmadres").text();
-						var rnAdres = $this.find("rnAdres").text();
-						if(seComp == 'dong'){
-						$("#addrList").append(
-							"<li>" + rnAdres + "<br>" + lnmadres + "<a data-zipNo='" + zipno + "' data-lnmadres='" + lnmadres + "' class='rollimg addrSelect'>" + "선택" + "</a>" + "</li>" 
-						);
+						if($this.find("returnCode").text() != 0){
+							$("#addrList li").remove();
+							$("#addrList").append("<li>" + $this.find("errMsg").text() + "</li>");
 						}else {
-							$("#addrList").append(
-								"<li>" + lnmadres + "<a data-zipNo='" + zipno + "' data-lnmadres='" + lnmadres + "' class='rollimg addrSelect'>" + "선택" + "</a>" + "</li>" 
-							);	
+							$("#addrList li").remove();
+							$xml.find("newAddressList").each(function(index){
+								var $this = $(this);
+								var zipno = $this.find("zipNo").text();
+								var lnmadres = $this.find("lnmadres").text();
+								var rnAdres = $this.find("rnAdres").text();
+								if(seComp == 'dong'){
+								$("#addrList").append(
+									"<li>" + rnAdres + "<br>" + lnmadres + "<a data-zipNo='" + zipno + "' data-lnmadres='" + lnmadres + "' class='rollimg addrSelect'>" + "선택" + "</a>" + "</li>" 
+								);
+								}else {
+									$("#addrList").append(
+										"<li>" + lnmadres + "<a data-zipNo='" + zipno + "' data-lnmadres='" + lnmadres + "' class='rollimg addrSelect'>" + "선택" + "</a>" + "</li>" 
+									);	
+								}
+								
+							});
+							$("a.addrSelect").click(function(){
+								var $this = $(this);
+		
+								$("input[name='member_post']").val($this.data("zipno"));
+								$("input[name='member_addr_1']").val($this.data("lnmadres"));
+		
+								showHide('popAddr');
+							});
 						}
-						
 					});
-					$("a.addrSelect").click(function(){
-						var $this = $(this);
-
-						$("input[name='member_post']").val($this.data("zipno"));
-						$("input[name='member_addr_1']").val($this.data("lnmadres"));
-
-						showHide('popAddr');
-					});
+					
 			},
 			error: function(xhr, status, error) {
+				/* $("#addrList").append("<li>검색결과가 없습니다.</li>") */
 				console.log(error);
 				console.log(xhr);
 				console.log(status);

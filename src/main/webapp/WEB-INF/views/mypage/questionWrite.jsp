@@ -48,13 +48,8 @@
 </form>
                 
 <div class="btnSc">
-    <div style="float: left;">
-    	<a href="#"><img src="${ contextPath }/assets/images/common/btn_list_off.png" alt="목록" class="rollimg"></a> 
-    </div>
-    <div style="float: right;">
-    	<a id="submit"><img src="${ contextPath }/assets/images/common/btn_confirm2_off.gif" alt="등록" class="rollimg"></a>
-    	<!-- <a href="#"><img src="" alt="취소" class="rollimg"></a> --> 
-    </div>
+   	<a id="submit"><img src="${ contextPath }/assets/images/common/btn_confirm2_off.gif" alt="확인" class="rollimg"></a>
+   	<a href="javascript:history.back(-1);"><img src="${ contextPath }/assets/images/common/btn_cancel_off.gif" alt="취소" class="rollimg"></a> 
 </div>
 
 <script type="text/javascript">
