@@ -60,5 +60,13 @@
 	</table>
 	
 	<div class="btnSc aright">
-		<a href="#"><img src="${ contextPath }/assets/images/common/btn_receipt_off.gif" alt="영수증발급" class="rollimg"></a>
+		<a href="javascript:receiptSubmit()"><img src="${ contextPath }/assets/images/common/btn_receipt_off.gif" alt="영수증발급" class="rollimg"></a>
 	</div>
+
+<script type="text/javascript">
+
+	function receiptSubmit(){
+		alert("서비스 준비중 입니다.");
+	}
+
+</script>

@@ -52,14 +52,40 @@
 					<td>${ obj.PAYMENT_PROCESS }</td>
 					<td><fmt:formatDate value="${ obj.START_DT }" pattern="yy년MM월dd일"/></td>
 					<td><fmt:formatDate value="${ obj.EXPIRE_DT }" pattern="yy년MM월dd일"/></td>
-					<td><a href="#" class="fontBlue">[영수증발급]</a></td>
+					<td><a href="javascript:receiptSubmit()" class="fontBlue">[영수증발급]</a></td>
 				</tr>
 			</c:forEach>
 		</tbody>
 	</table>
 	
-	<!--paginate -->
-	<div class="paginate_complex"><a class="direction prev" href="#"><img src="${ contextPath }/assets/images/common/btn_pagingPre_off.gif" alt="이전 페이지 이동" class="rollimg"></a><a href="#" class="first">1</a><a href="#">2</a><a href="#">3</a><a href="#">4</a><strong>5</strong><a href="#">6</a><a href="#">7</a><a href="#">8</a><a href="#">889</a><a class="direction next" href="#"><img src="${ contextPath }/assets/images/common/btn_pagingNext_off.gif" alt="다음 페이지 이동" class="rollimg"></a>
-	</div>
-	<!--//paginate -->
+
+<!--paginate -->
+<div class="paginate_complex">
+	<c:if test="${ not empty pageLink }">
+		<c:if test="${ not empty pageLink.pagePrev }">
+		<a class="direction prev" href="${ contextPath }/cscenter/notice.do?pageNum=${ pageLink.pagePrev }${ empty search.search? '' : search.search }"><img src="${ contextPath }/assets/images/common/btn_pagingPre_off.gif"  alt="이전 페이지 이동"  class="rollimg"></a>
+		</c:if>
+		<c:forEach items="${ pageLink.pageList }" var="page">
+			<c:choose>
+				<c:when test="${ page.pageNum eq pageLink.pageNum }">
+					<strong>${ page.pageNum }</strong>
+				</c:when>
+				<c:otherwise>
+					<a href="${ contextPath }/cscenter/notice.do?pageNum=${ page.pageNum }${ empty search.search? '' : search.search }&search=${ searchList.search }">${ page.pageNum }</a>
+				</c:otherwise>
+			</c:choose>
+		</c:forEach>
+		<c:if test="${ not empty pageLink.pageNext }">
+		<a class="direction next" href="${ contextPath }/cscenter/notice.do?pageNum=${ pageLink.pageNext }${ empty search.search? '' : search.search }"><img src="${ contextPath }/assets/images/common/btn_pagingNext_off.gif" alt="다음 페이지 이동"  class="rollimg"></a>
+		</c:if>
+	</c:if>
+</div>
+<!--//paginate -->
                        
+<script type="text/javascript">
+	
+	function receiptSubmit(){
+		alert("서비스 준비중 입니다.");
+	}
+
+</script>
