@@ -105,9 +105,20 @@ public class ViewController {
 		
 		request.getSession().setAttribute(BACK_URL, request.getContextPath()+request.getServletPath()+"?"+request.getQueryString());
 		
-		
+		String cateId = String.valueOf(paramMap.get("cate_id"));
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("view/category");
+		
+		String viewName = "contents/korean";
+		if(cateId.equals("32")){
+			viewName = "contents/english";
+		} else if(cateId.equals("38")){
+			viewName = "contents/math";
+		} else if(cateId.equals("54")){
+			viewName = "contents/song";
+		} else if(cateId.equals("79")){
+			viewName = "contents/story";
+		}
+		mav.setViewName(viewName);
 		
 		Map<String, Object> cateDetail = contentsService.cateDetail(paramMap);
 		mav.addObject("cateDetail", cateDetail);

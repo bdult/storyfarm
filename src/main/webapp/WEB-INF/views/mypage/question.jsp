@@ -4,7 +4,7 @@
 
 <div id="divContent">
 	<h2 class="divTit">
-		<img src="" alt="1:1문의">
+		<img src="${ contextPath }/assets/images/mypage/title_ask.gif" alt="1:1문의">
 	</h2>
 	<!-- location -->
 	<div id="divLocation">

@@ -3,7 +3,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 
-<h2 class="divTit"><img src="" alt="당첨자발표"></h2>
+<h2 class="divTit">
+	<img src="${ contextPath }/assets/images/customer/title_winners.gif" alt="당첨자발표">
+</h2>
 <!-- location -->
 <div id="divLocation">
 	<ul class="location">
@@ -23,7 +25,7 @@
 	</ul>
 </div>
 <!-- //location -->
-                
+
 <div class="tblHeadSch">
 	<form id="searchForm">
 		<input name="search" id="queryStr" value="${ searchList.search }" class="input"><a class="searchBtn" href=""><img src="../assets/images/common/btn_search2.gif" alt="검색" class="bt"></a>

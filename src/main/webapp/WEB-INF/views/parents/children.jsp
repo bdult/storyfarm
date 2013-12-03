@@ -54,7 +54,7 @@
                             </table>
                             <div class="btnSc aright">
                             	<p class="left"><a href="#"><img src="${ contextPath }/assets/images/common/btn_init_off.gif" alt="학습정보초기화" class="rollimg"></a></p>
-                                <a href="#"><img src="${ contextPath }/assets/images/common/btn_edit_off.gif" alt="수정" class="rollimg"></a>
+                                <a href="#"><img src="${ contextPath }/assets/images/common/btn_edit_off2.gif" alt="수정" class="rollimg"></a>
                                 <a href="#"><img src="${ contextPath }/assets/images/common/btn_del_off.gif" alt="삭제" class="rollimg"></a>
                             </div>
                       	</div>
