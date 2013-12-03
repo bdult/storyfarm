@@ -81,7 +81,7 @@
 			<tr>
 				<th scope="row">주소</th>
 				<td colspan="3">
-					<input type="text" class="input" style="width:290px;" placeholder="동,읍,리 입력"> <a href="#"><img src="${ contextPath }/assets/images/common/btn_find_off.gif" alt="찾아보기" class="rollimg"></a>
+					<input name="member_post" type="text" class="input" style="width:290px;" placeholder="동,읍,리 입력"> <a href="javascript:showHide('popAddr');"><img src="${ contextPath }/assets/images/common/btn_find_off.gif" alt="찾아보기" class="rollimg" style="vertical-align: middle;"></a>
 					<div class="mgt5">
 						<input name="member_addr_1" type="text" class="input" style="width:290px;" placeholder="주소 1">
 						<input name="member_addr_2" type="text" class="input" style="width:290px;" placeholder="상세주소 입력">
@@ -122,14 +122,62 @@
     
 </div>
     
+<!-- 주소찾기팝업 -->
+<div class="layPop" id="popAddr" style="display:none;">
+	<div class="bg"></div>
+	<div class="popCoupon">
+		<h2>주소정보를 입력해 주세요.</h2>
+		<div class="divTab" style="text-align: center;">
+			<ul class="tab01" style="display: inline-block;">
+				<li><a class="tabGroup on" data-target="dong"><span>동명 검색</span></a></li>
+				<li><a class="tabGroup" data-target="road"><span>도로명 검색</span></a></li>
+				<li><a class="tabGroup" data-target="post"><span>우편번호 검색</span></a></li>
+			</ul>
+		</div>
+		<div id="dong" style="margin-top: 10px">
+			<label>동명 : <input id="dongNo" type="text" style="width:90px;"></label>
+			<label>번지 : <input id="buildNo1" type="text" style="width:90px;"></label>
+			<a id="dong-modify-btn"><img src="${ contextPath }/assets/images/common/btn_search.gif" alt="검색" class="rollimg" style="vertical-align: middle;"></a>
+		</div>
+		
+		<div id="road" style="margin-top: 10px; display: none;">
+			<label>도로명 : <input id="roadNo" type="text" style="width:90px;"></label>
+			<label>건물번호 : <input id="buildNo" type="text" style="width:90px;"></label>
+			<a id="road-modify-btn"><img src="${ contextPath }/assets/images/common/btn_search.gif" alt="검색" class="rollimg" style="vertical-align: middle;"></a>
+		</div>
+		
+		<div id="post" style="margin-top: 10px; display: none;">
+			우편번호 : <input class="span3" type="text" id="postNo" style="margin: 0;">
+			<a id="post-modify-btn"><img src="${ contextPath }/assets/images/common/btn_search.gif" alt="검색" class="rollimg" style="vertical-align: middle;"></a>
+		</div>
+		
+		<div style="margin-top: 10px">
+			<div class="some-content-related-div">
+				<div id="inner-content-div">
+					<ul id="addrList"></ul>
+				</div>
+			</div>
+		</div>
+		
+		<p class="btClose"><a href="javascript:showHide('popAddr');"><img src="${ contextPath }/assets/images/common/btn_x.gif" alt="close"></a></p>
+	</div>
+</div>
+<!-- //주소찾기팝업 -->
+
 <script type="text/javascript">
+$(function(){
 
 	//validate 초기화
 	setValid();
 	signUpValidateCall();
 
 	birth();
-	
+
+    $('#inner-content-div').slimScroll({
+        height: '180px'
+    });
+});
+
 $("input[name=member_pw_again]").focusout(function(event){
 	if($("input[name=member_pw]").val().length >= 6 && $("input[name=member_pw_again]").val().length <= 10){
 		if($("input[name=member_pw]").val() == $("input[name=member_pw_again]").val()){
@@ -178,4 +226,99 @@ $("#member_id").keyup(function(event){
 			action: '${ contextPath }/signUpResult.do'
 		}).submit();
 	});
+	
+
+	// addr function
+	function addrSearchAjax(seComp, wrdComp){
+		param = {
+				searchSe : seComp,
+				srchwrd : wrdComp
+		};
+		$.ajax({
+			url: "${contextPath}/post/addr.ajax",
+			data: param,
+			dataType: "text",
+			type: 'get',
+		    success: function(res) {
+				var $xml = $(res);
+					
+					$xml.find("cmmMsgHeader").each(function(){
+						var $this = $(this);
+						if($this.find("returnCode").text() != 0){
+							$("#addrList li").remove();
+							$("#addrList").append("<li>" + $this.find("errMsg").text() + "</li>");
+						}else {
+							$("#addrList li").remove();
+							$xml.find("newAddressList").each(function(){
+								var $this = $(this);
+								var zipno = $this.find("zipNo").text();
+								var lnmadres = $this.find("lnmadres").text();
+								var rnAdres = $this.find("rnAdres").text();
+								if(seComp == 'dong'){
+								$("#addrList").append(
+									"<li>" + rnAdres + "<br>" + lnmadres + ' ' + "<a data-zipNo='" + zipno + "' data-lnmadres='" + lnmadres + "' class='rollimg addrSelect'>" + "<img src='${ contextPath }/assets/images/common/btn_confirm_off.gif' alt='검색' class='rollimg' style='vertical-align: middle; width: 45px; height:22px;'>" + "</a>" + "</li>" 
+								);
+								}else {
+									$("#addrList").append(
+										"<li>" + lnmadres + ' ' + "<a data-zipNo='" + zipno + "' data-lnmadres='" + lnmadres + "' class='rollimg addrSelect'>" + "<img src='${ contextPath }/assets/images/common/btn_confirm_off.gif' alt='검색' class='rollimg' style='vertical-align: middle; width: 45px; height:22px;'>" + "</a>" + "</li>" 
+									);	
+								}
+								
+							});
+							$("a.addrSelect").click(function(){
+								var $this = $(this);
+		
+								$("input[name='member_post']").val($this.data("zipno"));
+								$("input[name='member_addr_1']").val($this.data("lnmadres"));
+		
+								showHide('popAddr');
+							});
+						}
+					});
+					
+			},
+			error: function(xhr, status, error) {
+				/* $("#addrList").append("<li>검색결과가 없습니다.</li>") */
+				console.log(error);
+				console.log(xhr);
+				console.log(status);
+			}
+		});
+	}
+
+	$("#road-modify-btn").click(function(){
+		var roadNo = $("#roadNo").val();
+		var buildNo = $("#buildNo").val();
+		var wrdComp = roadNo + " " + buildNo;
+		var seComp = 'road';
+		
+		addrSearchAjax(seComp, wrdComp);
+	});
+
+	$("#dong-modify-btn").click(function(){
+		var dongNo = $("#dongNo").val();
+		var buildNo = $("#buildNo1").val();
+		var wrdComp = dongNo + " " + buildNo;
+		var seComp = 'dong';
+		
+		addrSearchAjax(seComp, wrdComp);
+	});
+
+	$("#post-modify-btn").click(function(){
+		var wrdComp = $("#postNo").val();
+		var seComp = 'post';
+		
+		addrSearchAjax(seComp, wrdComp);
+	});
+
+	$("a.tabGroup").click(function(){
+		$("#addrList li").remove();
+		var $this = $(this);
+		$("a.tabGroup").removeClass("on");
+		$this.addClass("on");
+		
+		$("#dong, #road, #post").css("display", "none");
+		$("#" + $this.data("target")).show();
+	});
+
 </script>

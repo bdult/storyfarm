@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<h2 class="divTit"><img src="../assets/images/mypage/title_pay.gif" alt="유료서비스 결제"></h2>
+<h2 class="divTit"><img src="${ contextPath }/assets/images/mypage/title_pay.gif" alt="유료서비스 결제"></h2>
 <!-- location -->
 <div id="divLocation">
 	<ul class="location">
-		<li class="first"><a href="#" class="home"><img src="../assets/images/common/blt_home.gif" alt="home"></a></li>
+		<li class="first"><a href="#" class="home"><img src="${ contextPath }/assets/images/common/blt_home.gif" alt="home"></a></li>
 		<li><a href="#">마이페이지</a></li>
 		<li class="current">유료서비스 결제</li>
 	</ul>
@@ -21,7 +21,7 @@
 </div>
 
 <h3 class="divTit3 mgt30">오즈월드 프리미엄 요금제</h3>
-	<p class="payHd"><img src="../assets/images/common/blt_dot6.gif" alt="" class="aln_middle"> 오즈월드 모든 컨텐츠 이용 + 자녀방,부모방서비스 이용 + 프린트학습 전체 이용 가능</p>
+	<p class="payHd"><img src="${ contextPath }/assets/images/common/blt_dot6.gif" alt="" class="aln_middle"> 오즈월드 모든 컨텐츠 이용 + 자녀방,부모방서비스 이용 + 프린트학습 전체 이용 가능</p>
 	<form id="primium">
 	<table class="data center">
 	<colgroup>
@@ -65,15 +65,15 @@
 	</form>
 	<div class="btPayDiv">
 		<ul>
-			<li><a href="javascript:primiumSelect('month1');"><img src="../assets/images/mypage/bt_pay01_off.gif" alt="1개월신청" class="rollimg"></a></li>
-			<li><a href="javascript:primiumSelect('month3');"><img src="../assets/images/mypage/bt_pay02_off.gif" alt="3개월신청" class="rollimg"></a></li>
-			<li><a href="javascript:primiumSelect('month6');"><img src="../assets/images/mypage/bt_pay03_off.gif" alt="6개월신청" class="rollimg"></a></li>
-			<li><a href="javascript:primiumSelect('month12');"><img src="../assets/images/mypage/bt_pay04_off.gif" alt="12개월신청" class="rollimg"></a></li>
+			<li><a href="javascript:primiumSelect('month1');"><img src="${ contextPath }/assets/images/mypage/bt_pay01_off.gif" alt="1개월신청" class="rollimg"></a></li>
+			<li><a href="javascript:primiumSelect('month3');"><img src="${ contextPath }/assets/images/mypage/bt_pay02_off.gif" alt="3개월신청" class="rollimg"></a></li>
+			<li><a href="javascript:primiumSelect('month6');"><img src="${ contextPath }/assets/images/mypage/bt_pay03_off.gif" alt="6개월신청" class="rollimg"></a></li>
+			<li><a href="javascript:primiumSelect('month12');"><img src="${ contextPath }/assets/images/mypage/bt_pay04_off.gif" alt="12개월신청" class="rollimg"></a></li>
 		</ul>
 	</div>
 
 <h3 class="divTit3 mgt30">오즈월드 과목별 요금제</h3>
-<p class="payHd"><img src="../assets/images/common/blt_dot6.gif" alt="" class="aln_middle"> 오즈월드 각 과목별 컨텐츠 이용 +자녀방,부모방서비스 이용 + 프린트학습 부분 이용 가능</p>
+<p class="payHd"><img src="${ contextPath }/assets/images/common/blt_dot6.gif" alt="" class="aln_middle"> 오즈월드 각 과목별 컨텐츠 이용 +자녀방,부모방서비스 이용 + 프린트학습 부분 이용 가능</p>
 <form id="subjForm">
 <table class="data center">
 	<colgroup>
@@ -154,14 +154,14 @@
 <div class="btPayDiv">
 	<ul>
 		<li class="typ2">합계금액 <input id="subjTotal" name="" type="text" style="width:250px;" class="mgl20" readonly> 원 
-		<a id="subjSubmit"><img src="../assets/images/mypage/bt_pay05_off.gif" alt="과목별 요금제 신청" class="rollimg aln_middle"></a>
-		<a id="subjReset"><img alt="다시선택" class="aln_middle"></a>
+		<a id="subjSubmit"><img src="${ contextPath }/assets/images/mypage/bt_pay05_off.gif" alt="과목별 요금제 신청" class="rollimg aln_middle"></a>
+		<a id="subjReset"><img src="${ contextPath }/assets/images/mypage/reselect.gif" alt="다시선택" class="aln_middle"></a>
 		</li>
 	</ul>
 </div>
 
 <h3 class="divTit3 mgt30">오즈월드 전집별 요금제</h3>
-<p class="payHd"><img src="../assets/images/common/blt_dot6.gif" alt="" class="aln_middle"> 오즈월드 각 과목별 컨텐츠 이용 +자녀방,부모방서비스 이용 + 프린트학습 부분 이용 가능</p>
+<p class="payHd"><img src="${ contextPath }/assets/images/common/blt_dot6.gif" alt="" class="aln_middle"> 오즈월드 각 과목별 컨텐츠 이용 +자녀방,부모방서비스 이용 + 프린트학습 부분 이용 가능</p>
 <form id="collectedForm">
 	<table class="data center">
 	<colgroup>
@@ -235,8 +235,8 @@
 <div class="btPayDiv">
 	<ul>
 		<li class="typ2">합계금액 <input id="collectedTotal" name="" type="text" style="width:250px;" class="mgl20" readonly> 원 
-		<a id="collectedSubmit"><img src="../assets/images/mypage/bt_pay06_off.gif" alt="전집별 요금제 신청" class="rollimg aln_middle"></a>
-		<a id="collectedReset"><img alt="다시선택" class="aln_middle"></a></li>
+		<a id="collectedSubmit"><img src="${ contextPath }/assets/images/mypage/bt_pay06_off.gif" alt="전집별 요금제 신청" class="rollimg aln_middle"></a>
+		<a id="collectedReset"><img src="${ contextPath }/assets/images/mypage/reselect.gif" alt="다시선택" class="aln_middle"></a></li>
 	</ul>
 </div>
 

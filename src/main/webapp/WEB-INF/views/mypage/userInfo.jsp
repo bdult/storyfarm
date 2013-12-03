@@ -72,7 +72,7 @@
 	<tr>
 		<th scope="row">주소</th>
 		<td colspan="3">
-			<input type="text" class="input" style="width:290px;" placeholder="우편번호" name="member_post" value="${ userInfo.MEMBER_POST }" readonly> <a href="javascript:showHide('popAddr');"><img src="${ contextPath }/assets/images/common/btn_find_off.gif" alt="찾아보기" class="rollimg"></a>
+			<input type="text" class="input" style="width:290px;" placeholder="우편번호" name="member_post" value="${ userInfo.MEMBER_POST }" readonly> <a href="javascript:showHide('popAddr');"><img src="${ contextPath }/assets/images/common/btn_find_off.gif" alt="찾아보기" class="rollimg" style="vertical-align: middle;"></a>
 			<div class="mgt5">
 				<input type="text" class="input" style="width:290px;" placeholder="주소 1" name="member_addr_1" value="${ userInfo.MEMBER_ADDR_1 }">
 				<input type="text" class="input" style="width:290px;" placeholder="상세주소 입력" name="member_addr_2" value="${ userInfo.MEMBER_ADDR_2 }">
@@ -131,18 +131,18 @@
 		<div id="dong" style="margin-top: 10px">
 			<label>동명 : <input id="dongNo" type="text" style="width:90px;"></label>
 			<label>번지 : <input id="buildNo1" type="text" style="width:90px;"></label>
-			<a id="dong-modify-btn"><img src="${ contextPath }/assets/images/common/btn_search.gif" alt="검색" class="rollimg"></a>
+			<a id="dong-modify-btn"><img src="${ contextPath }/assets/images/common/btn_search.gif" alt="검색" class="rollimg" style="vertical-align: middle;"></a>
 		</div>
 		
 		<div id="road" style="margin-top: 10px; display: none;">
 			<label>도로명 : <input id="roadNo" type="text" style="width:90px;"></label>
 			<label>건물번호 : <input id="buildNo" type="text" style="width:90px;"></label>
-			<a id="road-modify-btn"><img src="${ contextPath }/assets/images/common/btn_search.gif" alt="검색" class="rollimg"></a>
+			<a id="road-modify-btn"><img src="${ contextPath }/assets/images/common/btn_search.gif" alt="검색" class="rollimg" style="vertical-align: middle;"></a>
 		</div>
 		
 		<div id="post" style="margin-top: 10px; display: none;">
 			우편번호 : <input class="span3" type="text" id="postNo" style="margin: 0;">
-			<a id="post-modify-btn"><img src="${ contextPath }/assets/images/common/btn_search.gif" alt="검색" class="rollimg"></a>
+			<a id="post-modify-btn"><img src="${ contextPath }/assets/images/common/btn_search.gif" alt="검색" class="rollimg" style="vertical-align: middle;"></a>
 		</div>
 		
 		<div style="margin-top: 10px">
@@ -171,7 +171,7 @@ $(function(){
     });
 });
 
-	birth.call();
+	birth();
 
 /* 	var memberEmail = "${ userInfo.MEMBER_EMAIL }";
 	var emailBreak = memberEmail.split("@");
@@ -239,18 +239,18 @@ $(function(){
 							$("#addrList").append("<li>" + $this.find("errMsg").text() + "</li>");
 						}else {
 							$("#addrList li").remove();
-							$xml.find("newAddressList").each(function(index){
+							$xml.find("newAddressList").each(function(){
 								var $this = $(this);
 								var zipno = $this.find("zipNo").text();
 								var lnmadres = $this.find("lnmadres").text();
 								var rnAdres = $this.find("rnAdres").text();
 								if(seComp == 'dong'){
 								$("#addrList").append(
-									"<li>" + rnAdres + "<br>" + lnmadres + "<a data-zipNo='" + zipno + "' data-lnmadres='" + lnmadres + "' class='rollimg addrSelect'>" + "선택" + "</a>" + "</li>" 
+									"<li>" + rnAdres + "<br>" + lnmadres + ' ' + "<a data-zipNo='" + zipno + "' data-lnmadres='" + lnmadres + "' class='rollimg addrSelect'>" + "<img src='${ contextPath }/assets/images/common/btn_confirm_off.gif' alt='검색' class='rollimg' style='vertical-align: middle; width: 45px; height:22px;'>" + "</a>" + "</li>" 
 								);
 								}else {
 									$("#addrList").append(
-										"<li>" + lnmadres + "<a data-zipNo='" + zipno + "' data-lnmadres='" + lnmadres + "' class='rollimg addrSelect'>" + "선택" + "</a>" + "</li>" 
+										"<li>" + lnmadres + ' ' + "<a data-zipNo='" + zipno + "' data-lnmadres='" + lnmadres + "' class='rollimg addrSelect'>" + "<img src='${ contextPath }/assets/images/common/btn_confirm_off.gif' alt='검색' class='rollimg' style='vertical-align: middle; width: 45px; height:22px;'>" + "</a>" + "</li>" 
 									);	
 								}
 								
@@ -302,6 +302,7 @@ $(function(){
 	});
 
 	$("a.tabGroup").click(function(){
+		$("#addrList li").remove();
 		var $this = $(this);
 		$("a.tabGroup").removeClass("on");
 		$this.addClass("on");
