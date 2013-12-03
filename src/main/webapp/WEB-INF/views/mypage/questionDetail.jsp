@@ -2,7 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <h2 class="divTit">
-	<img src="" alt="1:1문의">
+	<img src="${ contextPath }/assets/images/mypage/title_ask.gif" alt="1:1문의">
 </h2>
 <!-- location -->
 <div id="divLocation">
@@ -34,7 +34,7 @@
 		</tr>
 		<tr>
 			<th>내용</th>
-			<td class="vewTd">${ writing.CONTENTS }</td>
+			<td class="resetEditor">${ writing.CONTENTS }</td>
 		</tr>
 	</tbody>
 </table>
@@ -73,7 +73,13 @@
     	<a href="javascript:history.back(-1);"><img src="${ contextPath }/assets/images/common/btn_list_off.png" alt="목록" class="rollimg"></a> 
     </div>
     <div style="float: right;">
-    	<a id="update" href="${ contextPath }/mypage/questionUpdate.do?contentsId=${ writing.CONTENTS_ID }"><img src="" alt="수정" class="rollimg"></a>
+    	<a id="update" href="${ contextPath }/mypage/questionUpdate.do?contentsId=${ writing.CONTENTS_ID }"><img src="${ contextPath }/assets/images/common/btn_edit_off.gif" alt="수정" class="rollimg"></a>
     	<!-- <a href="#"><img src="" alt="취소" class="rollimg"></a> --> 
     </div>
 </div>
+
+<script type="text/javascript">
+
+$(".lm0505").addClass("on");
+
+</script>

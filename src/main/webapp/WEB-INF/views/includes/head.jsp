@@ -19,5 +19,6 @@
 <!-- DEV TEAM -->
 <script src="${ contextPath }/assets/js/jquery.validate.js"></script>
 
-
+<!-- PLUGIN -->
 <script src="${ contextPath }/tinymce/tinymce.min.js"></script>
+<script src="${ contextPath }/assets/js/jquery.slimscroll.min.js"></script>

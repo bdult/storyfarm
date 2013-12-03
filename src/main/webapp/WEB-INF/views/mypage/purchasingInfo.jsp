@@ -2,7 +2,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
-<div id="divContent">
 	<h2 class="divTit">
 		<img src="${ contextPath }/assets/images/mypage/title_buy.gif" alt="구매내역">
 	</h2>
@@ -15,18 +14,18 @@
 		</ul>
 	</div>
 	<!-- //location -->
-
+	
 	<div class="divTab">
 		<ul class="tab01">
 			<li><a href="${ contextPath }/mypage/purchasingInfo.do" class="on"><span>현재 이용내역</span></a></li>
 			<li><a href="${ contextPath }/mypage/purchasingInfoPast.do"><span>과거 이용내역</span></a></li>
 		</ul>
 	</div>
-
+	
 	<div class="mypageTx01 mgt20">
 		<span class="fontOrange">현재 유료로 이용중인 서비스내역은 아래와 같습니다!</span>
 	</div>
-
+	
 	<table class="data mgt20">
 		<colgroup>
 			<col width="25%">
@@ -59,9 +58,15 @@
 			</tr>
 		</tbody>
 	</table>
-
+	
 	<div class="btnSc aright">
-		<a href="#"><img src="${ contextPath }/assets/images/common/btn_receipt_off.gif" alt="영수증발급" class="rollimg"></a>
+		<a href="javascript:receiptSubmit()"><img src="${ contextPath }/assets/images/common/btn_receipt_off.gif" alt="영수증발급" class="rollimg"></a>
 	</div>
 
-</div>
+<script type="text/javascript">
+
+	function receiptSubmit(){
+		alert("서비스 준비중 입니다.");
+	}
+
+</script>

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<h2 class="divTit"><img src="" alt="1:1문의 작성"></h2>
+<h2 class="divTit"><img src="${ contextPath }/assets/images/mypage/title_ask.gif" alt="1:1문의"></h2>
 <!-- location -->
 <div id="divLocation">
 	<ul class="location">
@@ -49,15 +49,17 @@
                 
 <div class="btnSc">
     <div style="float: left;">
-    	<a href="#"><img src="../assets/images/common/btn_list_off.png" alt="목록" class="rollimg"></a> 
+    	<a href="#"><img src="${ contextPath }/assets/images/common/btn_list_off.png" alt="목록" class="rollimg"></a> 
     </div>
     <div style="float: right;">
-    	<a id="submit"><img src="" alt="등록" class="rollimg"></a>
+    	<a id="submit"><img src="${ contextPath }/assets/images/common/btn_confirm2_off.gif" alt="등록" class="rollimg"></a>
     	<!-- <a href="#"><img src="" alt="취소" class="rollimg"></a> --> 
     </div>
 </div>
 
 <script type="text/javascript">
+
+$(".lm0505").addClass("on");
 
 tinymce.init({
     selector: "textarea",

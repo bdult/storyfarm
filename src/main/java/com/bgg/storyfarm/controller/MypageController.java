@@ -71,45 +71,53 @@ public class MypageController {
 	}
 	
 	@RequestMapping(value = "paymentSelect.do", method = RequestMethod.POST)
-	public ModelAndView paymentSelect(Model model, @RequestParam Map<String, Object> paramMap) {
+	public ModelAndView paymentSelect(Model model, @RequestParam Map<String, Object> paramsMap) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("side-mypage/paymentSelect");
 		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_MYPAGE_INFO, StoryfarmConstants.BREADCRUMB_MYPAGE_PAYMENT, StoryfarmConstants.BREADCRUMB_MYPAGE_PAYMENT_SELECT ));
 		
-		mav.addObject("paymentInfo", paramMap.get("pay"));
+		mav.addObject("paymentInfo", paramsMap.get("pay"));
 		
 		return mav;
 	}
 	
 	@RequestMapping(value = "paymentResult.do", method = RequestMethod.POST)
-	public ModelAndView paymentResult(Model model, @RequestParam Map<String, Object> paramMap) {
+	public ModelAndView paymentResult(Model model, @RequestParam Map<String, Object> paramsMap) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("side-mypage/paymentResult");
 		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_MYPAGE_INFO, StoryfarmConstants.BREADCRUMB_MYPAGE_PAYMENT, StoryfarmConstants.BREADCRUMB_MYPAGE_PAYMENT_SELECT, StoryfarmConstants.BREADCRUMB_MYPAGE_PAYMENT_RESULT ));
 
-		mav.addObject("paymentInfo", paramMap.get("pay"));
+		mav.addObject("paymentInfo", paramsMap.get("pay"));
 		
 		return mav;
 	}
 	
 	@RequestMapping(value = "purchasingInfo.do", method = RequestMethod.GET)
-	public ModelAndView purchasingInfo(Model model, @RequestParam Map<String, Object> paramMap) {
+	public ModelAndView purchasingInfo(Model model, @RequestParam Map<String, Object> paramsMap) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("side-mypage/purchasingInfo");
 		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_MYPAGE_INFO, StoryfarmConstants.BREADCRUMB_MYPAGE_PURCHASINGINFO));
 		
-		mav.addObject("purchaseInfo", purchaseService.detail(paramMap));
+		mav.addObject("purchaseInfo", purchaseService.detail(paramsMap));
 		
 		return mav;
 	}
 	
 	@RequestMapping(value = "purchasingInfoPast.do", method = RequestMethod.GET)
-	public ModelAndView purchasingInfoPast(Model model, @RequestParam Map<String, Object> paramMap) {
+	public ModelAndView purchasingInfoPast(Model model, @RequestParam Map<String, Object> paramsMap) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("side-mypage/purchasingInfoPast");
 		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_MYPAGE_INFO, StoryfarmConstants.BREADCRUMB_MYPAGE_PURCHASINGINFO_PAST));
+
+		Map<String, Object> boardMap = new HashMap<String, Object>();
 		
-		mav.addObject("purchaseList", purchaseService.list(paramMap));
+		//페이징 로직
+		int totalCnt = boardService.totalCount(boardMap);
+		int pageNum = setPage(paramsMap, boardMap);
+		mav.addObject("pageLink", pageUtil.getPageLinkMap(totalCnt, pageNum));
+		//페이징 로직
+		
+		mav.addObject("purchaseList", purchaseService.list(paramsMap));
 
 		return mav;
 	}
@@ -123,12 +131,20 @@ public class MypageController {
 	}
 	
 	@RequestMapping(value = "coupon.do", method = RequestMethod.GET)
-	public ModelAndView coupon(Model model, @RequestParam Map<String, Object> paramMap) {
+	public ModelAndView coupon(Model model, @RequestParam Map<String, Object> paramsMap) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("side-mypage/coupon");
 		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_MYPAGE_INFO, StoryfarmConstants.BREADCRUMB_MYPAGE_COUPON));
+
+		Map<String, Object> boardMap = new HashMap<String, Object>();
 		
-		mav.addObject("couponList", couponService.list(paramMap));
+		//페이징 로직
+		int totalCnt = boardService.totalCount(boardMap);
+		int pageNum = setPage(paramsMap, boardMap);
+		mav.addObject("pageLink", pageUtil.getPageLinkMap(totalCnt, pageNum));
+		//페이징 로직
+		
+		mav.addObject("couponList", couponService.list(paramsMap));
 		
 		return mav;
 	}
@@ -138,9 +154,9 @@ public class MypageController {
 	 * @return JSON
 	 */
 	@RequestMapping(value = "addCoupon.ajax", produces = "application/json;charset=UTF-8")
-	public @ResponseBody String addCoupon(@RequestParam Map<String, Object> paramMap) {
+	public @ResponseBody String addCoupon(@RequestParam Map<String, Object> paramsMap) {
 
-		couponService.add(paramMap);
+		couponService.add(paramsMap);
 
 		JSONObject json = new JSONObject();
 		json.put("code", 200);
@@ -214,10 +230,13 @@ public class MypageController {
 		Map<String, Object> sessionMap = getSessionId(session);
 		
 		paramsMap.put(StoryfarmConstants.MEMBER_ID, sessionMap.get("member_id"));
-		
+
 		Map<String, Object> writing = boardService.detail(paramsMap);
 		mav.addObject("writing", writing);
 
+		//댓글 목록 view
+		mav.addObject("detailComments", boardService.detailComments(paramsMap));
+		
 		return mav;
 	}
 	
@@ -283,12 +302,11 @@ public class MypageController {
 	}
 
 	@RequestMapping(value = "userInfoUpdate.do", method = RequestMethod.POST)
-	public ModelAndView userInfoUpdate(Model model, @RequestParam Map<String, Object> paramsMap) {
+	public String userInfoUpdate(Model model, @RequestParam Map<String, Object> paramsMap) {
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("side-mypage/userInfoUpdate");
 		
 		userService.updateUser(paramsMap);
-		return mav;
+		return "redirect:userInfo.do";
 	}
 	
 	@RequestMapping(value = "leave.do", method = RequestMethod.GET)
