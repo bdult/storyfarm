@@ -225,7 +225,7 @@ function signUpValidateCall(){
 				rangelength: "비밀번호 6-10자리를 입력해 주세요."
 			},
 			member_pw_again: "비밀번호가 서로 다릅니다.",
-			email: "이메일 주소를 정확히 입력해 주세요",
+			member_email: "이메일 주소를 정확히 입력해 주세요",
 			cel1: { valueNotEquals: "휴대폰 번호를 선택해 주세요" },
 			cel2: {
 				required: "휴대폰 앞자리 번호를 입력해 주세요",
