@@ -166,13 +166,19 @@ public class UserController {
 	 * @param paramMap
 	 * @return
 	 */
-	@RequestMapping(value = "signUpResult.do", method = RequestMethod.POST)
+	@RequestMapping(value = "signUpComplete.do", method = RequestMethod.POST)
+	public String signUpComplete(Model model, @RequestParam Map<String, Object> paramMap) {
+		
+		userService.insertUser(paramMap);
+		
+		return "redirect:signUpResult.do";
+	}
+	
+	@RequestMapping(value = "signUpResult.do", method = RequestMethod.GET)
 	public ModelAndView signUpResult(Model model, @RequestParam Map<String, Object> paramMap) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("user/signUpResult");
 		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_JOINPROVISION, StoryfarmConstants.BREADCRUMB_SIGNUP, StoryfarmConstants.BREADCRUMB_SIGNUPRESULT));
-		
-		userService.insertUser(paramMap);
 		
 		return mav;
 	}

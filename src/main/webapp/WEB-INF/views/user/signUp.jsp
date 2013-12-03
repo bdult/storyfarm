@@ -223,7 +223,7 @@ $("#member_id").keyup(function(event){
 
 		$("#joinForm").attr({
 			method: 'post',
-			action: '${ contextPath }/signUpResult.do'
+			action: '${ contextPath }/signUpComplete.do'
 		}).submit();
 	});
 	

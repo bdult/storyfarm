@@ -33,9 +33,9 @@
 		</ul>
 		
 		<ul class="join03Bt">
-			<li><a href="#"><img src="${ contextPath }/assets/images/member/join03_bt1.gif" alt="자녀정보등록하러가기"></a></li>
+			<li><a href="${ contextPath }/children/room.do"><img src="${ contextPath }/assets/images/member/join03_bt1.gif" alt="자녀정보등록하러가기"></a></li>
 			<li><a href="${ contextPath }/cscenter/faq.do"><img src="${ contextPath }/assets/images/member/join03_bt2.gif" alt="오즈월드 서비스 FAQ 보러가기"></a></li>
-			<li><a href="#"><img src="${ contextPath }/assets/images/member/join03_bt3.gif" alt="유료 서비스 신청하기"></a></li>
+			<li><a href="${ contextPath }/mypage/payment.do"><img src="${ contextPath }/assets/images/member/join03_bt3.gif" alt="유료 서비스 신청하기"></a></li>
 		</ul>
 	</div>
 

@@ -122,6 +122,13 @@ public class StoryfarmInterceptor extends HandlerInterceptorAdapter {
 		ArrayList<String> ignoreList = new ArrayList<String>();
 		ignoreList.add("dashboard.do");
 		ignoreList.add("loginView.do");
+		ignoreList.add("loginResult.do");
+		ignoreList.add("signUp.do");
+		ignoreList.add("signUpComplete.do");
+		ignoreList.add("signUpResult.do");
+		ignoreList.add("duplication.ajax");
+		ignoreList.add("addr.ajax");
+		ignoreList.add("signResult.do");
 		ignoreList.add("findIdView.do");
 		ignoreList.add("findPwdView.do");
 		ignoreList.add("joinProvision.do");
