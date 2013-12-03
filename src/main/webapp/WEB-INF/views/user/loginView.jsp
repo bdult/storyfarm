@@ -45,7 +45,7 @@
     <ul class="loginBt">
 		<li><span class="titTx">아이디를 모르시는 경우</span> <a href="${ contextPath }/findIdView.do"><img src="${ contextPath }/assets/images/member/btn_idFind_off.gif" alt="아이디찾기" class="rollimg"></a></li>
 		<li><span class="titTx">비밀번호를 모르시는 경우</span> <a href="${ contextPath }/findPwdView.do"><img src="${ contextPath }/assets/images/member/btn_pwFind_off.gif" alt="비밀번호 찾기" class="rollimg"></a></li>
-		<li class="btPay"><a href="#"><img src="${ contextPath }/assets/images/member/btn_pay_off.gif" alt="유료결제서비스" class="rollimg"></a></li>
+		<li class="btPay"><a href="${ contextPath }/introduce2.do"><img src="${ contextPath }/assets/images/member/btn_pay_off.gif" alt="유료결제서비스" class="rollimg"></a></li>
     </ul>
     
     <p class="loginBanner"><a href="${ contextPath }/joinProvision.do"><img src="${ contextPath }/assets/images/member/login_join.jpg" alt="무료회원가입 오즈월드 신규회원 가입하시면 다양한 혜택과 서비스를 제공 받으실 수 있습니다." ></a></p>

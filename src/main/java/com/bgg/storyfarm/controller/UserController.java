@@ -77,7 +77,6 @@ public class UserController {
 			model.addAttribute("msg", "login_fail");
 			return "user/loginView";
 		} else {
-			logger.info("sessionMap is : " + sessionMap.get("MEMBER_STATUS"));
 			if(sessionMap.get("MEMBER_STATUS").equals(2)){
 				model.addAttribute("msg", "requiredUser");
 				return "user/loginView";

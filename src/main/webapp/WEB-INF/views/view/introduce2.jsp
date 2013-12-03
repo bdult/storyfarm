@@ -29,7 +29,7 @@
 		<div class="titArea mgt20">
 			<h4 class="divTit2 mgt0">프리미엄 요금제</h4>
 			<p class="right">
-				<a href="#"><img src="${ contextPath }/assets/images/common/btn_pay_off.gif" alt="요금제결제" class="rollimg"></a>
+				<a class="paymentSubmit"><img src="${ contextPath }/assets/images/common/btn_pay_off.gif" alt="요금제결제" class="rollimg"></a>
 			</p>
 		</div>
 		<table class="data mgt20">
@@ -95,7 +95,7 @@
 		<div class="titArea mgt20">
 			<h4 class="divTit2 mgt0">과목별 요금제</h4>
 			<p class="right">
-				<a href="#"><img src="${ contextPath }/assets/images/common/btn_pay_off.gif" alt="요금제결제" class="rollimg"></a>
+				<a class="paymentSubmit"><img src="${ contextPath }/assets/images/common/btn_pay_off.gif" alt="요금제결제" class="rollimg"></a>
 			</p>
 		</div>
 
@@ -224,7 +224,7 @@
 		<div class="titArea mgt20">
 			<h4 class="divTit2 mgt0">전집별 요금제</h4>
 			<p class="right">
-				<a href="#"><img src="${ contextPath }/assets/images/common/btn_pay_off.gif" alt="요금제결제" class="rollimg"></a>
+				<a class="paymentSubmit"><img src="${ contextPath }/assets/images/common/btn_pay_off.gif" alt="요금제결제" class="rollimg"></a>
 			</p>
 		</div>
 
@@ -345,3 +345,13 @@
 	</div>
 
 </div>
+
+<script type="text/javascript">
+
+	$(".paymentSubmit").click(function(){
+		if("${ userInfoSession }" == null || "${ userInfoSession }" == ''){
+			alert("로그인후 이용해 주세요.");
+		}
+	});
+
+</script>
