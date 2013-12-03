@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 <h2 class="divTit">
-	<img src="" alt="1:1문의">
+	<img src="${ contextPath }/assets/images/mypage/title_ask.gif" alt="1:1문의">
 </h2>
 <!-- location -->
 <div id="divLocation">
@@ -62,7 +62,9 @@
 </table>
 
 <div class="btnSc aright">
-	<a class="btn btn-primary pull-right" href="${ contextPath }/mypage/questionInsert.do" id="write">1:1 문의하기</a>	
+	<a class="btn btn-primary pull-right" href="${ contextPath }/mypage/questionInsert.do" id="write">
+		<img src="${ contextPath }/assets/images/mypage/bt_ask_off.gif" alt="1:1 문의하기" />
+	</a>	
 </div>
 
 <!--paginate -->

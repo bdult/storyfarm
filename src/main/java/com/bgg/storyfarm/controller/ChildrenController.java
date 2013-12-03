@@ -3,6 +3,8 @@ package com.bgg.storyfarm.controller;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,8 +13,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.bgg.storyfarm.common.BreadcrumbUtil;
+import com.bgg.storyfarm.common.StoryfarmConstants;
 import com.bgg.storyfarm.service.ContentsService;
 
 
@@ -44,9 +48,33 @@ public class ChildrenController {
 	}
 	
 	@RequestMapping(value = "play.do", method = RequestMethod.GET)
-	public String play(Model model, @RequestParam Map<String, Object> paramMap) {
+	public ModelAndView play( @RequestParam Map<String,Object> paramMap, HttpSession session ) {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("children/play");
+		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME));
 		
-		return "children/play";
+		Map memberInfo = (Map)session.getAttribute(StoryfarmConstants.MEMBER_SESSION);
+		if(isLogin(memberInfo)){
+			mav.addObject(StoryfarmConstants.LOGIN_YN, "Y");
+			boolean isPaymentUser = contentsService.isPaymentMember(memberInfo, paramMap);
+			if(isPaymentUser){
+				mav.addObject(StoryfarmConstants.PAYMENT_YN, "Y");
+			}else{
+				mav.addObject(StoryfarmConstants.PAYMENT_YN, "N");
+			}
+		}else{
+			mav.addObject(StoryfarmConstants.LOGIN_YN, "N");
+			mav.addObject(StoryfarmConstants.PAYMENT_YN, "N");
+		}
+		mav.addObject(StoryfarmConstants.CONTENTS, contentsService.detail(paramMap));
+		return mav;
 	}
 	
+	private boolean isLogin(Map memberInfo) {
+		if(memberInfo == null){
+			return false;
+		}else{
+			return true;
+		}
+	}
 }

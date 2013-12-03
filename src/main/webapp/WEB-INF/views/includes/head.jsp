@@ -10,9 +10,6 @@
 <!-- JQUERY 1.10 -->
 <script src="${ contextPath }/assets/js/jquery.min.js"></script>
 
-<!-- AWESOME FONT 3.2.1 -->
-<link href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
-
 <!-- PUBLISHING -->
 <script src="${ contextPath }/assets/js/Publish.js"></script>
 <script src="${ contextPath }/assets/js/validate.js"></script>

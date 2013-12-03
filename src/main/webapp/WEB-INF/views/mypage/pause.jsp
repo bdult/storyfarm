@@ -2,12 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <h2 class="divTit">
-	<c:if test="${ userInfoSession.MEMBER_STATUS == 0 }">
-		<img src="" alt="일시중지 신청">
-	</c:if>
-	<c:if test="${ userInfoSession.MEMBER_STATUS == 1 }">
-		<img src="" alt="일시중지 해지">
-	</c:if>
+	<img src="${ contextPath }/assets/images/mypage/title_pause.gif" alt="일시중지">
 </h2>
 <!-- location -->
 <div id="divLocation">
@@ -59,10 +54,10 @@
         </ul>
         </form>
 		<c:if test="${ userInfoSession.MEMBER_STATUS == 0 }">
-	        <p class="btExit"><a id="submit"><img src="" alt="일시중지 신청" class="rolling"></a></p>
+	        <p class="btExit"><a id="submit"><img src="${ contextPath }/assets/images/mypage/bt_pause_off2.gif" alt="일시중지 신청" class="rolling"></a></p>
 	    </c:if>
 		<c:if test="${ userInfoSession.MEMBER_STATUS == 1 }">
-	        <p class="btExit"><a id="submit"><img src="" alt="일시중지 해지" class="rolling"></a></p>
+	        <p class="btExit"><a id="submit"><img src="${ contextPath }/assets/images/mypage/bt_pause_off.gif" alt="일시중지 해지" class="rolling"></a></p>
 	    </c:if>
     	<span class="bg1"></span><span class="bg2"></span><span class="bg3"></span><span class="bg4"></span>
   	</div>

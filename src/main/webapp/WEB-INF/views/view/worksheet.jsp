@@ -3,7 +3,7 @@
 
 <div id="content">
 	<h2 class="divTit">
-		<img src="" alt="프린트학습">
+		<img src="${ contextPath }/assets/images/content/title_print.gif" alt="프린트학습">
 	</h2>
 	<!-- location -->
 	<div id="divLocation">
@@ -14,10 +14,10 @@
 	</div>
 	<!-- //location -->
 	   
-	<div class="topBanner"><img src="" alt="프린트 학습 메인 이미지"></div>
+	<div class="topBanner"><img src="${ contextPath }/assets/images/content/print_Timg.jpg" alt="프린트 학습 메인 이미지"></div>
 	
 	<!-- conLst -->
-	<div class="conLst">
+	<div class="conLst print">
 		<ul>
 			<c:forEach begin="1" end="15" varStatus="util">
 	    	<li>
@@ -33,9 +33,10 @@
 		</ul>
 			    
 	  <!--paginate -->
+	  <!-- 
 	  <div class="paginate_complex">
 		  <a class="direction prev" href="#"><img src="${ contextPath }/assets/images/common/btn_pagingPre_off.gif" alt="이전 페이지 이동" class="rollimg"></a>
-		  <strong>1</strong>
+		  <strong class="print">1</strong>
 		  <a href="#">2</a>
 		  <a href="#">3</a>
 		  <a href="#">4</a>
@@ -46,6 +47,7 @@
 		  <a href="#">889</a>
 		  <a class="direction next" href="#"><img src="${ contextPath }/assets/images/common/btn_pagingNext_off.gif" alt="다음 페이지 이동" class="rollimg"></a>
 	  </div>
+	   -->
 		<!--//paginate -->
 	    
 	</div>

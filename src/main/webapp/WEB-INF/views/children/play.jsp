@@ -38,7 +38,10 @@
 
 		<div class="childrenConVew">
 			<div class="conMov">
-				<img src="${ contextPath }/assets/images/common/mov.jpg" alt="" style="width: 640px; height: 360px;">
+				<video id="player" width="640px" height="360px" controls poster="http://115.71.237.215/${contents.IMG_PATH}">
+				<source src="${contextPath}/streaming.do?contents_id=${contents.CONTENTS_ID}">
+					video 요소를 지원하지 않는 브라우저입니다.
+				</video>
 			</div>
 
 			<div class="btnSc aright">

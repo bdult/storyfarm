@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<h2 class="divTit"><img src="" alt="회원정보수정"></h2>
+<h2 class="divTit"><img src="${ contextPath }/assets/images/mypage/title_adjust.gif" alt="회원정보수정"></h2>
 
 <!-- location -->
 <div id="divLocation">
@@ -108,12 +108,12 @@
 
 <div class="btnSc">
 	<div style="float: left;">
-		<a id="delete_btn" href="${ contextPath }/mypage/leave.do"><img src="" alt="탈퇴" class="rollimg"></a>
-	</div>
-	<div style="float: right;">
-		<a id="update_btn"><img src="" alt="수정" class="rollimg"></a>&nbsp;&nbsp;&nbsp;
-		<a href="${ contextPath }/mypage/info.do"><img src="${ contextPath }/assets/images/common/btn_cancel2_off.gif" alt="취소" class="rollimg"></a>
-	</div>
+			<a id="delete_btn" href="${ contextPath }/mypage/leave.do"><img src="${ contextPath }/assets/images/mypage/bt_secede_off.gif" alt="탈퇴" class="rollimg"></a>
+		</div>
+		<div style="float: right;">
+			<a id="update_btn"><img src="${ contextPath }/assets/images/common/btn_edit_off2.gif" alt="수정" class="rollimg"></a>
+			<a href="${ contextPath }/mypage/info.do"><img src="${ contextPath }/assets/images/common/btn_cancel3_off.gif" alt="취소" class="rollimg"></a>
+		</div>
 </div>
 
 <!-- 주소찾기팝업 -->

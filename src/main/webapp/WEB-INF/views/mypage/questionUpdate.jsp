@@ -3,7 +3,7 @@
 
 
 <h2 class="divTit">
-	<img src="" alt="1:1문의">
+	<img src="${ contextPath }/assets/images/mypage/title_ask.gif" alt="1:1문의">
 </h2>
 <!-- location -->
 <div id="divLocation">
@@ -68,8 +68,8 @@
 </form>
 
 <div class="btnSc">
-   	<a id="submit"><img src="" alt="확인" class="rollimg"></a>
-   	<a href="javascript:history.back(-1);"><img src="" alt="취소" class="rollimg"></a> 
+   	<a id="submit"><img src="${ contextPath }/assets/images/common/btn_confirm2_off.gif" alt="확인" class="rollimg"></a>
+   	<a href="javascript:history.back(-1);"><img src="${ contextPath }/assets/images/common/btn_cancel_off.gif" alt="취소" class="rollimg"></a> 
 </div>
 
 <script type="text/javascript">

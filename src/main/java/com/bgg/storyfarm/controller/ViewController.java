@@ -105,9 +105,20 @@ public class ViewController {
 		
 		request.getSession().setAttribute(BACK_URL, request.getContextPath()+request.getServletPath()+"?"+request.getQueryString());
 		
-		
+		String cateId = String.valueOf(paramMap.get("cate_id"));
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("view/category");
+		
+		String viewName = "contents/korean";
+		if(cateId.equals("32")){
+			viewName = "contents/english";
+		} else if(cateId.equals("38")){
+			viewName = "contents/math";
+		} else if(cateId.equals("54")){
+			viewName = "contents/song";
+		} else if(cateId.equals("79")){
+			viewName = "contents/story";
+		}
+		mav.setViewName(viewName);
 		
 		Map<String, Object> cateDetail = contentsService.cateDetail(paramMap);
 		mav.addObject("cateDetail", cateDetail);
@@ -258,7 +269,14 @@ public class ViewController {
 		// 이중체크를 위해 추가 video tag src 속성에 empty 값으로 세팅 한다.
 		// 또한 결제를 하지 않은 사용자의 경우도 src 값이 empty 가 된다.
 		Map memberInfo = (Map)session.getAttribute(StoryfarmConstants.MEMBER_SESSION);
+		
+		
 		if(isLogin(memberInfo)){
+			
+			// 플레이 히스토리 저장
+			memberInfo.put(StoryfarmConstants.CONTENTS_ID, contents_id);
+			contentsService.savePlayHistory(memberInfo);
+			
 			String redirectUrl = contentsService.movieUrlByContentsId(contents_id);
 			return "redirect:"+redirectUrl;
 		}else{
