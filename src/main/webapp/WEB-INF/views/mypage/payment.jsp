@@ -294,12 +294,16 @@
 	}
 	
 	$("#subjSubmit").click(function(){
-		var input = $("<input>").attr("type", "hidden").attr("name", "pay").val($("#subjTotal").val());
-		$('#subjForm').append($(input));
-		$("#subjForm").attr({
-			method: 'post',
-			action: '${ contextPath }/mypage/paymentSelect.do'
-		}).submit();
+		if($("#subjTotal").val() == null || $("#subjTotal").val() == ''){
+			alert("요금제를 선택해 주세요.");
+		}else {
+			var input = $("<input>").attr("type", "hidden").attr("name", "pay").val($("#subjTotal").val());
+			$('#subjForm').append($(input));
+			$("#subjForm").attr({
+				method: 'post',
+				action: '${ contextPath }/mypage/paymentSelect.do'
+			}).submit();
+		}
 	});
 	
 	$("#subjReset").click(function(){
@@ -325,12 +329,16 @@
 	});
 
 	$("#collectedSubmit").click(function(){
-		var input = $("<input>").attr("type", "hidden").attr("name", "pay").val($("#collectedTotal").val());
-		$('#collectedForm').append($(input));
-		$("#collectedForm").attr({
-			method: 'post',
-			action: '${ contextPath }/mypage/paymentSelect.do'
-		}).submit();
+		if($("#collectedTotal").val() == null || $("#collectedTotal").val() == ''){
+			alert("요금제를 선택해 주세요.");
+		}else {
+			var input = $("<input>").attr("type", "hidden").attr("name", "pay").val($("#collectedTotal").val());
+			$('#collectedForm').append($(input));
+			$("#collectedForm").attr({
+				method: 'post',
+				action: '${ contextPath }/mypage/paymentSelect.do'
+			}).submit();
+		}
 	});
 	
 	$("#collectedTable [type=radio]").click(function(){

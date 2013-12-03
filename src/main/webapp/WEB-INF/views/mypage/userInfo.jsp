@@ -194,13 +194,27 @@ $(function(){
 
 	$("#update_btn").click(function(){
 		
-		combineEmail.call();
-		combineCel.call();
+		combineEmail();
+		combineCel();
 		
-		$("#joinForm").attr({
+		$.ajax({
+			url: '${ contextPath }/mypage/userInfoUpdate.ajax',
+			data: $("#joinForm").serialize(),
+			type: 'post',
+			success: function(res) {
+				alert("회원정보가 수정 되었습니다.")
+			},
+			error: function(xhr, status, error) {
+				console.log(error);
+				console.log(xhr);
+				console.log(status);
+			}
+		});
+		
+		/* $("#joinForm").attr({
 			method: 'post',
 			action: '${ contextPath }/mypage/userInfoUpdate.do'
-		}).submit();
+		}).submit(); */
 	});
 	
 
