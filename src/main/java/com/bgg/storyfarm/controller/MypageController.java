@@ -244,7 +244,7 @@ public class MypageController {
 	public ModelAndView questionInsert(Model model, @RequestParam Map<String, Object> paramsMap) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("side-mypage/questionWrite");
-		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_MYPAGE_INFO, StoryfarmConstants.BREADCRUMB_MYPAGE_QUESTION, StoryfarmConstants.BREADCRUMB_MYPAGE_QUESTION_INSERT));
+		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_MYPAGE_INFO, StoryfarmConstants.BREADCRUMB_MYPAGE_QUESTION));
 		
 		return mav;
 	}
@@ -265,7 +265,7 @@ public class MypageController {
 	public ModelAndView questionUpdate(Model model, @RequestParam Map<String, Object> paramsMap, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("side-mypage/questionUpdate");
-		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_MYPAGE_INFO, StoryfarmConstants.BREADCRUMB_MYPAGE_QUESTION, StoryfarmConstants.BREADCRUMB_MYPAGE_QUESTION_UPDATE));
+		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_MYPAGE_INFO, StoryfarmConstants.BREADCRUMB_MYPAGE_QUESTION));
 
 		Map<String, Object> sessionMap = getSessionId(session);
 		
