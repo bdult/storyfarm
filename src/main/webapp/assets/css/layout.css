@@ -5,7 +5,8 @@ body{ background:#9dccf8 url(../images/common/bg.gif) 0 0 repeat-x;}
 /*#divWrapper:after{ content:".";display:block;height:0;clear:both;visibility:hidden}*/
 
 /* divHeader */
-#header{ height:285px; margin:0;} 
+#header{ height:285px; margin:0; background:url(../images/common/bg_gnb.jpg) 50% 45px no-repeat;} 
+body#main #header{ height:242px; margin:0; background:url(../images/index/bg_gnb.jpg) 50% 45px no-repeat;} 
 #header:after{ content:".";display:block;height:0;clear:both;visibility:hidden;}
 #header .divUtill{ width:1134px; height:45px; margin:0 auto; position:relative;}
 #header .divUtill ul{ position:absolute; top:13px; right:305px;}
@@ -15,7 +16,10 @@ body{ background:#9dccf8 url(../images/common/bg.gif) 0 0 repeat-x;}
 #header .headSearch .input{ width:147px; height:24px; border:none; vertical-align:middle;}
 #header .headSearch .placeholder{ background:url(../images/common/bg_search.png) 0 50% no-repeat; padding:0 0 0 1px;}
 #header .headSearch .bt{ vertical-align:middle;}
-#header #gnbWrap{ width:1134px; margin:0 auto;}
+#header #gnbWrap{ width:1134px; margin:0 auto; position:relative;}
+#header #gnbWrap .logo{ position:absolute; top:10px; left:82px;}
+#header #gnbWrap #gnb{ overflow:hidden; padding:88px 0 0 352px;}
+#header #gnbWrap #gnb li{ float:left;}
 
 /* container */
 #container{  z-index:2; min-width:1134px; padding:40px 0 0 0;}
@@ -30,16 +34,12 @@ body{ background:#9dccf8 url(../images/common/bg.gif) 0 0 repeat-x;}
 #lm li li a{display:block; height:24px; text-indent:-9999px;}
 #lm li ul{ border-bottom:#e6e6e6 1px solid;}
 
-#lm li a.lm0201{ background:url(../images/common/lm_customer.gif) -200px 0 no-repeat;}
-#lm li a.lm0202{ background:url(../images/common/lm_customer.gif) -200px -29px no-repeat;}
-#lm li a.lm020201{ background:url(../images/common/lm_customer.gif) 0 -140px no-repeat;}
-#lm li a.lm020202{ background:url(../images/common/lm_customer.gif) 0 -163px no-repeat;}
-#lm li a.lm0203{ background:url(../images/common/lm_customer.gif) -200px -58px no-repeat;}
-#lm li a.lm0204{ background:url(../images/common/lm_customer.gif) -200px -87px no-repeat;}
+#lm li a.lm0201{ background:url(../images/common/lm_customer.gif) -182px 0 no-repeat;}
+#lm li a.lm0202{ background:url(../images/common/lm_customer.gif) -182px -29px no-repeat;}
+#lm li a.lm0203{ background:url(../images/common/lm_customer.gif) -182px -58px no-repeat;}
+#lm li a.lm0204{ background:url(../images/common/lm_customer.gif) -182px -87px no-repeat;}
 #lm li a.lm0201:hover,#lm li a.lm0201.on{ background:url(../images/common/lm_customer.gif) 0 0 no-repeat;}
 #lm li a.lm0202:hover,#lm li a.lm0202.on{ background:url(../images/common/lm_customer.gif) 0 -29px no-repeat;}
-#lm li a.lm020201:hover,#lm li a.lm020201.on{ background:url(../images/common/lm_customer.gif) -200px -140px no-repeat;}
-#lm li a.lm020202:hover,#lm li a.lm020202.on{ background:url(../images/common/lm_customer.gif) -200px -163px no-repeat;}
 #lm li a.lm0203:hover,#lm li a.lm0203.on{ background:url(../images/common/lm_customer.gif) 0 -58px no-repeat;}
 #lm li a.lm0204:hover,#lm li a.lm0204.on{ background:url(../images/common/lm_customer.gif) 0 -87px no-repeat;}
 

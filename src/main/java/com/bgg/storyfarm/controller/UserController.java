@@ -96,7 +96,7 @@ public class UserController {
 						response.addCookie(new Cookie("userIdCheck", null));
 					}
 					if(paramMap.get("userSavePw") != null){
-						response.addCookie(new Cookie("userPwdCookie", encryprionUtil.getPassword()));
+						response.addCookie(new Cookie("userPwdCookie", paramMap.get("pwd").toString()));
 						response.addCookie(new Cookie("userPwdCheck", paramMap.get("userSavePw").toString()));
 					}else {
 						response.addCookie(new Cookie("userPwdCookie", null));
