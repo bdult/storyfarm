@@ -74,7 +74,7 @@ public class UserController {
 	@RequestMapping(value = "loginResult.do", method = RequestMethod.POST)
 	public String loginResult(Model model, @RequestParam Map<String, Object> paramMap, HttpServletResponse response, HttpSession session) {
 		model.addAttribute(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_LOGIN));
-		encryprionUtil.encryption(paramMap.get("pwd").toString());
+		/*encryprionUtil.encryption(paramMap.get("pwd").toString());*/
 		
 		Map<String, Object> sessionMap = (Map<String, Object>) userService.detail(paramMap);
 

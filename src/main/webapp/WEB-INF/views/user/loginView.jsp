@@ -29,8 +29,8 @@
 		<fieldset>
 		<legend>로그인하기</legend>
 		<ul>
-			<li><label for="userId"><img src="${ contextPath }/assets/images/member/login_txId.gif" alt="아이디"></label><input name="id" id="userId" type="text" class="input"></li>
-			<li><label for="userPw"><img src="${ contextPath }/assets/images/member/login_txPw.gif" alt="비밀번호"></label><input name="pwd" id="userPw" type="password" class="input"></li>
+			<li><label for="userId"><img src="${ contextPath }/assets/images/member/login_txId.gif" alt="아이디"></label><input name="id" id="userId" type="text" class="input" style="width: 240px;"></li>
+			<li><label for="userPw"><img src="${ contextPath }/assets/images/member/login_txPw.gif" alt="비밀번호"></label><input name="pwd" id="userPw" type="password" class="input" style="width: 240px;"></li>
 			<li class="saveTx">
 				<input name="userSaveId" id="userSave1" type="checkbox"> <label for="userSave1">ID 저장</label>
 				<input name="userSavePw" id="userSave2" type="checkbox"> <label for="userSave2">PW 저장</label>
