@@ -89,6 +89,15 @@
 			<version>${spring-framework.version}</version>
 			<scope>test</scope>
 		</dependency>
+		
+		<!-- spock 
+			http://helloworld.naver.com/helloworld/textyle/568425 참조
+		-->
+		<dependency>
+		    <groupId>org.spockframework</groupId>
+		    <artifactId>spock-core</artifactId>
+		    <version>0.7-groovy-2.0</version>
+		</dependency>
 
 		<!-- tiles -->
 		<dependency>

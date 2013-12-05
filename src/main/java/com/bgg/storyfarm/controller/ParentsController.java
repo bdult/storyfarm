@@ -1,7 +1,10 @@
 package com.bgg.storyfarm.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,7 +18,10 @@ import org.springframework.web.servlet.ModelAndView;
 import com.bgg.storyfarm.common.BreadcrumbUtil;
 import com.bgg.storyfarm.common.PageUtil;
 import com.bgg.storyfarm.common.StoryfarmConstants;
+import com.bgg.storyfarm.common.StoryfarmDBConstants;
 import com.bgg.storyfarm.service.BoardService;
+import com.bgg.storyfarm.service.ChildrenService;
+import com.bgg.storyfarm.service.ContentsService;
 
 //부모방
 @Controller
@@ -40,6 +46,12 @@ public class ParentsController {
 	@Autowired
 	private BoardService boardService;
 	
+	@Autowired
+	private ChildrenService childrenService;
+	
+	@Autowired
+	private ContentsService contentsService;
+	
 	//메인
 	@RequestMapping(value = "room.do", method = RequestMethod.GET)
 	public ModelAndView room(Model model) {
@@ -60,7 +72,7 @@ public class ParentsController {
 	
 	//학습통계
 	@RequestMapping(value = "study.do", method = RequestMethod.GET)
-	public ModelAndView study(Model model) {
+	public ModelAndView study(Model model, String children_idx,  HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("side-parents/study");
 		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(
@@ -68,6 +80,32 @@ public class ParentsController {
 				StoryfarmConstants.BREADCRUMB_PARENTS_ROOM,
 				StoryfarmConstants.BREADCRUMB_PARENTS_STUDY));
 		mav.addObject(LM_SEQ, LNB_STATS);
+		
+		
+		Map sessionInfo = (Map)session.getAttribute(StoryfarmConstants.MEMBER_SESSION);
+		Map memberInfo = new HashMap();
+		
+		// mybatis 에서 대소문자를 구분하기 때문 변수 변경
+		
+		memberInfo.put(StoryfarmConstants.MEMBER_ID, sessionInfo.get(StoryfarmDBConstants.MEMBER_ID));
+		memberInfo.put(StoryfarmConstants.CHILDREN_IDX, children_idx);
+		
+		// child Info
+		List<Map> children = childrenService.userChildren(memberInfo);
+		
+		
+		// play History
+		
+		List<Map> history = contentsService.viewHistoryOfChild(memberInfo);
+		
+		
+		mav.addObject("children", children);
+		mav.addObject("history", history);
+		if(children_idx == null){
+			mav.addObject("children_idx", children.get(0).get("IDX"));
+		}else{
+			mav.addObject("children_idx", children_idx);
+		}
 		return mav;
 	}
 

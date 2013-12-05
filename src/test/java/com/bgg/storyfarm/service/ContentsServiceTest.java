@@ -69,30 +69,13 @@ public class ContentsServiceTest {
 		// given 
 		Map memberInfo = new HashMap();
 		memberInfo.put(StoryfarmConstants.MEMBER_ID, "test");
-		memberInfo.put(StoryfarmConstants.CHILDREN_IDX, "21");
+		memberInfo.put(StoryfarmConstants.CHILDREN_IDX, "45");
 
 		// when
-		List<Map> playHistorys = contentsService.playHistory(memberInfo);
+		List<Map> playHistorys = contentsService.viewHistoryOfChild(memberInfo);
 
 		// then
 		assertNotNull(playHistorys);
-
-	}
-	
-	
-	@Test
-	public void testChildPlayCount() {
-		
-		// given 
-		Map memberInfo = new HashMap();
-		memberInfo.put(StoryfarmConstants.MEMBER_ID, "test");
-		memberInfo.put(StoryfarmConstants.CHILDREN_IDX, "21");
-
-		// when
-		Map playCount = contentsService.childPlayCount(memberInfo);
-
-		// then
-		assertNotNull(playCount);
 
 	}
 	

@@ -227,8 +227,8 @@
     	)
     </insert>
     
-    <select id="playHistory" resultType="hashmap">
-    	SELECT /* contentsQuery.playHistory */
+    <select id="viewHistoryOfChild" resultType="hashmap">
+    	SELECT /* contentsQuery.viewHistoryOfChild */
             BC.CONTENTS_ID
             , BC.CONTENTS_SERIES_ID
             , BC.SRC_PATH
@@ -242,62 +242,27 @@
             , BCD.CONTENTS_DESC
             , BCD.LOCATION_CODE
             , BCD.REG_DT
-        FROM BG_CONTENTS BC, BG_CATE_CONTENTS_RELATIONSHIPS BCCR, BG_CONTENTS_DETAIL BCD, BG_PLAY_LOG BPL
+        FROM 
+        	BG_CONTENTS BC, 
+        	BG_CATE_CONTENTS_RELATIONSHIPS BCCR, 
+        	BG_CONTENTS_DETAIL BCD, 
+        	BG_PLAY_LOG BPL
         WHERE 1=1
         AND BC.CONTENTS_ID = BCD.CONTENTS_ID
         AND BPL.CONTENTS_ID = BC.CONTENTS_ID
         AND BCD.IDX = BCCR.CONTENTS_DETAIL_IDX 
         AND BPL.MEMBER_ID = #{member_id}
-        AND BPL.CHILDREN_IDX = #{children_idx}
+        <choose>
+        	<when test="children_idx == null">
+        		AND BPL.CHILDREN_IDX = (SELECT IDX FROM BG_CHILDREN WHERE 1=1 AND SELECTED_YN = 'Y' AND PARENT_MEMBER_ID = #{member_id})
+        	</when>
+        	<otherwise>
+		        AND BPL.CHILDREN_IDX = #{children_idx}
+        	</otherwise>
+        </choose>
         GROUP BY BPL.CONTENTS_ID
         ORDER BY BPL.REG_DT DESC
-    </select>
-    
-    <select id="childPlayCountBySubject" resultType="hashmap">
-    	SELECT /* contentsQuery.childPlayCountBySubject */
-            BCA.CATE_ID
-            , BCA.CATE_NM
-            , COUNT(BPL.CONTENTS_ID) AS PLAY_COUNT
-        FROM 
-        	BG_CONTENTS BC, 
-        	BG_CATE_CONTENTS_RELATIONSHIPS BCCR, 
-        	BG_PLAY_LOG BPL, 
-        	BG_CATE BCA
-        WHERE 1=1
-        AND BPL.CONTENTS_ID = BC.CONTENTS_ID
-        AND BCA.CATE_ID = BCCR.CATE_ID
-        AND BPL.MEMBER_ID = #{member_id}
-        AND BPL.CHILDREN_IDX = #{children_idx}
-        GROUP BY BCCR.CATE_ID
-    </select>
-    
-    <select id="childPlayCountByRegDT" resultType="hashmap">
-    	SELECT /* contentsQuery.childPlayCountByRegDT */
-            COUNT(BPL.CONTENTS_ID) AS PLAY_COUNT
-            , DATE_FORMAT(BPL.REG_DT , '%Y-%m-%d') AS REG_DT
-        FROM 
-        	BG_PLAY_LOG BPL 
-        WHERE 1=1
-        AND BPL.MEMBER_ID = #{member_id}
-        AND BPL.CHILDREN_IDX = #{children_idx}
-        GROUP BY DATE_FORMAT(BPL.REG_DT , '%Y-%m-%d') 
-    </select>
-    
-    <select id="childPlayCountBySeries" resultType="hashmap">
-    	SELECT /* contentsQuery.childPlayCountBySeries */
-            BCS.CONTENTS_SERIES_ID
-            , BCS.CONTENTS_SERIES_NM
-            , COUNT(BPL.CONTENTS_ID) AS PLAY_COUNT
-        FROM 
-        	BG_CONTENTS BC, 
-        	BG_PLAY_LOG BPL, 
-        	BG_CONTENTS_SERIES BCS
-        WHERE 1=1
-        AND BPL.CONTENTS_ID = BC.CONTENTS_ID
-        AND BCS.CONTENTS_SERIES_ID = BC.CONTENTS_SERIES_ID
-        AND BPL.MEMBER_ID = #{member_id}
-        AND BPL.CHILDREN_IDX = #{children_idx}
-        GROUP BY BCS.CONTENTS_SERIES_ID
+        LIMIT 5
     </select>
     
     

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="childrendQuery">
+
+	<select id="userChildren" resultType="hashmap">
+		SELECT * /* childrendQuery.userChildren */
+		FROM BG_CHILDREN
+		WHERE 1=1
+		AND PARENT_MEMBER_ID = #{member_id}
+		ORDER BY IDX DESC LIMIT 2
+	</select>
+	
+</mapper>
