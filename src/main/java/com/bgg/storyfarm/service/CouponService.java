@@ -21,7 +21,7 @@ public class CouponService {
 	 * @return
 	 */
 	public void add(Map<String, Object> paramMap){
-		couponDao.add(paramMap);
+		couponDao.updateCouponDetail(paramMap);
 	}
 	
 	/** 쿠폰 목록 조회

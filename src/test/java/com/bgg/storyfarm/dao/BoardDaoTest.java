@@ -158,7 +158,7 @@ public class BoardDaoTest {
 	@Test
 	public void testCreate() {
 
-		for(int begin=1; begin <= 50; begin++){
+		for(int begin=1; begin <= 1; begin++){
 			
 			//given
 			Map<String, Object> boardMap = new HashMap<String, Object>();
