@@ -9,6 +9,10 @@
         <put-attribute name="content" value="/WEB-INF/views/{1}.jsp" />
     </definition>
 
+    <definition name="index" extends=".index">
+        <put-attribute name="content" value="/WEB-INF/views/index.jsp" />
+    </definition>
+
     <definition name="*" extends=".default">
         <put-attribute name="content" value="/WEB-INF/views/{1}.jsp" />
     </definition>
@@ -17,7 +21,6 @@
         <put-attribute name="sidebar" value="/WEB-INF/views/sidebars/{1}.jsp" />
         <put-attribute name="content" value="/WEB-INF/views/{1}/{2}.jsp" />
     </definition>
-
     
     <definition name="pure-*/*" extends=".pure">
         <put-attribute name="content" value="/WEB-INF/views/{1}/{2}.jsp" />

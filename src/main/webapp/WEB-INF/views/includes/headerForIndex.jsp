@@ -2,6 +2,18 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 
+<style>
+/* 메인 GNB 재정의 */
+#header {
+	height: 242px;
+	margin: 0;
+	background: url(${ contextPath }/assets/images/index/bg_gnb.jpg) 50% 45px no-repeat;
+}
+
+#container {
+	padding-top: 0px;
+}
+</style>
 <!-- divAccessibility -->
 <div id="divAccessibility">
 	<a href="#gnb">메뉴 바로가기</a> <a href="#divContents">본문 바로가기(skip to content)</a>
@@ -34,17 +46,14 @@
 		</div>
 	</div>
 	<div id="gnbWrap">
-		<img src="${ contextPath }/assets/images/common/gnb.jpg" alt="" usemap="#gnbMap">
+		<h1 class="logo"><a href="${ contextPath }"><img src="${ contextPath }/assets/images/common/logo.png" alt="오즈월드"></a></h1>
+		<ul id="gnb">
+			<li><a href="${ contextPath }/category.do?cate_id=78"><img src="${ contextPath }/assets/images/common/gnb01.png" alt="한글"></a></li>
+			<li><a href="${ contextPath }/category.do?cate_id=32"><img src="${ contextPath }/assets/images/common/gnb02.png" alt="영어"></a></li>
+			<li><a href="${ contextPath }/category.do?cate_id=38"><img src="${ contextPath }/assets/images/common/gnb03.png" alt="수학/과학"></a></li>
+			<li><a href="${ contextPath }/category.do?cate_id=54"><img src="${ contextPath }/assets/images/common/gnb04.png" alt="동요"></a></li>
+			<li><a href="${ contextPath }/category.do?cate_id=79"><img src="${ contextPath }/assets/images/common/gnb05.png" alt="동화"></a></li>
+			<li><a href="${ contextPath }/category.do?worksheet.do"><img src="${ contextPath }/assets/images/common/gnb06.png" alt="프린트학습"></a></li>
+		</ul>
 	</div>
-
-	<!-- 임시 gnb 이미지맵 -->
-	<map name="gnbMap">
-		<area shape="rect" coords="88,11,334,158" href="${ contextPath }" target="" alt="" />
-		<area shape="rect" coords="351,101,464,195" href="${ contextPath }/category.do?cate_id=78" target="" alt="" />
-		<area shape="rect" coords="470,95,580,200" href="${ contextPath }/category.do?cate_id=32" target="" alt="" />
-		<area shape="rect" coords="584,105,694,197" href="${ contextPath }/category.do?cate_id=38" target="" alt="" />
-		<area shape="rect" coords="698,114,812,195" href="${ contextPath }/category.do?cate_id=54" target="" alt="" />
-		<area shape="rect" coords="815,93,928,196" href="${ contextPath }/category.do?cate_id=79" target="" alt="" />
-		<area shape="rect" coords="930,105,1042,196" href="${ contextPath }/worksheet.do" target="" alt="" />
-	</map>
 </div>

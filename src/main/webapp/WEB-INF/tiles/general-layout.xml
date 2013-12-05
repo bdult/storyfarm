@@ -17,6 +17,13 @@
 		<put-attribute name="analytics" value="/WEB-INF/views/includes/analytics.jsp" />
 	</definition>
 
+	<definition name=".index" template="/WEB-INF/views/layouts/index.jsp">
+		<put-attribute name="head" value="/WEB-INF/views/includes/head.jsp" />
+		<put-attribute name="header" value="/WEB-INF/views/includes/headerForIndex.jsp" />
+		<put-attribute name="footer" value="/WEB-INF/views/includes/footer.jsp" />
+		<put-attribute name="analytics" value="/WEB-INF/views/includes/analytics.jsp" />
+	</definition>
+
 	<definition name=".sidebar" template="/WEB-INF/views/layouts/sidebar.jsp">
 		<put-attribute name="head" value="/WEB-INF/views/includes/head.jsp" />
 		<put-attribute name="header" value="/WEB-INF/views/includes/header.jsp" />

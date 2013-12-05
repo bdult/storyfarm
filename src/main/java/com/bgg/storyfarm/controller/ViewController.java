@@ -53,7 +53,7 @@ public class ViewController {
 	public ModelAndView main(Model model, Locale locale,
 			@RequestHeader(value="Accept-Language", required=false, defaultValue="ko") String accLang) {
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("view/dashboard");
+		mav.setViewName("index");
 		mav.addObject(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME));
 		
 		HashMap<String, Object> paramMap = new HashMap<String, Object>();
