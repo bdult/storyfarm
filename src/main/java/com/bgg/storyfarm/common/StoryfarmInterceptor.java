@@ -133,6 +133,7 @@ public class StoryfarmInterceptor extends HandlerInterceptorAdapter {
 		ignoreList.add("findPwdView.do");
 		ignoreList.add("joinProvision.do");
 		ignoreList.add("introduce.do");
+		ignoreList.add("introduce2.do");
 		ignoreList.add("serviceRules.do");
 		ignoreList.add("privacyRules.do");
 		ignoreList.add("cscenter/");

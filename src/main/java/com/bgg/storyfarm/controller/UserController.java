@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.bgg.storyfarm.common.BreadcrumbUtil;
+import com.bgg.storyfarm.common.EncryptionUtil;
 import com.bgg.storyfarm.common.MailUtil;
 import com.bgg.storyfarm.common.StoryfarmConstants;
 import com.bgg.storyfarm.service.ContentsService;
@@ -43,6 +44,9 @@ public class UserController {
 
 	@Autowired
 	private MailUtil mailUtil;
+	
+	@Autowired
+	private EncryptionUtil encryprionUtil;
 	
 	private Logger logger = LoggerFactory.getLogger(UserController.class);
 	
@@ -70,6 +74,7 @@ public class UserController {
 	@RequestMapping(value = "loginResult.do", method = RequestMethod.POST)
 	public String loginResult(Model model, @RequestParam Map<String, Object> paramMap, HttpServletResponse response, HttpSession session) {
 		model.addAttribute(StoryfarmConstants.BREADCRUMBS, breadcrumbUtil.getBreadcrumbs(StoryfarmConstants.BREADCRUMB_HOME, StoryfarmConstants.BREADCRUMB_LOGIN));
+		encryprionUtil.encryption(paramMap.get("pwd").toString());
 		
 		Map<String, Object> sessionMap = (Map<String, Object>) userService.detail(paramMap);
 
@@ -83,17 +88,19 @@ public class UserController {
 			}else {
 				if(session.getAttribute(StoryfarmConstants.MEMBER_SESSION) == null){
 					session.setAttribute(StoryfarmConstants.MEMBER_SESSION, sessionMap);
-					response.addCookie(new Cookie("userIdCookie", paramMap.get("id").toString()));
-					response.addCookie(new Cookie("userPwdCookie", paramMap.get("pwd").toString()));
 					if(paramMap.get("userSaveId") != null){
+						response.addCookie(new Cookie("userIdCookie", paramMap.get("id").toString()));
 						response.addCookie(new Cookie("userIdCheck", paramMap.get("userSaveId").toString()));
 					}else{
-						response.addCookie(new Cookie("userIdCheck", ""));
+						response.addCookie(new Cookie("userIdCookie", null));
+						response.addCookie(new Cookie("userIdCheck", null));
 					}
 					if(paramMap.get("userSavePw") != null){
+						response.addCookie(new Cookie("userPwdCookie", encryprionUtil.getPassword()));
 						response.addCookie(new Cookie("userPwdCheck", paramMap.get("userSavePw").toString()));
 					}else {
-						response.addCookie(new Cookie("userPwdCheck", ""));
+						response.addCookie(new Cookie("userPwdCookie", null));
+						response.addCookie(new Cookie("userPwdCheck", null));
 					}
 				}
 				return "redirect:mypage/info.do";
