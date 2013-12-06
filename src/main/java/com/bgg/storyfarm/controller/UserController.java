@@ -113,14 +113,15 @@ public class UserController {
 
 
 	@RequestMapping(value = "logout.do", method = RequestMethod.GET)
-	public String logout(Model model, HttpServletRequest request, HttpSession session) {
-		logger.info("logout.do");
-
+	public ModelAndView logout(Model model, HttpServletRequest request, HttpSession session) {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("index");
+		
 		if (session != null) {
 			session.invalidate();
 		}
 
-		return "view/dashboard";
+		return mav;
 	}
 
 	/**

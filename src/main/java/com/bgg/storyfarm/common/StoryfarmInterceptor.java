@@ -137,6 +137,7 @@ public class StoryfarmInterceptor extends HandlerInterceptorAdapter {
 		ignoreList.add("serviceRules.do");
 		ignoreList.add("privacyRules.do");
 		ignoreList.add("cscenter/");
+		ignoreList.add("logout.do");
 		//ignoreList.add("세션 체크 안할 URL");
 		
 		//세션 체크 안할 URL은 ignoreList에 추가해야함.
